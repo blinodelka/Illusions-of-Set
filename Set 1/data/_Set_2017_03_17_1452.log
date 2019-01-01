@@ -1,0 +1,224 @@
+5.7866 	EXP 	Created window1 = Window(allowGUI=False, allowStencil=False, autoLog=True, bitsMode=UNKNOWN, blendMode='avg', color=array([ 0.,  0.,  0.]), colorSpace='rgb', fullscr=UNKNOWN, gamma=None, lms=UNKNOWN, monitor=<psychopy.monitors.calibTools.Monitor object at 0x08B8D110>, name='window1', pos=[0, 0], screen=0, size=array([1920, 1080]), stereo=False, units=u'norm', useFBO=True, useRetina=False, viewOri=0.0, viewPos=None, viewScale=None, waitBlanking=True, winType='pyglet')
+5.7867 	EXP 	window1: recordFrameIntervals = False
+5.9526 	EXP 	window1: recordFrameIntervals = True
+6.1360 	EXP 	window1: recordFrameIntervals = False
+6.4313 	EXP 	Created text_2 = TextStim(alignHoriz='center', alignVert='center', antialias=True, autoLog=True, bold=False, color='white', colorSpace='named', contrast=1.0, depth=0.0, flipHoriz=False, flipVert=False, font='Arial', fontFiles=[], height=0.1, italic=False, name='text_2', opacity=1.0, ori=0, pos=array([ 0.,  0.]), rgb=array([ 255.,  255.,  255.]), text=unicode(...), units=u'norm', win=Window(...), wrapWidth=1)
+6.4415 	EXP 	Created polygon = Polygon(autoDraw=False, autoLog=True, closeShape=True, contrast=1.0, depth=0.0, fillColor=array([ 1.,  1.,  1.]), fillColorSpace='rgb', fillRGB=array([ 1.,  1.,  1.]), interpolate=True, lineColor=array([ 1.,  1.,  1.]), lineColorSpace='rgb', lineRGB=array([ 1.,  1.,  1.]), lineWidth=1, name='polygon', opacity=1.0, ori=array(0.0), pos=array([ 3.,  0.]), size=array([ 1.,  1.]), units='cm', vertices=ndarray(...), win=Window(...))
+6.4488 	EXP 	Created polygon_2 = Polygon(autoDraw=False, autoLog=True, closeShape=True, contrast=1.0, depth=-1.0, fillColor=array([ 1.,  1.,  1.]), fillColorSpace='rgb', fillRGB=array([ 1.,  1.,  1.]), interpolate=True, lineColor=array([ 1.,  1.,  1.]), lineColorSpace='rgb', lineRGB=array([ 1.,  1.,  1.]), lineWidth=1, name='polygon_2', opacity=1.0, ori=array(0.0), pos=array([-3.,  0.]), size=array([ 2.5,  2.5]), units='cm', vertices=ndarray(...), win=Window(...))
+6.4559 	EXP 	Created polygon_5 = Polygon(autoDraw=False, autoLog=True, closeShape=True, contrast=1.0, depth=-2.0, fillColor=array([ 50.,   1.,   1.]), fillColorSpace='rgb', fillRGB=array([ 50.,   1.,   1.]), interpolate=True, lineColor=array([ 1.,  1.,  1.]), lineColorSpace='rgb', lineRGB=array([ 1.,  1.,  1.]), lineWidth=1, name='polygon_5', opacity=1.0, ori=array(0.0), pos=array([ 0.,  0.]), size=array([ 0.1,  0.1]), units='cm', vertices=ndarray(...), win=Window(...))
+6.4632 	EXP 	Created polygon_3 = Polygon(autoDraw=False, autoLog=True, closeShape=True, contrast=1.0, depth=0.0, fillColor=array([ 1.,  1.,  1.]), fillColorSpace='rgb', fillRGB=array([ 1.,  1.,  1.]), interpolate=True, lineColor=array([ 1.,  1.,  1.]), lineColorSpace='rgb', lineRGB=array([ 1.,  1.,  1.]), lineWidth=1, name='polygon_3', opacity=1.0, ori=array(0.0), pos=array([ 3.,  0.]), size=array([ 2.5,  2.5]), units='cm', vertices=ndarray(...), win=Window(...))
+6.4703 	EXP 	Created polygon_4 = Polygon(autoDraw=False, autoLog=True, closeShape=True, contrast=1.0, depth=-1.0, fillColor=array([ 1.,  1.,  1.]), fillColorSpace='rgb', fillRGB=array([ 1.,  1.,  1.]), interpolate=True, lineColor=array([ 1.,  1.,  1.]), lineColorSpace='rgb', lineRGB=array([ 1.,  1.,  1.]), lineWidth=1, name='polygon_4', opacity=1.0, ori=array(0.0), pos=array([-3.,  0.]), size=array([ 2.5,  2.5]), units='cm', vertices=ndarray(...), win=Window(...))
+6.5116 	EXP 	Created text = TextStim(alignHoriz='center', alignVert='center', antialias=True, autoLog=True, bold=False, color='white', colorSpace='named', contrast=1.0, depth=-3.0, flipHoriz=False, flipVert=False, font='Arial', fontFiles=[], height=0.1, italic=False, name='text', opacity=1.0, ori=0, pos=array([ 0. ,  0.3]), rgb=array([ 255.,  255.,  255.]), text=unicode(...), units=u'norm', win=Window(...), wrapWidth=1)
+6.5188 	EXP 	Created polygon_6 = Polygon(autoDraw=False, autoLog=True, closeShape=True, contrast=1.0, depth=-4.0, fillColor=array([ 50.,   1.,   1.]), fillColorSpace='rgb', fillRGB=array([ 50.,   1.,   1.]), interpolate=True, lineColor=array([ 1.,  1.,  1.]), lineColorSpace='rgb', lineRGB=array([ 1.,  1.,  1.]), lineWidth=1, name='polygon_6', opacity=1.0, ori=array(0.0), pos=array([ 0.,  0.]), size=array([ 0.1,  0.1]), units='cm', vertices=ndarray(...), win=Window(...))
+6.5461 	EXP 	Created text_3 = TextStim(alignHoriz='center', alignVert='center', antialias=True, autoLog=True, bold=False, color='white', colorSpace='named', contrast=1.0, depth=0.0, flipHoriz=False, flipVert=False, font='Arial', fontFiles=[], height=0.1, italic=False, name='text_3', opacity=1.0, ori=0, pos=array([ 0.,  0.]), rgb=array([ 255.,  255.,  255.]), text=unicode(...), units=u'norm', win=Window(...), wrapWidth=1)
+6.5607 	EXP 	Created text_4 = TextStim(alignHoriz='center', alignVert='center', antialias=True, autoLog=True, bold=False, color='white', colorSpace='named', contrast=1.0, depth=0.0, flipHoriz=False, flipVert=False, font='Arial', fontFiles=[], height=0.1, italic=False, name='text_4', opacity=1.0, ori=0, pos=array([ 0.,  0.]), rgb=array([ 255.,  255.,  255.]), text=unicode(...), units=u'norm', win=Window(...), wrapWidth=1)
+6.5860 	EXP 	text_2: autoDraw = True
+7.5360 	DATA 	Keypress: space
+7.5392 	EXP 	Imported set_conditions.csv as conditions, 40 conditions, 2 params
+7.5403 	EXP 	Created sequence: random, trialTypes=40, nReps=40, seed=None
+7.5409 	EXP 	New trial (rep=0, index=0): {'number_of_fixational_trials': 2, 'size': [2.7, 2.7]}
+7.5437 	EXP 	Imported set_conditions.csv as conditions, 40 conditions, 2 params
+7.5442 	EXP 	Created sequence: random, trialTypes=40, nReps=2, seed=None
+7.5444 	EXP 	New trial (rep=0, index=0): {'number_of_fixational_trials': 4, 'size': [2.7, 2.7]}
+7.6358 	EXP 	text_2: autoDraw = False
+7.6358 	EXP 	polygon: size = array([ 2.7,  2.7])
+7.6358 	EXP 	polygon_5: autoDraw = True
+7.9692 	EXP 	polygon: autoDraw = True
+7.9692 	EXP 	polygon_2: autoDraw = True
+8.1025 	EXP 	polygon: autoDraw = False
+8.1025 	EXP 	polygon_2: autoDraw = False
+8.5363 	EXP 	New trial (rep=0, index=1): {'number_of_fixational_trials': 1, 'size': [2.63, 2.63]}
+8.5525 	EXP 	polygon_5: autoDraw = False
+8.5525 	EXP 	polygon: autoDraw = False
+8.5525 	EXP 	polygon_2: autoDraw = False
+8.5525 	EXP 	polygon_5: autoDraw = False
+8.5525 	EXP 	polygon: size = array([ 2.63,  2.63])
+8.5525 	EXP 	polygon_5: autoDraw = True
+8.9692 	EXP 	polygon: autoDraw = True
+8.9692 	EXP 	polygon_2: autoDraw = True
+9.1025 	EXP 	polygon: autoDraw = False
+9.1025 	EXP 	polygon_2: autoDraw = False
+9.5363 	EXP 	New trial (rep=0, index=2): {'number_of_fixational_trials': 9, 'size': [2.6, 2.6]}
+9.5525 	EXP 	polygon_5: autoDraw = False
+9.5525 	EXP 	polygon: autoDraw = False
+9.5525 	EXP 	polygon_2: autoDraw = False
+9.5525 	EXP 	polygon_5: autoDraw = False
+9.5525 	EXP 	polygon: size = array([ 2.6,  2.6])
+9.5525 	EXP 	polygon_5: autoDraw = True
+9.9691 	EXP 	polygon: autoDraw = True
+9.9691 	EXP 	polygon_2: autoDraw = True
+10.1025 	EXP 	polygon: autoDraw = False
+10.1025 	EXP 	polygon_2: autoDraw = False
+10.5363 	EXP 	New trial (rep=0, index=3): {'number_of_fixational_trials': 3, 'size': [2.6, 2.6]}
+10.5525 	EXP 	polygon_5: autoDraw = False
+10.5525 	EXP 	polygon: autoDraw = False
+10.5525 	EXP 	polygon_2: autoDraw = False
+10.5525 	EXP 	polygon_5: autoDraw = False
+10.5525 	EXP 	polygon: size = array([ 2.6,  2.6])
+10.5525 	EXP 	polygon_5: autoDraw = True
+10.9691 	EXP 	polygon: autoDraw = True
+10.9691 	EXP 	polygon_2: autoDraw = True
+11.1025 	EXP 	polygon: autoDraw = False
+11.1025 	EXP 	polygon_2: autoDraw = False
+11.5362 	EXP 	New trial (rep=0, index=4): {'number_of_fixational_trials': 4, 'size': [2.6, 2.6]}
+11.5525 	EXP 	polygon_5: autoDraw = False
+11.5525 	EXP 	polygon: autoDraw = False
+11.5525 	EXP 	polygon_2: autoDraw = False
+11.5525 	EXP 	polygon_5: autoDraw = False
+11.5525 	EXP 	polygon: size = array([ 2.6,  2.6])
+11.5525 	EXP 	polygon_5: autoDraw = True
+11.9691 	EXP 	polygon: autoDraw = True
+11.9691 	EXP 	polygon_2: autoDraw = True
+12.1025 	EXP 	polygon: autoDraw = False
+12.1025 	EXP 	polygon_2: autoDraw = False
+12.5362 	EXP 	New trial (rep=0, index=5): {'number_of_fixational_trials': 3, 'size': [2.67, 2.67]}
+12.5525 	EXP 	polygon_5: autoDraw = False
+12.5525 	EXP 	polygon: autoDraw = False
+12.5525 	EXP 	polygon_2: autoDraw = False
+12.5525 	EXP 	polygon_5: autoDraw = False
+12.5525 	EXP 	polygon: size = array([ 2.67,  2.67])
+12.5525 	EXP 	polygon_5: autoDraw = True
+12.9691 	EXP 	polygon: autoDraw = True
+12.9691 	EXP 	polygon_2: autoDraw = True
+13.1025 	EXP 	polygon: autoDraw = False
+13.1025 	EXP 	polygon_2: autoDraw = False
+13.5362 	EXP 	New trial (rep=0, index=6): {'number_of_fixational_trials': 10, 'size': [2.7, 2.7]}
+13.5525 	EXP 	polygon_5: autoDraw = False
+13.5525 	EXP 	polygon: autoDraw = False
+13.5525 	EXP 	polygon_2: autoDraw = False
+13.5525 	EXP 	polygon_5: autoDraw = False
+13.5525 	EXP 	polygon: size = array([ 2.7,  2.7])
+13.5525 	EXP 	polygon_5: autoDraw = True
+13.9691 	EXP 	polygon: autoDraw = True
+13.9691 	EXP 	polygon_2: autoDraw = True
+14.1024 	EXP 	polygon: autoDraw = False
+14.1024 	EXP 	polygon_2: autoDraw = False
+14.5362 	EXP 	New trial (rep=0, index=7): {'number_of_fixational_trials': 1, 'size': [2.67, 2.67]}
+14.5524 	EXP 	polygon_5: autoDraw = False
+14.5524 	EXP 	polygon: autoDraw = False
+14.5524 	EXP 	polygon_2: autoDraw = False
+14.5524 	EXP 	polygon_5: autoDraw = False
+14.5524 	EXP 	polygon: size = array([ 2.67,  2.67])
+14.5524 	EXP 	polygon_5: autoDraw = True
+14.9691 	EXP 	polygon: autoDraw = True
+14.9691 	EXP 	polygon_2: autoDraw = True
+15.1024 	EXP 	polygon: autoDraw = False
+15.1024 	EXP 	polygon_2: autoDraw = False
+15.5362 	EXP 	New trial (rep=0, index=8): {'number_of_fixational_trials': 2, 'size': [2.63, 2.63]}
+15.5524 	EXP 	polygon_5: autoDraw = False
+15.5524 	EXP 	polygon: autoDraw = False
+15.5524 	EXP 	polygon_2: autoDraw = False
+15.5524 	EXP 	polygon_5: autoDraw = False
+15.5524 	EXP 	polygon: size = array([ 2.63,  2.63])
+15.5524 	EXP 	polygon_5: autoDraw = True
+15.9691 	EXP 	polygon: autoDraw = True
+15.9691 	EXP 	polygon_2: autoDraw = True
+16.1024 	EXP 	polygon: autoDraw = False
+16.1024 	EXP 	polygon_2: autoDraw = False
+16.5362 	EXP 	New trial (rep=0, index=9): {'number_of_fixational_trials': 7, 'size': [2.63, 2.63]}
+16.5524 	EXP 	polygon_5: autoDraw = False
+16.5524 	EXP 	polygon: autoDraw = False
+16.5524 	EXP 	polygon_2: autoDraw = False
+16.5524 	EXP 	polygon_5: autoDraw = False
+16.5524 	EXP 	polygon: size = array([ 2.63,  2.63])
+16.5524 	EXP 	polygon_5: autoDraw = True
+16.9691 	EXP 	polygon: autoDraw = True
+16.9691 	EXP 	polygon_2: autoDraw = True
+17.1024 	EXP 	polygon: autoDraw = False
+17.1024 	EXP 	polygon_2: autoDraw = False
+17.5362 	EXP 	New trial (rep=0, index=10): {'number_of_fixational_trials': 2, 'size': [2.67, 2.67]}
+17.5524 	EXP 	polygon_5: autoDraw = False
+17.5524 	EXP 	polygon: autoDraw = False
+17.5524 	EXP 	polygon_2: autoDraw = False
+17.5524 	EXP 	polygon_5: autoDraw = False
+17.5524 	EXP 	polygon: size = array([ 2.67,  2.67])
+17.5524 	EXP 	polygon_5: autoDraw = True
+17.9691 	EXP 	polygon: autoDraw = True
+17.9691 	EXP 	polygon_2: autoDraw = True
+18.1024 	EXP 	polygon: autoDraw = False
+18.1024 	EXP 	polygon_2: autoDraw = False
+18.5362 	EXP 	New trial (rep=0, index=11): {'number_of_fixational_trials': 7, 'size': [2.6, 2.6]}
+18.5524 	EXP 	polygon_5: autoDraw = False
+18.5524 	EXP 	polygon: autoDraw = False
+18.5524 	EXP 	polygon_2: autoDraw = False
+18.5524 	EXP 	polygon_5: autoDraw = False
+18.5524 	EXP 	polygon: size = array([ 2.6,  2.6])
+18.5524 	EXP 	polygon_5: autoDraw = True
+18.9691 	EXP 	polygon: autoDraw = True
+18.9691 	EXP 	polygon_2: autoDraw = True
+19.1024 	EXP 	polygon: autoDraw = False
+19.1024 	EXP 	polygon_2: autoDraw = False
+19.5362 	EXP 	New trial (rep=0, index=12): {'number_of_fixational_trials': 9, 'size': [2.63, 2.63]}
+19.5524 	EXP 	polygon_5: autoDraw = False
+19.5524 	EXP 	polygon: autoDraw = False
+19.5524 	EXP 	polygon_2: autoDraw = False
+19.5524 	EXP 	polygon_5: autoDraw = False
+19.5524 	EXP 	polygon: size = array([ 2.63,  2.63])
+19.5524 	EXP 	polygon_5: autoDraw = True
+19.9691 	EXP 	polygon: autoDraw = True
+19.9691 	EXP 	polygon_2: autoDraw = True
+20.1024 	EXP 	polygon: autoDraw = False
+20.1024 	EXP 	polygon_2: autoDraw = False
+20.5362 	EXP 	New trial (rep=0, index=13): {'number_of_fixational_trials': 1, 'size': [2.7, 2.7]}
+20.5524 	EXP 	polygon_5: autoDraw = False
+20.5524 	EXP 	polygon: autoDraw = False
+20.5524 	EXP 	polygon_2: autoDraw = False
+20.5524 	EXP 	polygon_5: autoDraw = False
+20.5524 	EXP 	polygon: size = array([ 2.7,  2.7])
+20.5524 	EXP 	polygon_5: autoDraw = True
+20.9691 	EXP 	polygon: autoDraw = True
+20.9691 	EXP 	polygon_2: autoDraw = True
+21.1024 	EXP 	polygon: autoDraw = False
+21.1024 	EXP 	polygon_2: autoDraw = False
+21.5361 	EXP 	New trial (rep=0, index=14): {'number_of_fixational_trials': 5, 'size': [2.67, 2.67]}
+21.5524 	EXP 	polygon_5: autoDraw = False
+21.5524 	EXP 	polygon: autoDraw = False
+21.5524 	EXP 	polygon_2: autoDraw = False
+21.5524 	EXP 	polygon_5: autoDraw = False
+21.5524 	EXP 	polygon: size = array([ 2.67,  2.67])
+21.5524 	EXP 	polygon_5: autoDraw = True
+21.9691 	EXP 	polygon: autoDraw = True
+21.9691 	EXP 	polygon_2: autoDraw = True
+22.1024 	EXP 	polygon: autoDraw = False
+22.1024 	EXP 	polygon_2: autoDraw = False
+22.5361 	EXP 	New trial (rep=0, index=15): {'number_of_fixational_trials': 8, 'size': [2.63, 2.63]}
+22.5524 	EXP 	polygon_5: autoDraw = False
+22.5524 	EXP 	polygon: autoDraw = False
+22.5524 	EXP 	polygon_2: autoDraw = False
+22.5524 	EXP 	polygon_5: autoDraw = False
+22.5524 	EXP 	polygon: size = array([ 2.63,  2.63])
+22.5524 	EXP 	polygon_5: autoDraw = True
+22.9691 	EXP 	polygon: autoDraw = True
+22.9691 	EXP 	polygon_2: autoDraw = True
+23.1024 	EXP 	polygon: autoDraw = False
+23.1024 	EXP 	polygon_2: autoDraw = False
+23.5361 	EXP 	New trial (rep=0, index=16): {'number_of_fixational_trials': 3, 'size': [2.7, 2.7]}
+23.5524 	EXP 	polygon_5: autoDraw = False
+23.5524 	EXP 	polygon: autoDraw = False
+23.5524 	EXP 	polygon_2: autoDraw = False
+23.5524 	EXP 	polygon_5: autoDraw = False
+23.5524 	EXP 	polygon: size = array([ 2.7,  2.7])
+23.5524 	EXP 	polygon_5: autoDraw = True
+23.9690 	EXP 	polygon: autoDraw = True
+23.9690 	EXP 	polygon_2: autoDraw = True
+24.1024 	EXP 	polygon: autoDraw = False
+24.1024 	EXP 	polygon_2: autoDraw = False
+24.5362 	EXP 	New trial (rep=0, index=17): {'number_of_fixational_trials': 6, 'size': [2.7, 2.7]}
+24.5524 	EXP 	polygon_5: autoDraw = False
+24.5524 	EXP 	polygon: autoDraw = False
+24.5524 	EXP 	polygon_2: autoDraw = False
+24.5524 	EXP 	polygon_5: autoDraw = False
+24.5524 	EXP 	polygon: size = array([ 2.7,  2.7])
+24.5524 	EXP 	polygon_5: autoDraw = True
+24.9690 	EXP 	polygon: autoDraw = True
+24.9690 	EXP 	polygon_2: autoDraw = True
+25.1024 	EXP 	polygon: autoDraw = False
+25.1024 	EXP 	polygon_2: autoDraw = False
+25.5361 	EXP 	New trial (rep=0, index=18): {'number_of_fixational_trials': 5, 'size': [2.63, 2.63]}
+25.5524 	EXP 	polygon_5: autoDraw = False
+25.5524 	EXP 	polygon: autoDraw = False
+25.5524 	EXP 	polygon_2: autoDraw = False
+25.5524 	EXP 	polygon_5: autoDraw = False
+25.5524 	EXP 	polygon: size = array([ 2.63,  2.63])
+25.5524 	EXP 	polygon_5: autoDraw = True
+25.8192 	DATA 	Keypress: escape

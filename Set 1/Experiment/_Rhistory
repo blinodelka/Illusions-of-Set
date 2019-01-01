@@ -1,0 +1,33 @@
+for (i in 1:1){a <- read.csv(file = names[i])
+names <- c("LDS_Set_2017_05_05_1327.csv")
+data <- data.table()
+for (i in 1:1){a <- read.csv(file = names[i])
+data <- rbind(data,a)}
+#data <- data.table(read.csv(file="AAF_Set_2017_04_29_1410.csv"))
+data_best <- data[,. (answer.keys, number_of_fixational_trials, size, trials_3.thisRepN)]
+data_thresholds <- data[,. (rating_up.response, rating_down.response)]
+data_thresholds <- data_thresholds[!(rating_up.response=="NA")]
+mean(data_thresholds$rating_up.response)
+as.factor(data_best$size)
+data_best <- data_best[!(size=="NA")]
+data_best <- data_best[(trials_3.thisRepN==0)]
+data_right <- data_best[(answer.keys == "right")]
+data_left <- data_best[(answer.keys == "left")]
+data_left_right <- data_best[(answer.keys == "right"|answer.keys == "left")]
+data_down <- data_best[(answer.keys == "down")]
+ggplot(data_right, aes(x = number_of_fixational_trials)) + geom_bar()
+chisq.test(data_left_right$answer.keys, data_left_right$size)
+lm(answer.keys ~ size+number_of_fixational_trials, data=data_left_right)
+summary(data_right$number_of_fixational_trials)
+stop()
+library("rstan")
+library("rstanarm")
+library("bayesplot")
+data <- read.csv("C:/Projects/Coursework/Experiment/MyData.csv")
+data_list <- c(list(N = 624, c = data$number_of_fixational_trials, t = data$size_in_thresholds, s = data$size, a = data$answer.keys))
+fit <- stan(file = "C:/Projects/Coursework/Experiment/model_1.stan.R", data = data_list)
+fit <- stan(file = "C:/Projects/Coursework/Experiment/model_1.stan.R", data = data_list)
+fit <- stan(file = "C:/Projects/Coursework/Experiment/model_1.stan.R", data = data_list)
+fit <- stan(file = "C:/Projects/Coursework/Experiment/model_1.stan.R", data = data_list)
+fit <- stan(file = "C:/Projects/Coursework/Experiment/model_1.stan.R", data = data_list)
+fit <- stan(file = "C:/Projects/Coursework/Experiment/model_1.stan.R", data = data_list)

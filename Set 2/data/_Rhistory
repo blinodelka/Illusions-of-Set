@@ -1,0 +1,512 @@
+write.csv(indices, file = "C:/Projects/Number acquisition/Coursework 3/Experiment/indices.csv", row.names = F)
+x_check0 <- c(-0.6, -0.4, -0.2, 0.0, 0.2, 0.4, 0.6, 0.8, -0.6, -0.4, -0.2, 0.0, 0.2, 0.4, 0.6, 0.8)
+x_check <- c()
+for (k in seq(1:10)) {
+i <- sample(x_check0, 16)
+x_check <- c(x_check, i) #проверить, точно ли добавляется в конец
+}
+y_check <- runif(length(x_check), min = -0.4, max = 0.4)
+y_check <- round(y_check, digits = 1)
+coords_check <- paste("[", x_check, ",", y_check, "]", sep = "")
+correct_ans <- (x_check*5)+4
+check <- as.data.frame(coords_check)
+check$correct_ans <- correct_ans
+write.csv(d_learn, file = "C:/Projects/Number acquisition/Coursework 3/Experiment/conds_check_2.csv", row.names = F)
+write.csv(check, file = "C:/Projects/Number acquisition/Coursework 3/Experiment/conds_check_2.csv", row.names = F)
+View(d_learn)
+check$agent <- sample(d_learn$agent, 160)
+View(check)
+write.csv(check, file = "C:/Projects/Number acquisition/Coursework 3/Experiment/conds_check_2.csv", row.names = F)
+1:1440
+1:14
+View(d_learn)
+library(gtools)
+colnames(d) <- c("pos_check1", "pos_check2", "pos_check3", "pos_check4", "pos_check5", "pos_check6", "pos_check7", "pos_check8")
+write.csv(d, file = "C:/Projects/Number acquisition/Coursework 3/Experiment/conditions_check.csv", row.names = F)
+agents <- c("a1.gif", "a2.gif", "a3.gif", "a4.gif", "a5.gif", "a6.gif", "a7.gif", "a8.gif", "a9.gif", "a10.gif", "a11.gif",
+"a12.gif", "a13.gif", "a14.gif", "a15.gif", "a16.gif", "a17.gif", "a18.gif", "a19.gif", "a20.gif", "a21.gif",
+"a22.gif", "a23.gif", "a24.gif", "a25.gif", "a26.gif", "a27.gif", "a28.gif", "a29.gif", "a30.gif", "a31.gif",
+"a32.gif", "a33.gif", "a34.gif", "a35.gif", "a36.gif", "a37.gif", "a38.gif", "a39.gif", "a40.gif", "a41.gif",
+"a42.gif", "a43.gif", "a44.gif", "a45.gif", "a46.gif", "a47.gif", "a48.gif", "b1.gif", "b2.gif", "b3.gif", "b4.gif",
+"b5.gif", "b6.gif", "b7.gif", "b8.gif", "b9.gif", "b10.gif", "b11.gif", "b12.gif", "b13.gif", "b14.gif", "b15.gif",
+"b16.gif", "b17.gif", "b18.gif", "b19.gif", "b20.gif", "b21.gif", "b22.gif", "b23.gif", "b24.gif")
+fons <- c("f1.jpg", "f2.jpg", "f3.jpg", "f4.jpg", "f5.jpg", "f6.jpg", "f7.jpg", "f8.jpg", "f9.jpg", "f10.jpg",
+"f11.jpg", "f12.jpg", "f13.jpg", "f14.jpg", "f15.jpg", "f16.jpg", "f17.jpg", "f18.jpg", "f19.jpg", "f20.jpg")
+x_coords <- rgeom(1500, 0.3)
+x_coords0 <- x_coords - 3
+x_coords <- x_coords0[x_coords0 <= 3]
+x_coords <- x_coords/5
+simbol <- (x_coords * 5) + 4
+simbol <- paste(simbol, ".jpg", sep = "")
+l <- length(x_coords)
+y_coords <- runif(l, min = -0.4, max = 0.4)
+y_coords <- round(y_coords, digits = 1)
+coords <- paste("[", x_coords, ",", y_coords, "]", sep = "")
+d_learn <- expand.grid(agents, fons)
+d_learn <- cbind(d_learn, coords[1:l], simbol[1:l])
+View(d_learn)
+x_coords <- rgeom(2000, 0.3)
+x_coords0 <- x_coords - 3
+x_coords <- x_coords0[x_coords0 <= 3]
+x_coords <- x_coords/5
+simbol <- (x_coords * 5) + 4
+simbol <- paste(simbol, ".jpg", sep = "")
+l <- length(x_coords)
+y_coords <- runif(l, min = -0.4, max = 0.4)
+y_coords <- round(y_coords, digits = 1)
+coords <- paste("[", x_coords, ",", y_coords, "]", sep = "")
+d_learn <- expand.grid(agents, fons)
+d_learn <- cbind(d_learn, coords[1:l], simbol[1:l])
+colnames(d_learn) <- c("agent", "fon", "pos", "simbol")
+View(d_learn)
+d_learn <- cbind(d_learn, coords[1:l], simbol[1:l])
+x_coords <- rgeom(2000, 0.3)
+x_coords0 <- x_coords - 3
+x_coords <- x_coords0[x_coords0 <= 3]
+x_coords <- x_coords/5
+simbol <- (x_coords * 5) + 4
+simbol <- paste(simbol, ".jpg", sep = "")
+y_coords <- runif(length(x_coords), min = -0.4, max = 0.4)
+y_coords <- round(y_coords, digits = 1)
+coords <- paste("[", x_coords, ",", y_coords, "]", sep = "")
+d_learn <- expand.grid(agents, fons)
+d_learn <- cbind(d_learn, coords[1:1440], simbol[1:1440])
+colnames(d_learn) <- c("agent", "fon", "pos", "simbol")
+write.csv(d_learn, file = "C:/Projects/Number acquisition/Coursework 3/Experiment/conditions_learn.csv", row.names = F)
+View(d_learn)
+View(check)
+View(check)
+coords_check2 <- c("[-0.1, 0.1]", "[-0.2, 0]", "[-0.1, -0.1]", "[0, -0.2]", "[0.1, -0.1]", "[0.2, 0]", "[0.1, 0.1]", "[0, 0.2]")
+a = matrix()
+coords_check2 <- c("[-0.1, 0.1]", "[-0.2, 0]", "[-0.1, -0.1]", "[0, -0.2]", "[0.1, -0.1]", "[0.2, 0]", "[0.1, 0.1]", "[0, 0.2]")
+a = rbind(a, coords_check2)
+mm <- matrix(0, 160, 8)
+mm
+mm[,1]=coords_check2
+mm
+mm <- matrix(0, 160, 8)
+mm[1,] = coords_check2
+mm
+coords_check2 <- c("[-0.1, 0.1]", "[-0.2, 0]", "[-0.1, -0.1]", "[0, -0.2]", "[0.1, -0.1]", "[0.2, 0]", "[0.1, 0.1]", "[0, 0.2]")
+m_coords_check2 <- matrix(0, 160, 8)
+for (k in seq(1:160)) {
+i <- sample(coords_check2, 8)
+m_coords_check2[k,] <- i
+}
+View(m_coords_check2)
+check <- cbind(check, m_coords_check2)
+View(check)
+View(d_learn)
+coords_check2 <- c("[-0.1, 0.1]", "[-0.2, 0]", "[-0.1, -0.1]", "[0, -0.2]", "[0.1, -0.1]", "[0.2, 0]", "[0.1, 0.1]", "[0, 0.2]")
+m_coords_check2 <- matrix(0, 160, 8)
+for (k in seq(1:160)) {
+i <- sample(coords_check2, 8)
+m_coords_check2[k,] <- i
+}
+check <- cbind(check, m_coords_check2)
+write.csv(check, file = "C:/Projects/Number acquisition/Coursework 3/Experiment/conds_check_2.csv", row.names = F)
+x_check0 <- c(-0.6, -0.4, -0.2, 0.0, 0.2, 0.4, 0.6, 0.8, -0.6, -0.4, -0.2, 0.0, 0.2, 0.4, 0.6, 0.8)
+x_check <- c()
+for (k in seq(1:10)) {
+i <- sample(x_check0, 16)
+x_check <- c(x_check, i) #проверить, точно ли добавляется в конец
+}
+y_check <- runif(length(x_check), min = -0.4, max = 0.4)
+y_check <- round(y_check, digits = 1)
+coords_check <- paste("[", x_check, ",", y_check, "]", sep = "")
+correct_ans <- (x_check*5)+4
+check <- as.data.frame(coords_check)
+check$correct_ans <- correct_ans
+check$agent <- sample(d_learn$agent, 160)
+coords_check2 <- c("[-0.1, 0.1]", "[-0.2, 0]", "[-0.1, -0.1]", "[0, -0.2]", "[0.1, -0.1]", "[0.2, 0]", "[0.1, 0.1]", "[0, 0.2]")
+m_coords_check2 <- matrix(0, 160, 8)
+for (k in seq(1:160)) {
+i <- sample(coords_check2, 8)
+m_coords_check2[k,] <- i
+}
+check <- cbind(check, m_coords_check2)
+colnames(check) <- c("coords_check", "correct_ans", "agent", "pos_1", "pos_2", "pos_3", "pos_4", "pos_5", "pos_6", "pos_7", "pos_8")
+View(check)
+write.csv(check, file = "C:/Projects/Number acquisition/Coursework 3/Experiment/conds_check_2.csv", row.names = F)
+coords_check2 <- c("[-0.2, 0.2]", "[-0.4, 0]", "[-0.2, -0.2]", "[0, -0.4]", "[0.2, -0.2]", "[0.4, 0]", "[0.2, 0.2]", "[0, 0.4]")
+m_coords_check2 <- matrix(0, 160, 8)
+for (k in seq(1:160)) {
+i <- sample(coords_check2, 8)
+m_coords_check2[k,] <- i
+}
+check <- cbind(check, m_coords_check2)
+colnames(check) <- c("coords_check", "correct_ans", "agent", "pos_1", "pos_2", "pos_3", "pos_4", "pos_5", "pos_6", "pos_7", "pos_8")
+colnames(d) <- c("pos_check1", "pos_check2", "pos_check3", "pos_check4", "pos_check5", "pos_check6", "pos_check7", "pos_check8")
+write.csv(d, file = "C:/Projects/Number acquisition/Coursework 3/Experiment/conditions_check.csv", row.names = F)
+agents <- c("a1.gif", "a2.gif", "a3.gif", "a4.gif", "a5.gif", "a6.gif", "a7.gif", "a8.gif", "a9.gif", "a10.gif", "a11.gif",
+"a12.gif", "a13.gif", "a14.gif", "a15.gif", "a16.gif", "a17.gif", "a18.gif", "a19.gif", "a20.gif", "a21.gif",
+"a22.gif", "a23.gif", "a24.gif", "a25.gif", "a26.gif", "a27.gif", "a28.gif", "a29.gif", "a30.gif", "a31.gif",
+"a32.gif", "a33.gif", "a34.gif", "a35.gif", "a36.gif", "a37.gif", "a38.gif", "a39.gif", "a40.gif", "a41.gif",
+"a42.gif", "a43.gif", "a44.gif", "a45.gif", "a46.gif", "a47.gif", "a48.gif", "b1.gif", "b2.gif", "b3.gif", "b4.gif",
+"b5.gif", "b6.gif", "b7.gif", "b8.gif", "b9.gif", "b10.gif", "b11.gif", "b12.gif", "b13.gif", "b14.gif", "b15.gif",
+"b16.gif", "b17.gif", "b18.gif", "b19.gif", "b20.gif", "b21.gif", "b22.gif", "b23.gif", "b24.gif")
+fons <- c("f1.jpg", "f2.jpg", "f3.jpg", "f4.jpg", "f5.jpg", "f6.jpg", "f7.jpg", "f8.jpg", "f9.jpg", "f10.jpg",
+"f11.jpg", "f12.jpg", "f13.jpg", "f14.jpg", "f15.jpg", "f16.jpg", "f17.jpg", "f18.jpg", "f19.jpg", "f20.jpg")
+x_coords <- rgeom(2000, 0.3)
+x_coords0 <- x_coords - 3
+x_coords <- x_coords0[x_coords0 <= 3]
+x_coords <- x_coords/5
+simbol <- (x_coords * 5) + 4
+simbol <- paste(simbol, ".jpg", sep = "")
+y_coords <- runif(length(x_coords), min = -0.4, max = 0.4)
+y_coords <- round(y_coords, digits = 1)
+coords <- paste("[", x_coords, ",", y_coords, "]", sep = "")
+d_learn <- expand.grid(agents, fons)
+d_learn <- cbind(d_learn, coords[1:1440], simbol[1:1440])
+colnames(d_learn) <- c("agent", "fon", "pos", "simbol")
+n <- seq(1:1440)
+write.csv(d_learn, file = "C:/Projects/Number acquisition/Coursework 3/Experiment/conditions_learn.csv", row.names = F)
+indices <- c()
+for (k in seq(1:10)) {
+i <- paste(c(sample(n, 20)),collapse=",")
+ind <- paste("[", i, "]", sep = "")
+indices[k] <- ind
+}
+indices <- as.data.frame(indices)
+indices_check <- c()
+for (k in seq(1:10)) {
+a <- (k-1)*16
+b <- k*16
+i <- paste(c(seq(from = (a+1), to = b)), collapse = ",")
+ind <- paste("[", i, "]", sep = "")
+indices_check[k] <- ind
+}
+indices$indices_check <- indices_check
+write.csv(indices, file = "C:/Projects/Number acquisition/Coursework 3/Experiment/indices.csv", row.names = F)
+x_check0 <- c(-0.6, -0.4, -0.2, 0.0, 0.2, 0.4, 0.6, 0.8, -0.6, -0.4, -0.2, 0.0, 0.2, 0.4, 0.6, 0.8)
+x_check <- c()
+for (k in seq(1:10)) {
+i <- sample(x_check0, 16)
+x_check <- c(x_check, i) #проверить, точно ли добавляется в конец
+}
+y_check <- runif(length(x_check), min = -0.4, max = 0.4)
+y_check <- round(y_check, digits = 1)
+coords_check <- paste("[", x_check, ",", y_check, "]", sep = "")
+correct_ans <- (x_check*5)+4
+check <- as.data.frame(coords_check)
+check$correct_ans <- correct_ans
+check$agent <- sample(d_learn$agent, 160)
+coords_check2 <- c("[-0.2, 0.2]", "[-0.4, 0]", "[-0.2, -0.2]", "[0, -0.4]", "[0.2, -0.2]", "[0.4, 0]", "[0.2, 0.2]", "[0, 0.4]")
+m_coords_check2 <- matrix(0, 160, 8)
+for (k in seq(1:160)) {
+i <- sample(coords_check2, 8)
+m_coords_check2[k,] <- i
+}
+check <- cbind(check, m_coords_check2)
+colnames(check) <- c("coords_check", "correct_ans", "agent", "pos_1", "pos_2", "pos_3", "pos_4", "pos_5", "pos_6", "pos_7", "pos_8")
+write.csv(check, file = "C:/Projects/Number acquisition/Coursework 3/Experiment/conds_check_2.csv", row.names = F)
+library(gtools)
+colnames(d) <- c("pos_check1", "pos_check2", "pos_check3", "pos_check4", "pos_check5", "pos_check6", "pos_check7", "pos_check8")
+write.csv(d, file = "C:/Projects/Number acquisition/Coursework 3/Experiment/conditions_check.csv", row.names = F)
+agents <- c("a1.gif", "a2.gif", "a3.gif", "a4.gif", "a5.gif", "a6.gif", "a7.gif", "a8.gif", "a9.gif", "a10.gif", "a11.gif",
+"a12.gif", "a13.gif", "a14.gif", "a15.gif", "a16.gif", "a17.gif", "a18.gif", "a19.gif", "a20.gif", "a21.gif",
+"a22.gif", "a23.gif", "a24.gif", "a25.gif", "a26.gif", "a27.gif", "a28.gif", "a29.gif", "a30.gif", "a31.gif",
+"a32.gif", "a33.gif", "a34.gif", "a35.gif", "a36.gif", "a37.gif", "a38.gif", "a39.gif", "a40.gif", "a41.gif",
+"a42.gif", "a43.gif", "a44.gif", "a45.gif", "a46.gif", "a47.gif", "a48.gif", "b1.gif", "b2.gif", "b3.gif", "b4.gif",
+"b5.gif", "b6.gif", "b7.gif", "b8.gif", "b9.gif", "b10.gif", "b11.gif", "b12.gif", "b13.gif", "b14.gif", "b15.gif",
+"b16.gif", "b17.gif", "b18.gif", "b19.gif", "b20.gif", "b21.gif", "b22.gif", "b23.gif", "b24.gif")
+fons <- c("f1.jpg", "f2.jpg", "f3.jpg", "f4.jpg", "f5.jpg", "f6.jpg", "f7.jpg", "f8.jpg", "f9.jpg", "f10.jpg",
+"f11.jpg", "f12.jpg", "f13.jpg", "f14.jpg", "f15.jpg", "f16.jpg", "f17.jpg", "f18.jpg", "f19.jpg", "f20.jpg")
+x_coords <- rgeom(2000, 0.3)
+x_coords0 <- x_coords - 3
+x_coords <- x_coords0[x_coords0 <= 3]
+x_coords <- x_coords/5
+simbol <- (x_coords * 5) + 4
+simbol <- paste(simbol, ".jpg", sep = "")
+y_coords <- runif(length(x_coords), min = -0.4, max = 0.4)
+y_coords <- round(y_coords, digits = 1)
+coords <- paste("[", x_coords, ",", y_coords, "]", sep = "")
+d_learn <- expand.grid(agents, fons)
+d_learn <- cbind(d_learn, coords[1:1440], simbol[1:1440])
+colnames(d_learn) <- c("agent", "fon", "pos", "simbol")
+write.csv(d_learn, file = "C:/Projects/Number acquisition/Coursework 3/Experiment/conditions_learn.csv", row.names = F)
+n <- seq(0:1439)
+indices <- c()
+for (k in seq(1:10)) {
+i <- paste(c(sample(n, 20)),collapse=",")
+ind <- paste("[", i, "]", sep = "")
+indices[k] <- ind
+}
+indices <- as.data.frame(indices)
+indices_check <- c()
+for (k in seq(1:10)) {
+a <- (k-1)*16
+b <- k*16
+i <- paste(c(seq(from = a, to = (b-1))), collapse = ",")
+ind <- paste("[", i, "]", sep = "")
+indices_check[k] <- ind
+}
+indices$indices_check <- indices_check
+write.csv(indices, file = "C:/Projects/Number acquisition/Coursework 3/Experiment/indices.csv", row.names = F)
+x_check0 <- c(-0.6, -0.4, -0.2, 0.0, 0.2, 0.4, 0.6, 0.8, -0.6, -0.4, -0.2, 0.0, 0.2, 0.4, 0.6, 0.8)
+x_check <- c()
+for (k in seq(1:10)) {
+i <- sample(x_check0, 16)
+x_check <- c(x_check, i) #проверить, точно ли добавляется в конец
+}
+y_check <- runif(length(x_check), min = -0.4, max = 0.4)
+y_check <- round(y_check, digits = 1)
+coords_check <- paste("[", x_check, ",", y_check, "]", sep = "")
+correct_ans <- (x_check*5)+4
+check <- as.data.frame(coords_check)
+check$correct_ans <- correct_ans
+check$agent <- sample(d_learn$agent, 160)
+coords_check2 <- c("[-0.2, 0.2]", "[-0.4, 0]", "[-0.2, -0.2]", "[0, -0.4]", "[0.2, -0.2]", "[0.4, 0]", "[0.2, 0.2]", "[0, 0.4]")
+m_coords_check2 <- matrix(0, 160, 8)
+for (k in seq(1:160)) {
+i <- sample(coords_check2, 8)
+m_coords_check2[k,] <- i
+}
+check <- cbind(check, m_coords_check2)
+colnames(check) <- c("coords_check", "correct_ans", "agent_2", "pos_1", "pos_2", "pos_3", "pos_4", "pos_5", "pos_6", "pos_7", "pos_8")
+check$correct_ans[check$correct_ans==1] = "one"
+check$correct_ans[check$correct_ans==2] = "two"
+check$correct_ans[check$correct_ans==3] = "three"
+check$correct_ans[check$correct_ans==4] = "four"
+check$correct_ans[check$correct_ans==5] = "five"
+check$correct_ans[check$correct_ans==6] = "six"
+check$correct_ans[check$correct_ans==7] = "seven"
+check$correct_ans[check$correct_ans==8] = "eight"
+write.csv(check, file = "C:/Projects/Number acquisition/Coursework 3/Experiment/conds_check_2.csv", row.names = F)
+View(d_learn)
+View(check)
+View(d_learn)
+View(check)
+View(check)
+View(d_learn)
+d_learn$simbol
+d_learn$simbol
+d_learn$simbol == "1.jpg"
+d_learn$simbol[d_learn$simbol == "1.jpg"] = "one"
+d_learn$simbol[d_learn$simbol == "2.jpg"] = "two"
+d_learn$simbol[,d_learn$simbol == "1.jpg"] = "one"
+d_learn$simbol[d_learn$simbol == "1.jpg",] = "one"
+d_learn$simbol == "1.jpg"
+d_learn$simbol == "8.jpg"
+d_learn
+d_learn$simbol == "3.jpg"
+agents <- c("a1.gif", "a2.gif", "a3.gif", "a4.gif", "a5.gif", "a6.gif", "a7.gif", "a8.gif", "a9.gif", "a10.gif", "a11.gif",
+"a12.gif", "a13.gif", "a14.gif", "a15.gif", "a16.gif", "a17.gif", "a18.gif", "a19.gif", "a20.gif", "a21.gif",
+"a22.gif", "a23.gif", "a24.gif", "a25.gif", "a26.gif", "a27.gif", "a28.gif", "a29.gif", "a30.gif", "a31.gif",
+"a32.gif", "a33.gif", "a34.gif", "a35.gif", "a36.gif", "a37.gif", "a38.gif", "a39.gif", "a40.gif", "a41.gif",
+"a42.gif", "a43.gif", "a44.gif", "a45.gif", "a46.gif", "a47.gif", "a48.gif", "b1.gif", "b2.gif", "b3.gif", "b4.gif",
+"b5.gif", "b6.gif", "b7.gif", "b8.gif", "b9.gif", "b10.gif", "b11.gif", "b12.gif", "b13.gif", "b14.gif", "b15.gif",
+"b16.gif", "b17.gif", "b18.gif", "b19.gif", "b20.gif", "b21.gif", "b22.gif", "b23.gif", "b24.gif")
+fons <- c("f1.jpg", "f2.jpg", "f3.jpg", "f4.jpg", "f5.jpg", "f6.jpg", "f7.jpg", "f8.jpg", "f9.jpg", "f10.jpg",
+"f11.jpg", "f12.jpg", "f13.jpg", "f14.jpg", "f15.jpg", "f16.jpg", "f17.jpg", "f18.jpg", "f19.jpg", "f20.jpg")
+x_coords <- rgeom(2000, 0.3)
+x_coords0 <- x_coords - 3
+x_coords <- x_coords0[x_coords0 <= 3]
+x_coords <- x_coords/5
+simbol <- (x_coords * 5) + 4
+simbol <- paste(simbol, ".jpg", sep = "")
+y_coords <- runif(length(x_coords), min = -0.4, max = 0.4)
+y_coords <- round(y_coords, digits = 1)
+coords <- paste("[", x_coords, ",", y_coords, "]", sep = "")
+d_learn <- expand.grid(agents, fons)
+d_learn <- cbind(d_learn, coords[1:1440], simbol[1:1440])
+d_learn$simbol == "1.jpg"
+d_learn$simbol[d_learn$simbol == "1.jpg"]
+d_learn$simbol[d_learn$simbol == "1.jpg"] = "one"
+agents <- c("a1.gif", "a2.gif", "a3.gif", "a4.gif", "a5.gif", "a6.gif", "a7.gif", "a8.gif", "a9.gif", "a10.gif", "a11.gif",
+"a12.gif", "a13.gif", "a14.gif", "a15.gif", "a16.gif", "a17.gif", "a18.gif", "a19.gif", "a20.gif", "a21.gif",
+"a22.gif", "a23.gif", "a24.gif", "a25.gif", "a26.gif", "a27.gif", "a28.gif", "a29.gif", "a30.gif", "a31.gif",
+"a32.gif", "a33.gif", "a34.gif", "a35.gif", "a36.gif", "a37.gif", "a38.gif", "a39.gif", "a40.gif", "a41.gif",
+"a42.gif", "a43.gif", "a44.gif", "a45.gif", "a46.gif", "a47.gif", "a48.gif", "b1.gif", "b2.gif", "b3.gif", "b4.gif",
+"b5.gif", "b6.gif", "b7.gif", "b8.gif", "b9.gif", "b10.gif", "b11.gif", "b12.gif", "b13.gif", "b14.gif", "b15.gif",
+"b16.gif", "b17.gif", "b18.gif", "b19.gif", "b20.gif", "b21.gif", "b22.gif", "b23.gif", "b24.gif")
+fons <- c("f1.jpg", "f2.jpg", "f3.jpg", "f4.jpg", "f5.jpg", "f6.jpg", "f7.jpg", "f8.jpg", "f9.jpg", "f10.jpg",
+"f11.jpg", "f12.jpg", "f13.jpg", "f14.jpg", "f15.jpg", "f16.jpg", "f17.jpg", "f18.jpg", "f19.jpg", "f20.jpg")
+x_coords <- rgeom(2000, 0.3)
+x_coords0 <- x_coords - 3
+x_coords <- x_coords0[x_coords0 <= 3]
+x_coords <- x_coords/5
+simbol <- (x_coords * 5) + 4
+simbol <- paste(simbol, ".jpg", sep = "")
+y_coords <- runif(length(x_coords), min = -0.4, max = 0.4)
+y_coords <- round(y_coords, digits = 1)
+coords <- paste("[", x_coords, ",", y_coords, "]", sep = "")
+d_learn <- expand.grid(agents, fons)
+d_learn <- cbind(d_learn, coords[1:1440], simbol[1:1440])
+d_learn$simbol <- as.character(d_learn$simbol)
+d_learn$simbol
+d_learn$simbol[d_learn$simbol == "1.jpg"] = "one"
+d_learn$simbol[d_learn$simbol == "2.jpg"] = "two"
+d_learn$simbol[d_learn$simbol == "3.jpg"] = "three"
+d_learn$simbol[d_learn$simbol == "4.jpg"] = "four"
+d_learn$simbol[d_learn$simbol == "5.jpg"] = "five"
+d_learn$simbol[d_learn$simbol == "6.jpg"] = "six"
+d_learn$simbol[d_learn$simbol == "7.jpg"] = "seven"
+d_learn$simbol[d_learn$simbol == "8.jpg"] = "eight"
+View(d_learn)
+colnames(d_learn) <- c("agent", "fon", "pos", "simbol")
+write.csv(d_learn, file = "C:/Projects/Number acquisition/Coursework 3/Experiment/conditions_learn.csv", row.names = F)
+View(d_learn)
+View(indices)
+View(m_coords_check2)
+View(check)
+d_learn$simbol[d_learn$simbol == "1.jpg"] = "one0"
+d_learn$simbol[d_learn$simbol == "2.jpg"] = "two0"
+d_learn$simbol[d_learn$simbol == "3.jpg"] = "three0"
+d_learn$simbol[d_learn$simbol == "4.jpg"] = "four0"
+d_learn$simbol[d_learn$simbol == "5.jpg"] = "five0"
+coords <- paste("[", x_coords, ",", y_coords, "]", sep = "")
+d_learn <- expand.grid(agents, fons)
+d_learn <- cbind(d_learn, coords[1:1440], simbol[1:1440])
+d_learn$simbol <- as.character(d_learn$simbol)
+d_learn$simbol[d_learn$simbol == "1.jpg"] = "one0"
+d_learn$simbol[d_learn$simbol == "2.jpg"] = "two0"
+d_learn$simbol[d_learn$simbol == "3.jpg"] = "three0"
+d_learn$simbol[d_learn$simbol == "4.jpg"] = "four0"
+d_learn$simbol[d_learn$simbol == "5.jpg"] = "five0"
+d_learn$simbol[d_learn$simbol == "6.jpg"] = "six0"
+d_learn$simbol[d_learn$simbol == "7.jpg"] = "seven0"
+d_learn$simbol[d_learn$simbol == "8.jpg"] = "eight0"
+colnames(d_learn) <- c("agent", "fon", "pos", "simbol")
+write.csv(d_learn, file = "C:/Projects/Number acquisition/Coursework 3/Experiment/conditions_learn.csv", row.names = F)
+d_learn <- cbind(d_learn, coords[1:1440], simbol[1:1440])
+d_learn$simbol <- as.character(d_learn$simbol)
+d_learn$simbol[d_learn$simbol == "1.jpg"] = "one0"
+d_learn$simbol[d_learn$simbol == "2.jpg"] = "two0"
+d_learn$simbol[d_learn$simbol == "3.jpg"] = "three0"
+d_learn$simbol[d_learn$simbol == "4.jpg"] = "four0"
+d_learn$simbol[d_learn$simbol == "5.jpg"] = "five0"
+d_learn$simbol[d_learn$simbol == "6.jpg"] = "six0"
+d_learn$simbol[d_learn$simbol == "7.jpg"] = "seven0"
+d_learn$simbol[d_learn$simbol == "8.jpg"] = "eight0"
+colnames(d_learn) <- c("agent", "fon", "pos", "simbol")
+write.csv(d_learn, file = "C:/Projects/Number acquisition/Coursework 3/Experiment/conditions_learn.csv", row.names = F)
+colnames(d_learn) <- c("agent", "fon", "pos", "simbol")
+write.csv(d_learn, file = "C:/Projects/Number acquisition/Coursework 3/Experiment/conditions_learn.csv", row.names = F)
+View(d_learn)
+agents <- c("a1.gif", "a2.gif", "a3.gif", "a4.gif", "a5.gif", "a6.gif", "a7.gif", "a8.gif", "a9.gif", "a10.gif", "a11.gif",
+"a12.gif", "a13.gif", "a14.gif", "a15.gif", "a16.gif", "a17.gif", "a18.gif", "a19.gif", "a20.gif", "a21.gif",
+"a22.gif", "a23.gif", "a24.gif", "a25.gif", "a26.gif", "a27.gif", "a28.gif", "a29.gif", "a30.gif", "a31.gif",
+"a32.gif", "a33.gif", "a34.gif", "a35.gif", "a36.gif", "a37.gif", "a38.gif", "a39.gif", "a40.gif", "a41.gif",
+"a42.gif", "a43.gif", "a44.gif", "a45.gif", "a46.gif", "a47.gif", "a48.gif", "b1.gif", "b2.gif", "b3.gif", "b4.gif",
+"b5.gif", "b6.gif", "b7.gif", "b8.gif", "b9.gif", "b10.gif", "b11.gif", "b12.gif", "b13.gif", "b14.gif", "b15.gif",
+"b16.gif", "b17.gif", "b18.gif", "b19.gif", "b20.gif", "b21.gif", "b22.gif", "b23.gif", "b24.gif")
+fons <- c("f1.jpg", "f2.jpg", "f3.jpg", "f4.jpg", "f5.jpg", "f6.jpg", "f7.jpg", "f8.jpg", "f9.jpg", "f10.jpg",
+"f11.jpg", "f12.jpg", "f13.jpg", "f14.jpg", "f15.jpg", "f16.jpg", "f17.jpg", "f18.jpg", "f19.jpg", "f20.jpg")
+x_coords <- rgeom(2000, 0.3)
+x_coords0 <- x_coords - 3
+x_coords <- x_coords0[x_coords0 <= 3]
+x_coords <- x_coords/5
+simbol <- (x_coords * 5) + 4
+simbol <- paste(simbol, ".jpg", sep = "")
+y_coords <- runif(length(x_coords), min = -0.4, max = 0.4)
+y_coords <- round(y_coords, digits = 1)
+coords <- paste("[", x_coords, ",", y_coords, "]", sep = "")
+d_learn <- expand.grid(agents, fons)
+d_learn <- cbind(d_learn, coords[1:1440], simbol[1:1440])
+d_learn$simbol <- as.character(d_learn$simbol)
+d_learn$simbol[d_learn$simbol == "1.jpg"] = "one0"
+d_learn$simbol[d_learn$simbol == "2.jpg"] = "two0"
+d_learn$simbol[d_learn$simbol == "3.jpg"] = "three0"
+d_learn$simbol[d_learn$simbol == "4.jpg"] = "four0"
+d_learn$simbol[d_learn$simbol == "5.jpg"] = "five0"
+d_learn$simbol[d_learn$simbol == "6.jpg"] = "six0"
+d_learn$simbol[d_learn$simbol == "7.jpg"] = "seven0"
+d_learn$simbol[d_learn$simbol == "8.jpg"] = "eight0"
+colnames(d_learn) <- c("agent", "fon", "pos", "simbol")
+View(d_learn)
+colnames(d_learn) <- c("agent", "fon", "pos", "simbol_image", "simbol")
+View(d_learn)
+write.csv(d_learn, file = "C:/Projects/Number acquisition/Coursework 3/Experiment/conditions_learn.csv", row.names = F)
+library("data.table")
+library("ggplot2")
+library("lme4")
+library("nnet")
+library("dplyr")
+library("ggthemes")
+library("ROCR")
+setwd("C:/Projects/Illusions of Set/Set 2/data")
+names_norm <- c("AS_Set_2017_12_14_2146.csv", "AVD_Set_2017_12_14_1858.csv", "Dim_Set_2017_12_14_1804.csv",
+"EU_Set_2017_12_14_2021.csv", "GAS_Set_2017_12_14_2004.csv", "KVA_Set_2017_12_14_1828.csv",
+"ZVV_Set_2017_12_14_1917.csv", "PK_Set_2017_12_14_2134.csv",
+"AK_Set_2017_12_15_1416.csv", "LPL_Set_2017_12_15_1602.csv",
+"DG_Set_2017_12_15_1659.csv", "NG_Set_2017_12_15_1718.csv", "ES_Set_2017_12_15_1826.csv",
+"MS_Set_2017_12_15_1901.csv", "AD_Set_2017_12_15_1917.csv", "RAA_Set_2017_12_15_1946.csv",
+"KAA_Set_2017_12_15_2005.csv", "NV_Set_2017_12_15_2038.csv", "GMV_Set_2017_12_15_2126.csv",
+"AG_Set_2017_12_20_2125.csv", "AA_Set_2017_12_20_2050.csv",
+"VS_Set_2017_12_20_2033.csv", "DC_Set_2017_12_20_2024.csv", "ZEV_Set_2017_12_20_2012.csv",
+"OR_Set_2017_12_20_1953.csv", "DN_Set_2017_12_20_1935.csv", "PISH_Set_2017_12_20_1925.csv",
+"UO_Set_2017_12_20_1722.csv", "AK_Set_2017_12_20_1623.csv",
+"AA_Set_2017_12_21_1949.csv", "ADV_Set_2017_12_21_1925.csv", "AN_Set_2017_12_21_1843.csv",
+"AES_Set_2017_12_21_1807.csv", "PIAs_Set_2017_12_21_1705.csv", "MLAs_Set_2017_12_21_1654.csv", "Not too bad/AFA_Set_2017_12_14_1722k.csv", "Not too bad/IOA_Set_2017_12_14_1607.csv",
+"Not too bad/IZ_Set_2017_12_14_2123k.csv", "Not too bad/KAR_Set_2017_12_15_1359.csv",
+"Not too bad/LDU_Set_2017_12_15_1838.csv", "Not too bad/MB_Set_2017_12_15_1535.csv", "Not too bad/MM2_Set_2017_12_15_1634.csv",
+"Not too bad/MO_Set_2017_12_14_1943.csv", "Not too bad/MUSs_Set_2017_12_18_1912.csv", "Not too bad/PG_Set_2017_12_18_1700.csv",
+"Not too bad/PZV_Set_2017_12_18_1629.csv", "Not too bad/TPS_Set_2017_12_15_2109.csv", "Not too bad/VR_Set_2017_12_15_1743.csv",
+"Not too bad/SHUKs_Set_2017_12_20_1317.csv", "Not too bad/SND_Set_2017_12_20_2139.csv")
+data <- data.table()
+for (i in 1:length(names_norm)) {
+a <- read.csv(file = names_norm[i])
+data <- rbind(data,a)
+}
+data_best <- data[,. (answer.keys, n, size, trials_3.thisRepN, participant, gender, age)]
+View(data)
+View(data_best)
+data_best <- data[,. (answer.keys, n, size, trials_3.thisRepN, participant, gender, age)]
+data_best <- data_best[!(size=="NA")]
+levels(data_best$size) = c("0.1", "0.2", "0.3", "0.4", "0.5")
+data_best$size <- as.double(data_best$size)
+data_best$trials_3.thisRepN <- 1
+setwd("C:/Projects/Illusions of Set/Set 2/data")
+names_norm <- c("AS_Set_2017_12_14_2146.csv", "AVD_Set_2017_12_14_1858.csv", "Dim_Set_2017_12_14_1804.csv",
+"EU_Set_2017_12_14_2021.csv", "GAS_Set_2017_12_14_2004.csv", "KVA_Set_2017_12_14_1828.csv",
+"ZVV_Set_2017_12_14_1917.csv", "PK_Set_2017_12_14_2134.csv",
+"AK_Set_2017_12_15_1416.csv", "LPL_Set_2017_12_15_1602.csv",
+"DG_Set_2017_12_15_1659.csv", "NG_Set_2017_12_15_1718.csv", "ES_Set_2017_12_15_1826.csv",
+"MS_Set_2017_12_15_1901.csv", "AD_Set_2017_12_15_1917.csv", "RAA_Set_2017_12_15_1946.csv",
+"KAA_Set_2017_12_15_2005.csv", "NV_Set_2017_12_15_2038.csv", "GMV_Set_2017_12_15_2126.csv",
+"AG_Set_2017_12_20_2125.csv", "AA_Set_2017_12_20_2050.csv",
+"VS_Set_2017_12_20_2033.csv", "DC_Set_2017_12_20_2024.csv", "ZEV_Set_2017_12_20_2012.csv",
+"OR_Set_2017_12_20_1953.csv", "DN_Set_2017_12_20_1935.csv", "PISH_Set_2017_12_20_1925.csv",
+"UO_Set_2017_12_20_1722.csv", "AK_Set_2017_12_20_1623.csv",
+"AA_Set_2017_12_21_1949.csv", "ADV_Set_2017_12_21_1925.csv", "AN_Set_2017_12_21_1843.csv",
+"AES_Set_2017_12_21_1807.csv", "PIAs_Set_2017_12_21_1705.csv", "MLAs_Set_2017_12_21_1654.csv", "Not too bad/AFA_Set_2017_12_14_1722k.csv", "Not too bad/IOA_Set_2017_12_14_1607.csv",
+"Not too bad/IZ_Set_2017_12_14_2123k.csv", "Not too bad/KAR_Set_2017_12_15_1359.csv",
+"Not too bad/LDU_Set_2017_12_15_1838.csv", "Not too bad/MB_Set_2017_12_15_1535.csv", "Not too bad/MM2_Set_2017_12_15_1634.csv",
+"Not too bad/MO_Set_2017_12_14_1943.csv", "Not too bad/MUSs_Set_2017_12_18_1912.csv", "Not too bad/PG_Set_2017_12_18_1700.csv",
+"Not too bad/PZV_Set_2017_12_18_1629.csv", "Not too bad/TPS_Set_2017_12_15_2109.csv", "Not too bad/VR_Set_2017_12_15_1743.csv",
+"Not too bad/SHUKs_Set_2017_12_20_1317.csv", "Not too bad/SND_Set_2017_12_20_2139.csv")
+data <- data.table()
+for (i in 1:length(names_norm)) {
+a <- read.csv(file = names_norm[i])
+data <- rbind(data,a)
+}
+data_best <- data[,. (answer.keys, n, size, trials_3.thisRepN, participant, gender, age)]
+data_best <- data_best[!(size=="NA")]
+levels(data_best$size) = c("0.1", "0.2", "0.3", "0.4", "0.5")
+data_best$size <- as.double(data_best$size)
+levels(data_best$participant) <- c(levels(data_best$participant), "AK2", "AA2")
+data_best$participant[841:870] <- "AK2"
+data_best$participant[871:900] <- "AA2"
+write.csv(data_best, "data_all_trials")
+write.csv(data_best, "data_all_trials.csv")
+library("data.table")
+library("ggplot2")
+library("lme4")
+library("nnet")
+library("dplyr")
+library("ggthemes")
+library("ROCR")
+setwd("C:/Projects/Illusions of Set/Set 2/data")
+data_1 <- read.csv("data_all_trials.csv")
+data_1 <- data.table(data)
+View(data_best)
+View(data_1)
+View(data_1)
+View(data_1)
+View(data_best)
+View(data_best)
+data_1 <- data.table(data_1)
+data_1 <- read.csv("data_all_trials.csv")
+data_1 <- data.table(data_1)
+View(data_1)

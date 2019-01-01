@@ -1,0 +1,3216 @@
+15.3802 	EXP 	Created window1 = Window(allowGUI=True, allowStencil=False, autoLog=True, bitsMode=UNKNOWN, blendMode='avg', color=array([ 0.,  0.,  0.]), colorSpace='rgb', fullscr=UNKNOWN, gamma=None, lms=UNKNOWN, monitor=<psychopy.monitors.calibTools.Monitor object at 0x14FA3BD0>, name='window1', pos=[0, 0], screen=0, size=array([1920, 1080]), stereo=False, units=u'norm', useFBO=True, useRetina=False, viewOri=0.0, viewPos=None, viewScale=None, waitBlanking=True, winType='pyglet')
+15.3803 	EXP 	window1: recordFrameIntervals = False
+15.5461 	EXP 	window1: recordFrameIntervals = True
+15.7296 	EXP 	window1: recordFrameIntervals = False
+16.0573 	EXP 	Created text_2 = TextStim(alignHoriz='center', alignVert='center', antialias=True, autoLog=True, bold=False, color='white', colorSpace='named', contrast=1.0, depth=0.0, flipHoriz=False, flipVert=False, font='Arial', fontFiles=[], height=0.1, italic=False, name='text_2', opacity=1.0, ori=0, pos=array([ 0.,  0.]), rgb=array([ 255.,  255.,  255.]), text=unicode(...), units=u'norm', win=Window(...), wrapWidth=1)
+16.0696 	EXP 	Created bigger_circle = Polygon(autoDraw=False, autoLog=True, closeShape=True, contrast=1.0, depth=0.0, fillColor=array([ 1.,  1.,  1.]), fillColorSpace='rgb', fillRGB=array([ 1.,  1.,  1.]), interpolate=True, lineColor=array([ 1.,  1.,  1.]), lineColorSpace='rgb', lineRGB=array([ 1.,  1.,  1.]), lineWidth=1, name='bigger_circle', opacity=1.0, ori=array(0.0), pos=array([ 3.,  0.]), size=array([ 1.,  1.]), units='cm', vertices=ndarray(...), win=Window(...))
+16.0770 	EXP 	Created smaller_circle = Polygon(autoDraw=False, autoLog=True, closeShape=True, contrast=1.0, depth=-1.0, fillColor=array([ 1.,  1.,  1.]), fillColorSpace='rgb', fillRGB=array([ 1.,  1.,  1.]), interpolate=True, lineColor=array([ 1.,  1.,  1.]), lineColorSpace='rgb', lineRGB=array([ 1.,  1.,  1.]), lineWidth=1, name='smaller_circle', opacity=1.0, ori=array(0.0), pos=array([-3.,  0.]), size=array([ 2.5,  2.5]), units='cm', vertices=ndarray(...), win=Window(...))
+16.0842 	EXP 	Created fixational_point_1 = Polygon(autoDraw=False, autoLog=True, closeShape=True, contrast=1.0, depth=-2.0, fillColor=array([ 50.,   1.,   1.]), fillColorSpace='rgb', fillRGB=array([ 50.,   1.,   1.]), interpolate=True, lineColor=array([ 1.,  1.,  1.]), lineColorSpace='rgb', lineRGB=array([ 1.,  1.,  1.]), lineWidth=1, name='fixational_point_1', opacity=1.0, ori=array(0.0), pos=array([ 0.,  0.]), size=array([ 0.1,  0.1]), units='cm', vertices=ndarray(...), win=Window(...))
+16.0915 	EXP 	Created circle_1 = Polygon(autoDraw=False, autoLog=True, closeShape=True, contrast=1.0, depth=0.0, fillColor=array([ 1.,  1.,  1.]), fillColorSpace='rgb', fillRGB=array([ 1.,  1.,  1.]), interpolate=True, lineColor=array([ 1.,  1.,  1.]), lineColorSpace='rgb', lineRGB=array([ 1.,  1.,  1.]), lineWidth=1, name='circle_1', opacity=1.0, ori=array(0.0), pos=array([ 3.,  0.]), size=array([ 2.5,  2.5]), units='cm', vertices=ndarray(...), win=Window(...))
+16.0988 	EXP 	Created circle_2 = Polygon(autoDraw=False, autoLog=True, closeShape=True, contrast=1.0, depth=-1.0, fillColor=array([ 1.,  1.,  1.]), fillColorSpace='rgb', fillRGB=array([ 1.,  1.,  1.]), interpolate=True, lineColor=array([ 1.,  1.,  1.]), lineColorSpace='rgb', lineRGB=array([ 1.,  1.,  1.]), lineWidth=1, name='circle_2', opacity=1.0, ori=array(0.0), pos=array([-3.,  0.]), size=array([ 2.5,  2.5]), units='cm', vertices=ndarray(...), win=Window(...))
+16.1495 	EXP 	Created question = TextStim(alignHoriz='center', alignVert='center', antialias=True, autoLog=True, bold=False, color='white', colorSpace='named', contrast=1.0, depth=-3.0, flipHoriz=False, flipVert=False, font='Arial', fontFiles=[], height=0.1, italic=False, name='question', opacity=1.0, ori=0, pos=array([ 0. ,  0.3]), rgb=array([ 255.,  255.,  255.]), text=unicode(...), units=u'norm', win=Window(...), wrapWidth=1)
+16.1570 	EXP 	Created fixational_point_2 = Polygon(autoDraw=False, autoLog=True, closeShape=True, contrast=1.0, depth=-4.0, fillColor=array([ 50.,   1.,   1.]), fillColorSpace='rgb', fillRGB=array([ 50.,   1.,   1.]), interpolate=True, lineColor=array([ 1.,  1.,  1.]), lineColorSpace='rgb', lineRGB=array([ 1.,  1.,  1.]), lineWidth=1, name='fixational_point_2', opacity=1.0, ori=array(0.0), pos=array([ 0.,  0.]), size=array([ 0.1,  0.1]), units='cm', vertices=ndarray(...), win=Window(...))
+16.1820 	EXP 	Created text = TextStim(alignHoriz='center', alignVert='center', antialias=True, autoLog=True, bold=False, color='white', colorSpace='named', contrast=1.0, depth=0.0, flipHoriz=False, flipVert=False, font='Arial', fontFiles=[], height=0.1, italic=False, name='text', opacity=1.0, ori=0, pos=array([ 0.,  0.]), rgb=array([ 255.,  255.,  255.]), text=unicode(...), units=u'norm', win=Window(...), wrapWidth=1)
+16.1967 	EXP 	Created thanks = TextStim(alignHoriz='center', alignVert='center', antialias=True, autoLog=True, bold=False, color='white', colorSpace='named', contrast=1.0, depth=0.0, flipHoriz=False, flipVert=False, font='Arial', fontFiles=[], height=0.1, italic=False, name='thanks', opacity=1.0, ori=0, pos=array([ 0.,  0.]), rgb=array([ 255.,  255.,  255.]), text=unicode(...), units=u'norm', win=Window(...), wrapWidth=1)
+16.2127 	EXP 	text_2: autoDraw = True
+58.9126 	DATA 	Keypress: space
+58.9154 	EXP 	Imported conditions.csv as conditions, 30 conditions, 2 params
+58.9158 	EXP 	Created sequence: random, trialTypes=30, nReps=1, seed=None
+58.9161 	EXP 	New trial (rep=0, index=0): {'size': [2.9, 2.9], 'n': 4}
+58.9164 	EXP 	Created sequence: random, trialTypes=1, nReps=4, seed=None
+58.9167 	EXP 	New trial (rep=0, index=0): None
+59.0124 	EXP 	text_2: autoDraw = False
+59.0124 	EXP 	bigger_circle: size = array([ 2.9,  2.9])
+59.0124 	EXP 	fixational_point_1: autoDraw = True
+59.3623 	EXP 	bigger_circle: autoDraw = True
+59.3623 	EXP 	smaller_circle: autoDraw = True
+59.4790 	EXP 	bigger_circle: autoDraw = False
+59.4790 	EXP 	smaller_circle: autoDraw = False
+59.9128 	EXP 	New trial (rep=1, index=0): None
+59.9371 	EXP 	fixational_point_1: autoDraw = False
+59.9371 	EXP 	bigger_circle: autoDraw = False
+59.9371 	EXP 	smaller_circle: autoDraw = False
+59.9371 	EXP 	fixational_point_1: autoDraw = False
+59.9371 	EXP 	bigger_circle: size = array([ 2.9,  2.9])
+59.9371 	EXP 	fixational_point_1: autoDraw = True
+60.3623 	EXP 	bigger_circle: autoDraw = True
+60.3623 	EXP 	smaller_circle: autoDraw = True
+60.4790 	EXP 	bigger_circle: autoDraw = False
+60.4790 	EXP 	smaller_circle: autoDraw = False
+60.9128 	EXP 	New trial (rep=2, index=0): None
+60.9371 	EXP 	fixational_point_1: autoDraw = False
+60.9371 	EXP 	bigger_circle: autoDraw = False
+60.9371 	EXP 	smaller_circle: autoDraw = False
+60.9371 	EXP 	fixational_point_1: autoDraw = False
+60.9371 	EXP 	bigger_circle: size = array([ 2.9,  2.9])
+60.9371 	EXP 	fixational_point_1: autoDraw = True
+61.3623 	EXP 	bigger_circle: autoDraw = True
+61.3623 	EXP 	smaller_circle: autoDraw = True
+61.4790 	EXP 	bigger_circle: autoDraw = False
+61.4790 	EXP 	smaller_circle: autoDraw = False
+61.9127 	EXP 	New trial (rep=3, index=0): None
+61.9371 	EXP 	fixational_point_1: autoDraw = False
+61.9371 	EXP 	bigger_circle: autoDraw = False
+61.9371 	EXP 	smaller_circle: autoDraw = False
+61.9371 	EXP 	fixational_point_1: autoDraw = False
+61.9371 	EXP 	bigger_circle: size = array([ 2.9,  2.9])
+61.9371 	EXP 	fixational_point_1: autoDraw = True
+62.3537 	EXP 	bigger_circle: autoDraw = True
+62.3537 	EXP 	smaller_circle: autoDraw = True
+62.4790 	EXP 	bigger_circle: autoDraw = False
+62.4790 	EXP 	smaller_circle: autoDraw = False
+62.9052 	EXP 	Created sequence: random, trialTypes=1, nReps=100, seed=None
+62.9059 	EXP 	New trial (rep=0, index=0): None
+62.9290 	EXP 	fixational_point_1: autoDraw = False
+62.9290 	EXP 	bigger_circle: autoDraw = False
+62.9290 	EXP 	smaller_circle: autoDraw = False
+62.9290 	EXP 	fixational_point_1: autoDraw = False
+62.9290 	EXP 	fixational_point_2: autoDraw = True
+63.5123 	EXP 	fixational_point_2: autoDraw = False
+63.5290 	EXP 	circle_1: autoDraw = True
+63.5290 	EXP 	circle_2: autoDraw = True
+63.6790 	EXP 	circle_1: autoDraw = False
+63.6790 	EXP 	circle_2: autoDraw = False
+63.7290 	EXP 	question: autoDraw = True
+66.0958 	DATA 	Keypress: down
+66.0976 	EXP 	New trial (rep=1, index=0): None
+66.1204 	EXP 	circle_1: autoDraw = False
+66.1204 	EXP 	circle_2: autoDraw = False
+66.1204 	EXP 	question: autoDraw = False
+66.1204 	EXP 	fixational_point_2: autoDraw = False
+66.1204 	EXP 	fixational_point_2: autoDraw = True
+66.7123 	EXP 	fixational_point_2: autoDraw = False
+66.7370 	EXP 	circle_1: autoDraw = True
+66.7370 	EXP 	circle_2: autoDraw = True
+66.8623 	EXP 	circle_1: autoDraw = False
+66.8623 	EXP 	circle_2: autoDraw = False
+66.9371 	EXP 	question: autoDraw = True
+69.8124 	DATA 	Keypress: right
+69.8141 	EXP 	New trial (rep=2, index=0): None
+69.8370 	EXP 	circle_1: autoDraw = False
+69.8370 	EXP 	circle_2: autoDraw = False
+69.8370 	EXP 	question: autoDraw = False
+69.8370 	EXP 	fixational_point_2: autoDraw = False
+69.8370 	EXP 	fixational_point_2: autoDraw = True
+70.4370 	EXP 	fixational_point_2: autoDraw = False
+70.4622 	EXP 	circle_1: autoDraw = True
+70.4622 	EXP 	circle_2: autoDraw = True
+70.5789 	EXP 	circle_1: autoDraw = False
+70.5789 	EXP 	circle_2: autoDraw = False
+70.6537 	EXP 	question: autoDraw = True
+71.4791 	DATA 	Keypress: down
+71.4807 	EXP 	New trial (rep=3, index=0): None
+71.5037 	EXP 	circle_1: autoDraw = False
+71.5037 	EXP 	circle_2: autoDraw = False
+71.5037 	EXP 	question: autoDraw = False
+71.5037 	EXP 	fixational_point_2: autoDraw = False
+71.5037 	EXP 	fixational_point_2: autoDraw = True
+72.0956 	EXP 	fixational_point_2: autoDraw = False
+72.1122 	EXP 	circle_1: autoDraw = True
+72.1122 	EXP 	circle_2: autoDraw = True
+72.2456 	EXP 	circle_1: autoDraw = False
+72.2456 	EXP 	circle_2: autoDraw = False
+72.3203 	EXP 	question: autoDraw = True
+73.2457 	DATA 	Keypress: right
+73.2473 	EXP 	New trial (rep=4, index=0): None
+73.2703 	EXP 	circle_1: autoDraw = False
+73.2703 	EXP 	circle_2: autoDraw = False
+73.2703 	EXP 	question: autoDraw = False
+73.2703 	EXP 	fixational_point_2: autoDraw = False
+73.2703 	EXP 	fixational_point_2: autoDraw = True
+73.8622 	EXP 	fixational_point_2: autoDraw = False
+73.8789 	EXP 	circle_1: autoDraw = True
+73.8789 	EXP 	circle_2: autoDraw = True
+74.0122 	EXP 	circle_1: autoDraw = False
+74.0122 	EXP 	circle_2: autoDraw = False
+74.0870 	EXP 	question: autoDraw = True
+75.7457 	DATA 	Keypress: right
+75.7474 	EXP 	New trial (rep=5, index=0): None
+75.7703 	EXP 	circle_1: autoDraw = False
+75.7703 	EXP 	circle_2: autoDraw = False
+75.7703 	EXP 	question: autoDraw = False
+75.7703 	EXP 	fixational_point_2: autoDraw = False
+75.7703 	EXP 	fixational_point_2: autoDraw = True
+76.3622 	EXP 	fixational_point_2: autoDraw = False
+76.3788 	EXP 	circle_1: autoDraw = True
+76.3788 	EXP 	circle_2: autoDraw = True
+76.5122 	EXP 	circle_1: autoDraw = False
+76.5122 	EXP 	circle_2: autoDraw = False
+76.5869 	EXP 	question: autoDraw = True
+77.9624 	DATA 	Keypress: right
+77.9640 	EXP 	New trial (rep=6, index=0): None
+77.9870 	EXP 	circle_1: autoDraw = False
+77.9870 	EXP 	circle_2: autoDraw = False
+77.9870 	EXP 	question: autoDraw = False
+77.9870 	EXP 	fixational_point_2: autoDraw = False
+77.9870 	EXP 	fixational_point_2: autoDraw = True
+78.5788 	EXP 	fixational_point_2: autoDraw = False
+78.5955 	EXP 	circle_1: autoDraw = True
+78.5955 	EXP 	circle_2: autoDraw = True
+78.7288 	EXP 	circle_1: autoDraw = False
+78.7288 	EXP 	circle_2: autoDraw = False
+78.8036 	EXP 	question: autoDraw = True
+79.3624 	DATA 	Keypress: down
+79.3640 	EXP 	New trial (rep=7, index=0): None
+79.3869 	EXP 	circle_1: autoDraw = False
+79.3869 	EXP 	circle_2: autoDraw = False
+79.3869 	EXP 	question: autoDraw = False
+79.3869 	EXP 	fixational_point_2: autoDraw = False
+79.3869 	EXP 	fixational_point_2: autoDraw = True
+79.9788 	EXP 	fixational_point_2: autoDraw = False
+79.9955 	EXP 	circle_1: autoDraw = True
+79.9955 	EXP 	circle_2: autoDraw = True
+80.1288 	EXP 	circle_1: autoDraw = False
+80.1288 	EXP 	circle_2: autoDraw = False
+80.2121 	EXP 	question: autoDraw = True
+80.9790 	DATA 	Keypress: right
+80.9807 	EXP 	New trial (rep=8, index=0): None
+81.0036 	EXP 	circle_1: autoDraw = False
+81.0036 	EXP 	circle_2: autoDraw = False
+81.0036 	EXP 	question: autoDraw = False
+81.0036 	EXP 	fixational_point_2: autoDraw = False
+81.0036 	EXP 	fixational_point_2: autoDraw = True
+81.5955 	EXP 	fixational_point_2: autoDraw = False
+81.6121 	EXP 	circle_1: autoDraw = True
+81.6121 	EXP 	circle_2: autoDraw = True
+81.7454 	EXP 	circle_1: autoDraw = False
+81.7454 	EXP 	circle_2: autoDraw = False
+81.8203 	EXP 	question: autoDraw = True
+82.6457 	DATA 	Keypress: down
+82.6473 	EXP 	New trial (rep=9, index=0): None
+82.6702 	EXP 	circle_1: autoDraw = False
+82.6702 	EXP 	circle_2: autoDraw = False
+82.6702 	EXP 	question: autoDraw = False
+82.6702 	EXP 	fixational_point_2: autoDraw = False
+82.6702 	EXP 	fixational_point_2: autoDraw = True
+83.2621 	EXP 	fixational_point_2: autoDraw = False
+83.2788 	EXP 	circle_1: autoDraw = True
+83.2788 	EXP 	circle_2: autoDraw = True
+83.4121 	EXP 	circle_1: autoDraw = False
+83.4121 	EXP 	circle_2: autoDraw = False
+83.4869 	EXP 	question: autoDraw = True
+84.3290 	DATA 	Keypress: right
+84.3306 	EXP 	New trial (rep=10, index=0): None
+84.3535 	EXP 	circle_1: autoDraw = False
+84.3535 	EXP 	circle_2: autoDraw = False
+84.3535 	EXP 	question: autoDraw = False
+84.3535 	EXP 	fixational_point_2: autoDraw = False
+84.3535 	EXP 	fixational_point_2: autoDraw = True
+84.9454 	EXP 	fixational_point_2: autoDraw = False
+84.9621 	EXP 	circle_1: autoDraw = True
+84.9621 	EXP 	circle_2: autoDraw = True
+85.0954 	EXP 	circle_1: autoDraw = False
+85.0954 	EXP 	circle_2: autoDraw = False
+85.1702 	EXP 	question: autoDraw = True
+86.0290 	DATA 	Keypress: down
+86.0306 	EXP 	New trial (rep=11, index=0): None
+86.0535 	EXP 	circle_1: autoDraw = False
+86.0535 	EXP 	circle_2: autoDraw = False
+86.0535 	EXP 	question: autoDraw = False
+86.0535 	EXP 	fixational_point_2: autoDraw = False
+86.0535 	EXP 	fixational_point_2: autoDraw = True
+86.6454 	EXP 	fixational_point_2: autoDraw = False
+86.6620 	EXP 	circle_1: autoDraw = True
+86.6620 	EXP 	circle_2: autoDraw = True
+86.7954 	EXP 	circle_1: autoDraw = False
+86.7954 	EXP 	circle_2: autoDraw = False
+86.8702 	EXP 	question: autoDraw = True
+87.3956 	DATA 	Keypress: down
+87.3972 	EXP 	New trial (rep=12, index=0): None
+87.4202 	EXP 	circle_1: autoDraw = False
+87.4202 	EXP 	circle_2: autoDraw = False
+87.4202 	EXP 	question: autoDraw = False
+87.4202 	EXP 	fixational_point_2: autoDraw = False
+87.4202 	EXP 	fixational_point_2: autoDraw = True
+88.0120 	EXP 	fixational_point_2: autoDraw = False
+88.0287 	EXP 	circle_1: autoDraw = True
+88.0287 	EXP 	circle_2: autoDraw = True
+88.1620 	EXP 	circle_1: autoDraw = False
+88.1620 	EXP 	circle_2: autoDraw = False
+88.2368 	EXP 	question: autoDraw = True
+89.1289 	DATA 	Keypress: right
+89.1306 	EXP 	New trial (rep=13, index=0): None
+89.1535 	EXP 	circle_1: autoDraw = False
+89.1535 	EXP 	circle_2: autoDraw = False
+89.1535 	EXP 	question: autoDraw = False
+89.1535 	EXP 	fixational_point_2: autoDraw = False
+89.1535 	EXP 	fixational_point_2: autoDraw = True
+89.7454 	EXP 	fixational_point_2: autoDraw = False
+89.7620 	EXP 	circle_1: autoDraw = True
+89.7620 	EXP 	circle_2: autoDraw = True
+89.8954 	EXP 	circle_1: autoDraw = False
+89.8954 	EXP 	circle_2: autoDraw = False
+89.9701 	EXP 	question: autoDraw = True
+91.3622 	DATA 	Keypress: right
+91.3639 	EXP 	New trial (rep=14, index=0): None
+91.3868 	EXP 	circle_1: autoDraw = False
+91.3868 	EXP 	circle_2: autoDraw = False
+91.3868 	EXP 	question: autoDraw = False
+91.3868 	EXP 	fixational_point_2: autoDraw = False
+91.3868 	EXP 	fixational_point_2: autoDraw = True
+91.9787 	EXP 	fixational_point_2: autoDraw = False
+91.9953 	EXP 	circle_1: autoDraw = True
+91.9953 	EXP 	circle_2: autoDraw = True
+92.1287 	EXP 	circle_1: autoDraw = False
+92.1287 	EXP 	circle_2: autoDraw = False
+92.2034 	EXP 	question: autoDraw = True
+92.9955 	DATA 	Keypress: down
+92.9972 	EXP 	New trial (rep=15, index=0): None
+93.0201 	EXP 	circle_1: autoDraw = False
+93.0201 	EXP 	circle_2: autoDraw = False
+93.0201 	EXP 	question: autoDraw = False
+93.0201 	EXP 	fixational_point_2: autoDraw = False
+93.0201 	EXP 	fixational_point_2: autoDraw = True
+93.6120 	EXP 	fixational_point_2: autoDraw = False
+93.6287 	EXP 	circle_1: autoDraw = True
+93.6287 	EXP 	circle_2: autoDraw = True
+93.7620 	EXP 	circle_1: autoDraw = False
+93.7620 	EXP 	circle_2: autoDraw = False
+93.8368 	EXP 	question: autoDraw = True
+94.3622 	DATA 	Keypress: down
+94.3639 	EXP 	New trial (rep=16, index=0): None
+94.3868 	EXP 	circle_1: autoDraw = False
+94.3868 	EXP 	circle_2: autoDraw = False
+94.3868 	EXP 	question: autoDraw = False
+94.3868 	EXP 	fixational_point_2: autoDraw = False
+94.3868 	EXP 	fixational_point_2: autoDraw = True
+94.9786 	EXP 	fixational_point_2: autoDraw = False
+94.9953 	EXP 	circle_1: autoDraw = True
+94.9953 	EXP 	circle_2: autoDraw = True
+95.1286 	EXP 	circle_1: autoDraw = False
+95.1286 	EXP 	circle_2: autoDraw = False
+95.2034 	EXP 	question: autoDraw = True
+96.5455 	DATA 	Keypress: right
+96.5471 	EXP 	New trial (rep=17, index=0): None
+96.5701 	EXP 	circle_1: autoDraw = False
+96.5701 	EXP 	circle_2: autoDraw = False
+96.5701 	EXP 	question: autoDraw = False
+96.5701 	EXP 	fixational_point_2: autoDraw = False
+96.5701 	EXP 	fixational_point_2: autoDraw = True
+97.1620 	EXP 	fixational_point_2: autoDraw = False
+97.1786 	EXP 	circle_1: autoDraw = True
+97.1786 	EXP 	circle_2: autoDraw = True
+97.3120 	EXP 	circle_1: autoDraw = False
+97.3120 	EXP 	circle_2: autoDraw = False
+97.3953 	EXP 	question: autoDraw = True
+97.8788 	DATA 	Keypress: down
+97.8804 	EXP 	New trial (rep=18, index=0): None
+97.9034 	EXP 	circle_1: autoDraw = False
+97.9034 	EXP 	circle_2: autoDraw = False
+97.9034 	EXP 	question: autoDraw = False
+97.9034 	EXP 	fixational_point_2: autoDraw = False
+97.9034 	EXP 	fixational_point_2: autoDraw = True
+98.4953 	EXP 	fixational_point_2: autoDraw = False
+98.5119 	EXP 	circle_1: autoDraw = True
+98.5119 	EXP 	circle_2: autoDraw = True
+98.6453 	EXP 	circle_1: autoDraw = False
+98.6453 	EXP 	circle_2: autoDraw = False
+98.7201 	EXP 	question: autoDraw = True
+100.0621 	DATA 	Keypress: down
+100.0638 	EXP 	New trial (rep=19, index=0): None
+100.0867 	EXP 	circle_1: autoDraw = False
+100.0867 	EXP 	circle_2: autoDraw = False
+100.0867 	EXP 	question: autoDraw = False
+100.0867 	EXP 	fixational_point_2: autoDraw = False
+100.0867 	EXP 	fixational_point_2: autoDraw = True
+100.6786 	EXP 	fixational_point_2: autoDraw = False
+100.6953 	EXP 	circle_1: autoDraw = True
+100.6953 	EXP 	circle_2: autoDraw = True
+100.8286 	EXP 	circle_1: autoDraw = False
+100.8286 	EXP 	circle_2: autoDraw = False
+100.9034 	EXP 	question: autoDraw = True
+101.3121 	DATA 	Keypress: right
+101.3138 	EXP 	New trial (rep=20, index=0): None
+101.3367 	EXP 	circle_1: autoDraw = False
+101.3367 	EXP 	circle_2: autoDraw = False
+101.3367 	EXP 	question: autoDraw = False
+101.3367 	EXP 	fixational_point_2: autoDraw = False
+101.3367 	EXP 	fixational_point_2: autoDraw = True
+101.9286 	EXP 	fixational_point_2: autoDraw = False
+101.9452 	EXP 	circle_1: autoDraw = True
+101.9452 	EXP 	circle_2: autoDraw = True
+102.0786 	EXP 	circle_1: autoDraw = False
+102.0786 	EXP 	circle_2: autoDraw = False
+102.1534 	EXP 	question: autoDraw = True
+102.5455 	DATA 	Keypress: right
+102.5471 	EXP 	New trial (rep=21, index=0): None
+102.5700 	EXP 	circle_1: autoDraw = False
+102.5700 	EXP 	circle_2: autoDraw = False
+102.5700 	EXP 	question: autoDraw = False
+102.5700 	EXP 	fixational_point_2: autoDraw = False
+102.5700 	EXP 	fixational_point_2: autoDraw = True
+103.1619 	EXP 	fixational_point_2: autoDraw = False
+103.1786 	EXP 	circle_1: autoDraw = True
+103.1786 	EXP 	circle_2: autoDraw = True
+103.3119 	EXP 	circle_1: autoDraw = False
+103.3119 	EXP 	circle_2: autoDraw = False
+103.3952 	EXP 	question: autoDraw = True
+104.0455 	DATA 	Keypress: down
+104.0471 	EXP 	New trial (rep=22, index=0): None
+104.0700 	EXP 	circle_1: autoDraw = False
+104.0700 	EXP 	circle_2: autoDraw = False
+104.0700 	EXP 	question: autoDraw = False
+104.0700 	EXP 	fixational_point_2: autoDraw = False
+104.0700 	EXP 	fixational_point_2: autoDraw = True
+104.6619 	EXP 	fixational_point_2: autoDraw = False
+104.6786 	EXP 	circle_1: autoDraw = True
+104.6786 	EXP 	circle_2: autoDraw = True
+104.8119 	EXP 	circle_1: autoDraw = False
+104.8119 	EXP 	circle_2: autoDraw = False
+104.8867 	EXP 	question: autoDraw = True
+105.3788 	DATA 	Keypress: down
+105.3804 	EXP 	New trial (rep=23, index=0): None
+105.4033 	EXP 	circle_1: autoDraw = False
+105.4033 	EXP 	circle_2: autoDraw = False
+105.4033 	EXP 	question: autoDraw = False
+105.4033 	EXP 	fixational_point_2: autoDraw = False
+105.4033 	EXP 	fixational_point_2: autoDraw = True
+105.9952 	EXP 	fixational_point_2: autoDraw = False
+106.0119 	EXP 	circle_1: autoDraw = True
+106.0119 	EXP 	circle_2: autoDraw = True
+106.1452 	EXP 	circle_1: autoDraw = False
+106.1452 	EXP 	circle_2: autoDraw = False
+106.2200 	EXP 	question: autoDraw = True
+106.6954 	DATA 	Keypress: down
+106.7200 	EXP 	circle_1: autoDraw = False
+106.7200 	EXP 	circle_2: autoDraw = False
+106.7200 	EXP 	question: autoDraw = False
+106.7200 	EXP 	fixational_point_2: autoDraw = False
+106.7200 	EXP 	text: autoDraw = True
+114.3954 	DATA 	Keypress: space
+114.3957 	EXP 	New trial (rep=0, index=1): {'size': [2.8, 2.8], 'n': 2}
+114.3961 	EXP 	Created sequence: random, trialTypes=1, nReps=2, seed=None
+114.3963 	EXP 	New trial (rep=0, index=0): None
+114.4199 	EXP 	text: autoDraw = False
+114.4199 	EXP 	bigger_circle: size = array([ 2.8,  2.8])
+114.4199 	EXP 	fixational_point_1: autoDraw = True
+114.8366 	EXP 	bigger_circle: autoDraw = True
+114.8366 	EXP 	smaller_circle: autoDraw = True
+114.9618 	EXP 	bigger_circle: autoDraw = False
+114.9618 	EXP 	smaller_circle: autoDraw = False
+115.3955 	EXP 	New trial (rep=1, index=0): None
+115.4199 	EXP 	fixational_point_1: autoDraw = False
+115.4199 	EXP 	bigger_circle: autoDraw = False
+115.4199 	EXP 	smaller_circle: autoDraw = False
+115.4199 	EXP 	fixational_point_1: autoDraw = False
+115.4199 	EXP 	bigger_circle: size = array([ 2.8,  2.8])
+115.4199 	EXP 	fixational_point_1: autoDraw = True
+115.8451 	EXP 	bigger_circle: autoDraw = True
+115.8451 	EXP 	smaller_circle: autoDraw = True
+115.9617 	EXP 	bigger_circle: autoDraw = False
+115.9617 	EXP 	smaller_circle: autoDraw = False
+116.3965 	EXP 	Created sequence: random, trialTypes=1, nReps=100, seed=None
+116.3973 	EXP 	New trial (rep=0, index=0): None
+116.4118 	EXP 	fixational_point_1: autoDraw = False
+116.4118 	EXP 	bigger_circle: autoDraw = False
+116.4118 	EXP 	smaller_circle: autoDraw = False
+116.4118 	EXP 	fixational_point_1: autoDraw = False
+116.4118 	EXP 	fixational_point_2: autoDraw = True
+117.0118 	EXP 	fixational_point_2: autoDraw = False
+117.0284 	EXP 	circle_1: autoDraw = True
+117.0284 	EXP 	circle_2: autoDraw = True
+117.1618 	EXP 	circle_1: autoDraw = False
+117.1618 	EXP 	circle_2: autoDraw = False
+117.2365 	EXP 	question: autoDraw = True
+118.8786 	DATA 	Keypress: down
+118.8804 	EXP 	New trial (rep=1, index=0): None
+118.9032 	EXP 	circle_1: autoDraw = False
+118.9032 	EXP 	circle_2: autoDraw = False
+118.9032 	EXP 	question: autoDraw = False
+118.9032 	EXP 	fixational_point_2: autoDraw = False
+118.9032 	EXP 	fixational_point_2: autoDraw = True
+119.4951 	EXP 	fixational_point_2: autoDraw = False
+119.5117 	EXP 	circle_1: autoDraw = True
+119.5117 	EXP 	circle_2: autoDraw = True
+119.6451 	EXP 	circle_1: autoDraw = False
+119.6451 	EXP 	circle_2: autoDraw = False
+119.7198 	EXP 	question: autoDraw = True
+120.1619 	DATA 	Keypress: down
+120.1637 	EXP 	New trial (rep=2, index=0): None
+120.1865 	EXP 	circle_1: autoDraw = False
+120.1865 	EXP 	circle_2: autoDraw = False
+120.1865 	EXP 	question: autoDraw = False
+120.1865 	EXP 	fixational_point_2: autoDraw = False
+120.1865 	EXP 	fixational_point_2: autoDraw = True
+120.7784 	EXP 	fixational_point_2: autoDraw = False
+120.7951 	EXP 	circle_1: autoDraw = True
+120.7951 	EXP 	circle_2: autoDraw = True
+120.9284 	EXP 	circle_1: autoDraw = False
+120.9284 	EXP 	circle_2: autoDraw = False
+121.0032 	EXP 	question: autoDraw = True
+121.6119 	DATA 	Keypress: down
+121.6365 	EXP 	circle_1: autoDraw = False
+121.6365 	EXP 	circle_2: autoDraw = False
+121.6365 	EXP 	question: autoDraw = False
+121.6365 	EXP 	fixational_point_2: autoDraw = False
+121.6365 	EXP 	text: autoDraw = True
+125.3285 	DATA 	Keypress: space
+125.3289 	EXP 	New trial (rep=0, index=2): {'size': [2.6, 2.6], 'n': 6}
+125.3293 	EXP 	Created sequence: random, trialTypes=1, nReps=6, seed=None
+125.3296 	EXP 	New trial (rep=0, index=0): None
+125.3531 	EXP 	text: autoDraw = False
+125.3531 	EXP 	bigger_circle: size = array([ 2.6,  2.6])
+125.3531 	EXP 	fixational_point_1: autoDraw = True
+125.7783 	EXP 	bigger_circle: autoDraw = True
+125.7783 	EXP 	smaller_circle: autoDraw = True
+125.8950 	EXP 	bigger_circle: autoDraw = False
+125.8950 	EXP 	smaller_circle: autoDraw = False
+126.3288 	EXP 	New trial (rep=1, index=0): None
+126.3531 	EXP 	fixational_point_1: autoDraw = False
+126.3531 	EXP 	bigger_circle: autoDraw = False
+126.3531 	EXP 	smaller_circle: autoDraw = False
+126.3531 	EXP 	fixational_point_1: autoDraw = False
+126.3531 	EXP 	bigger_circle: size = array([ 2.6,  2.6])
+126.3531 	EXP 	fixational_point_1: autoDraw = True
+126.3785 	DATA 	Keypress: right
+126.7783 	EXP 	bigger_circle: autoDraw = True
+126.7783 	EXP 	smaller_circle: autoDraw = True
+126.8950 	EXP 	bigger_circle: autoDraw = False
+126.8950 	EXP 	smaller_circle: autoDraw = False
+127.3288 	EXP 	New trial (rep=2, index=0): None
+127.3531 	EXP 	fixational_point_1: autoDraw = False
+127.3531 	EXP 	bigger_circle: autoDraw = False
+127.3531 	EXP 	smaller_circle: autoDraw = False
+127.3531 	EXP 	fixational_point_1: autoDraw = False
+127.3531 	EXP 	bigger_circle: size = array([ 2.6,  2.6])
+127.3531 	EXP 	fixational_point_1: autoDraw = True
+127.7783 	EXP 	bigger_circle: autoDraw = True
+127.7783 	EXP 	smaller_circle: autoDraw = True
+127.8950 	EXP 	bigger_circle: autoDraw = False
+127.8950 	EXP 	smaller_circle: autoDraw = False
+128.3287 	EXP 	New trial (rep=3, index=0): None
+128.3449 	EXP 	fixational_point_1: autoDraw = False
+128.3449 	EXP 	bigger_circle: autoDraw = False
+128.3449 	EXP 	smaller_circle: autoDraw = False
+128.3449 	EXP 	fixational_point_1: autoDraw = False
+128.3449 	EXP 	bigger_circle: size = array([ 2.6,  2.6])
+128.3449 	EXP 	fixational_point_1: autoDraw = True
+128.7783 	EXP 	bigger_circle: autoDraw = True
+128.7783 	EXP 	smaller_circle: autoDraw = True
+128.8950 	EXP 	bigger_circle: autoDraw = False
+128.8950 	EXP 	smaller_circle: autoDraw = False
+129.3288 	EXP 	New trial (rep=4, index=0): None
+129.3531 	EXP 	fixational_point_1: autoDraw = False
+129.3531 	EXP 	bigger_circle: autoDraw = False
+129.3531 	EXP 	smaller_circle: autoDraw = False
+129.3531 	EXP 	fixational_point_1: autoDraw = False
+129.3531 	EXP 	bigger_circle: size = array([ 2.6,  2.6])
+129.3531 	EXP 	fixational_point_1: autoDraw = True
+129.7783 	EXP 	bigger_circle: autoDraw = True
+129.7783 	EXP 	smaller_circle: autoDraw = True
+129.8950 	EXP 	bigger_circle: autoDraw = False
+129.8950 	EXP 	smaller_circle: autoDraw = False
+130.3287 	EXP 	New trial (rep=5, index=0): None
+130.3450 	EXP 	fixational_point_1: autoDraw = False
+130.3450 	EXP 	bigger_circle: autoDraw = False
+130.3450 	EXP 	smaller_circle: autoDraw = False
+130.3450 	EXP 	fixational_point_1: autoDraw = False
+130.3450 	EXP 	bigger_circle: size = array([ 2.6,  2.6])
+130.3450 	EXP 	fixational_point_1: autoDraw = True
+130.7783 	EXP 	bigger_circle: autoDraw = True
+130.7783 	EXP 	smaller_circle: autoDraw = True
+130.8950 	EXP 	bigger_circle: autoDraw = False
+130.8950 	EXP 	smaller_circle: autoDraw = False
+131.3297 	EXP 	Created sequence: random, trialTypes=1, nReps=100, seed=None
+131.3304 	EXP 	New trial (rep=0, index=0): None
+131.3449 	EXP 	fixational_point_1: autoDraw = False
+131.3449 	EXP 	bigger_circle: autoDraw = False
+131.3449 	EXP 	smaller_circle: autoDraw = False
+131.3449 	EXP 	fixational_point_1: autoDraw = False
+131.3449 	EXP 	fixational_point_2: autoDraw = True
+131.9449 	EXP 	fixational_point_2: autoDraw = False
+131.9616 	EXP 	circle_1: autoDraw = True
+131.9616 	EXP 	circle_2: autoDraw = True
+132.0949 	EXP 	circle_1: autoDraw = False
+132.0949 	EXP 	circle_2: autoDraw = False
+132.1697 	EXP 	question: autoDraw = True
+133.0619 	DATA 	Keypress: right
+133.0637 	EXP 	New trial (rep=1, index=0): None
+133.0864 	EXP 	circle_1: autoDraw = False
+133.0864 	EXP 	circle_2: autoDraw = False
+133.0864 	EXP 	question: autoDraw = False
+133.0864 	EXP 	fixational_point_2: autoDraw = False
+133.0864 	EXP 	fixational_point_2: autoDraw = True
+133.6783 	EXP 	fixational_point_2: autoDraw = False
+133.6949 	EXP 	circle_1: autoDraw = True
+133.6949 	EXP 	circle_2: autoDraw = True
+133.8283 	EXP 	circle_1: autoDraw = False
+133.8283 	EXP 	circle_2: autoDraw = False
+133.9030 	EXP 	question: autoDraw = True
+134.5951 	DATA 	Keypress: down
+134.5968 	EXP 	New trial (rep=2, index=0): None
+134.6197 	EXP 	circle_1: autoDraw = False
+134.6197 	EXP 	circle_2: autoDraw = False
+134.6197 	EXP 	question: autoDraw = False
+134.6197 	EXP 	fixational_point_2: autoDraw = False
+134.6197 	EXP 	fixational_point_2: autoDraw = True
+135.2116 	EXP 	fixational_point_2: autoDraw = False
+135.2282 	EXP 	circle_1: autoDraw = True
+135.2282 	EXP 	circle_2: autoDraw = True
+135.3616 	EXP 	circle_1: autoDraw = False
+135.3616 	EXP 	circle_2: autoDraw = False
+135.4364 	EXP 	question: autoDraw = True
+136.1118 	DATA 	Keypress: down
+136.1134 	EXP 	New trial (rep=3, index=0): None
+136.1363 	EXP 	circle_1: autoDraw = False
+136.1363 	EXP 	circle_2: autoDraw = False
+136.1363 	EXP 	question: autoDraw = False
+136.1363 	EXP 	fixational_point_2: autoDraw = False
+136.1363 	EXP 	fixational_point_2: autoDraw = True
+136.7282 	EXP 	fixational_point_2: autoDraw = False
+136.7449 	EXP 	circle_1: autoDraw = True
+136.7449 	EXP 	circle_2: autoDraw = True
+136.8782 	EXP 	circle_1: autoDraw = False
+136.8782 	EXP 	circle_2: autoDraw = False
+136.9530 	EXP 	question: autoDraw = True
+137.5451 	DATA 	Keypress: down
+137.5697 	EXP 	circle_1: autoDraw = False
+137.5697 	EXP 	circle_2: autoDraw = False
+137.5697 	EXP 	question: autoDraw = False
+137.5697 	EXP 	fixational_point_2: autoDraw = False
+137.5697 	EXP 	text: autoDraw = True
+139.3451 	DATA 	Keypress: space
+139.3455 	EXP 	New trial (rep=0, index=3): {'size': [2.8, 2.8], 'n': 4}
+139.3459 	EXP 	Created sequence: random, trialTypes=1, nReps=4, seed=None
+139.3461 	EXP 	New trial (rep=0, index=0): None
+139.3696 	EXP 	text: autoDraw = False
+139.3696 	EXP 	bigger_circle: size = array([ 2.8,  2.8])
+139.3696 	EXP 	fixational_point_1: autoDraw = True
+139.7949 	EXP 	bigger_circle: autoDraw = True
+139.7949 	EXP 	smaller_circle: autoDraw = True
+139.9115 	EXP 	bigger_circle: autoDraw = False
+139.9115 	EXP 	smaller_circle: autoDraw = False
+140.3453 	EXP 	New trial (rep=1, index=0): None
+140.3696 	EXP 	fixational_point_1: autoDraw = False
+140.3696 	EXP 	bigger_circle: autoDraw = False
+140.3696 	EXP 	smaller_circle: autoDraw = False
+140.3696 	EXP 	fixational_point_1: autoDraw = False
+140.3696 	EXP 	bigger_circle: size = array([ 2.8,  2.8])
+140.3696 	EXP 	fixational_point_1: autoDraw = True
+140.7948 	EXP 	bigger_circle: autoDraw = True
+140.7948 	EXP 	smaller_circle: autoDraw = True
+140.9115 	EXP 	bigger_circle: autoDraw = False
+140.9115 	EXP 	smaller_circle: autoDraw = False
+141.3452 	EXP 	New trial (rep=2, index=0): None
+141.3696 	EXP 	fixational_point_1: autoDraw = False
+141.3696 	EXP 	bigger_circle: autoDraw = False
+141.3696 	EXP 	smaller_circle: autoDraw = False
+141.3696 	EXP 	fixational_point_1: autoDraw = False
+141.3696 	EXP 	bigger_circle: size = array([ 2.8,  2.8])
+141.3696 	EXP 	fixational_point_1: autoDraw = True
+141.7948 	EXP 	bigger_circle: autoDraw = True
+141.7948 	EXP 	smaller_circle: autoDraw = True
+141.9115 	EXP 	bigger_circle: autoDraw = False
+141.9115 	EXP 	smaller_circle: autoDraw = False
+142.3453 	EXP 	New trial (rep=3, index=0): None
+142.3696 	EXP 	fixational_point_1: autoDraw = False
+142.3696 	EXP 	bigger_circle: autoDraw = False
+142.3696 	EXP 	smaller_circle: autoDraw = False
+142.3696 	EXP 	fixational_point_1: autoDraw = False
+142.3696 	EXP 	bigger_circle: size = array([ 2.8,  2.8])
+142.3696 	EXP 	fixational_point_1: autoDraw = True
+142.7948 	EXP 	bigger_circle: autoDraw = True
+142.7948 	EXP 	smaller_circle: autoDraw = True
+142.9115 	EXP 	bigger_circle: autoDraw = False
+142.9115 	EXP 	smaller_circle: autoDraw = False
+143.3462 	EXP 	Created sequence: random, trialTypes=1, nReps=100, seed=None
+143.3470 	EXP 	New trial (rep=0, index=0): None
+143.3696 	EXP 	fixational_point_1: autoDraw = False
+143.3696 	EXP 	bigger_circle: autoDraw = False
+143.3696 	EXP 	smaller_circle: autoDraw = False
+143.3696 	EXP 	fixational_point_1: autoDraw = False
+143.3696 	EXP 	fixational_point_2: autoDraw = True
+143.9615 	EXP 	fixational_point_2: autoDraw = False
+143.9781 	EXP 	circle_1: autoDraw = True
+143.9781 	EXP 	circle_2: autoDraw = True
+144.1115 	EXP 	circle_1: autoDraw = False
+144.1115 	EXP 	circle_2: autoDraw = False
+144.1863 	EXP 	question: autoDraw = True
+145.0450 	DATA 	Keypress: down
+145.0469 	EXP 	New trial (rep=1, index=0): None
+145.0696 	EXP 	circle_1: autoDraw = False
+145.0696 	EXP 	circle_2: autoDraw = False
+145.0696 	EXP 	question: autoDraw = False
+145.0696 	EXP 	fixational_point_2: autoDraw = False
+145.0696 	EXP 	fixational_point_2: autoDraw = True
+145.6615 	EXP 	fixational_point_2: autoDraw = False
+145.6781 	EXP 	circle_1: autoDraw = True
+145.6781 	EXP 	circle_2: autoDraw = True
+145.8115 	EXP 	circle_1: autoDraw = False
+145.8115 	EXP 	circle_2: autoDraw = False
+145.8862 	EXP 	question: autoDraw = True
+146.4616 	DATA 	Keypress: down
+146.4633 	EXP 	New trial (rep=2, index=0): None
+146.4862 	EXP 	circle_1: autoDraw = False
+146.4862 	EXP 	circle_2: autoDraw = False
+146.4862 	EXP 	question: autoDraw = False
+146.4862 	EXP 	fixational_point_2: autoDraw = False
+146.4862 	EXP 	fixational_point_2: autoDraw = True
+147.0781 	EXP 	fixational_point_2: autoDraw = False
+147.0948 	EXP 	circle_1: autoDraw = True
+147.0948 	EXP 	circle_2: autoDraw = True
+147.2281 	EXP 	circle_1: autoDraw = False
+147.2281 	EXP 	circle_2: autoDraw = False
+147.3029 	EXP 	question: autoDraw = True
+149.4616 	DATA 	Keypress: right
+149.4633 	EXP 	New trial (rep=3, index=0): None
+149.4862 	EXP 	circle_1: autoDraw = False
+149.4862 	EXP 	circle_2: autoDraw = False
+149.4862 	EXP 	question: autoDraw = False
+149.4862 	EXP 	fixational_point_2: autoDraw = False
+149.4862 	EXP 	fixational_point_2: autoDraw = True
+150.0781 	EXP 	fixational_point_2: autoDraw = False
+150.0948 	EXP 	circle_1: autoDraw = True
+150.0948 	EXP 	circle_2: autoDraw = True
+150.2281 	EXP 	circle_1: autoDraw = False
+150.2281 	EXP 	circle_2: autoDraw = False
+150.3029 	EXP 	question: autoDraw = True
+150.8283 	DATA 	Keypress: down
+150.8299 	EXP 	New trial (rep=4, index=0): None
+150.8528 	EXP 	circle_1: autoDraw = False
+150.8528 	EXP 	circle_2: autoDraw = False
+150.8528 	EXP 	question: autoDraw = False
+150.8528 	EXP 	fixational_point_2: autoDraw = False
+150.8528 	EXP 	fixational_point_2: autoDraw = True
+151.4447 	EXP 	fixational_point_2: autoDraw = False
+151.4614 	EXP 	circle_1: autoDraw = True
+151.4614 	EXP 	circle_2: autoDraw = True
+151.5947 	EXP 	circle_1: autoDraw = False
+151.5947 	EXP 	circle_2: autoDraw = False
+151.6695 	EXP 	question: autoDraw = True
+152.1283 	DATA 	Keypress: down
+152.1300 	EXP 	New trial (rep=5, index=0): None
+152.1529 	EXP 	circle_1: autoDraw = False
+152.1529 	EXP 	circle_2: autoDraw = False
+152.1529 	EXP 	question: autoDraw = False
+152.1529 	EXP 	fixational_point_2: autoDraw = False
+152.1529 	EXP 	fixational_point_2: autoDraw = True
+152.7447 	EXP 	fixational_point_2: autoDraw = False
+152.7614 	EXP 	circle_1: autoDraw = True
+152.7614 	EXP 	circle_2: autoDraw = True
+152.8947 	EXP 	circle_1: autoDraw = False
+152.8947 	EXP 	circle_2: autoDraw = False
+152.9695 	EXP 	question: autoDraw = True
+153.7282 	DATA 	Keypress: down
+153.7528 	EXP 	circle_1: autoDraw = False
+153.7528 	EXP 	circle_2: autoDraw = False
+153.7528 	EXP 	question: autoDraw = False
+153.7528 	EXP 	fixational_point_2: autoDraw = False
+153.7528 	EXP 	text: autoDraw = True
+154.7616 	DATA 	Keypress: space
+154.7619 	EXP 	New trial (rep=0, index=4): {'size': [2.6, 2.6], 'n': 1}
+154.7623 	EXP 	Created sequence: random, trialTypes=1, nReps=1, seed=None
+154.7625 	EXP 	New trial (rep=0, index=0): None
+154.7861 	EXP 	text: autoDraw = False
+154.7861 	EXP 	bigger_circle: size = array([ 2.6,  2.6])
+154.7861 	EXP 	fixational_point_1: autoDraw = True
+155.2114 	EXP 	bigger_circle: autoDraw = True
+155.2114 	EXP 	smaller_circle: autoDraw = True
+155.3280 	EXP 	bigger_circle: autoDraw = False
+155.3280 	EXP 	smaller_circle: autoDraw = False
+155.7628 	EXP 	Created sequence: random, trialTypes=1, nReps=100, seed=None
+155.7635 	EXP 	New trial (rep=0, index=0): None
+155.7862 	EXP 	fixational_point_1: autoDraw = False
+155.7862 	EXP 	bigger_circle: autoDraw = False
+155.7862 	EXP 	smaller_circle: autoDraw = False
+155.7862 	EXP 	fixational_point_1: autoDraw = False
+155.7862 	EXP 	fixational_point_2: autoDraw = True
+156.3780 	EXP 	fixational_point_2: autoDraw = False
+156.3947 	EXP 	circle_1: autoDraw = True
+156.3947 	EXP 	circle_2: autoDraw = True
+156.5280 	EXP 	circle_1: autoDraw = False
+156.5280 	EXP 	circle_2: autoDraw = False
+156.6028 	EXP 	question: autoDraw = True
+157.4616 	DATA 	Keypress: down
+157.4634 	EXP 	New trial (rep=1, index=0): None
+157.4861 	EXP 	circle_1: autoDraw = False
+157.4861 	EXP 	circle_2: autoDraw = False
+157.4861 	EXP 	question: autoDraw = False
+157.4861 	EXP 	fixational_point_2: autoDraw = False
+157.4861 	EXP 	fixational_point_2: autoDraw = True
+158.0780 	EXP 	fixational_point_2: autoDraw = False
+158.0947 	EXP 	circle_1: autoDraw = True
+158.0947 	EXP 	circle_2: autoDraw = True
+158.2280 	EXP 	circle_1: autoDraw = False
+158.2280 	EXP 	circle_2: autoDraw = False
+158.3028 	EXP 	question: autoDraw = True
+158.9948 	DATA 	Keypress: down
+158.9965 	EXP 	New trial (rep=2, index=0): None
+159.0194 	EXP 	circle_1: autoDraw = False
+159.0194 	EXP 	circle_2: autoDraw = False
+159.0194 	EXP 	question: autoDraw = False
+159.0194 	EXP 	fixational_point_2: autoDraw = False
+159.0194 	EXP 	fixational_point_2: autoDraw = True
+159.6113 	EXP 	fixational_point_2: autoDraw = False
+159.6280 	EXP 	circle_1: autoDraw = True
+159.6280 	EXP 	circle_2: autoDraw = True
+159.7613 	EXP 	circle_1: autoDraw = False
+159.7613 	EXP 	circle_2: autoDraw = False
+159.8361 	EXP 	question: autoDraw = True
+160.2115 	DATA 	Keypress: down
+160.2361 	EXP 	circle_1: autoDraw = False
+160.2361 	EXP 	circle_2: autoDraw = False
+160.2361 	EXP 	question: autoDraw = False
+160.2361 	EXP 	fixational_point_2: autoDraw = False
+160.2361 	EXP 	text: autoDraw = True
+161.1448 	DATA 	Keypress: space
+161.1452 	EXP 	New trial (rep=0, index=5): {'size': [2.6, 2.6], 'n': 3}
+161.1456 	EXP 	Created sequence: random, trialTypes=1, nReps=3, seed=None
+161.1458 	EXP 	New trial (rep=0, index=0): None
+161.1694 	EXP 	text: autoDraw = False
+161.1694 	EXP 	bigger_circle: size = array([ 2.6,  2.6])
+161.1694 	EXP 	fixational_point_1: autoDraw = True
+161.5946 	EXP 	bigger_circle: autoDraw = True
+161.5946 	EXP 	smaller_circle: autoDraw = True
+161.7113 	EXP 	bigger_circle: autoDraw = False
+161.7113 	EXP 	smaller_circle: autoDraw = False
+162.1450 	EXP 	New trial (rep=1, index=0): None
+162.1613 	EXP 	fixational_point_1: autoDraw = False
+162.1613 	EXP 	bigger_circle: autoDraw = False
+162.1613 	EXP 	smaller_circle: autoDraw = False
+162.1613 	EXP 	fixational_point_1: autoDraw = False
+162.1613 	EXP 	bigger_circle: size = array([ 2.6,  2.6])
+162.1613 	EXP 	fixational_point_1: autoDraw = True
+162.5946 	EXP 	bigger_circle: autoDraw = True
+162.5946 	EXP 	smaller_circle: autoDraw = True
+162.7113 	EXP 	bigger_circle: autoDraw = False
+162.7113 	EXP 	smaller_circle: autoDraw = False
+163.1450 	EXP 	New trial (rep=2, index=0): None
+163.1694 	EXP 	fixational_point_1: autoDraw = False
+163.1694 	EXP 	bigger_circle: autoDraw = False
+163.1694 	EXP 	smaller_circle: autoDraw = False
+163.1694 	EXP 	fixational_point_1: autoDraw = False
+163.1694 	EXP 	bigger_circle: size = array([ 2.6,  2.6])
+163.1694 	EXP 	fixational_point_1: autoDraw = True
+163.5946 	EXP 	bigger_circle: autoDraw = True
+163.5946 	EXP 	smaller_circle: autoDraw = True
+163.7113 	EXP 	bigger_circle: autoDraw = False
+163.7113 	EXP 	smaller_circle: autoDraw = False
+164.1460 	EXP 	Created sequence: random, trialTypes=1, nReps=100, seed=None
+164.1468 	EXP 	New trial (rep=0, index=0): None
+164.1694 	EXP 	fixational_point_1: autoDraw = False
+164.1694 	EXP 	bigger_circle: autoDraw = False
+164.1694 	EXP 	smaller_circle: autoDraw = False
+164.1694 	EXP 	fixational_point_1: autoDraw = False
+164.1694 	EXP 	fixational_point_2: autoDraw = True
+164.7613 	EXP 	fixational_point_2: autoDraw = False
+164.7779 	EXP 	circle_1: autoDraw = True
+164.7779 	EXP 	circle_2: autoDraw = True
+164.9113 	EXP 	circle_1: autoDraw = False
+164.9113 	EXP 	circle_2: autoDraw = False
+164.9860 	EXP 	question: autoDraw = True
+165.6948 	DATA 	Keypress: right
+165.6966 	EXP 	New trial (rep=1, index=0): None
+165.7194 	EXP 	circle_1: autoDraw = False
+165.7194 	EXP 	circle_2: autoDraw = False
+165.7194 	EXP 	question: autoDraw = False
+165.7194 	EXP 	fixational_point_2: autoDraw = False
+165.7194 	EXP 	fixational_point_2: autoDraw = True
+166.3112 	EXP 	fixational_point_2: autoDraw = False
+166.3279 	EXP 	circle_1: autoDraw = True
+166.3279 	EXP 	circle_2: autoDraw = True
+166.4612 	EXP 	circle_1: autoDraw = False
+166.4612 	EXP 	circle_2: autoDraw = False
+166.5360 	EXP 	question: autoDraw = True
+167.4448 	DATA 	Keypress: right
+167.4465 	EXP 	New trial (rep=2, index=0): None
+167.4693 	EXP 	circle_1: autoDraw = False
+167.4693 	EXP 	circle_2: autoDraw = False
+167.4693 	EXP 	question: autoDraw = False
+167.4693 	EXP 	fixational_point_2: autoDraw = False
+167.4693 	EXP 	fixational_point_2: autoDraw = True
+168.0613 	EXP 	fixational_point_2: autoDraw = False
+168.0860 	EXP 	circle_1: autoDraw = True
+168.0860 	EXP 	circle_2: autoDraw = True
+168.2112 	EXP 	circle_1: autoDraw = False
+168.2112 	EXP 	circle_2: autoDraw = False
+168.2860 	EXP 	question: autoDraw = True
+168.9948 	DATA 	Keypress: down
+168.9965 	EXP 	New trial (rep=3, index=0): None
+169.0193 	EXP 	circle_1: autoDraw = False
+169.0193 	EXP 	circle_2: autoDraw = False
+169.0193 	EXP 	question: autoDraw = False
+169.0193 	EXP 	fixational_point_2: autoDraw = False
+169.0193 	EXP 	fixational_point_2: autoDraw = True
+169.6112 	EXP 	fixational_point_2: autoDraw = False
+169.6279 	EXP 	circle_1: autoDraw = True
+169.6279 	EXP 	circle_2: autoDraw = True
+169.7612 	EXP 	circle_1: autoDraw = False
+169.7612 	EXP 	circle_2: autoDraw = False
+169.8360 	EXP 	question: autoDraw = True
+170.3114 	DATA 	Keypress: down
+170.3131 	EXP 	New trial (rep=4, index=0): None
+170.3360 	EXP 	circle_1: autoDraw = False
+170.3360 	EXP 	circle_2: autoDraw = False
+170.3360 	EXP 	question: autoDraw = False
+170.3360 	EXP 	fixational_point_2: autoDraw = False
+170.3360 	EXP 	fixational_point_2: autoDraw = True
+170.9279 	EXP 	fixational_point_2: autoDraw = False
+170.9445 	EXP 	circle_1: autoDraw = True
+170.9445 	EXP 	circle_2: autoDraw = True
+171.0779 	EXP 	circle_1: autoDraw = False
+171.0779 	EXP 	circle_2: autoDraw = False
+171.1526 	EXP 	question: autoDraw = True
+171.7281 	DATA 	Keypress: down
+171.7526 	EXP 	circle_1: autoDraw = False
+171.7526 	EXP 	circle_2: autoDraw = False
+171.7526 	EXP 	question: autoDraw = False
+171.7526 	EXP 	fixational_point_2: autoDraw = False
+171.7526 	EXP 	text: autoDraw = True
+173.3780 	DATA 	Keypress: space
+173.3784 	EXP 	New trial (rep=0, index=6): {'size': [2.7, 2.7], 'n': 4}
+173.3788 	EXP 	Created sequence: random, trialTypes=1, nReps=4, seed=None
+173.3790 	EXP 	New trial (rep=0, index=0): None
+173.4026 	EXP 	text: autoDraw = False
+173.4026 	EXP 	bigger_circle: size = array([ 2.7,  2.7])
+173.4026 	EXP 	fixational_point_1: autoDraw = True
+173.8278 	EXP 	bigger_circle: autoDraw = True
+173.8278 	EXP 	smaller_circle: autoDraw = True
+173.9445 	EXP 	bigger_circle: autoDraw = False
+173.9445 	EXP 	smaller_circle: autoDraw = False
+174.3782 	EXP 	New trial (rep=1, index=0): None
+174.4026 	EXP 	fixational_point_1: autoDraw = False
+174.4026 	EXP 	bigger_circle: autoDraw = False
+174.4026 	EXP 	smaller_circle: autoDraw = False
+174.4026 	EXP 	fixational_point_1: autoDraw = False
+174.4026 	EXP 	bigger_circle: size = array([ 2.7,  2.7])
+174.4026 	EXP 	fixational_point_1: autoDraw = True
+174.8193 	EXP 	bigger_circle: autoDraw = True
+174.8193 	EXP 	smaller_circle: autoDraw = True
+174.9445 	EXP 	bigger_circle: autoDraw = False
+174.9445 	EXP 	smaller_circle: autoDraw = False
+175.3697 	EXP 	New trial (rep=2, index=0): None
+175.3945 	EXP 	fixational_point_1: autoDraw = False
+175.3945 	EXP 	bigger_circle: autoDraw = False
+175.3945 	EXP 	smaller_circle: autoDraw = False
+175.3945 	EXP 	fixational_point_1: autoDraw = False
+175.3945 	EXP 	bigger_circle: size = array([ 2.7,  2.7])
+175.3945 	EXP 	fixational_point_1: autoDraw = True
+175.8112 	EXP 	bigger_circle: autoDraw = True
+175.8112 	EXP 	smaller_circle: autoDraw = True
+175.9278 	EXP 	bigger_circle: autoDraw = False
+175.9278 	EXP 	smaller_circle: autoDraw = False
+176.3697 	EXP 	New trial (rep=3, index=0): None
+176.3945 	EXP 	fixational_point_1: autoDraw = False
+176.3945 	EXP 	bigger_circle: autoDraw = False
+176.3945 	EXP 	smaller_circle: autoDraw = False
+176.3945 	EXP 	fixational_point_1: autoDraw = False
+176.3945 	EXP 	bigger_circle: size = array([ 2.7,  2.7])
+176.3945 	EXP 	fixational_point_1: autoDraw = True
+176.8111 	EXP 	bigger_circle: autoDraw = True
+176.8111 	EXP 	smaller_circle: autoDraw = True
+176.9278 	EXP 	bigger_circle: autoDraw = False
+176.9278 	EXP 	smaller_circle: autoDraw = False
+177.3707 	EXP 	Created sequence: random, trialTypes=1, nReps=100, seed=None
+177.3714 	EXP 	New trial (rep=0, index=0): None
+177.3945 	EXP 	fixational_point_1: autoDraw = False
+177.3945 	EXP 	bigger_circle: autoDraw = False
+177.3945 	EXP 	smaller_circle: autoDraw = False
+177.3945 	EXP 	fixational_point_1: autoDraw = False
+177.3945 	EXP 	fixational_point_2: autoDraw = True
+177.9945 	EXP 	fixational_point_2: autoDraw = False
+178.0111 	EXP 	circle_1: autoDraw = True
+178.0111 	EXP 	circle_2: autoDraw = True
+178.1278 	EXP 	circle_1: autoDraw = False
+178.1278 	EXP 	circle_2: autoDraw = False
+178.1945 	EXP 	question: autoDraw = True
+179.7613 	DATA 	Keypress: down
+179.7633 	EXP 	New trial (rep=1, index=0): None
+179.7859 	EXP 	circle_1: autoDraw = False
+179.7859 	EXP 	circle_2: autoDraw = False
+179.7859 	EXP 	question: autoDraw = False
+179.7859 	EXP 	fixational_point_2: autoDraw = False
+179.7859 	EXP 	fixational_point_2: autoDraw = True
+180.3778 	EXP 	fixational_point_2: autoDraw = False
+180.3944 	EXP 	circle_1: autoDraw = True
+180.3944 	EXP 	circle_2: autoDraw = True
+180.5278 	EXP 	circle_1: autoDraw = False
+180.5278 	EXP 	circle_2: autoDraw = False
+180.6026 	EXP 	question: autoDraw = True
+181.2946 	DATA 	Keypress: down
+181.2963 	EXP 	New trial (rep=2, index=0): None
+181.3192 	EXP 	circle_1: autoDraw = False
+181.3192 	EXP 	circle_2: autoDraw = False
+181.3192 	EXP 	question: autoDraw = False
+181.3192 	EXP 	fixational_point_2: autoDraw = False
+181.3192 	EXP 	fixational_point_2: autoDraw = True
+181.9111 	EXP 	fixational_point_2: autoDraw = False
+181.9278 	EXP 	circle_1: autoDraw = True
+181.9278 	EXP 	circle_2: autoDraw = True
+182.0611 	EXP 	circle_1: autoDraw = False
+182.0611 	EXP 	circle_2: autoDraw = False
+182.1359 	EXP 	question: autoDraw = True
+182.7947 	DATA 	Keypress: right
+182.7964 	EXP 	New trial (rep=3, index=0): None
+182.8192 	EXP 	circle_1: autoDraw = False
+182.8192 	EXP 	circle_2: autoDraw = False
+182.8192 	EXP 	question: autoDraw = False
+182.8192 	EXP 	fixational_point_2: autoDraw = False
+182.8192 	EXP 	fixational_point_2: autoDraw = True
+183.4111 	EXP 	fixational_point_2: autoDraw = False
+183.4277 	EXP 	circle_1: autoDraw = True
+183.4277 	EXP 	circle_2: autoDraw = True
+183.5611 	EXP 	circle_1: autoDraw = False
+183.5611 	EXP 	circle_2: autoDraw = False
+183.6359 	EXP 	question: autoDraw = True
+184.2281 	DATA 	Keypress: down
+184.2311 	EXP 	New trial (rep=4, index=0): None
+184.2525 	EXP 	circle_1: autoDraw = False
+184.2525 	EXP 	circle_2: autoDraw = False
+184.2525 	EXP 	question: autoDraw = False
+184.2525 	EXP 	fixational_point_2: autoDraw = False
+184.2525 	EXP 	fixational_point_2: autoDraw = True
+184.8611 	EXP 	circle_1: autoDraw = True
+184.8611 	EXP 	circle_2: autoDraw = True
+184.8611 	EXP 	fixational_point_2: autoDraw = False
+184.9944 	EXP 	circle_1: autoDraw = False
+184.9944 	EXP 	circle_2: autoDraw = False
+185.0692 	EXP 	question: autoDraw = True
+185.7445 	DATA 	Keypress: down
+185.7463 	EXP 	New trial (rep=5, index=0): None
+185.7691 	EXP 	circle_1: autoDraw = False
+185.7691 	EXP 	circle_2: autoDraw = False
+185.7691 	EXP 	question: autoDraw = False
+185.7691 	EXP 	fixational_point_2: autoDraw = False
+185.7691 	EXP 	fixational_point_2: autoDraw = True
+186.3610 	EXP 	fixational_point_2: autoDraw = False
+186.3777 	EXP 	circle_1: autoDraw = True
+186.3777 	EXP 	circle_2: autoDraw = True
+186.5110 	EXP 	circle_1: autoDraw = False
+186.5110 	EXP 	circle_2: autoDraw = False
+186.5858 	EXP 	question: autoDraw = True
+187.5779 	DATA 	Keypress: down
+187.6025 	EXP 	circle_1: autoDraw = False
+187.6025 	EXP 	circle_2: autoDraw = False
+187.6025 	EXP 	question: autoDraw = False
+187.6025 	EXP 	fixational_point_2: autoDraw = False
+187.6025 	EXP 	text: autoDraw = True
+189.2112 	DATA 	Keypress: space
+189.2116 	EXP 	New trial (rep=0, index=7): {'size': [2.7, 2.7], 'n': 6}
+189.2120 	EXP 	Created sequence: random, trialTypes=1, nReps=6, seed=None
+189.2122 	EXP 	New trial (rep=0, index=0): None
+189.2358 	EXP 	text: autoDraw = False
+189.2358 	EXP 	bigger_circle: size = array([ 2.7,  2.7])
+189.2358 	EXP 	fixational_point_1: autoDraw = True
+189.6610 	EXP 	bigger_circle: autoDraw = True
+189.6610 	EXP 	smaller_circle: autoDraw = True
+189.7777 	EXP 	bigger_circle: autoDraw = False
+189.7777 	EXP 	smaller_circle: autoDraw = False
+190.2114 	EXP 	New trial (rep=1, index=0): None
+190.2358 	EXP 	fixational_point_1: autoDraw = False
+190.2358 	EXP 	bigger_circle: autoDraw = False
+190.2358 	EXP 	smaller_circle: autoDraw = False
+190.2358 	EXP 	fixational_point_1: autoDraw = False
+190.2358 	EXP 	bigger_circle: size = array([ 2.7,  2.7])
+190.2358 	EXP 	fixational_point_1: autoDraw = True
+190.6610 	EXP 	bigger_circle: autoDraw = True
+190.6610 	EXP 	smaller_circle: autoDraw = True
+190.7777 	EXP 	bigger_circle: autoDraw = False
+190.7777 	EXP 	smaller_circle: autoDraw = False
+191.2114 	EXP 	New trial (rep=2, index=0): None
+191.2358 	EXP 	fixational_point_1: autoDraw = False
+191.2358 	EXP 	bigger_circle: autoDraw = False
+191.2358 	EXP 	smaller_circle: autoDraw = False
+191.2358 	EXP 	fixational_point_1: autoDraw = False
+191.2358 	EXP 	bigger_circle: size = array([ 2.7,  2.7])
+191.2358 	EXP 	fixational_point_1: autoDraw = True
+191.6524 	EXP 	bigger_circle: autoDraw = True
+191.6524 	EXP 	smaller_circle: autoDraw = True
+191.7776 	EXP 	bigger_circle: autoDraw = False
+191.7776 	EXP 	smaller_circle: autoDraw = False
+192.2114 	EXP 	New trial (rep=3, index=0): None
+192.2358 	EXP 	fixational_point_1: autoDraw = False
+192.2358 	EXP 	bigger_circle: autoDraw = False
+192.2358 	EXP 	smaller_circle: autoDraw = False
+192.2358 	EXP 	fixational_point_1: autoDraw = False
+192.2358 	EXP 	bigger_circle: size = array([ 2.7,  2.7])
+192.2358 	EXP 	fixational_point_1: autoDraw = True
+192.6524 	EXP 	bigger_circle: autoDraw = True
+192.6524 	EXP 	smaller_circle: autoDraw = True
+192.7776 	EXP 	bigger_circle: autoDraw = False
+192.7776 	EXP 	smaller_circle: autoDraw = False
+193.2114 	EXP 	New trial (rep=4, index=0): None
+193.2357 	EXP 	fixational_point_1: autoDraw = False
+193.2357 	EXP 	bigger_circle: autoDraw = False
+193.2357 	EXP 	smaller_circle: autoDraw = False
+193.2357 	EXP 	fixational_point_1: autoDraw = False
+193.2357 	EXP 	bigger_circle: size = array([ 2.7,  2.7])
+193.2357 	EXP 	fixational_point_1: autoDraw = True
+193.6610 	EXP 	bigger_circle: autoDraw = True
+193.6610 	EXP 	smaller_circle: autoDraw = True
+193.7776 	EXP 	bigger_circle: autoDraw = False
+193.7776 	EXP 	smaller_circle: autoDraw = False
+194.2114 	EXP 	New trial (rep=5, index=0): None
+194.2276 	EXP 	fixational_point_1: autoDraw = False
+194.2276 	EXP 	bigger_circle: autoDraw = False
+194.2276 	EXP 	smaller_circle: autoDraw = False
+194.2276 	EXP 	fixational_point_1: autoDraw = False
+194.2276 	EXP 	bigger_circle: size = array([ 2.7,  2.7])
+194.2276 	EXP 	fixational_point_1: autoDraw = True
+194.6609 	EXP 	bigger_circle: autoDraw = True
+194.6609 	EXP 	smaller_circle: autoDraw = True
+194.7776 	EXP 	bigger_circle: autoDraw = False
+194.7776 	EXP 	smaller_circle: autoDraw = False
+195.2123 	EXP 	Created sequence: random, trialTypes=1, nReps=100, seed=None
+195.2131 	EXP 	New trial (rep=0, index=0): None
+195.2357 	EXP 	fixational_point_1: autoDraw = False
+195.2357 	EXP 	bigger_circle: autoDraw = False
+195.2357 	EXP 	smaller_circle: autoDraw = False
+195.2357 	EXP 	fixational_point_1: autoDraw = False
+195.2357 	EXP 	fixational_point_2: autoDraw = True
+195.8276 	EXP 	fixational_point_2: autoDraw = False
+195.8443 	EXP 	circle_1: autoDraw = True
+195.8443 	EXP 	circle_2: autoDraw = True
+195.9776 	EXP 	circle_1: autoDraw = False
+195.9776 	EXP 	circle_2: autoDraw = False
+196.0524 	EXP 	question: autoDraw = True
+196.7111 	DATA 	Keypress: down
+196.7130 	EXP 	New trial (rep=1, index=0): None
+196.7357 	EXP 	circle_1: autoDraw = False
+196.7357 	EXP 	circle_2: autoDraw = False
+196.7357 	EXP 	question: autoDraw = False
+196.7357 	EXP 	fixational_point_2: autoDraw = False
+196.7357 	EXP 	fixational_point_2: autoDraw = True
+197.3276 	EXP 	fixational_point_2: autoDraw = False
+197.3443 	EXP 	circle_1: autoDraw = True
+197.3443 	EXP 	circle_2: autoDraw = True
+197.4776 	EXP 	circle_1: autoDraw = False
+197.4776 	EXP 	circle_2: autoDraw = False
+197.5524 	EXP 	question: autoDraw = True
+198.0445 	DATA 	Keypress: down
+198.0461 	EXP 	New trial (rep=2, index=0): None
+198.0690 	EXP 	circle_1: autoDraw = False
+198.0690 	EXP 	circle_2: autoDraw = False
+198.0690 	EXP 	question: autoDraw = False
+198.0690 	EXP 	fixational_point_2: autoDraw = False
+198.0690 	EXP 	fixational_point_2: autoDraw = True
+198.6609 	EXP 	fixational_point_2: autoDraw = False
+198.6776 	EXP 	circle_1: autoDraw = True
+198.6776 	EXP 	circle_2: autoDraw = True
+198.8109 	EXP 	circle_1: autoDraw = False
+198.8109 	EXP 	circle_2: autoDraw = False
+198.8857 	EXP 	question: autoDraw = True
+199.7111 	DATA 	Keypress: down
+199.7357 	EXP 	circle_1: autoDraw = False
+199.7357 	EXP 	circle_2: autoDraw = False
+199.7357 	EXP 	question: autoDraw = False
+199.7357 	EXP 	fixational_point_2: autoDraw = False
+199.7357 	EXP 	text: autoDraw = True
+200.8110 	DATA 	Keypress: space
+200.8114 	EXP 	New trial (rep=0, index=8): {'size': [2.9, 2.9], 'n': 1}
+200.8118 	EXP 	Created sequence: random, trialTypes=1, nReps=1, seed=None
+200.8120 	EXP 	New trial (rep=0, index=0): None
+200.8356 	EXP 	text: autoDraw = False
+200.8356 	EXP 	bigger_circle: size = array([ 2.9,  2.9])
+200.8356 	EXP 	fixational_point_1: autoDraw = True
+201.2523 	EXP 	bigger_circle: autoDraw = True
+201.2523 	EXP 	smaller_circle: autoDraw = True
+201.3775 	EXP 	bigger_circle: autoDraw = False
+201.3775 	EXP 	smaller_circle: autoDraw = False
+201.8037 	EXP 	Created sequence: random, trialTypes=1, nReps=100, seed=None
+201.8046 	EXP 	New trial (rep=0, index=0): None
+201.8276 	EXP 	fixational_point_1: autoDraw = False
+201.8276 	EXP 	bigger_circle: autoDraw = False
+201.8276 	EXP 	smaller_circle: autoDraw = False
+201.8276 	EXP 	fixational_point_1: autoDraw = False
+201.8276 	EXP 	fixational_point_2: autoDraw = True
+202.4108 	EXP 	fixational_point_2: autoDraw = False
+202.4275 	EXP 	circle_1: autoDraw = True
+202.4275 	EXP 	circle_2: autoDraw = True
+202.5608 	EXP 	circle_1: autoDraw = False
+202.5608 	EXP 	circle_2: autoDraw = False
+202.6275 	EXP 	question: autoDraw = True
+203.5944 	DATA 	Keypress: down
+203.5963 	EXP 	New trial (rep=1, index=0): None
+203.6190 	EXP 	circle_1: autoDraw = False
+203.6190 	EXP 	circle_2: autoDraw = False
+203.6190 	EXP 	question: autoDraw = False
+203.6190 	EXP 	fixational_point_2: autoDraw = False
+203.6190 	EXP 	fixational_point_2: autoDraw = True
+204.2108 	EXP 	fixational_point_2: autoDraw = False
+204.2275 	EXP 	circle_1: autoDraw = True
+204.2275 	EXP 	circle_2: autoDraw = True
+204.3609 	EXP 	circle_1: autoDraw = False
+204.3609 	EXP 	circle_2: autoDraw = False
+204.4356 	EXP 	question: autoDraw = True
+205.1777 	DATA 	Keypress: down
+205.1795 	EXP 	New trial (rep=2, index=0): None
+205.2023 	EXP 	circle_1: autoDraw = False
+205.2023 	EXP 	circle_2: autoDraw = False
+205.2023 	EXP 	question: autoDraw = False
+205.2023 	EXP 	fixational_point_2: autoDraw = False
+205.2023 	EXP 	fixational_point_2: autoDraw = True
+205.7942 	EXP 	fixational_point_2: autoDraw = False
+205.8108 	EXP 	circle_1: autoDraw = True
+205.8108 	EXP 	circle_2: autoDraw = True
+205.9442 	EXP 	circle_1: autoDraw = False
+205.9442 	EXP 	circle_2: autoDraw = False
+206.0190 	EXP 	question: autoDraw = True
+206.5777 	DATA 	Keypress: down
+206.6023 	EXP 	circle_1: autoDraw = False
+206.6023 	EXP 	circle_2: autoDraw = False
+206.6023 	EXP 	question: autoDraw = False
+206.6023 	EXP 	fixational_point_2: autoDraw = False
+206.6023 	EXP 	text: autoDraw = True
+207.4610 	DATA 	Keypress: space
+207.4614 	EXP 	New trial (rep=0, index=9): {'size': [2.9, 2.9], 'n': 6}
+207.4618 	EXP 	Created sequence: random, trialTypes=1, nReps=6, seed=None
+207.4620 	EXP 	New trial (rep=0, index=0): None
+207.4856 	EXP 	text: autoDraw = False
+207.4856 	EXP 	bigger_circle: size = array([ 2.9,  2.9])
+207.4856 	EXP 	fixational_point_1: autoDraw = True
+207.9108 	EXP 	bigger_circle: autoDraw = True
+207.9108 	EXP 	smaller_circle: autoDraw = True
+208.0275 	EXP 	bigger_circle: autoDraw = False
+208.0275 	EXP 	smaller_circle: autoDraw = False
+208.4612 	EXP 	New trial (rep=1, index=0): None
+208.4775 	EXP 	fixational_point_1: autoDraw = False
+208.4775 	EXP 	bigger_circle: autoDraw = False
+208.4775 	EXP 	smaller_circle: autoDraw = False
+208.4775 	EXP 	fixational_point_1: autoDraw = False
+208.4775 	EXP 	bigger_circle: size = array([ 2.9,  2.9])
+208.4775 	EXP 	fixational_point_1: autoDraw = True
+208.9108 	EXP 	bigger_circle: autoDraw = True
+208.9108 	EXP 	smaller_circle: autoDraw = True
+209.0275 	EXP 	bigger_circle: autoDraw = False
+209.0275 	EXP 	smaller_circle: autoDraw = False
+209.4612 	EXP 	New trial (rep=2, index=0): None
+209.4856 	EXP 	fixational_point_1: autoDraw = False
+209.4856 	EXP 	bigger_circle: autoDraw = False
+209.4856 	EXP 	smaller_circle: autoDraw = False
+209.4856 	EXP 	fixational_point_1: autoDraw = False
+209.4856 	EXP 	bigger_circle: size = array([ 2.9,  2.9])
+209.4856 	EXP 	fixational_point_1: autoDraw = True
+209.9108 	EXP 	bigger_circle: autoDraw = True
+209.9108 	EXP 	smaller_circle: autoDraw = True
+210.0275 	EXP 	bigger_circle: autoDraw = False
+210.0275 	EXP 	smaller_circle: autoDraw = False
+210.4612 	EXP 	New trial (rep=3, index=0): None
+210.4856 	EXP 	fixational_point_1: autoDraw = False
+210.4856 	EXP 	bigger_circle: autoDraw = False
+210.4856 	EXP 	smaller_circle: autoDraw = False
+210.4856 	EXP 	fixational_point_1: autoDraw = False
+210.4856 	EXP 	bigger_circle: size = array([ 2.9,  2.9])
+210.4856 	EXP 	fixational_point_1: autoDraw = True
+210.9108 	EXP 	bigger_circle: autoDraw = True
+210.9108 	EXP 	smaller_circle: autoDraw = True
+211.0274 	EXP 	bigger_circle: autoDraw = False
+211.0274 	EXP 	smaller_circle: autoDraw = False
+211.4612 	EXP 	New trial (rep=4, index=0): None
+211.4774 	EXP 	fixational_point_1: autoDraw = False
+211.4774 	EXP 	bigger_circle: autoDraw = False
+211.4774 	EXP 	smaller_circle: autoDraw = False
+211.4774 	EXP 	fixational_point_1: autoDraw = False
+211.4774 	EXP 	bigger_circle: size = array([ 2.9,  2.9])
+211.4774 	EXP 	fixational_point_1: autoDraw = True
+211.9108 	EXP 	bigger_circle: autoDraw = True
+211.9108 	EXP 	smaller_circle: autoDraw = True
+212.0274 	EXP 	bigger_circle: autoDraw = False
+212.0274 	EXP 	smaller_circle: autoDraw = False
+212.4612 	EXP 	New trial (rep=5, index=0): None
+212.4774 	EXP 	fixational_point_1: autoDraw = False
+212.4774 	EXP 	bigger_circle: autoDraw = False
+212.4774 	EXP 	smaller_circle: autoDraw = False
+212.4774 	EXP 	fixational_point_1: autoDraw = False
+212.4774 	EXP 	bigger_circle: size = array([ 2.9,  2.9])
+212.4774 	EXP 	fixational_point_1: autoDraw = True
+212.9022 	EXP 	bigger_circle: autoDraw = True
+212.9022 	EXP 	smaller_circle: autoDraw = True
+213.0274 	EXP 	bigger_circle: autoDraw = False
+213.0274 	EXP 	smaller_circle: autoDraw = False
+213.4537 	EXP 	Created sequence: random, trialTypes=1, nReps=100, seed=None
+213.4545 	EXP 	New trial (rep=0, index=0): None
+213.4774 	EXP 	fixational_point_1: autoDraw = False
+213.4774 	EXP 	bigger_circle: autoDraw = False
+213.4774 	EXP 	smaller_circle: autoDraw = False
+213.4774 	EXP 	fixational_point_1: autoDraw = False
+213.4774 	EXP 	fixational_point_2: autoDraw = True
+214.0774 	EXP 	fixational_point_2: autoDraw = False
+214.0941 	EXP 	circle_1: autoDraw = True
+214.0941 	EXP 	circle_2: autoDraw = True
+214.2107 	EXP 	circle_1: autoDraw = False
+214.2107 	EXP 	circle_2: autoDraw = False
+214.2774 	EXP 	question: autoDraw = True
+214.8776 	DATA 	Keypress: down
+214.8796 	EXP 	New trial (rep=1, index=0): None
+214.9021 	EXP 	circle_1: autoDraw = False
+214.9021 	EXP 	circle_2: autoDraw = False
+214.9021 	EXP 	question: autoDraw = False
+214.9021 	EXP 	fixational_point_2: autoDraw = False
+214.9021 	EXP 	fixational_point_2: autoDraw = True
+215.4941 	EXP 	fixational_point_2: autoDraw = False
+215.5107 	EXP 	circle_1: autoDraw = True
+215.5107 	EXP 	circle_2: autoDraw = True
+215.6441 	EXP 	circle_1: autoDraw = False
+215.6441 	EXP 	circle_2: autoDraw = False
+215.7188 	EXP 	question: autoDraw = True
+216.2943 	DATA 	Keypress: down
+216.2960 	EXP 	New trial (rep=2, index=0): None
+216.3188 	EXP 	circle_1: autoDraw = False
+216.3188 	EXP 	circle_2: autoDraw = False
+216.3188 	EXP 	question: autoDraw = False
+216.3188 	EXP 	fixational_point_2: autoDraw = False
+216.3188 	EXP 	fixational_point_2: autoDraw = True
+216.9107 	EXP 	fixational_point_2: autoDraw = False
+216.9274 	EXP 	circle_1: autoDraw = True
+216.9274 	EXP 	circle_2: autoDraw = True
+217.0607 	EXP 	circle_1: autoDraw = False
+217.0607 	EXP 	circle_2: autoDraw = False
+217.1355 	EXP 	question: autoDraw = True
+217.5443 	DATA 	Keypress: down
+217.5688 	EXP 	circle_1: autoDraw = False
+217.5688 	EXP 	circle_2: autoDraw = False
+217.5688 	EXP 	question: autoDraw = False
+217.5688 	EXP 	fixational_point_2: autoDraw = False
+217.5688 	EXP 	text: autoDraw = True
+218.7942 	DATA 	Keypress: space
+218.7946 	EXP 	New trial (rep=0, index=10): {'size': [2.9, 2.9], 'n': 5}
+218.7950 	EXP 	Created sequence: random, trialTypes=1, nReps=5, seed=None
+218.7952 	EXP 	New trial (rep=0, index=0): None
+218.8188 	EXP 	text: autoDraw = False
+218.8188 	EXP 	bigger_circle: size = array([ 2.9,  2.9])
+218.8188 	EXP 	fixational_point_1: autoDraw = True
+219.2355 	EXP 	bigger_circle: autoDraw = True
+219.2355 	EXP 	smaller_circle: autoDraw = True
+219.3607 	EXP 	bigger_circle: autoDraw = False
+219.3607 	EXP 	smaller_circle: autoDraw = False
+219.7944 	EXP 	New trial (rep=1, index=0): None
+219.8188 	EXP 	fixational_point_1: autoDraw = False
+219.8188 	EXP 	bigger_circle: autoDraw = False
+219.8188 	EXP 	smaller_circle: autoDraw = False
+219.8188 	EXP 	fixational_point_1: autoDraw = False
+219.8188 	EXP 	bigger_circle: size = array([ 2.9,  2.9])
+219.8188 	EXP 	fixational_point_1: autoDraw = True
+220.2440 	EXP 	bigger_circle: autoDraw = True
+220.2440 	EXP 	smaller_circle: autoDraw = True
+220.3607 	EXP 	bigger_circle: autoDraw = False
+220.3607 	EXP 	smaller_circle: autoDraw = False
+220.7944 	EXP 	New trial (rep=2, index=0): None
+220.8188 	EXP 	fixational_point_1: autoDraw = False
+220.8188 	EXP 	bigger_circle: autoDraw = False
+220.8188 	EXP 	smaller_circle: autoDraw = False
+220.8188 	EXP 	fixational_point_1: autoDraw = False
+220.8188 	EXP 	bigger_circle: size = array([ 2.9,  2.9])
+220.8188 	EXP 	fixational_point_1: autoDraw = True
+221.2355 	EXP 	bigger_circle: autoDraw = True
+221.2355 	EXP 	smaller_circle: autoDraw = True
+221.3607 	EXP 	bigger_circle: autoDraw = False
+221.3607 	EXP 	smaller_circle: autoDraw = False
+221.7944 	EXP 	New trial (rep=3, index=0): None
+221.8188 	EXP 	fixational_point_1: autoDraw = False
+221.8188 	EXP 	bigger_circle: autoDraw = False
+221.8188 	EXP 	smaller_circle: autoDraw = False
+221.8188 	EXP 	fixational_point_1: autoDraw = False
+221.8188 	EXP 	bigger_circle: size = array([ 2.9,  2.9])
+221.8188 	EXP 	fixational_point_1: autoDraw = True
+222.2354 	EXP 	bigger_circle: autoDraw = True
+222.2354 	EXP 	smaller_circle: autoDraw = True
+222.3607 	EXP 	bigger_circle: autoDraw = False
+222.3607 	EXP 	smaller_circle: autoDraw = False
+222.7859 	EXP 	New trial (rep=4, index=0): None
+222.8107 	EXP 	fixational_point_1: autoDraw = False
+222.8107 	EXP 	bigger_circle: autoDraw = False
+222.8107 	EXP 	smaller_circle: autoDraw = False
+222.8107 	EXP 	fixational_point_1: autoDraw = False
+222.8107 	EXP 	bigger_circle: size = array([ 2.9,  2.9])
+222.8107 	EXP 	fixational_point_1: autoDraw = True
+223.2106 	EXP 	bigger_circle: autoDraw = True
+223.2106 	EXP 	smaller_circle: autoDraw = True
+223.3440 	EXP 	bigger_circle: autoDraw = False
+223.3440 	EXP 	smaller_circle: autoDraw = False
+223.7788 	EXP 	Created sequence: random, trialTypes=1, nReps=100, seed=None
+223.7795 	EXP 	New trial (rep=0, index=0): None
+223.8021 	EXP 	fixational_point_1: autoDraw = False
+223.8021 	EXP 	bigger_circle: autoDraw = False
+223.8021 	EXP 	smaller_circle: autoDraw = False
+223.8021 	EXP 	fixational_point_1: autoDraw = False
+223.8021 	EXP 	fixational_point_2: autoDraw = True
+224.3940 	EXP 	fixational_point_2: autoDraw = False
+224.4106 	EXP 	circle_1: autoDraw = True
+224.4106 	EXP 	circle_2: autoDraw = True
+224.5440 	EXP 	circle_1: autoDraw = False
+224.5440 	EXP 	circle_2: autoDraw = False
+224.6188 	EXP 	question: autoDraw = True
+225.1442 	DATA 	Keypress: down
+225.1461 	EXP 	New trial (rep=1, index=0): None
+225.1687 	EXP 	circle_1: autoDraw = False
+225.1687 	EXP 	circle_2: autoDraw = False
+225.1687 	EXP 	question: autoDraw = False
+225.1687 	EXP 	fixational_point_2: autoDraw = False
+225.1687 	EXP 	fixational_point_2: autoDraw = True
+225.7606 	EXP 	fixational_point_2: autoDraw = False
+225.7773 	EXP 	circle_1: autoDraw = True
+225.7773 	EXP 	circle_2: autoDraw = True
+225.9106 	EXP 	circle_1: autoDraw = False
+225.9106 	EXP 	circle_2: autoDraw = False
+225.9854 	EXP 	question: autoDraw = True
+226.3942 	DATA 	Keypress: down
+226.3959 	EXP 	New trial (rep=2, index=0): None
+226.4187 	EXP 	circle_1: autoDraw = False
+226.4187 	EXP 	circle_2: autoDraw = False
+226.4187 	EXP 	question: autoDraw = False
+226.4187 	EXP 	fixational_point_2: autoDraw = False
+226.4187 	EXP 	fixational_point_2: autoDraw = True
+227.0106 	EXP 	fixational_point_2: autoDraw = False
+227.0273 	EXP 	circle_1: autoDraw = True
+227.0273 	EXP 	circle_2: autoDraw = True
+227.1606 	EXP 	circle_1: autoDraw = False
+227.1606 	EXP 	circle_2: autoDraw = False
+227.2354 	EXP 	question: autoDraw = True
+227.6275 	DATA 	Keypress: down
+227.6521 	EXP 	circle_1: autoDraw = False
+227.6521 	EXP 	circle_2: autoDraw = False
+227.6521 	EXP 	question: autoDraw = False
+227.6521 	EXP 	fixational_point_2: autoDraw = False
+227.6521 	EXP 	text: autoDraw = True
+228.6108 	DATA 	Keypress: space
+228.6112 	EXP 	New trial (rep=0, index=11): {'size': [2.8, 2.8], 'n': 3}
+228.6115 	EXP 	Created sequence: random, trialTypes=1, nReps=3, seed=None
+228.6118 	EXP 	New trial (rep=0, index=0): None
+228.6354 	EXP 	text: autoDraw = False
+228.6354 	EXP 	bigger_circle: size = array([ 2.8,  2.8])
+228.6354 	EXP 	fixational_point_1: autoDraw = True
+229.0606 	EXP 	bigger_circle: autoDraw = True
+229.0606 	EXP 	smaller_circle: autoDraw = True
+229.1773 	EXP 	bigger_circle: autoDraw = False
+229.1773 	EXP 	smaller_circle: autoDraw = False
+229.6110 	EXP 	New trial (rep=1, index=0): None
+229.6354 	EXP 	fixational_point_1: autoDraw = False
+229.6354 	EXP 	bigger_circle: autoDraw = False
+229.6354 	EXP 	smaller_circle: autoDraw = False
+229.6354 	EXP 	fixational_point_1: autoDraw = False
+229.6354 	EXP 	bigger_circle: size = array([ 2.8,  2.8])
+229.6354 	EXP 	fixational_point_1: autoDraw = True
+230.0606 	EXP 	bigger_circle: autoDraw = True
+230.0606 	EXP 	smaller_circle: autoDraw = True
+230.1773 	EXP 	bigger_circle: autoDraw = False
+230.1773 	EXP 	smaller_circle: autoDraw = False
+230.6110 	EXP 	New trial (rep=2, index=0): None
+230.6354 	EXP 	fixational_point_1: autoDraw = False
+230.6354 	EXP 	bigger_circle: autoDraw = False
+230.6354 	EXP 	smaller_circle: autoDraw = False
+230.6354 	EXP 	fixational_point_1: autoDraw = False
+230.6354 	EXP 	bigger_circle: size = array([ 2.8,  2.8])
+230.6354 	EXP 	fixational_point_1: autoDraw = True
+231.0606 	EXP 	bigger_circle: autoDraw = True
+231.0606 	EXP 	smaller_circle: autoDraw = True
+231.1772 	EXP 	bigger_circle: autoDraw = False
+231.1772 	EXP 	smaller_circle: autoDraw = False
+231.6120 	EXP 	Created sequence: random, trialTypes=1, nReps=100, seed=None
+231.6128 	EXP 	New trial (rep=0, index=0): None
+231.6272 	EXP 	fixational_point_1: autoDraw = False
+231.6272 	EXP 	bigger_circle: autoDraw = False
+231.6272 	EXP 	smaller_circle: autoDraw = False
+231.6272 	EXP 	fixational_point_1: autoDraw = False
+231.6272 	EXP 	fixational_point_2: autoDraw = True
+232.2272 	EXP 	fixational_point_2: autoDraw = False
+232.2439 	EXP 	circle_1: autoDraw = True
+232.2439 	EXP 	circle_2: autoDraw = True
+232.3772 	EXP 	circle_1: autoDraw = False
+232.3772 	EXP 	circle_2: autoDraw = False
+232.4520 	EXP 	question: autoDraw = True
+233.4941 	DATA 	Keypress: down
+233.4960 	EXP 	New trial (rep=1, index=0): None
+233.5186 	EXP 	circle_1: autoDraw = False
+233.5186 	EXP 	circle_2: autoDraw = False
+233.5186 	EXP 	question: autoDraw = False
+233.5186 	EXP 	fixational_point_2: autoDraw = False
+233.5186 	EXP 	fixational_point_2: autoDraw = True
+234.1105 	EXP 	fixational_point_2: autoDraw = False
+234.1272 	EXP 	circle_1: autoDraw = True
+234.1272 	EXP 	circle_2: autoDraw = True
+234.2605 	EXP 	circle_1: autoDraw = False
+234.2605 	EXP 	circle_2: autoDraw = False
+234.3272 	EXP 	question: autoDraw = True
+234.9441 	DATA 	Keypress: down
+234.9458 	EXP 	New trial (rep=2, index=0): None
+234.9686 	EXP 	circle_1: autoDraw = False
+234.9686 	EXP 	circle_2: autoDraw = False
+234.9686 	EXP 	question: autoDraw = False
+234.9686 	EXP 	fixational_point_2: autoDraw = False
+234.9686 	EXP 	fixational_point_2: autoDraw = True
+235.5605 	EXP 	fixational_point_2: autoDraw = False
+235.5772 	EXP 	circle_1: autoDraw = True
+235.5772 	EXP 	circle_2: autoDraw = True
+235.7105 	EXP 	circle_1: autoDraw = False
+235.7105 	EXP 	circle_2: autoDraw = False
+235.7853 	EXP 	question: autoDraw = True
+236.2607 	DATA 	Keypress: down
+236.2853 	EXP 	circle_1: autoDraw = False
+236.2853 	EXP 	circle_2: autoDraw = False
+236.2853 	EXP 	question: autoDraw = False
+236.2853 	EXP 	fixational_point_2: autoDraw = False
+236.2853 	EXP 	text: autoDraw = True
+237.1274 	DATA 	Keypress: space
+237.1277 	EXP 	New trial (rep=0, index=12): {'size': [2.8, 2.8], 'n': 1}
+237.1281 	EXP 	Created sequence: random, trialTypes=1, nReps=1, seed=None
+237.1283 	EXP 	New trial (rep=0, index=0): None
+237.1520 	EXP 	text: autoDraw = False
+237.1520 	EXP 	bigger_circle: size = array([ 2.8,  2.8])
+237.1520 	EXP 	fixational_point_1: autoDraw = True
+237.5772 	EXP 	bigger_circle: autoDraw = True
+237.5772 	EXP 	smaller_circle: autoDraw = True
+237.6938 	EXP 	bigger_circle: autoDraw = False
+237.6938 	EXP 	smaller_circle: autoDraw = False
+238.1286 	EXP 	Created sequence: random, trialTypes=1, nReps=100, seed=None
+238.1293 	EXP 	New trial (rep=0, index=0): None
+238.1519 	EXP 	fixational_point_1: autoDraw = False
+238.1519 	EXP 	bigger_circle: autoDraw = False
+238.1519 	EXP 	smaller_circle: autoDraw = False
+238.1519 	EXP 	fixational_point_1: autoDraw = False
+238.1519 	EXP 	fixational_point_2: autoDraw = True
+238.7438 	EXP 	fixational_point_2: autoDraw = False
+238.7605 	EXP 	circle_1: autoDraw = True
+238.7605 	EXP 	circle_2: autoDraw = True
+238.8938 	EXP 	circle_1: autoDraw = False
+238.8938 	EXP 	circle_2: autoDraw = False
+238.9686 	EXP 	question: autoDraw = True
+239.5440 	DATA 	Keypress: down
+239.5459 	EXP 	New trial (rep=1, index=0): None
+239.5686 	EXP 	circle_1: autoDraw = False
+239.5686 	EXP 	circle_2: autoDraw = False
+239.5686 	EXP 	question: autoDraw = False
+239.5686 	EXP 	fixational_point_2: autoDraw = False
+239.5686 	EXP 	fixational_point_2: autoDraw = True
+240.1605 	EXP 	fixational_point_2: autoDraw = False
+240.1772 	EXP 	circle_1: autoDraw = True
+240.1772 	EXP 	circle_2: autoDraw = True
+240.3105 	EXP 	circle_1: autoDraw = False
+240.3105 	EXP 	circle_2: autoDraw = False
+240.3853 	EXP 	question: autoDraw = True
+240.8607 	DATA 	Keypress: down
+240.8624 	EXP 	New trial (rep=2, index=0): None
+240.8853 	EXP 	circle_1: autoDraw = False
+240.8853 	EXP 	circle_2: autoDraw = False
+240.8853 	EXP 	question: autoDraw = False
+240.8853 	EXP 	fixational_point_2: autoDraw = False
+240.8853 	EXP 	fixational_point_2: autoDraw = True
+241.4771 	EXP 	fixational_point_2: autoDraw = False
+241.4938 	EXP 	circle_1: autoDraw = True
+241.4938 	EXP 	circle_2: autoDraw = True
+241.6271 	EXP 	circle_1: autoDraw = False
+241.6271 	EXP 	circle_2: autoDraw = False
+241.7019 	EXP 	question: autoDraw = True
+242.1440 	DATA 	Keypress: down
+242.1686 	EXP 	circle_1: autoDraw = False
+242.1686 	EXP 	circle_2: autoDraw = False
+242.1686 	EXP 	question: autoDraw = False
+242.1686 	EXP 	fixational_point_2: autoDraw = False
+242.1686 	EXP 	text: autoDraw = True
+242.8940 	DATA 	Keypress: space
+242.8943 	EXP 	New trial (rep=0, index=13): {'size': [2.7, 2.7], 'n': 2}
+242.8947 	EXP 	Created sequence: random, trialTypes=1, nReps=2, seed=None
+242.8949 	EXP 	New trial (rep=0, index=0): None
+242.9186 	EXP 	text: autoDraw = False
+242.9186 	EXP 	bigger_circle: size = array([ 2.7,  2.7])
+242.9186 	EXP 	fixational_point_1: autoDraw = True
+243.3352 	EXP 	bigger_circle: autoDraw = True
+243.3352 	EXP 	smaller_circle: autoDraw = True
+243.4604 	EXP 	bigger_circle: autoDraw = False
+243.4604 	EXP 	smaller_circle: autoDraw = False
+243.8856 	EXP 	New trial (rep=1, index=0): None
+243.9104 	EXP 	fixational_point_1: autoDraw = False
+243.9104 	EXP 	bigger_circle: autoDraw = False
+243.9104 	EXP 	smaller_circle: autoDraw = False
+243.9104 	EXP 	fixational_point_1: autoDraw = False
+243.9104 	EXP 	bigger_circle: size = array([ 2.7,  2.7])
+243.9104 	EXP 	fixational_point_1: autoDraw = True
+244.3104 	EXP 	bigger_circle: autoDraw = True
+244.3104 	EXP 	smaller_circle: autoDraw = True
+244.4438 	EXP 	bigger_circle: autoDraw = False
+244.4438 	EXP 	smaller_circle: autoDraw = False
+244.8866 	EXP 	Created sequence: random, trialTypes=1, nReps=100, seed=None
+244.8874 	EXP 	New trial (rep=0, index=0): None
+244.9104 	EXP 	fixational_point_1: autoDraw = False
+244.9104 	EXP 	bigger_circle: autoDraw = False
+244.9104 	EXP 	smaller_circle: autoDraw = False
+244.9104 	EXP 	fixational_point_1: autoDraw = False
+244.9104 	EXP 	fixational_point_2: autoDraw = True
+245.4937 	EXP 	fixational_point_2: autoDraw = False
+245.5104 	EXP 	circle_1: autoDraw = True
+245.5104 	EXP 	circle_2: autoDraw = True
+245.6437 	EXP 	circle_1: autoDraw = False
+245.6437 	EXP 	circle_2: autoDraw = False
+245.7104 	EXP 	question: autoDraw = True
+246.2939 	DATA 	Keypress: down
+246.2959 	EXP 	New trial (rep=1, index=0): None
+246.3185 	EXP 	circle_1: autoDraw = False
+246.3185 	EXP 	circle_2: autoDraw = False
+246.3185 	EXP 	question: autoDraw = False
+246.3185 	EXP 	fixational_point_2: autoDraw = False
+246.3185 	EXP 	fixational_point_2: autoDraw = True
+246.9104 	EXP 	fixational_point_2: autoDraw = False
+246.9271 	EXP 	circle_1: autoDraw = True
+246.9271 	EXP 	circle_2: autoDraw = True
+247.0604 	EXP 	circle_1: autoDraw = False
+247.0604 	EXP 	circle_2: autoDraw = False
+247.1352 	EXP 	question: autoDraw = True
+247.7273 	DATA 	Keypress: left
+247.7290 	EXP 	New trial (rep=2, index=0): None
+247.7518 	EXP 	circle_1: autoDraw = False
+247.7518 	EXP 	circle_2: autoDraw = False
+247.7518 	EXP 	question: autoDraw = False
+247.7518 	EXP 	fixational_point_2: autoDraw = False
+247.7518 	EXP 	fixational_point_2: autoDraw = True
+248.3437 	EXP 	fixational_point_2: autoDraw = False
+248.3604 	EXP 	circle_1: autoDraw = True
+248.3604 	EXP 	circle_2: autoDraw = True
+248.4937 	EXP 	circle_1: autoDraw = False
+248.4937 	EXP 	circle_2: autoDraw = False
+248.5685 	EXP 	question: autoDraw = True
+249.2939 	DATA 	Keypress: down
+249.2957 	EXP 	New trial (rep=3, index=0): None
+249.3185 	EXP 	circle_1: autoDraw = False
+249.3185 	EXP 	circle_2: autoDraw = False
+249.3185 	EXP 	question: autoDraw = False
+249.3185 	EXP 	fixational_point_2: autoDraw = False
+249.3185 	EXP 	fixational_point_2: autoDraw = True
+249.9104 	EXP 	fixational_point_2: autoDraw = False
+249.9270 	EXP 	circle_1: autoDraw = True
+249.9270 	EXP 	circle_2: autoDraw = True
+250.0604 	EXP 	circle_1: autoDraw = False
+250.0604 	EXP 	circle_2: autoDraw = False
+250.1352 	EXP 	question: autoDraw = True
+250.8772 	DATA 	Keypress: down
+250.8790 	EXP 	New trial (rep=4, index=0): None
+250.9018 	EXP 	circle_1: autoDraw = False
+250.9018 	EXP 	circle_2: autoDraw = False
+250.9018 	EXP 	question: autoDraw = False
+250.9018 	EXP 	fixational_point_2: autoDraw = False
+250.9018 	EXP 	fixational_point_2: autoDraw = True
+251.4937 	EXP 	fixational_point_2: autoDraw = False
+251.5104 	EXP 	circle_1: autoDraw = True
+251.5104 	EXP 	circle_2: autoDraw = True
+251.6437 	EXP 	circle_1: autoDraw = False
+251.6437 	EXP 	circle_2: autoDraw = False
+251.7185 	EXP 	question: autoDraw = True
+252.8272 	DATA 	Keypress: right
+252.8290 	EXP 	New trial (rep=5, index=0): None
+252.8518 	EXP 	circle_1: autoDraw = False
+252.8518 	EXP 	circle_2: autoDraw = False
+252.8518 	EXP 	question: autoDraw = False
+252.8518 	EXP 	fixational_point_2: autoDraw = False
+252.8518 	EXP 	fixational_point_2: autoDraw = True
+253.4437 	EXP 	fixational_point_2: autoDraw = False
+253.4603 	EXP 	circle_1: autoDraw = True
+253.4603 	EXP 	circle_2: autoDraw = True
+253.5937 	EXP 	circle_1: autoDraw = False
+253.5937 	EXP 	circle_2: autoDraw = False
+253.6684 	EXP 	question: autoDraw = True
+254.1772 	DATA 	Keypress: down
+254.1790 	EXP 	New trial (rep=6, index=0): None
+254.2018 	EXP 	circle_1: autoDraw = False
+254.2018 	EXP 	circle_2: autoDraw = False
+254.2018 	EXP 	question: autoDraw = False
+254.2018 	EXP 	fixational_point_2: autoDraw = False
+254.2018 	EXP 	fixational_point_2: autoDraw = True
+254.7936 	EXP 	fixational_point_2: autoDraw = False
+254.8103 	EXP 	circle_1: autoDraw = True
+254.8103 	EXP 	circle_2: autoDraw = True
+254.9436 	EXP 	circle_1: autoDraw = False
+254.9436 	EXP 	circle_2: autoDraw = False
+255.0184 	EXP 	question: autoDraw = True
+255.4439 	DATA 	Keypress: down
+255.4456 	EXP 	New trial (rep=7, index=0): None
+255.4684 	EXP 	circle_1: autoDraw = False
+255.4684 	EXP 	circle_2: autoDraw = False
+255.4684 	EXP 	question: autoDraw = False
+255.4684 	EXP 	fixational_point_2: autoDraw = False
+255.4684 	EXP 	fixational_point_2: autoDraw = True
+256.0603 	EXP 	fixational_point_2: autoDraw = False
+256.0770 	EXP 	circle_1: autoDraw = True
+256.0770 	EXP 	circle_2: autoDraw = True
+256.2103 	EXP 	circle_1: autoDraw = False
+256.2103 	EXP 	circle_2: autoDraw = False
+256.2851 	EXP 	question: autoDraw = True
+256.6605 	DATA 	Keypress: down
+256.6851 	EXP 	circle_1: autoDraw = False
+256.6851 	EXP 	circle_2: autoDraw = False
+256.6851 	EXP 	question: autoDraw = False
+256.6851 	EXP 	fixational_point_2: autoDraw = False
+256.6851 	EXP 	text: autoDraw = True
+257.5772 	DATA 	Keypress: space
+257.5775 	EXP 	New trial (rep=0, index=14): {'size': [3.0, 3.0], 'n': 4}
+257.5779 	EXP 	Created sequence: random, trialTypes=1, nReps=4, seed=None
+257.5781 	EXP 	New trial (rep=0, index=0): None
+257.6017 	EXP 	text: autoDraw = False
+257.6017 	EXP 	bigger_circle: size = array([ 3.,  3.])
+257.6017 	EXP 	fixational_point_1: autoDraw = True
+258.0269 	EXP 	bigger_circle: autoDraw = True
+258.0269 	EXP 	smaller_circle: autoDraw = True
+258.1436 	EXP 	bigger_circle: autoDraw = False
+258.1436 	EXP 	smaller_circle: autoDraw = False
+258.5774 	EXP 	New trial (rep=1, index=0): None
+258.6017 	EXP 	fixational_point_1: autoDraw = False
+258.6017 	EXP 	bigger_circle: autoDraw = False
+258.6017 	EXP 	smaller_circle: autoDraw = False
+258.6017 	EXP 	fixational_point_1: autoDraw = False
+258.6017 	EXP 	bigger_circle: size = array([ 3.,  3.])
+258.6017 	EXP 	fixational_point_1: autoDraw = True
+259.0269 	EXP 	bigger_circle: autoDraw = True
+259.0269 	EXP 	smaller_circle: autoDraw = True
+259.1436 	EXP 	bigger_circle: autoDraw = False
+259.1436 	EXP 	smaller_circle: autoDraw = False
+259.5773 	EXP 	New trial (rep=2, index=0): None
+259.6017 	EXP 	fixational_point_1: autoDraw = False
+259.6017 	EXP 	bigger_circle: autoDraw = False
+259.6017 	EXP 	smaller_circle: autoDraw = False
+259.6017 	EXP 	fixational_point_1: autoDraw = False
+259.6017 	EXP 	bigger_circle: size = array([ 3.,  3.])
+259.6017 	EXP 	fixational_point_1: autoDraw = True
+260.0269 	EXP 	bigger_circle: autoDraw = True
+260.0269 	EXP 	smaller_circle: autoDraw = True
+260.1436 	EXP 	bigger_circle: autoDraw = False
+260.1436 	EXP 	smaller_circle: autoDraw = False
+260.5773 	EXP 	New trial (rep=3, index=0): None
+260.6017 	EXP 	fixational_point_1: autoDraw = False
+260.6017 	EXP 	bigger_circle: autoDraw = False
+260.6017 	EXP 	smaller_circle: autoDraw = False
+260.6017 	EXP 	fixational_point_1: autoDraw = False
+260.6017 	EXP 	bigger_circle: size = array([ 3.,  3.])
+260.6017 	EXP 	fixational_point_1: autoDraw = True
+261.0269 	EXP 	bigger_circle: autoDraw = True
+261.0269 	EXP 	smaller_circle: autoDraw = True
+261.1435 	EXP 	bigger_circle: autoDraw = False
+261.1435 	EXP 	smaller_circle: autoDraw = False
+261.5783 	EXP 	Created sequence: random, trialTypes=1, nReps=100, seed=None
+261.5791 	EXP 	New trial (rep=0, index=0): None
+261.6017 	EXP 	fixational_point_1: autoDraw = False
+261.6017 	EXP 	bigger_circle: autoDraw = False
+261.6017 	EXP 	smaller_circle: autoDraw = False
+261.6017 	EXP 	fixational_point_1: autoDraw = False
+261.6017 	EXP 	fixational_point_2: autoDraw = True
+262.2017 	EXP 	fixational_point_2: autoDraw = False
+262.2269 	EXP 	circle_1: autoDraw = True
+262.2269 	EXP 	circle_2: autoDraw = True
+262.3436 	EXP 	circle_1: autoDraw = False
+262.3436 	EXP 	circle_2: autoDraw = False
+262.4184 	EXP 	question: autoDraw = True
+262.9771 	DATA 	Keypress: left
+262.9791 	EXP 	New trial (rep=1, index=0): None
+263.0017 	EXP 	circle_1: autoDraw = False
+263.0017 	EXP 	circle_2: autoDraw = False
+263.0017 	EXP 	question: autoDraw = False
+263.0017 	EXP 	fixational_point_2: autoDraw = False
+263.0017 	EXP 	fixational_point_2: autoDraw = True
+263.5936 	EXP 	fixational_point_2: autoDraw = False
+263.6102 	EXP 	circle_1: autoDraw = True
+263.6102 	EXP 	circle_2: autoDraw = True
+263.7435 	EXP 	circle_1: autoDraw = False
+263.7435 	EXP 	circle_2: autoDraw = False
+263.8183 	EXP 	question: autoDraw = True
+264.5438 	DATA 	Keypress: left
+264.5455 	EXP 	New trial (rep=2, index=0): None
+264.5683 	EXP 	circle_1: autoDraw = False
+264.5683 	EXP 	circle_2: autoDraw = False
+264.5683 	EXP 	question: autoDraw = False
+264.5683 	EXP 	fixational_point_2: autoDraw = False
+264.5683 	EXP 	fixational_point_2: autoDraw = True
+265.1602 	EXP 	fixational_point_2: autoDraw = False
+265.1769 	EXP 	circle_1: autoDraw = True
+265.1769 	EXP 	circle_2: autoDraw = True
+265.3102 	EXP 	circle_1: autoDraw = False
+265.3102 	EXP 	circle_2: autoDraw = False
+265.3935 	EXP 	question: autoDraw = True
+265.6438 	DATA 	Keypress: down
+265.6455 	EXP 	New trial (rep=3, index=0): None
+265.6683 	EXP 	circle_1: autoDraw = False
+265.6683 	EXP 	circle_2: autoDraw = False
+265.6683 	EXP 	question: autoDraw = False
+265.6683 	EXP 	fixational_point_2: autoDraw = False
+265.6683 	EXP 	fixational_point_2: autoDraw = True
+266.2602 	EXP 	fixational_point_2: autoDraw = False
+266.2769 	EXP 	circle_1: autoDraw = True
+266.2769 	EXP 	circle_2: autoDraw = True
+266.4102 	EXP 	circle_1: autoDraw = False
+266.4102 	EXP 	circle_2: autoDraw = False
+266.4850 	EXP 	question: autoDraw = True
+267.9104 	DATA 	Keypress: left
+267.9121 	EXP 	New trial (rep=4, index=0): None
+267.9350 	EXP 	circle_1: autoDraw = False
+267.9350 	EXP 	circle_2: autoDraw = False
+267.9350 	EXP 	question: autoDraw = False
+267.9350 	EXP 	fixational_point_2: autoDraw = False
+267.9350 	EXP 	fixational_point_2: autoDraw = True
+268.5268 	EXP 	fixational_point_2: autoDraw = False
+268.5435 	EXP 	circle_1: autoDraw = True
+268.5435 	EXP 	circle_2: autoDraw = True
+268.6768 	EXP 	circle_1: autoDraw = False
+268.6768 	EXP 	circle_2: autoDraw = False
+268.7516 	EXP 	question: autoDraw = True
+269.2937 	DATA 	Keypress: left
+269.2955 	EXP 	New trial (rep=5, index=0): None
+269.3182 	EXP 	circle_1: autoDraw = False
+269.3182 	EXP 	circle_2: autoDraw = False
+269.3182 	EXP 	question: autoDraw = False
+269.3182 	EXP 	fixational_point_2: autoDraw = False
+269.3182 	EXP 	fixational_point_2: autoDraw = True
+269.9101 	EXP 	fixational_point_2: autoDraw = False
+269.9268 	EXP 	circle_1: autoDraw = True
+269.9268 	EXP 	circle_2: autoDraw = True
+270.0602 	EXP 	circle_1: autoDraw = False
+270.0602 	EXP 	circle_2: autoDraw = False
+270.1349 	EXP 	question: autoDraw = True
+270.6770 	DATA 	Keypress: down
+270.6788 	EXP 	New trial (rep=6, index=0): None
+270.7016 	EXP 	circle_1: autoDraw = False
+270.7016 	EXP 	circle_2: autoDraw = False
+270.7016 	EXP 	question: autoDraw = False
+270.7016 	EXP 	fixational_point_2: autoDraw = False
+270.7016 	EXP 	fixational_point_2: autoDraw = True
+271.2935 	EXP 	fixational_point_2: autoDraw = False
+271.3101 	EXP 	circle_1: autoDraw = True
+271.3101 	EXP 	circle_2: autoDraw = True
+271.4435 	EXP 	circle_1: autoDraw = False
+271.4435 	EXP 	circle_2: autoDraw = False
+271.5183 	EXP 	question: autoDraw = True
+271.8770 	DATA 	Keypress: down
+271.8788 	EXP 	New trial (rep=7, index=0): None
+271.9016 	EXP 	circle_1: autoDraw = False
+271.9016 	EXP 	circle_2: autoDraw = False
+271.9016 	EXP 	question: autoDraw = False
+271.9016 	EXP 	fixational_point_2: autoDraw = False
+271.9016 	EXP 	fixational_point_2: autoDraw = True
+272.4935 	EXP 	fixational_point_2: autoDraw = False
+272.5101 	EXP 	circle_1: autoDraw = True
+272.5101 	EXP 	circle_2: autoDraw = True
+272.6435 	EXP 	circle_1: autoDraw = False
+272.6435 	EXP 	circle_2: autoDraw = False
+272.7182 	EXP 	question: autoDraw = True
+273.2103 	DATA 	Keypress: down
+273.2349 	EXP 	circle_1: autoDraw = False
+273.2349 	EXP 	circle_2: autoDraw = False
+273.2349 	EXP 	question: autoDraw = False
+273.2349 	EXP 	fixational_point_2: autoDraw = False
+273.2349 	EXP 	text: autoDraw = True
+273.9437 	DATA 	Keypress: space
+273.9440 	EXP 	New trial (rep=0, index=15): {'size': [2.9, 2.9], 'n': 3}
+273.9444 	EXP 	Created sequence: random, trialTypes=1, nReps=3, seed=None
+273.9446 	EXP 	New trial (rep=0, index=0): None
+273.9682 	EXP 	text: autoDraw = False
+273.9682 	EXP 	bigger_circle: size = array([ 2.9,  2.9])
+273.9682 	EXP 	fixational_point_1: autoDraw = True
+274.3934 	EXP 	bigger_circle: autoDraw = True
+274.3934 	EXP 	smaller_circle: autoDraw = True
+274.5101 	EXP 	bigger_circle: autoDraw = False
+274.5101 	EXP 	smaller_circle: autoDraw = False
+274.9438 	EXP 	New trial (rep=1, index=0): None
+274.9682 	EXP 	fixational_point_1: autoDraw = False
+274.9682 	EXP 	bigger_circle: autoDraw = False
+274.9682 	EXP 	smaller_circle: autoDraw = False
+274.9682 	EXP 	fixational_point_1: autoDraw = False
+274.9682 	EXP 	bigger_circle: size = array([ 2.9,  2.9])
+274.9682 	EXP 	fixational_point_1: autoDraw = True
+275.3934 	EXP 	bigger_circle: autoDraw = True
+275.3934 	EXP 	smaller_circle: autoDraw = True
+275.5101 	EXP 	bigger_circle: autoDraw = False
+275.5101 	EXP 	smaller_circle: autoDraw = False
+275.9438 	EXP 	New trial (rep=2, index=0): None
+275.9682 	EXP 	fixational_point_1: autoDraw = False
+275.9682 	EXP 	bigger_circle: autoDraw = False
+275.9682 	EXP 	smaller_circle: autoDraw = False
+275.9682 	EXP 	fixational_point_1: autoDraw = False
+275.9682 	EXP 	bigger_circle: size = array([ 2.9,  2.9])
+275.9682 	EXP 	fixational_point_1: autoDraw = True
+276.3934 	EXP 	bigger_circle: autoDraw = True
+276.3934 	EXP 	smaller_circle: autoDraw = True
+276.5101 	EXP 	bigger_circle: autoDraw = False
+276.5101 	EXP 	smaller_circle: autoDraw = False
+276.9448 	EXP 	Created sequence: random, trialTypes=1, nReps=100, seed=None
+276.9456 	EXP 	New trial (rep=0, index=0): None
+276.9682 	EXP 	fixational_point_1: autoDraw = False
+276.9682 	EXP 	bigger_circle: autoDraw = False
+276.9682 	EXP 	smaller_circle: autoDraw = False
+276.9682 	EXP 	fixational_point_1: autoDraw = False
+276.9682 	EXP 	fixational_point_2: autoDraw = True
+277.5601 	EXP 	fixational_point_2: autoDraw = False
+277.5767 	EXP 	circle_1: autoDraw = True
+277.5767 	EXP 	circle_2: autoDraw = True
+277.7101 	EXP 	circle_1: autoDraw = False
+277.7101 	EXP 	circle_2: autoDraw = False
+277.7848 	EXP 	question: autoDraw = True
+278.9436 	DATA 	Keypress: left
+278.9455 	EXP 	New trial (rep=1, index=0): None
+278.9682 	EXP 	circle_1: autoDraw = False
+278.9682 	EXP 	circle_2: autoDraw = False
+278.9682 	EXP 	question: autoDraw = False
+278.9682 	EXP 	fixational_point_2: autoDraw = False
+278.9682 	EXP 	fixational_point_2: autoDraw = True
+279.5601 	EXP 	fixational_point_2: autoDraw = False
+279.5767 	EXP 	circle_1: autoDraw = True
+279.5767 	EXP 	circle_2: autoDraw = True
+279.7101 	EXP 	circle_1: autoDraw = False
+279.7101 	EXP 	circle_2: autoDraw = False
+279.7848 	EXP 	question: autoDraw = True
+280.6103 	DATA 	Keypress: down
+280.6120 	EXP 	New trial (rep=2, index=0): None
+280.6348 	EXP 	circle_1: autoDraw = False
+280.6348 	EXP 	circle_2: autoDraw = False
+280.6348 	EXP 	question: autoDraw = False
+280.6348 	EXP 	fixational_point_2: autoDraw = False
+280.6348 	EXP 	fixational_point_2: autoDraw = True
+281.2267 	EXP 	fixational_point_2: autoDraw = False
+281.2433 	EXP 	circle_1: autoDraw = True
+281.2433 	EXP 	circle_2: autoDraw = True
+281.3767 	EXP 	circle_1: autoDraw = False
+281.3767 	EXP 	circle_2: autoDraw = False
+281.4515 	EXP 	question: autoDraw = True
+282.8269 	DATA 	Keypress: down
+282.8287 	EXP 	New trial (rep=3, index=0): None
+282.8515 	EXP 	circle_1: autoDraw = False
+282.8515 	EXP 	circle_2: autoDraw = False
+282.8515 	EXP 	question: autoDraw = False
+282.8515 	EXP 	fixational_point_2: autoDraw = False
+282.8515 	EXP 	fixational_point_2: autoDraw = True
+283.4433 	EXP 	fixational_point_2: autoDraw = False
+283.4600 	EXP 	circle_1: autoDraw = True
+283.4600 	EXP 	circle_2: autoDraw = True
+283.5933 	EXP 	circle_1: autoDraw = False
+283.5933 	EXP 	circle_2: autoDraw = False
+283.6681 	EXP 	question: autoDraw = True
+284.1102 	DATA 	Keypress: down
+284.1348 	EXP 	circle_1: autoDraw = False
+284.1348 	EXP 	circle_2: autoDraw = False
+284.1348 	EXP 	question: autoDraw = False
+284.1348 	EXP 	fixational_point_2: autoDraw = False
+284.1348 	EXP 	text: autoDraw = True
+285.0769 	DATA 	Keypress: space
+285.0772 	EXP 	New trial (rep=0, index=16): {'size': [2.7, 2.7], 'n': 1}
+285.0775 	EXP 	Created sequence: random, trialTypes=1, nReps=1, seed=None
+285.0778 	EXP 	New trial (rep=0, index=0): None
+285.1014 	EXP 	text: autoDraw = False
+285.1014 	EXP 	bigger_circle: size = array([ 2.7,  2.7])
+285.1014 	EXP 	fixational_point_1: autoDraw = True
+285.5266 	EXP 	bigger_circle: autoDraw = True
+285.5266 	EXP 	smaller_circle: autoDraw = True
+285.6433 	EXP 	bigger_circle: autoDraw = False
+285.6433 	EXP 	smaller_circle: autoDraw = False
+286.0781 	EXP 	Created sequence: random, trialTypes=1, nReps=100, seed=None
+286.0788 	EXP 	New trial (rep=0, index=0): None
+286.1014 	EXP 	fixational_point_1: autoDraw = False
+286.1014 	EXP 	bigger_circle: autoDraw = False
+286.1014 	EXP 	smaller_circle: autoDraw = False
+286.1014 	EXP 	fixational_point_1: autoDraw = False
+286.1014 	EXP 	fixational_point_2: autoDraw = True
+286.7014 	EXP 	fixational_point_2: autoDraw = False
+286.7266 	EXP 	circle_1: autoDraw = True
+286.7266 	EXP 	circle_2: autoDraw = True
+286.8433 	EXP 	circle_1: autoDraw = False
+286.8433 	EXP 	circle_2: autoDraw = False
+286.9181 	EXP 	question: autoDraw = True
+288.1268 	DATA 	Keypress: down
+288.1288 	EXP 	New trial (rep=1, index=0): None
+288.1514 	EXP 	circle_1: autoDraw = False
+288.1514 	EXP 	circle_2: autoDraw = False
+288.1514 	EXP 	question: autoDraw = False
+288.1514 	EXP 	fixational_point_2: autoDraw = False
+288.1514 	EXP 	fixational_point_2: autoDraw = True
+288.7433 	EXP 	fixational_point_2: autoDraw = False
+288.7599 	EXP 	circle_1: autoDraw = True
+288.7599 	EXP 	circle_2: autoDraw = True
+288.8933 	EXP 	circle_1: autoDraw = False
+288.8933 	EXP 	circle_2: autoDraw = False
+288.9681 	EXP 	question: autoDraw = True
+289.3268 	DATA 	Keypress: down
+289.3286 	EXP 	New trial (rep=2, index=0): None
+289.3514 	EXP 	circle_1: autoDraw = False
+289.3514 	EXP 	circle_2: autoDraw = False
+289.3514 	EXP 	question: autoDraw = False
+289.3514 	EXP 	fixational_point_2: autoDraw = False
+289.3514 	EXP 	fixational_point_2: autoDraw = True
+289.9433 	EXP 	fixational_point_2: autoDraw = False
+289.9599 	EXP 	circle_1: autoDraw = True
+289.9599 	EXP 	circle_2: autoDraw = True
+290.0933 	EXP 	circle_1: autoDraw = False
+290.0933 	EXP 	circle_2: autoDraw = False
+290.1680 	EXP 	question: autoDraw = True
+290.3435 	DATA 	Keypress: down
+290.3680 	EXP 	circle_1: autoDraw = False
+290.3680 	EXP 	circle_2: autoDraw = False
+290.3680 	EXP 	question: autoDraw = False
+290.3680 	EXP 	fixational_point_2: autoDraw = False
+290.3680 	EXP 	text: autoDraw = True
+291.0601 	DATA 	Keypress: space
+291.0605 	EXP 	New trial (rep=0, index=17): {'size': [3.0, 3.0], 'n': 6}
+291.0609 	EXP 	Created sequence: random, trialTypes=1, nReps=6, seed=None
+291.0611 	EXP 	New trial (rep=0, index=0): None
+291.0847 	EXP 	text: autoDraw = False
+291.0847 	EXP 	bigger_circle: size = array([ 3.,  3.])
+291.0847 	EXP 	fixational_point_1: autoDraw = True
+291.5099 	EXP 	bigger_circle: autoDraw = True
+291.5099 	EXP 	smaller_circle: autoDraw = True
+291.6266 	EXP 	bigger_circle: autoDraw = False
+291.6266 	EXP 	smaller_circle: autoDraw = False
+292.0603 	EXP 	New trial (rep=1, index=0): None
+292.0847 	EXP 	fixational_point_1: autoDraw = False
+292.0847 	EXP 	bigger_circle: autoDraw = False
+292.0847 	EXP 	smaller_circle: autoDraw = False
+292.0847 	EXP 	fixational_point_1: autoDraw = False
+292.0847 	EXP 	bigger_circle: size = array([ 3.,  3.])
+292.0847 	EXP 	fixational_point_1: autoDraw = True
+292.5014 	EXP 	bigger_circle: autoDraw = True
+292.5014 	EXP 	smaller_circle: autoDraw = True
+292.6266 	EXP 	bigger_circle: autoDraw = False
+292.6266 	EXP 	smaller_circle: autoDraw = False
+293.0604 	EXP 	New trial (rep=2, index=0): None
+293.0847 	EXP 	fixational_point_1: autoDraw = False
+293.0847 	EXP 	bigger_circle: autoDraw = False
+293.0847 	EXP 	smaller_circle: autoDraw = False
+293.0847 	EXP 	fixational_point_1: autoDraw = False
+293.0847 	EXP 	bigger_circle: size = array([ 3.,  3.])
+293.0847 	EXP 	fixational_point_1: autoDraw = True
+293.5099 	EXP 	bigger_circle: autoDraw = True
+293.5099 	EXP 	smaller_circle: autoDraw = True
+293.6266 	EXP 	bigger_circle: autoDraw = False
+293.6266 	EXP 	smaller_circle: autoDraw = False
+294.0603 	EXP 	New trial (rep=3, index=0): None
+294.0847 	EXP 	fixational_point_1: autoDraw = False
+294.0847 	EXP 	bigger_circle: autoDraw = False
+294.0847 	EXP 	smaller_circle: autoDraw = False
+294.0847 	EXP 	fixational_point_1: autoDraw = False
+294.0847 	EXP 	bigger_circle: size = array([ 3.,  3.])
+294.0847 	EXP 	fixational_point_1: autoDraw = True
+294.5099 	EXP 	bigger_circle: autoDraw = True
+294.5099 	EXP 	smaller_circle: autoDraw = True
+294.6265 	EXP 	bigger_circle: autoDraw = False
+294.6265 	EXP 	smaller_circle: autoDraw = False
+295.0603 	EXP 	New trial (rep=4, index=0): None
+295.0847 	EXP 	fixational_point_1: autoDraw = False
+295.0847 	EXP 	bigger_circle: autoDraw = False
+295.0847 	EXP 	smaller_circle: autoDraw = False
+295.0847 	EXP 	fixational_point_1: autoDraw = False
+295.0847 	EXP 	bigger_circle: size = array([ 3.,  3.])
+295.0847 	EXP 	fixational_point_1: autoDraw = True
+295.5013 	EXP 	bigger_circle: autoDraw = True
+295.5013 	EXP 	smaller_circle: autoDraw = True
+295.6265 	EXP 	bigger_circle: autoDraw = False
+295.6265 	EXP 	smaller_circle: autoDraw = False
+296.0603 	EXP 	New trial (rep=5, index=0): None
+296.0846 	EXP 	fixational_point_1: autoDraw = False
+296.0846 	EXP 	bigger_circle: autoDraw = False
+296.0846 	EXP 	smaller_circle: autoDraw = False
+296.0846 	EXP 	fixational_point_1: autoDraw = False
+296.0846 	EXP 	bigger_circle: size = array([ 3.,  3.])
+296.0846 	EXP 	fixational_point_1: autoDraw = True
+296.5013 	EXP 	bigger_circle: autoDraw = True
+296.5013 	EXP 	smaller_circle: autoDraw = True
+296.6265 	EXP 	bigger_circle: autoDraw = False
+296.6265 	EXP 	smaller_circle: autoDraw = False
+297.0613 	EXP 	Created sequence: random, trialTypes=1, nReps=100, seed=None
+297.0621 	EXP 	New trial (rep=0, index=0): None
+297.0846 	EXP 	fixational_point_1: autoDraw = False
+297.0846 	EXP 	bigger_circle: autoDraw = False
+297.0846 	EXP 	smaller_circle: autoDraw = False
+297.0846 	EXP 	fixational_point_1: autoDraw = False
+297.0846 	EXP 	fixational_point_2: autoDraw = True
+297.6765 	EXP 	fixational_point_2: autoDraw = False
+297.6932 	EXP 	circle_1: autoDraw = True
+297.6932 	EXP 	circle_2: autoDraw = True
+297.8265 	EXP 	circle_1: autoDraw = False
+297.8265 	EXP 	circle_2: autoDraw = False
+297.9013 	EXP 	question: autoDraw = True
+298.6767 	DATA 	Keypress: left
+298.6787 	EXP 	New trial (rep=1, index=0): None
+298.7013 	EXP 	circle_1: autoDraw = False
+298.7013 	EXP 	circle_2: autoDraw = False
+298.7013 	EXP 	question: autoDraw = False
+298.7013 	EXP 	fixational_point_2: autoDraw = False
+298.7013 	EXP 	fixational_point_2: autoDraw = True
+299.2932 	EXP 	fixational_point_2: autoDraw = False
+299.3098 	EXP 	circle_1: autoDraw = True
+299.3098 	EXP 	circle_2: autoDraw = True
+299.4432 	EXP 	circle_1: autoDraw = False
+299.4432 	EXP 	circle_2: autoDraw = False
+299.5179 	EXP 	question: autoDraw = True
+299.9767 	DATA 	Keypress: down
+299.9785 	EXP 	New trial (rep=2, index=0): None
+300.0013 	EXP 	circle_1: autoDraw = False
+300.0013 	EXP 	circle_2: autoDraw = False
+300.0013 	EXP 	question: autoDraw = False
+300.0013 	EXP 	fixational_point_2: autoDraw = False
+300.0013 	EXP 	fixational_point_2: autoDraw = True
+300.5932 	EXP 	fixational_point_2: autoDraw = False
+300.6098 	EXP 	circle_1: autoDraw = True
+300.6098 	EXP 	circle_2: autoDraw = True
+300.7431 	EXP 	circle_1: autoDraw = False
+300.7431 	EXP 	circle_2: autoDraw = False
+300.8179 	EXP 	question: autoDraw = True
+301.4100 	DATA 	Keypress: left
+301.4118 	EXP 	New trial (rep=3, index=0): None
+301.4346 	EXP 	circle_1: autoDraw = False
+301.4346 	EXP 	circle_2: autoDraw = False
+301.4346 	EXP 	question: autoDraw = False
+301.4346 	EXP 	fixational_point_2: autoDraw = False
+301.4346 	EXP 	fixational_point_2: autoDraw = True
+302.0265 	EXP 	fixational_point_2: autoDraw = False
+302.0431 	EXP 	circle_1: autoDraw = True
+302.0431 	EXP 	circle_2: autoDraw = True
+302.1765 	EXP 	circle_1: autoDraw = False
+302.1765 	EXP 	circle_2: autoDraw = False
+302.2512 	EXP 	question: autoDraw = True
+302.8267 	DATA 	Keypress: down
+302.8285 	EXP 	New trial (rep=4, index=0): None
+302.8512 	EXP 	circle_1: autoDraw = False
+302.8512 	EXP 	circle_2: autoDraw = False
+302.8512 	EXP 	question: autoDraw = False
+302.8512 	EXP 	fixational_point_2: autoDraw = False
+302.8512 	EXP 	fixational_point_2: autoDraw = True
+303.4431 	EXP 	fixational_point_2: autoDraw = False
+303.4598 	EXP 	circle_1: autoDraw = True
+303.4598 	EXP 	circle_2: autoDraw = True
+303.5931 	EXP 	circle_1: autoDraw = False
+303.5931 	EXP 	circle_2: autoDraw = False
+303.6679 	EXP 	question: autoDraw = True
+304.4766 	DATA 	Keypress: down
+304.4784 	EXP 	New trial (rep=5, index=0): None
+304.5012 	EXP 	circle_1: autoDraw = False
+304.5012 	EXP 	circle_2: autoDraw = False
+304.5012 	EXP 	question: autoDraw = False
+304.5012 	EXP 	fixational_point_2: autoDraw = False
+304.5012 	EXP 	fixational_point_2: autoDraw = True
+305.0931 	EXP 	fixational_point_2: autoDraw = False
+305.1097 	EXP 	circle_1: autoDraw = True
+305.1097 	EXP 	circle_2: autoDraw = True
+305.2431 	EXP 	circle_1: autoDraw = False
+305.2431 	EXP 	circle_2: autoDraw = False
+305.3179 	EXP 	question: autoDraw = True
+305.6933 	DATA 	Keypress: down
+305.7179 	EXP 	circle_1: autoDraw = False
+305.7179 	EXP 	circle_2: autoDraw = False
+305.7179 	EXP 	question: autoDraw = False
+305.7179 	EXP 	fixational_point_2: autoDraw = False
+305.7179 	EXP 	text: autoDraw = True
+306.6433 	DATA 	Keypress: space
+306.6437 	EXP 	New trial (rep=0, index=18): {'size': [2.8, 2.8], 'n': 6}
+306.6440 	EXP 	Created sequence: random, trialTypes=1, nReps=6, seed=None
+306.6443 	EXP 	New trial (rep=0, index=0): None
+306.6679 	EXP 	text: autoDraw = False
+306.6679 	EXP 	bigger_circle: size = array([ 2.8,  2.8])
+306.6679 	EXP 	fixational_point_1: autoDraw = True
+307.0931 	EXP 	bigger_circle: autoDraw = True
+307.0931 	EXP 	smaller_circle: autoDraw = True
+307.2097 	EXP 	bigger_circle: autoDraw = False
+307.2097 	EXP 	smaller_circle: autoDraw = False
+307.6435 	EXP 	New trial (rep=1, index=0): None
+307.6679 	EXP 	fixational_point_1: autoDraw = False
+307.6679 	EXP 	bigger_circle: autoDraw = False
+307.6679 	EXP 	smaller_circle: autoDraw = False
+307.6679 	EXP 	fixational_point_1: autoDraw = False
+307.6679 	EXP 	bigger_circle: size = array([ 2.8,  2.8])
+307.6679 	EXP 	fixational_point_1: autoDraw = True
+308.0845 	EXP 	bigger_circle: autoDraw = True
+308.0845 	EXP 	smaller_circle: autoDraw = True
+308.2097 	EXP 	bigger_circle: autoDraw = False
+308.2097 	EXP 	smaller_circle: autoDraw = False
+308.6435 	EXP 	New trial (rep=2, index=0): None
+308.6678 	EXP 	fixational_point_1: autoDraw = False
+308.6678 	EXP 	bigger_circle: autoDraw = False
+308.6678 	EXP 	smaller_circle: autoDraw = False
+308.6678 	EXP 	fixational_point_1: autoDraw = False
+308.6678 	EXP 	bigger_circle: size = array([ 2.8,  2.8])
+308.6678 	EXP 	fixational_point_1: autoDraw = True
+309.0845 	EXP 	bigger_circle: autoDraw = True
+309.0845 	EXP 	smaller_circle: autoDraw = True
+309.2264 	EXP 	bigger_circle: autoDraw = False
+309.2264 	EXP 	smaller_circle: autoDraw = False
+309.6435 	EXP 	New trial (rep=3, index=0): None
+309.6678 	EXP 	fixational_point_1: autoDraw = False
+309.6678 	EXP 	bigger_circle: autoDraw = False
+309.6678 	EXP 	smaller_circle: autoDraw = False
+309.6678 	EXP 	fixational_point_1: autoDraw = False
+309.6678 	EXP 	bigger_circle: size = array([ 2.8,  2.8])
+309.6678 	EXP 	fixational_point_1: autoDraw = True
+310.0930 	EXP 	bigger_circle: autoDraw = True
+310.0930 	EXP 	smaller_circle: autoDraw = True
+310.2097 	EXP 	bigger_circle: autoDraw = False
+310.2097 	EXP 	smaller_circle: autoDraw = False
+310.6435 	EXP 	New trial (rep=4, index=0): None
+310.6597 	EXP 	fixational_point_1: autoDraw = False
+310.6597 	EXP 	bigger_circle: autoDraw = False
+310.6597 	EXP 	smaller_circle: autoDraw = False
+310.6597 	EXP 	fixational_point_1: autoDraw = False
+310.6597 	EXP 	bigger_circle: size = array([ 2.8,  2.8])
+310.6597 	EXP 	fixational_point_1: autoDraw = True
+311.0845 	EXP 	bigger_circle: autoDraw = True
+311.0845 	EXP 	smaller_circle: autoDraw = True
+311.2097 	EXP 	bigger_circle: autoDraw = False
+311.2097 	EXP 	smaller_circle: autoDraw = False
+311.6349 	EXP 	New trial (rep=5, index=0): None
+311.6597 	EXP 	fixational_point_1: autoDraw = False
+311.6597 	EXP 	bigger_circle: autoDraw = False
+311.6597 	EXP 	smaller_circle: autoDraw = False
+311.6597 	EXP 	fixational_point_1: autoDraw = False
+311.6597 	EXP 	bigger_circle: size = array([ 2.8,  2.8])
+311.6597 	EXP 	fixational_point_1: autoDraw = True
+312.0764 	EXP 	bigger_circle: autoDraw = True
+312.0764 	EXP 	smaller_circle: autoDraw = True
+312.1930 	EXP 	bigger_circle: autoDraw = False
+312.1930 	EXP 	smaller_circle: autoDraw = False
+312.6359 	EXP 	Created sequence: random, trialTypes=1, nReps=100, seed=None
+312.6367 	EXP 	New trial (rep=0, index=0): None
+312.6597 	EXP 	fixational_point_1: autoDraw = False
+312.6597 	EXP 	bigger_circle: autoDraw = False
+312.6597 	EXP 	smaller_circle: autoDraw = False
+312.6597 	EXP 	fixational_point_1: autoDraw = False
+312.6597 	EXP 	fixational_point_2: autoDraw = True
+313.2597 	EXP 	fixational_point_2: autoDraw = False
+313.2764 	EXP 	circle_1: autoDraw = True
+313.2764 	EXP 	circle_2: autoDraw = True
+313.3930 	EXP 	circle_1: autoDraw = False
+313.3930 	EXP 	circle_2: autoDraw = False
+313.4597 	EXP 	question: autoDraw = True
+314.5099 	DATA 	Keypress: left
+314.5119 	EXP 	New trial (rep=1, index=0): None
+314.5344 	EXP 	circle_1: autoDraw = False
+314.5344 	EXP 	circle_2: autoDraw = False
+314.5344 	EXP 	question: autoDraw = False
+314.5344 	EXP 	fixational_point_2: autoDraw = False
+314.5344 	EXP 	fixational_point_2: autoDraw = True
+315.1263 	EXP 	fixational_point_2: autoDraw = False
+315.1430 	EXP 	circle_1: autoDraw = True
+315.1430 	EXP 	circle_2: autoDraw = True
+315.2763 	EXP 	circle_1: autoDraw = False
+315.2763 	EXP 	circle_2: autoDraw = False
+315.3511 	EXP 	question: autoDraw = True
+315.8598 	DATA 	Keypress: down
+315.8616 	EXP 	New trial (rep=2, index=0): None
+315.8844 	EXP 	circle_1: autoDraw = False
+315.8844 	EXP 	circle_2: autoDraw = False
+315.8844 	EXP 	question: autoDraw = False
+315.8844 	EXP 	fixational_point_2: autoDraw = False
+315.8844 	EXP 	fixational_point_2: autoDraw = True
+316.4763 	EXP 	fixational_point_2: autoDraw = False
+316.4930 	EXP 	circle_1: autoDraw = True
+316.4930 	EXP 	circle_2: autoDraw = True
+316.6263 	EXP 	circle_1: autoDraw = False
+316.6263 	EXP 	circle_2: autoDraw = False
+316.7011 	EXP 	question: autoDraw = True
+316.9932 	DATA 	Keypress: down
+316.9950 	EXP 	New trial (rep=3, index=0): None
+317.0177 	EXP 	circle_1: autoDraw = False
+317.0177 	EXP 	circle_2: autoDraw = False
+317.0177 	EXP 	question: autoDraw = False
+317.0177 	EXP 	fixational_point_2: autoDraw = False
+317.0177 	EXP 	fixational_point_2: autoDraw = True
+317.6096 	EXP 	fixational_point_2: autoDraw = False
+317.6263 	EXP 	circle_1: autoDraw = True
+317.6263 	EXP 	circle_2: autoDraw = True
+317.7596 	EXP 	circle_1: autoDraw = False
+317.7596 	EXP 	circle_2: autoDraw = False
+317.8344 	EXP 	question: autoDraw = True
+318.3765 	DATA 	Keypress: down
+318.4011 	EXP 	circle_1: autoDraw = False
+318.4011 	EXP 	circle_2: autoDraw = False
+318.4011 	EXP 	question: autoDraw = False
+318.4011 	EXP 	fixational_point_2: autoDraw = False
+318.4011 	EXP 	text: autoDraw = True
+319.7265 	DATA 	Keypress: space
+319.7268 	EXP 	New trial (rep=0, index=19): {'size': [2.7, 2.7], 'n': 5}
+319.7272 	EXP 	Created sequence: random, trialTypes=1, nReps=5, seed=None
+319.7274 	EXP 	New trial (rep=0, index=0): None
+319.7511 	EXP 	text: autoDraw = False
+319.7511 	EXP 	bigger_circle: size = array([ 2.7,  2.7])
+319.7511 	EXP 	fixational_point_1: autoDraw = True
+320.1596 	EXP 	bigger_circle: autoDraw = True
+320.1596 	EXP 	smaller_circle: autoDraw = True
+320.2929 	EXP 	bigger_circle: autoDraw = False
+320.2929 	EXP 	smaller_circle: autoDraw = False
+320.7267 	EXP 	New trial (rep=1, index=0): None
+320.7511 	EXP 	fixational_point_1: autoDraw = False
+320.7511 	EXP 	bigger_circle: autoDraw = False
+320.7511 	EXP 	smaller_circle: autoDraw = False
+320.7511 	EXP 	fixational_point_1: autoDraw = False
+320.7511 	EXP 	bigger_circle: size = array([ 2.7,  2.7])
+320.7511 	EXP 	fixational_point_1: autoDraw = True
+321.1763 	EXP 	bigger_circle: autoDraw = True
+321.1763 	EXP 	smaller_circle: autoDraw = True
+321.2929 	EXP 	bigger_circle: autoDraw = False
+321.2929 	EXP 	smaller_circle: autoDraw = False
+321.7267 	EXP 	New trial (rep=2, index=0): None
+321.7510 	EXP 	fixational_point_1: autoDraw = False
+321.7510 	EXP 	bigger_circle: autoDraw = False
+321.7510 	EXP 	smaller_circle: autoDraw = False
+321.7510 	EXP 	fixational_point_1: autoDraw = False
+321.7510 	EXP 	bigger_circle: size = array([ 2.7,  2.7])
+321.7510 	EXP 	fixational_point_1: autoDraw = True
+322.1763 	EXP 	bigger_circle: autoDraw = True
+322.1763 	EXP 	smaller_circle: autoDraw = True
+322.2929 	EXP 	bigger_circle: autoDraw = False
+322.2929 	EXP 	smaller_circle: autoDraw = False
+322.7267 	EXP 	New trial (rep=3, index=0): None
+322.7510 	EXP 	fixational_point_1: autoDraw = False
+322.7510 	EXP 	bigger_circle: autoDraw = False
+322.7510 	EXP 	smaller_circle: autoDraw = False
+322.7510 	EXP 	fixational_point_1: autoDraw = False
+322.7510 	EXP 	bigger_circle: size = array([ 2.7,  2.7])
+322.7510 	EXP 	fixational_point_1: autoDraw = True
+323.1762 	EXP 	bigger_circle: autoDraw = True
+323.1762 	EXP 	smaller_circle: autoDraw = True
+323.2929 	EXP 	bigger_circle: autoDraw = False
+323.2929 	EXP 	smaller_circle: autoDraw = False
+323.7267 	EXP 	New trial (rep=4, index=0): None
+323.7510 	EXP 	fixational_point_1: autoDraw = False
+323.7510 	EXP 	bigger_circle: autoDraw = False
+323.7510 	EXP 	smaller_circle: autoDraw = False
+323.7510 	EXP 	fixational_point_1: autoDraw = False
+323.7510 	EXP 	bigger_circle: size = array([ 2.7,  2.7])
+323.7510 	EXP 	fixational_point_1: autoDraw = True
+324.1762 	EXP 	bigger_circle: autoDraw = True
+324.1762 	EXP 	smaller_circle: autoDraw = True
+324.2929 	EXP 	bigger_circle: autoDraw = False
+324.2929 	EXP 	smaller_circle: autoDraw = False
+324.7277 	EXP 	Created sequence: random, trialTypes=1, nReps=100, seed=None
+324.7285 	EXP 	New trial (rep=0, index=0): None
+324.7510 	EXP 	fixational_point_1: autoDraw = False
+324.7510 	EXP 	bigger_circle: autoDraw = False
+324.7510 	EXP 	smaller_circle: autoDraw = False
+324.7510 	EXP 	fixational_point_1: autoDraw = False
+324.7510 	EXP 	fixational_point_2: autoDraw = True
+325.3429 	EXP 	fixational_point_2: autoDraw = False
+325.3677 	EXP 	circle_1: autoDraw = True
+325.3677 	EXP 	circle_2: autoDraw = True
+325.4929 	EXP 	circle_1: autoDraw = False
+325.4929 	EXP 	circle_2: autoDraw = False
+325.5677 	EXP 	question: autoDraw = True
+326.0430 	DATA 	Keypress: left
+326.0452 	EXP 	New trial (rep=1, index=0): None
+326.0677 	EXP 	circle_1: autoDraw = False
+326.0677 	EXP 	circle_2: autoDraw = False
+326.0677 	EXP 	question: autoDraw = False
+326.0677 	EXP 	fixational_point_2: autoDraw = False
+326.0677 	EXP 	fixational_point_2: autoDraw = True
+326.6595 	EXP 	fixational_point_2: autoDraw = False
+326.6762 	EXP 	circle_1: autoDraw = True
+326.6762 	EXP 	circle_2: autoDraw = True
+326.8095 	EXP 	circle_1: autoDraw = False
+326.8095 	EXP 	circle_2: autoDraw = False
+326.8843 	EXP 	question: autoDraw = True
+327.3764 	DATA 	Keypress: down
+327.3783 	EXP 	New trial (rep=2, index=0): None
+327.4010 	EXP 	circle_1: autoDraw = False
+327.4010 	EXP 	circle_2: autoDraw = False
+327.4010 	EXP 	question: autoDraw = False
+327.4010 	EXP 	fixational_point_2: autoDraw = False
+327.4010 	EXP 	fixational_point_2: autoDraw = True
+327.9929 	EXP 	fixational_point_2: autoDraw = False
+328.0095 	EXP 	circle_1: autoDraw = True
+328.0095 	EXP 	circle_2: autoDraw = True
+328.1428 	EXP 	circle_1: autoDraw = False
+328.1428 	EXP 	circle_2: autoDraw = False
+328.2176 	EXP 	question: autoDraw = True
+328.6597 	DATA 	Keypress: down
+328.6615 	EXP 	New trial (rep=3, index=0): None
+328.6843 	EXP 	circle_1: autoDraw = False
+328.6843 	EXP 	circle_2: autoDraw = False
+328.6843 	EXP 	question: autoDraw = False
+328.6843 	EXP 	fixational_point_2: autoDraw = False
+328.6843 	EXP 	fixational_point_2: autoDraw = True
+329.2761 	EXP 	fixational_point_2: autoDraw = False
+329.2928 	EXP 	circle_1: autoDraw = True
+329.2928 	EXP 	circle_2: autoDraw = True
+329.4262 	EXP 	circle_1: autoDraw = False
+329.4262 	EXP 	circle_2: autoDraw = False
+329.5009 	EXP 	question: autoDraw = True
+329.7597 	DATA 	Keypress: down
+329.7843 	EXP 	circle_1: autoDraw = False
+329.7843 	EXP 	circle_2: autoDraw = False
+329.7843 	EXP 	question: autoDraw = False
+329.7843 	EXP 	fixational_point_2: autoDraw = False
+329.7843 	EXP 	text: autoDraw = True
+332.0597 	DATA 	Keypress: space
+332.0600 	EXP 	New trial (rep=0, index=20): {'size': [3.0, 3.0], 'n': 1}
+332.0604 	EXP 	Created sequence: random, trialTypes=1, nReps=1, seed=None
+332.0606 	EXP 	New trial (rep=0, index=0): None
+332.0842 	EXP 	text: autoDraw = False
+332.0842 	EXP 	bigger_circle: size = array([ 3.,  3.])
+332.0842 	EXP 	fixational_point_1: autoDraw = True
+332.5095 	EXP 	bigger_circle: autoDraw = True
+332.5095 	EXP 	smaller_circle: autoDraw = True
+332.6261 	EXP 	bigger_circle: autoDraw = False
+332.6261 	EXP 	smaller_circle: autoDraw = False
+333.0612 	EXP 	Created sequence: random, trialTypes=1, nReps=100, seed=None
+333.0622 	EXP 	New trial (rep=0, index=0): None
+333.0842 	EXP 	fixational_point_1: autoDraw = False
+333.0842 	EXP 	bigger_circle: autoDraw = False
+333.0842 	EXP 	smaller_circle: autoDraw = False
+333.0842 	EXP 	fixational_point_1: autoDraw = False
+333.0842 	EXP 	fixational_point_2: autoDraw = True
+333.6761 	EXP 	fixational_point_2: autoDraw = False
+333.6928 	EXP 	circle_1: autoDraw = True
+333.6928 	EXP 	circle_2: autoDraw = True
+333.8261 	EXP 	circle_1: autoDraw = False
+333.8261 	EXP 	circle_2: autoDraw = False
+333.9009 	EXP 	question: autoDraw = True
+334.5930 	DATA 	Keypress: down
+334.5950 	EXP 	New trial (rep=1, index=0): None
+334.6175 	EXP 	circle_1: autoDraw = False
+334.6175 	EXP 	circle_2: autoDraw = False
+334.6175 	EXP 	question: autoDraw = False
+334.6175 	EXP 	fixational_point_2: autoDraw = False
+334.6175 	EXP 	fixational_point_2: autoDraw = True
+335.2094 	EXP 	fixational_point_2: autoDraw = False
+335.2261 	EXP 	circle_1: autoDraw = True
+335.2261 	EXP 	circle_2: autoDraw = True
+335.3594 	EXP 	circle_1: autoDraw = False
+335.3594 	EXP 	circle_2: autoDraw = False
+335.4342 	EXP 	question: autoDraw = True
+335.6430 	DATA 	Keypress: down
+335.6448 	EXP 	New trial (rep=2, index=0): None
+335.6675 	EXP 	circle_1: autoDraw = False
+335.6675 	EXP 	circle_2: autoDraw = False
+335.6675 	EXP 	question: autoDraw = False
+335.6675 	EXP 	fixational_point_2: autoDraw = False
+335.6675 	EXP 	fixational_point_2: autoDraw = True
+336.2594 	EXP 	fixational_point_2: autoDraw = False
+336.2761 	EXP 	circle_1: autoDraw = True
+336.2761 	EXP 	circle_2: autoDraw = True
+336.4094 	EXP 	circle_1: autoDraw = False
+336.4094 	EXP 	circle_2: autoDraw = False
+336.4842 	EXP 	question: autoDraw = True
+336.5263 	DATA 	Keypress: down
+336.5509 	EXP 	circle_1: autoDraw = False
+336.5509 	EXP 	circle_2: autoDraw = False
+336.5509 	EXP 	question: autoDraw = False
+336.5509 	EXP 	fixational_point_2: autoDraw = False
+336.5509 	EXP 	text: autoDraw = True
+337.5930 	DATA 	Keypress: space
+337.5933 	EXP 	New trial (rep=0, index=21): {'size': [2.6, 2.6], 'n': 2}
+337.5937 	EXP 	Created sequence: random, trialTypes=1, nReps=2, seed=None
+337.5939 	EXP 	New trial (rep=0, index=0): None
+337.6175 	EXP 	text: autoDraw = False
+337.6175 	EXP 	bigger_circle: size = array([ 2.6,  2.6])
+337.6175 	EXP 	fixational_point_1: autoDraw = True
+338.0427 	EXP 	bigger_circle: autoDraw = True
+338.0427 	EXP 	smaller_circle: autoDraw = True
+338.1594 	EXP 	bigger_circle: autoDraw = False
+338.1594 	EXP 	smaller_circle: autoDraw = False
+338.5932 	EXP 	New trial (rep=1, index=0): None
+338.6094 	EXP 	fixational_point_1: autoDraw = False
+338.6094 	EXP 	bigger_circle: autoDraw = False
+338.6094 	EXP 	smaller_circle: autoDraw = False
+338.6094 	EXP 	fixational_point_1: autoDraw = False
+338.6094 	EXP 	bigger_circle: size = array([ 2.6,  2.6])
+338.6094 	EXP 	fixational_point_1: autoDraw = True
+339.0427 	EXP 	bigger_circle: autoDraw = True
+339.0427 	EXP 	smaller_circle: autoDraw = True
+339.1594 	EXP 	bigger_circle: autoDraw = False
+339.1594 	EXP 	smaller_circle: autoDraw = False
+339.5941 	EXP 	Created sequence: random, trialTypes=1, nReps=100, seed=None
+339.5949 	EXP 	New trial (rep=0, index=0): None
+339.6175 	EXP 	fixational_point_1: autoDraw = False
+339.6175 	EXP 	bigger_circle: autoDraw = False
+339.6175 	EXP 	smaller_circle: autoDraw = False
+339.6175 	EXP 	fixational_point_1: autoDraw = False
+339.6175 	EXP 	fixational_point_2: autoDraw = True
+340.2094 	EXP 	fixational_point_2: autoDraw = False
+340.2261 	EXP 	circle_1: autoDraw = True
+340.2261 	EXP 	circle_2: autoDraw = True
+340.3594 	EXP 	circle_1: autoDraw = False
+340.3594 	EXP 	circle_2: autoDraw = False
+340.4342 	EXP 	question: autoDraw = True
+341.2602 	DATA 	Keypress: left
+341.2781 	EXP 	New trial (rep=1, index=0): None
+341.3008 	EXP 	circle_1: autoDraw = False
+341.3008 	EXP 	circle_2: autoDraw = False
+341.3008 	EXP 	question: autoDraw = False
+341.3008 	EXP 	fixational_point_2: autoDraw = False
+341.3008 	EXP 	fixational_point_2: autoDraw = True
+341.8927 	EXP 	fixational_point_2: autoDraw = False
+341.9094 	EXP 	circle_1: autoDraw = True
+341.9094 	EXP 	circle_2: autoDraw = True
+342.0427 	EXP 	circle_1: autoDraw = False
+342.0427 	EXP 	circle_2: autoDraw = False
+342.1175 	EXP 	question: autoDraw = True
+342.4429 	DATA 	Keypress: down
+342.4447 	EXP 	New trial (rep=2, index=0): None
+342.4675 	EXP 	circle_1: autoDraw = False
+342.4675 	EXP 	circle_2: autoDraw = False
+342.4675 	EXP 	question: autoDraw = False
+342.4675 	EXP 	fixational_point_2: autoDraw = False
+342.4675 	EXP 	fixational_point_2: autoDraw = True
+343.0594 	EXP 	fixational_point_2: autoDraw = False
+343.0760 	EXP 	circle_1: autoDraw = True
+343.0760 	EXP 	circle_2: autoDraw = True
+343.2094 	EXP 	circle_1: autoDraw = False
+343.2094 	EXP 	circle_2: autoDraw = False
+343.2841 	EXP 	question: autoDraw = True
+343.5095 	DATA 	Keypress: down
+343.5114 	EXP 	New trial (rep=3, index=0): None
+343.5341 	EXP 	circle_1: autoDraw = False
+343.5341 	EXP 	circle_2: autoDraw = False
+343.5341 	EXP 	question: autoDraw = False
+343.5341 	EXP 	fixational_point_2: autoDraw = False
+343.5341 	EXP 	fixational_point_2: autoDraw = True
+344.1260 	EXP 	fixational_point_2: autoDraw = False
+344.1427 	EXP 	circle_1: autoDraw = True
+344.1427 	EXP 	circle_2: autoDraw = True
+344.2760 	EXP 	circle_1: autoDraw = False
+344.2760 	EXP 	circle_2: autoDraw = False
+344.3508 	EXP 	question: autoDraw = True
+344.4429 	DATA 	Keypress: down
+344.4675 	EXP 	circle_1: autoDraw = False
+344.4675 	EXP 	circle_2: autoDraw = False
+344.4675 	EXP 	question: autoDraw = False
+344.4675 	EXP 	fixational_point_2: autoDraw = False
+344.4675 	EXP 	text: autoDraw = True
+345.2429 	DATA 	Keypress: space
+345.2432 	EXP 	New trial (rep=0, index=22): {'size': [2.9, 2.9], 'n': 2}
+345.2436 	EXP 	Created sequence: random, trialTypes=1, nReps=2, seed=None
+345.2438 	EXP 	New trial (rep=0, index=0): None
+345.2674 	EXP 	text: autoDraw = False
+345.2674 	EXP 	bigger_circle: size = array([ 2.9,  2.9])
+345.2674 	EXP 	fixational_point_1: autoDraw = True
+345.6926 	EXP 	bigger_circle: autoDraw = True
+345.6926 	EXP 	smaller_circle: autoDraw = True
+345.8093 	EXP 	bigger_circle: autoDraw = False
+345.8093 	EXP 	smaller_circle: autoDraw = False
+346.2430 	EXP 	New trial (rep=1, index=0): None
+346.2674 	EXP 	fixational_point_1: autoDraw = False
+346.2674 	EXP 	bigger_circle: autoDraw = False
+346.2674 	EXP 	smaller_circle: autoDraw = False
+346.2674 	EXP 	fixational_point_1: autoDraw = False
+346.2674 	EXP 	bigger_circle: size = array([ 2.9,  2.9])
+346.2674 	EXP 	fixational_point_1: autoDraw = True
+346.6927 	EXP 	bigger_circle: autoDraw = True
+346.6927 	EXP 	smaller_circle: autoDraw = True
+346.8093 	EXP 	bigger_circle: autoDraw = False
+346.8093 	EXP 	smaller_circle: autoDraw = False
+347.2440 	EXP 	Created sequence: random, trialTypes=1, nReps=100, seed=None
+347.2448 	EXP 	New trial (rep=0, index=0): None
+347.2674 	EXP 	fixational_point_1: autoDraw = False
+347.2674 	EXP 	bigger_circle: autoDraw = False
+347.2674 	EXP 	smaller_circle: autoDraw = False
+347.2674 	EXP 	fixational_point_1: autoDraw = False
+347.2674 	EXP 	fixational_point_2: autoDraw = True
+347.8593 	EXP 	fixational_point_2: autoDraw = False
+347.8759 	EXP 	circle_1: autoDraw = True
+347.8759 	EXP 	circle_2: autoDraw = True
+348.0093 	EXP 	circle_1: autoDraw = False
+348.0093 	EXP 	circle_2: autoDraw = False
+348.0841 	EXP 	question: autoDraw = True
+348.8595 	DATA 	Keypress: down
+348.8615 	EXP 	New trial (rep=1, index=0): None
+348.8841 	EXP 	circle_1: autoDraw = False
+348.8841 	EXP 	circle_2: autoDraw = False
+348.8841 	EXP 	question: autoDraw = False
+348.8841 	EXP 	fixational_point_2: autoDraw = False
+348.8841 	EXP 	fixational_point_2: autoDraw = True
+349.4760 	EXP 	fixational_point_2: autoDraw = False
+349.4926 	EXP 	circle_1: autoDraw = True
+349.4926 	EXP 	circle_2: autoDraw = True
+349.6259 	EXP 	circle_1: autoDraw = False
+349.6259 	EXP 	circle_2: autoDraw = False
+349.7007 	EXP 	question: autoDraw = True
+350.0428 	DATA 	Keypress: down
+350.0447 	EXP 	New trial (rep=2, index=0): None
+350.0674 	EXP 	circle_1: autoDraw = False
+350.0674 	EXP 	circle_2: autoDraw = False
+350.0674 	EXP 	question: autoDraw = False
+350.0674 	EXP 	fixational_point_2: autoDraw = False
+350.0674 	EXP 	fixational_point_2: autoDraw = True
+350.6593 	EXP 	fixational_point_2: autoDraw = False
+350.6759 	EXP 	circle_1: autoDraw = True
+350.6759 	EXP 	circle_2: autoDraw = True
+350.8093 	EXP 	circle_1: autoDraw = False
+350.8093 	EXP 	circle_2: autoDraw = False
+350.8841 	EXP 	question: autoDraw = True
+351.1428 	DATA 	Keypress: down
+351.1674 	EXP 	circle_1: autoDraw = False
+351.1674 	EXP 	circle_2: autoDraw = False
+351.1674 	EXP 	question: autoDraw = False
+351.1674 	EXP 	fixational_point_2: autoDraw = False
+351.1674 	EXP 	text: autoDraw = True
+352.1095 	DATA 	Keypress: space
+352.1098 	EXP 	New trial (rep=0, index=23): {'size': [3.0, 3.0], 'n': 2}
+352.1102 	EXP 	Created sequence: random, trialTypes=1, nReps=2, seed=None
+352.1104 	EXP 	New trial (rep=0, index=0): None
+352.1340 	EXP 	text: autoDraw = False
+352.1340 	EXP 	bigger_circle: size = array([ 3.,  3.])
+352.1340 	EXP 	fixational_point_1: autoDraw = True
+352.5592 	EXP 	bigger_circle: autoDraw = True
+352.5592 	EXP 	smaller_circle: autoDraw = True
+352.6759 	EXP 	bigger_circle: autoDraw = False
+352.6759 	EXP 	smaller_circle: autoDraw = False
+353.1097 	EXP 	New trial (rep=1, index=0): None
+353.1341 	EXP 	fixational_point_1: autoDraw = False
+353.1341 	EXP 	bigger_circle: autoDraw = False
+353.1341 	EXP 	smaller_circle: autoDraw = False
+353.1341 	EXP 	fixational_point_1: autoDraw = False
+353.1341 	EXP 	bigger_circle: size = array([ 3.,  3.])
+353.1341 	EXP 	fixational_point_1: autoDraw = True
+353.5592 	EXP 	bigger_circle: autoDraw = True
+353.5592 	EXP 	smaller_circle: autoDraw = True
+353.6759 	EXP 	bigger_circle: autoDraw = False
+353.6759 	EXP 	smaller_circle: autoDraw = False
+354.1107 	EXP 	Created sequence: random, trialTypes=1, nReps=100, seed=None
+354.1115 	EXP 	New trial (rep=0, index=0): None
+354.1340 	EXP 	fixational_point_1: autoDraw = False
+354.1340 	EXP 	bigger_circle: autoDraw = False
+354.1340 	EXP 	smaller_circle: autoDraw = False
+354.1340 	EXP 	fixational_point_1: autoDraw = False
+354.1340 	EXP 	fixational_point_2: autoDraw = True
+354.7259 	EXP 	fixational_point_2: autoDraw = False
+354.7425 	EXP 	circle_1: autoDraw = True
+354.7425 	EXP 	circle_2: autoDraw = True
+354.8759 	EXP 	circle_1: autoDraw = False
+354.8759 	EXP 	circle_2: autoDraw = False
+354.9506 	EXP 	question: autoDraw = True
+355.8095 	DATA 	Keypress: down
+355.8120 	EXP 	New trial (rep=1, index=0): None
+355.8340 	EXP 	circle_1: autoDraw = False
+355.8340 	EXP 	circle_2: autoDraw = False
+355.8340 	EXP 	question: autoDraw = False
+355.8340 	EXP 	fixational_point_2: autoDraw = False
+355.8340 	EXP 	fixational_point_2: autoDraw = True
+356.4259 	EXP 	fixational_point_2: autoDraw = False
+356.4425 	EXP 	circle_1: autoDraw = True
+356.4425 	EXP 	circle_2: autoDraw = True
+356.5759 	EXP 	circle_1: autoDraw = False
+356.5759 	EXP 	circle_2: autoDraw = False
+356.6506 	EXP 	question: autoDraw = True
+357.1767 	DATA 	Keypress: left
+357.1945 	EXP 	New trial (rep=2, index=0): None
+357.2173 	EXP 	circle_1: autoDraw = False
+357.2173 	EXP 	circle_2: autoDraw = False
+357.2173 	EXP 	question: autoDraw = False
+357.2173 	EXP 	fixational_point_2: autoDraw = False
+357.2173 	EXP 	fixational_point_2: autoDraw = True
+357.8092 	EXP 	fixational_point_2: autoDraw = False
+357.8259 	EXP 	circle_1: autoDraw = True
+357.8259 	EXP 	circle_2: autoDraw = True
+357.9592 	EXP 	circle_1: autoDraw = False
+357.9592 	EXP 	circle_2: autoDraw = False
+358.0340 	EXP 	question: autoDraw = True
+358.4261 	DATA 	Keypress: left
+358.4279 	EXP 	New trial (rep=3, index=0): None
+358.4506 	EXP 	circle_1: autoDraw = False
+358.4506 	EXP 	circle_2: autoDraw = False
+358.4506 	EXP 	question: autoDraw = False
+358.4506 	EXP 	fixational_point_2: autoDraw = False
+358.4506 	EXP 	fixational_point_2: autoDraw = True
+359.0425 	EXP 	fixational_point_2: autoDraw = False
+359.0592 	EXP 	circle_1: autoDraw = True
+359.0592 	EXP 	circle_2: autoDraw = True
+359.1925 	EXP 	circle_1: autoDraw = False
+359.1925 	EXP 	circle_2: autoDraw = False
+359.2673 	EXP 	question: autoDraw = True
+359.7094 	DATA 	Keypress: left
+359.7112 	EXP 	New trial (rep=4, index=0): None
+359.7339 	EXP 	circle_1: autoDraw = False
+359.7339 	EXP 	circle_2: autoDraw = False
+359.7339 	EXP 	question: autoDraw = False
+359.7339 	EXP 	fixational_point_2: autoDraw = False
+359.7339 	EXP 	fixational_point_2: autoDraw = True
+360.3258 	EXP 	fixational_point_2: autoDraw = False
+360.3425 	EXP 	circle_1: autoDraw = True
+360.3425 	EXP 	circle_2: autoDraw = True
+360.4758 	EXP 	circle_1: autoDraw = False
+360.4758 	EXP 	circle_2: autoDraw = False
+360.5506 	EXP 	question: autoDraw = True
+360.9427 	DATA 	Keypress: down
+360.9445 	EXP 	New trial (rep=5, index=0): None
+360.9673 	EXP 	circle_1: autoDraw = False
+360.9673 	EXP 	circle_2: autoDraw = False
+360.9673 	EXP 	question: autoDraw = False
+360.9673 	EXP 	fixational_point_2: autoDraw = False
+360.9673 	EXP 	fixational_point_2: autoDraw = True
+361.5592 	EXP 	fixational_point_2: autoDraw = False
+361.5758 	EXP 	circle_1: autoDraw = True
+361.5758 	EXP 	circle_2: autoDraw = True
+361.7092 	EXP 	circle_1: autoDraw = False
+361.7092 	EXP 	circle_2: autoDraw = False
+361.7839 	EXP 	question: autoDraw = True
+362.3760 	DATA 	Keypress: left
+362.3944 	EXP 	New trial (rep=6, index=0): None
+362.4173 	EXP 	circle_1: autoDraw = False
+362.4173 	EXP 	circle_2: autoDraw = False
+362.4173 	EXP 	question: autoDraw = False
+362.4173 	EXP 	fixational_point_2: autoDraw = False
+362.4173 	EXP 	fixational_point_2: autoDraw = True
+363.0091 	EXP 	fixational_point_2: autoDraw = False
+363.0258 	EXP 	circle_1: autoDraw = True
+363.0258 	EXP 	circle_2: autoDraw = True
+363.1591 	EXP 	circle_1: autoDraw = False
+363.1591 	EXP 	circle_2: autoDraw = False
+363.2339 	EXP 	question: autoDraw = True
+363.8260 	DATA 	Keypress: down
+363.8279 	EXP 	New trial (rep=7, index=0): None
+363.8506 	EXP 	circle_1: autoDraw = False
+363.8506 	EXP 	circle_2: autoDraw = False
+363.8506 	EXP 	question: autoDraw = False
+363.8506 	EXP 	fixational_point_2: autoDraw = False
+363.8506 	EXP 	fixational_point_2: autoDraw = True
+364.4425 	EXP 	fixational_point_2: autoDraw = False
+364.4591 	EXP 	circle_1: autoDraw = True
+364.4591 	EXP 	circle_2: autoDraw = True
+364.5924 	EXP 	circle_1: autoDraw = False
+364.5924 	EXP 	circle_2: autoDraw = False
+364.6672 	EXP 	question: autoDraw = True
+365.0593 	DATA 	Keypress: down
+365.0612 	EXP 	New trial (rep=8, index=0): None
+365.0839 	EXP 	circle_1: autoDraw = False
+365.0839 	EXP 	circle_2: autoDraw = False
+365.0839 	EXP 	question: autoDraw = False
+365.0839 	EXP 	fixational_point_2: autoDraw = False
+365.0839 	EXP 	fixational_point_2: autoDraw = True
+365.6758 	EXP 	fixational_point_2: autoDraw = False
+365.6924 	EXP 	circle_1: autoDraw = True
+365.6924 	EXP 	circle_2: autoDraw = True
+365.8258 	EXP 	circle_1: autoDraw = False
+365.8258 	EXP 	circle_2: autoDraw = False
+365.9005 	EXP 	question: autoDraw = True
+366.1760 	DATA 	Keypress: down
+366.2006 	EXP 	circle_1: autoDraw = False
+366.2006 	EXP 	circle_2: autoDraw = False
+366.2006 	EXP 	question: autoDraw = False
+366.2006 	EXP 	fixational_point_2: autoDraw = False
+366.2006 	EXP 	text: autoDraw = True
+367.1593 	DATA 	Keypress: space
+367.1597 	EXP 	New trial (rep=0, index=24): {'size': [2.6, 2.6], 'n': 5}
+367.1601 	EXP 	Created sequence: random, trialTypes=1, nReps=5, seed=None
+367.1603 	EXP 	New trial (rep=0, index=0): None
+367.1839 	EXP 	text: autoDraw = False
+367.1839 	EXP 	bigger_circle: size = array([ 2.6,  2.6])
+367.1839 	EXP 	fixational_point_1: autoDraw = True
+367.6091 	EXP 	bigger_circle: autoDraw = True
+367.6091 	EXP 	smaller_circle: autoDraw = True
+367.7257 	EXP 	bigger_circle: autoDraw = False
+367.7257 	EXP 	smaller_circle: autoDraw = False
+368.1595 	EXP 	New trial (rep=1, index=0): None
+368.1839 	EXP 	fixational_point_1: autoDraw = False
+368.1839 	EXP 	bigger_circle: autoDraw = False
+368.1839 	EXP 	smaller_circle: autoDraw = False
+368.1839 	EXP 	fixational_point_1: autoDraw = False
+368.1839 	EXP 	bigger_circle: size = array([ 2.6,  2.6])
+368.1839 	EXP 	fixational_point_1: autoDraw = True
+368.6091 	EXP 	bigger_circle: autoDraw = True
+368.6091 	EXP 	smaller_circle: autoDraw = True
+368.7257 	EXP 	bigger_circle: autoDraw = False
+368.7257 	EXP 	smaller_circle: autoDraw = False
+369.1595 	EXP 	New trial (rep=2, index=0): None
+369.1839 	EXP 	fixational_point_1: autoDraw = False
+369.1839 	EXP 	bigger_circle: autoDraw = False
+369.1839 	EXP 	smaller_circle: autoDraw = False
+369.1839 	EXP 	fixational_point_1: autoDraw = False
+369.1839 	EXP 	bigger_circle: size = array([ 2.6,  2.6])
+369.1839 	EXP 	fixational_point_1: autoDraw = True
+369.6091 	EXP 	bigger_circle: autoDraw = True
+369.6091 	EXP 	smaller_circle: autoDraw = True
+369.7257 	EXP 	bigger_circle: autoDraw = False
+369.7257 	EXP 	smaller_circle: autoDraw = False
+370.1595 	EXP 	New trial (rep=3, index=0): None
+370.1757 	EXP 	fixational_point_1: autoDraw = False
+370.1757 	EXP 	bigger_circle: autoDraw = False
+370.1757 	EXP 	smaller_circle: autoDraw = False
+370.1757 	EXP 	fixational_point_1: autoDraw = False
+370.1757 	EXP 	bigger_circle: size = array([ 2.6,  2.6])
+370.1757 	EXP 	fixational_point_1: autoDraw = True
+370.6005 	EXP 	bigger_circle: autoDraw = True
+370.6005 	EXP 	smaller_circle: autoDraw = True
+370.7257 	EXP 	bigger_circle: autoDraw = False
+370.7257 	EXP 	smaller_circle: autoDraw = False
+371.1596 	EXP 	New trial (rep=4, index=0): None
+371.1838 	EXP 	fixational_point_1: autoDraw = False
+371.1838 	EXP 	bigger_circle: autoDraw = False
+371.1838 	EXP 	smaller_circle: autoDraw = False
+371.1838 	EXP 	fixational_point_1: autoDraw = False
+371.1838 	EXP 	bigger_circle: size = array([ 2.6,  2.6])
+371.1838 	EXP 	fixational_point_1: autoDraw = True
+371.6090 	EXP 	bigger_circle: autoDraw = True
+371.6090 	EXP 	smaller_circle: autoDraw = True
+371.7257 	EXP 	bigger_circle: autoDraw = False
+371.7257 	EXP 	smaller_circle: autoDraw = False
+372.1604 	EXP 	Created sequence: random, trialTypes=1, nReps=100, seed=None
+372.1612 	EXP 	New trial (rep=0, index=0): None
+372.1838 	EXP 	fixational_point_1: autoDraw = False
+372.1838 	EXP 	bigger_circle: autoDraw = False
+372.1838 	EXP 	smaller_circle: autoDraw = False
+372.1838 	EXP 	fixational_point_1: autoDraw = False
+372.1838 	EXP 	fixational_point_2: autoDraw = True
+372.7757 	EXP 	fixational_point_2: autoDraw = False
+372.7924 	EXP 	circle_1: autoDraw = True
+372.7924 	EXP 	circle_2: autoDraw = True
+372.9257 	EXP 	circle_1: autoDraw = False
+372.9257 	EXP 	circle_2: autoDraw = False
+373.0005 	EXP 	question: autoDraw = True
+373.4593 	DATA 	Keypress: down
+373.4613 	EXP 	New trial (rep=1, index=0): None
+373.4838 	EXP 	circle_1: autoDraw = False
+373.4838 	EXP 	circle_2: autoDraw = False
+373.4838 	EXP 	question: autoDraw = False
+373.4838 	EXP 	fixational_point_2: autoDraw = False
+373.4838 	EXP 	fixational_point_2: autoDraw = True
+374.0757 	EXP 	fixational_point_2: autoDraw = False
+374.0923 	EXP 	circle_1: autoDraw = True
+374.0923 	EXP 	circle_2: autoDraw = True
+374.2257 	EXP 	circle_1: autoDraw = False
+374.2257 	EXP 	circle_2: autoDraw = False
+374.3005 	EXP 	question: autoDraw = True
+374.5425 	DATA 	Keypress: down
+374.5444 	EXP 	New trial (rep=2, index=0): None
+374.5671 	EXP 	circle_1: autoDraw = False
+374.5671 	EXP 	circle_2: autoDraw = False
+374.5671 	EXP 	question: autoDraw = False
+374.5671 	EXP 	fixational_point_2: autoDraw = False
+374.5671 	EXP 	fixational_point_2: autoDraw = True
+375.1590 	EXP 	fixational_point_2: autoDraw = False
+375.1757 	EXP 	circle_1: autoDraw = True
+375.1757 	EXP 	circle_2: autoDraw = True
+375.3090 	EXP 	circle_1: autoDraw = False
+375.3090 	EXP 	circle_2: autoDraw = False
+375.3838 	EXP 	question: autoDraw = True
+375.7092 	DATA 	Keypress: down
+375.7338 	EXP 	circle_1: autoDraw = False
+375.7338 	EXP 	circle_2: autoDraw = False
+375.7338 	EXP 	question: autoDraw = False
+375.7338 	EXP 	fixational_point_2: autoDraw = False
+375.7338 	EXP 	text: autoDraw = True
+376.4758 	DATA 	Keypress: space
+376.4762 	EXP 	New trial (rep=0, index=25): {'size': [2.6, 2.6], 'n': 4}
+376.4766 	EXP 	Created sequence: random, trialTypes=1, nReps=4, seed=None
+376.4768 	EXP 	New trial (rep=0, index=0): None
+376.5004 	EXP 	text: autoDraw = False
+376.5004 	EXP 	bigger_circle: size = array([ 2.6,  2.6])
+376.5004 	EXP 	fixational_point_1: autoDraw = True
+376.9171 	EXP 	bigger_circle: autoDraw = True
+376.9171 	EXP 	smaller_circle: autoDraw = True
+377.0423 	EXP 	bigger_circle: autoDraw = False
+377.0423 	EXP 	smaller_circle: autoDraw = False
+377.4675 	EXP 	New trial (rep=1, index=0): None
+377.4923 	EXP 	fixational_point_1: autoDraw = False
+377.4923 	EXP 	bigger_circle: autoDraw = False
+377.4923 	EXP 	smaller_circle: autoDraw = False
+377.4923 	EXP 	fixational_point_1: autoDraw = False
+377.4923 	EXP 	bigger_circle: size = array([ 2.6,  2.6])
+377.4923 	EXP 	fixational_point_1: autoDraw = True
+377.9090 	EXP 	bigger_circle: autoDraw = True
+377.9090 	EXP 	smaller_circle: autoDraw = True
+378.0256 	EXP 	bigger_circle: autoDraw = False
+378.0256 	EXP 	smaller_circle: autoDraw = False
+378.4675 	EXP 	New trial (rep=2, index=0): None
+378.4923 	EXP 	fixational_point_1: autoDraw = False
+378.4923 	EXP 	bigger_circle: autoDraw = False
+378.4923 	EXP 	smaller_circle: autoDraw = False
+378.4923 	EXP 	fixational_point_1: autoDraw = False
+378.4923 	EXP 	bigger_circle: size = array([ 2.6,  2.6])
+378.4923 	EXP 	fixational_point_1: autoDraw = True
+378.8923 	EXP 	bigger_circle: autoDraw = True
+378.8923 	EXP 	smaller_circle: autoDraw = True
+379.0256 	EXP 	bigger_circle: autoDraw = False
+379.0256 	EXP 	smaller_circle: autoDraw = False
+379.4675 	EXP 	New trial (rep=3, index=0): None
+379.4923 	EXP 	fixational_point_1: autoDraw = False
+379.4923 	EXP 	bigger_circle: autoDraw = False
+379.4923 	EXP 	smaller_circle: autoDraw = False
+379.4923 	EXP 	fixational_point_1: autoDraw = False
+379.4923 	EXP 	bigger_circle: size = array([ 2.6,  2.6])
+379.4923 	EXP 	fixational_point_1: autoDraw = True
+379.9090 	EXP 	bigger_circle: autoDraw = True
+379.9090 	EXP 	smaller_circle: autoDraw = True
+380.0256 	EXP 	bigger_circle: autoDraw = False
+380.0256 	EXP 	smaller_circle: autoDraw = False
+380.4685 	EXP 	Created sequence: random, trialTypes=1, nReps=100, seed=None
+380.4693 	EXP 	New trial (rep=0, index=0): None
+380.4923 	EXP 	fixational_point_1: autoDraw = False
+380.4923 	EXP 	bigger_circle: autoDraw = False
+380.4923 	EXP 	smaller_circle: autoDraw = False
+380.4923 	EXP 	fixational_point_1: autoDraw = False
+380.4923 	EXP 	fixational_point_2: autoDraw = True
+381.0756 	EXP 	fixational_point_2: autoDraw = False
+381.0923 	EXP 	circle_1: autoDraw = True
+381.0923 	EXP 	circle_2: autoDraw = True
+381.2256 	EXP 	circle_1: autoDraw = False
+381.2256 	EXP 	circle_2: autoDraw = False
+381.2923 	EXP 	question: autoDraw = True
+381.7758 	DATA 	Keypress: down
+381.7778 	EXP 	New trial (rep=1, index=0): None
+381.8004 	EXP 	circle_1: autoDraw = False
+381.8004 	EXP 	circle_2: autoDraw = False
+381.8004 	EXP 	question: autoDraw = False
+381.8004 	EXP 	fixational_point_2: autoDraw = False
+381.8004 	EXP 	fixational_point_2: autoDraw = True
+382.3923 	EXP 	fixational_point_2: autoDraw = False
+382.4089 	EXP 	circle_1: autoDraw = True
+382.4089 	EXP 	circle_2: autoDraw = True
+382.5423 	EXP 	circle_1: autoDraw = False
+382.5423 	EXP 	circle_2: autoDraw = False
+382.6170 	EXP 	question: autoDraw = True
+383.0591 	DATA 	Keypress: down
+383.0610 	EXP 	New trial (rep=2, index=0): None
+383.0837 	EXP 	circle_1: autoDraw = False
+383.0837 	EXP 	circle_2: autoDraw = False
+383.0837 	EXP 	question: autoDraw = False
+383.0837 	EXP 	fixational_point_2: autoDraw = False
+383.0837 	EXP 	fixational_point_2: autoDraw = True
+383.6756 	EXP 	fixational_point_2: autoDraw = False
+383.6922 	EXP 	circle_1: autoDraw = True
+383.6922 	EXP 	circle_2: autoDraw = True
+383.8256 	EXP 	circle_1: autoDraw = False
+383.8256 	EXP 	circle_2: autoDraw = False
+383.9004 	EXP 	question: autoDraw = True
+384.3091 	DATA 	Keypress: down
+384.3337 	EXP 	circle_1: autoDraw = False
+384.3337 	EXP 	circle_2: autoDraw = False
+384.3337 	EXP 	question: autoDraw = False
+384.3337 	EXP 	fixational_point_2: autoDraw = False
+384.3337 	EXP 	text: autoDraw = True
+385.0924 	DATA 	Keypress: space
+385.0928 	EXP 	New trial (rep=0, index=26): {'size': [2.8, 2.8], 'n': 5}
+385.0932 	EXP 	Created sequence: random, trialTypes=1, nReps=5, seed=None
+385.0934 	EXP 	New trial (rep=0, index=0): None
+385.1170 	EXP 	text: autoDraw = False
+385.1170 	EXP 	bigger_circle: size = array([ 2.8,  2.8])
+385.1170 	EXP 	fixational_point_1: autoDraw = True
+385.5337 	EXP 	bigger_circle: autoDraw = True
+385.5337 	EXP 	smaller_circle: autoDraw = True
+385.6589 	EXP 	bigger_circle: autoDraw = False
+385.6589 	EXP 	smaller_circle: autoDraw = False
+386.0926 	EXP 	New trial (rep=1, index=0): None
+386.1170 	EXP 	fixational_point_1: autoDraw = False
+386.1170 	EXP 	bigger_circle: autoDraw = False
+386.1170 	EXP 	smaller_circle: autoDraw = False
+386.1170 	EXP 	fixational_point_1: autoDraw = False
+386.1170 	EXP 	bigger_circle: size = array([ 2.8,  2.8])
+386.1170 	EXP 	fixational_point_1: autoDraw = True
+386.5422 	EXP 	bigger_circle: autoDraw = True
+386.5422 	EXP 	smaller_circle: autoDraw = True
+386.6589 	EXP 	bigger_circle: autoDraw = False
+386.6589 	EXP 	smaller_circle: autoDraw = False
+387.0926 	EXP 	New trial (rep=2, index=0): None
+387.1089 	EXP 	fixational_point_1: autoDraw = False
+387.1089 	EXP 	bigger_circle: autoDraw = False
+387.1089 	EXP 	smaller_circle: autoDraw = False
+387.1089 	EXP 	fixational_point_1: autoDraw = False
+387.1089 	EXP 	bigger_circle: size = array([ 2.8,  2.8])
+387.1089 	EXP 	fixational_point_1: autoDraw = True
+387.5337 	EXP 	bigger_circle: autoDraw = True
+387.5337 	EXP 	smaller_circle: autoDraw = True
+387.6589 	EXP 	bigger_circle: autoDraw = False
+387.6589 	EXP 	smaller_circle: autoDraw = False
+388.0926 	EXP 	New trial (rep=3, index=0): None
+388.1170 	EXP 	fixational_point_1: autoDraw = False
+388.1170 	EXP 	bigger_circle: autoDraw = False
+388.1170 	EXP 	smaller_circle: autoDraw = False
+388.1170 	EXP 	fixational_point_1: autoDraw = False
+388.1170 	EXP 	bigger_circle: size = array([ 2.8,  2.8])
+388.1170 	EXP 	fixational_point_1: autoDraw = True
+388.5336 	EXP 	bigger_circle: autoDraw = True
+388.5336 	EXP 	smaller_circle: autoDraw = True
+388.6588 	EXP 	bigger_circle: autoDraw = False
+388.6588 	EXP 	smaller_circle: autoDraw = False
+389.0840 	EXP 	New trial (rep=4, index=0): None
+389.1088 	EXP 	fixational_point_1: autoDraw = False
+389.1088 	EXP 	bigger_circle: autoDraw = False
+389.1088 	EXP 	smaller_circle: autoDraw = False
+389.1088 	EXP 	fixational_point_1: autoDraw = False
+389.1088 	EXP 	bigger_circle: size = array([ 2.8,  2.8])
+389.1088 	EXP 	fixational_point_1: autoDraw = True
+389.5088 	EXP 	bigger_circle: autoDraw = True
+389.5088 	EXP 	smaller_circle: autoDraw = True
+389.6422 	EXP 	bigger_circle: autoDraw = False
+389.6422 	EXP 	smaller_circle: autoDraw = False
+390.0850 	EXP 	Created sequence: random, trialTypes=1, nReps=100, seed=None
+390.0858 	EXP 	New trial (rep=0, index=0): None
+390.1088 	EXP 	fixational_point_1: autoDraw = False
+390.1088 	EXP 	bigger_circle: autoDraw = False
+390.1088 	EXP 	smaller_circle: autoDraw = False
+390.1088 	EXP 	fixational_point_1: autoDraw = False
+390.1088 	EXP 	fixational_point_2: autoDraw = True
+390.7088 	EXP 	fixational_point_2: autoDraw = False
+390.7255 	EXP 	circle_1: autoDraw = True
+390.7255 	EXP 	circle_2: autoDraw = True
+390.8422 	EXP 	circle_1: autoDraw = False
+390.8422 	EXP 	circle_2: autoDraw = False
+390.9088 	EXP 	question: autoDraw = True
+391.3924 	DATA 	Keypress: down
+391.3944 	EXP 	New trial (rep=1, index=0): None
+391.4169 	EXP 	circle_1: autoDraw = False
+391.4169 	EXP 	circle_2: autoDraw = False
+391.4169 	EXP 	question: autoDraw = False
+391.4169 	EXP 	fixational_point_2: autoDraw = False
+391.4169 	EXP 	fixational_point_2: autoDraw = True
+392.0088 	EXP 	fixational_point_2: autoDraw = False
+392.0255 	EXP 	circle_1: autoDraw = True
+392.0255 	EXP 	circle_2: autoDraw = True
+392.1588 	EXP 	circle_1: autoDraw = False
+392.1588 	EXP 	circle_2: autoDraw = False
+392.2336 	EXP 	question: autoDraw = True
+392.5257 	DATA 	Keypress: down
+392.5276 	EXP 	New trial (rep=2, index=0): None
+392.5503 	EXP 	circle_1: autoDraw = False
+392.5503 	EXP 	circle_2: autoDraw = False
+392.5503 	EXP 	question: autoDraw = False
+392.5503 	EXP 	fixational_point_2: autoDraw = False
+392.5503 	EXP 	fixational_point_2: autoDraw = True
+393.1421 	EXP 	fixational_point_2: autoDraw = False
+393.1588 	EXP 	circle_1: autoDraw = True
+393.1588 	EXP 	circle_2: autoDraw = True
+393.2921 	EXP 	circle_1: autoDraw = False
+393.2921 	EXP 	circle_2: autoDraw = False
+393.3669 	EXP 	question: autoDraw = True
+393.8257 	DATA 	Keypress: down
+393.8503 	EXP 	circle_1: autoDraw = False
+393.8503 	EXP 	circle_2: autoDraw = False
+393.8503 	EXP 	question: autoDraw = False
+393.8503 	EXP 	fixational_point_2: autoDraw = False
+393.8503 	EXP 	text: autoDraw = True
+394.5595 	DATA 	Keypress: space
+394.5758 	EXP 	New trial (rep=0, index=27): {'size': [3.0, 3.0], 'n': 3}
+394.5762 	EXP 	Created sequence: random, trialTypes=1, nReps=3, seed=None
+394.5765 	EXP 	New trial (rep=0, index=0): None
+394.6002 	EXP 	text: autoDraw = False
+394.6002 	EXP 	bigger_circle: size = array([ 3.,  3.])
+394.6002 	EXP 	fixational_point_1: autoDraw = True
+395.0255 	EXP 	bigger_circle: autoDraw = True
+395.0255 	EXP 	smaller_circle: autoDraw = True
+395.1421 	EXP 	bigger_circle: autoDraw = False
+395.1421 	EXP 	smaller_circle: autoDraw = False
+395.5758 	EXP 	New trial (rep=1, index=0): None
+395.6002 	EXP 	fixational_point_1: autoDraw = False
+395.6002 	EXP 	bigger_circle: autoDraw = False
+395.6002 	EXP 	smaller_circle: autoDraw = False
+395.6002 	EXP 	fixational_point_1: autoDraw = False
+395.6002 	EXP 	bigger_circle: size = array([ 3.,  3.])
+395.6002 	EXP 	fixational_point_1: autoDraw = True
+396.0254 	EXP 	bigger_circle: autoDraw = True
+396.0254 	EXP 	smaller_circle: autoDraw = True
+396.1421 	EXP 	bigger_circle: autoDraw = False
+396.1421 	EXP 	smaller_circle: autoDraw = False
+396.5758 	EXP 	New trial (rep=2, index=0): None
+396.6002 	EXP 	fixational_point_1: autoDraw = False
+396.6002 	EXP 	bigger_circle: autoDraw = False
+396.6002 	EXP 	smaller_circle: autoDraw = False
+396.6002 	EXP 	fixational_point_1: autoDraw = False
+396.6002 	EXP 	bigger_circle: size = array([ 3.,  3.])
+396.6002 	EXP 	fixational_point_1: autoDraw = True
+397.0168 	EXP 	bigger_circle: autoDraw = True
+397.0168 	EXP 	smaller_circle: autoDraw = True
+397.1421 	EXP 	bigger_circle: autoDraw = False
+397.1421 	EXP 	smaller_circle: autoDraw = False
+397.5683 	EXP 	Created sequence: random, trialTypes=1, nReps=100, seed=None
+397.5690 	EXP 	New trial (rep=0, index=0): None
+397.5921 	EXP 	fixational_point_1: autoDraw = False
+397.5921 	EXP 	bigger_circle: autoDraw = False
+397.5921 	EXP 	smaller_circle: autoDraw = False
+397.5921 	EXP 	fixational_point_1: autoDraw = False
+397.5921 	EXP 	fixational_point_2: autoDraw = True
+398.1921 	EXP 	fixational_point_2: autoDraw = False
+398.2087 	EXP 	circle_1: autoDraw = True
+398.2087 	EXP 	circle_2: autoDraw = True
+398.3254 	EXP 	circle_1: autoDraw = False
+398.3254 	EXP 	circle_2: autoDraw = False
+398.3921 	EXP 	question: autoDraw = True
+398.7923 	DATA 	Keypress: down
+398.7943 	EXP 	New trial (rep=1, index=0): None
+398.8168 	EXP 	circle_1: autoDraw = False
+398.8168 	EXP 	circle_2: autoDraw = False
+398.8168 	EXP 	question: autoDraw = False
+398.8168 	EXP 	fixational_point_2: autoDraw = False
+398.8168 	EXP 	fixational_point_2: autoDraw = True
+399.4087 	EXP 	fixational_point_2: autoDraw = False
+399.4254 	EXP 	circle_1: autoDraw = True
+399.4254 	EXP 	circle_2: autoDraw = True
+399.5587 	EXP 	circle_1: autoDraw = False
+399.5587 	EXP 	circle_2: autoDraw = False
+399.6335 	EXP 	question: autoDraw = True
+399.9589 	DATA 	Keypress: down
+399.9608 	EXP 	New trial (rep=2, index=0): None
+399.9835 	EXP 	circle_1: autoDraw = False
+399.9835 	EXP 	circle_2: autoDraw = False
+399.9835 	EXP 	question: autoDraw = False
+399.9835 	EXP 	fixational_point_2: autoDraw = False
+399.9835 	EXP 	fixational_point_2: autoDraw = True
+400.5754 	EXP 	fixational_point_2: autoDraw = False
+400.5920 	EXP 	circle_1: autoDraw = True
+400.5920 	EXP 	circle_2: autoDraw = True
+400.7254 	EXP 	circle_1: autoDraw = False
+400.7254 	EXP 	circle_2: autoDraw = False
+400.8002 	EXP 	question: autoDraw = True
+400.9756 	DATA 	Keypress: down
+401.0002 	EXP 	circle_1: autoDraw = False
+401.0002 	EXP 	circle_2: autoDraw = False
+401.0002 	EXP 	question: autoDraw = False
+401.0002 	EXP 	fixational_point_2: autoDraw = False
+401.0002 	EXP 	text: autoDraw = True
+401.6756 	DATA 	Keypress: space
+401.6759 	EXP 	New trial (rep=0, index=28): {'size': [3.0, 3.0], 'n': 5}
+401.6763 	EXP 	Created sequence: random, trialTypes=1, nReps=5, seed=None
+401.6766 	EXP 	New trial (rep=0, index=0): None
+401.7002 	EXP 	text: autoDraw = False
+401.7002 	EXP 	bigger_circle: size = array([ 3.,  3.])
+401.7002 	EXP 	fixational_point_1: autoDraw = True
+402.1254 	EXP 	bigger_circle: autoDraw = True
+402.1254 	EXP 	smaller_circle: autoDraw = True
+402.2420 	EXP 	bigger_circle: autoDraw = False
+402.2420 	EXP 	smaller_circle: autoDraw = False
+402.6758 	EXP 	New trial (rep=1, index=0): None
+402.7002 	EXP 	fixational_point_1: autoDraw = False
+402.7002 	EXP 	bigger_circle: autoDraw = False
+402.7002 	EXP 	smaller_circle: autoDraw = False
+402.7002 	EXP 	fixational_point_1: autoDraw = False
+402.7002 	EXP 	bigger_circle: size = array([ 3.,  3.])
+402.7002 	EXP 	fixational_point_1: autoDraw = True
+403.1254 	EXP 	bigger_circle: autoDraw = True
+403.1254 	EXP 	smaller_circle: autoDraw = True
+403.2420 	EXP 	bigger_circle: autoDraw = False
+403.2420 	EXP 	smaller_circle: autoDraw = False
+403.6758 	EXP 	New trial (rep=2, index=0): None
+403.6920 	EXP 	fixational_point_1: autoDraw = False
+403.6920 	EXP 	bigger_circle: autoDraw = False
+403.6920 	EXP 	smaller_circle: autoDraw = False
+403.6920 	EXP 	fixational_point_1: autoDraw = False
+403.6920 	EXP 	bigger_circle: size = array([ 3.,  3.])
+403.6920 	EXP 	fixational_point_1: autoDraw = True
+404.1168 	EXP 	bigger_circle: autoDraw = True
+404.1168 	EXP 	smaller_circle: autoDraw = True
+404.2420 	EXP 	bigger_circle: autoDraw = False
+404.2420 	EXP 	smaller_circle: autoDraw = False
+404.6672 	EXP 	New trial (rep=3, index=0): None
+404.6920 	EXP 	fixational_point_1: autoDraw = False
+404.6920 	EXP 	bigger_circle: autoDraw = False
+404.6920 	EXP 	smaller_circle: autoDraw = False
+404.6920 	EXP 	fixational_point_1: autoDraw = False
+404.6920 	EXP 	bigger_circle: size = array([ 3.,  3.])
+404.6920 	EXP 	fixational_point_1: autoDraw = True
+405.1087 	EXP 	bigger_circle: autoDraw = True
+405.1087 	EXP 	smaller_circle: autoDraw = True
+405.2253 	EXP 	bigger_circle: autoDraw = False
+405.2253 	EXP 	smaller_circle: autoDraw = False
+405.6672 	EXP 	New trial (rep=4, index=0): None
+405.6920 	EXP 	fixational_point_1: autoDraw = False
+405.6920 	EXP 	bigger_circle: autoDraw = False
+405.6920 	EXP 	smaller_circle: autoDraw = False
+405.6920 	EXP 	fixational_point_1: autoDraw = False
+405.6920 	EXP 	bigger_circle: size = array([ 3.,  3.])
+405.6920 	EXP 	fixational_point_1: autoDraw = True
+406.1087 	EXP 	bigger_circle: autoDraw = True
+406.1087 	EXP 	smaller_circle: autoDraw = True
+406.2253 	EXP 	bigger_circle: autoDraw = False
+406.2253 	EXP 	smaller_circle: autoDraw = False
+406.6682 	EXP 	Created sequence: random, trialTypes=1, nReps=100, seed=None
+406.6689 	EXP 	New trial (rep=0, index=0): None
+406.6920 	EXP 	fixational_point_1: autoDraw = False
+406.6920 	EXP 	bigger_circle: autoDraw = False
+406.6920 	EXP 	smaller_circle: autoDraw = False
+406.6920 	EXP 	fixational_point_1: autoDraw = False
+406.6920 	EXP 	fixational_point_2: autoDraw = True
+407.2920 	EXP 	fixational_point_2: autoDraw = False
+407.3087 	EXP 	circle_1: autoDraw = True
+407.3087 	EXP 	circle_2: autoDraw = True
+407.4253 	EXP 	circle_1: autoDraw = False
+407.4253 	EXP 	circle_2: autoDraw = False
+407.4920 	EXP 	question: autoDraw = True
+407.8755 	DATA 	Keypress: down
+407.8776 	EXP 	New trial (rep=1, index=0): None
+407.9001 	EXP 	circle_1: autoDraw = False
+407.9001 	EXP 	circle_2: autoDraw = False
+407.9001 	EXP 	question: autoDraw = False
+407.9001 	EXP 	fixational_point_2: autoDraw = False
+407.9001 	EXP 	fixational_point_2: autoDraw = True
+408.4920 	EXP 	fixational_point_2: autoDraw = False
+408.5086 	EXP 	circle_1: autoDraw = True
+408.5086 	EXP 	circle_2: autoDraw = True
+408.6420 	EXP 	circle_1: autoDraw = False
+408.6420 	EXP 	circle_2: autoDraw = False
+408.7168 	EXP 	question: autoDraw = True
+408.8255 	DATA 	Keypress: down
+408.8275 	EXP 	New trial (rep=2, index=0): None
+408.8501 	EXP 	circle_1: autoDraw = False
+408.8501 	EXP 	circle_2: autoDraw = False
+408.8501 	EXP 	question: autoDraw = False
+408.8501 	EXP 	fixational_point_2: autoDraw = False
+408.8501 	EXP 	fixational_point_2: autoDraw = True
+409.4420 	EXP 	fixational_point_2: autoDraw = False
+409.4586 	EXP 	circle_1: autoDraw = True
+409.4586 	EXP 	circle_2: autoDraw = True
+409.5920 	EXP 	circle_1: autoDraw = False
+409.5920 	EXP 	circle_2: autoDraw = False
+409.6667 	EXP 	question: autoDraw = True
+409.9255 	DATA 	Keypress: down
+409.9501 	EXP 	circle_1: autoDraw = False
+409.9501 	EXP 	circle_2: autoDraw = False
+409.9501 	EXP 	question: autoDraw = False
+409.9501 	EXP 	fixational_point_2: autoDraw = False
+409.9501 	EXP 	text: autoDraw = True
+410.7255 	DATA 	Keypress: space
+410.7258 	EXP 	New trial (rep=0, index=29): {'size': [2.7, 2.7], 'n': 3}
+410.7262 	EXP 	Created sequence: random, trialTypes=1, nReps=3, seed=None
+410.7264 	EXP 	New trial (rep=0, index=0): None
+410.7500 	EXP 	text: autoDraw = False
+410.7500 	EXP 	bigger_circle: size = array([ 2.7,  2.7])
+410.7500 	EXP 	fixational_point_1: autoDraw = True
+411.1753 	EXP 	bigger_circle: autoDraw = True
+411.1753 	EXP 	smaller_circle: autoDraw = True
+411.2919 	EXP 	bigger_circle: autoDraw = False
+411.2919 	EXP 	smaller_circle: autoDraw = False
+411.7257 	EXP 	New trial (rep=1, index=0): None
+411.7500 	EXP 	fixational_point_1: autoDraw = False
+411.7500 	EXP 	bigger_circle: autoDraw = False
+411.7500 	EXP 	smaller_circle: autoDraw = False
+411.7500 	EXP 	fixational_point_1: autoDraw = False
+411.7500 	EXP 	bigger_circle: size = array([ 2.7,  2.7])
+411.7500 	EXP 	fixational_point_1: autoDraw = True
+412.1752 	EXP 	bigger_circle: autoDraw = True
+412.1752 	EXP 	smaller_circle: autoDraw = True
+412.2919 	EXP 	bigger_circle: autoDraw = False
+412.2919 	EXP 	smaller_circle: autoDraw = False
+412.7256 	EXP 	New trial (rep=2, index=0): None
+412.7500 	EXP 	fixational_point_1: autoDraw = False
+412.7500 	EXP 	bigger_circle: autoDraw = False
+412.7500 	EXP 	smaller_circle: autoDraw = False
+412.7500 	EXP 	fixational_point_1: autoDraw = False
+412.7500 	EXP 	bigger_circle: size = array([ 2.7,  2.7])
+412.7500 	EXP 	fixational_point_1: autoDraw = True
+413.1752 	EXP 	bigger_circle: autoDraw = True
+413.1752 	EXP 	smaller_circle: autoDraw = True
+413.2919 	EXP 	bigger_circle: autoDraw = False
+413.2919 	EXP 	smaller_circle: autoDraw = False
+413.7267 	EXP 	Created sequence: random, trialTypes=1, nReps=100, seed=None
+413.7274 	EXP 	New trial (rep=0, index=0): None
+413.7500 	EXP 	fixational_point_1: autoDraw = False
+413.7500 	EXP 	bigger_circle: autoDraw = False
+413.7500 	EXP 	smaller_circle: autoDraw = False
+413.7500 	EXP 	fixational_point_1: autoDraw = False
+413.7500 	EXP 	fixational_point_2: autoDraw = True
+414.3419 	EXP 	fixational_point_2: autoDraw = False
+414.3586 	EXP 	circle_1: autoDraw = True
+414.3586 	EXP 	circle_2: autoDraw = True
+414.4919 	EXP 	circle_1: autoDraw = False
+414.4919 	EXP 	circle_2: autoDraw = False
+414.5667 	EXP 	question: autoDraw = True
+415.0921 	DATA 	Keypress: down
+415.0942 	EXP 	New trial (rep=1, index=0): None
+415.1167 	EXP 	circle_1: autoDraw = False
+415.1167 	EXP 	circle_2: autoDraw = False
+415.1167 	EXP 	question: autoDraw = False
+415.1167 	EXP 	fixational_point_2: autoDraw = False
+415.1167 	EXP 	fixational_point_2: autoDraw = True
+415.7085 	EXP 	fixational_point_2: autoDraw = False
+415.7252 	EXP 	circle_1: autoDraw = True
+415.7252 	EXP 	circle_2: autoDraw = True
+415.8585 	EXP 	circle_1: autoDraw = False
+415.8585 	EXP 	circle_2: autoDraw = False
+415.9333 	EXP 	question: autoDraw = True
+416.2254 	DATA 	Keypress: down
+416.2273 	EXP 	New trial (rep=2, index=0): None
+416.2500 	EXP 	circle_1: autoDraw = False
+416.2500 	EXP 	circle_2: autoDraw = False
+416.2500 	EXP 	question: autoDraw = False
+416.2500 	EXP 	fixational_point_2: autoDraw = False
+416.2500 	EXP 	fixational_point_2: autoDraw = True
+416.8419 	EXP 	fixational_point_2: autoDraw = False
+416.8585 	EXP 	circle_1: autoDraw = True
+416.8585 	EXP 	circle_2: autoDraw = True
+416.9919 	EXP 	circle_1: autoDraw = False
+416.9919 	EXP 	circle_2: autoDraw = False
+417.0667 	EXP 	question: autoDraw = True
+417.4754 	DATA 	Keypress: down
+417.5000 	EXP 	circle_1: autoDraw = False
+417.5000 	EXP 	circle_2: autoDraw = False
+417.5000 	EXP 	question: autoDraw = False
+417.5000 	EXP 	fixational_point_2: autoDraw = False
+417.5000 	EXP 	text: autoDraw = True
+418.1754 	DATA 	Keypress: space
+418.2000 	EXP 	text: autoDraw = False
+418.2000 	EXP 	thanks: autoDraw = True
+423.2896 	EXP 	window1: mouseVisible = True

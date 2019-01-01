@@ -1,0 +1,245 @@
++---
+title: "2017_Set"
+author: "MODUS"
+date: '5 мая 2017 г '
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# перцептивная установка как научение
+## Дубова Марина
+
+Описание
+
+### Загрузка данных:
+
+```{r load_libraries, echo=FALSE}
+library(psych)
+library(data.table)
+library(foreign)
+library(ggplot2)
+library(lme4)
+library(mlmRev)
+library(lmerTest)
+```
+
+```{r download_data}
+
+setwd("C:/Projects/Coursework/Experiment/data")
+names <- c("IKA_Set_2017_05_22_1634.csv","NAT_Set_2017_05_05_1426.csv", "AOM_Set_2017_05_01_2019.csv", "BRO_Set_2017_05_05_1411.csv", "LDS_Set_2017_05_05_1327.csv", "DFX_Set_2017_04_15_1952.csv", "ASS_Set_2017_04_28_1416.csv", "ENE_Set_2017_04_28_1356.csv", "karina_Set_2017_04_28_1319.csv", "M.N_Set_2017_04_28_1457.csv", "OMK_Set_2017_04_15_2003.csv", "POL_Set_2017_04_15_1917.csv", "SAA_Set_2017_04_15_1800.csv", "SEV_Set_2017_04_28_1342.csv", "Simon_Set_2017_04_15_1935.csv", "Mil_Set_2017_04_29_1731.csv", "AAF_Set_2017_04_29_1410.csv", "GSA_Set_2017_05_17_1713.csv", "KLE_Set_2017_05_17_1645.csv", "AKS_Set_2017_05_17_1623.csv", "YGY_Set_2017_05_17_1609.csv", "ASV_Set_2017_05_17_1556.csv", "MB_Set_2017_05_17_1412.csv", "EZV_Set_2017_05_17_1327.csv", "ARM_Set_2017_05_16_2215.csv", "RBD_Set_2017_05_16_1316.csv")
+data <- data.table()
+for (i in 1:length(names)) {
+  a <- read.csv(file = names[i])
+  data <- rbind(data,a)
+}
+```
+
+
+### Обрезка данных
+
+```{r data_table, output=FALSE}
+data_best <- data[,. (answer.keys, number_of_fixational_trials, size, trials_3.thisRepN, participant)]
+#data_best$size <- as.factor(data_best$size)
+#data_best$number_of_fixational_trials <- as.factor(data_best$number_of_fixational_trials)
+data_best <- data_best[!(size=="NA")]
+data_best <- data_best[(trials_3.thisRepN==0)]
+
+data_right <- data_best[(answer.keys == "right")]
+data_left <- data_best[(answer.keys == "left")]
+data_left_right <- data_best[(answer.keys == "right"|answer.keys == "left")]
+data_down <- data_best[(answer.keys == "down")]
+levels(data_best$answer.keys) <- c("", "No illusion", "Contrastive illusion", "Assimilative illusion")
+```
+
+### Количество иллюзий
+
+``` {r plot0, echo = FALSE}
+ggplot(data_best, aes(x = answer.keys)) + geom_bar() + ylab("Total amount of illusions") + xlab("") + ggtitle("Number of illusions")
+```
+
+```
+
+### Зависимость количества иллюзий от размера разницы между стимулами в установочных пробах
+
+```{r plot1, echo = FALSE}
+ggplot(data_left_right, aes(x = size, fill = answer.keys)) + geom_bar()
+ggplot(data_best, aes(x = size, fill = answer.keys)) + geom_bar(stat = "count", position = position_fill()) + ylab("Fraction of the type of illusions") + xlab("Size of difference between the setting stimuli (in individual differential thresholds)") + ggtitle("Fraction of illusions for different sizes of difference") + labs(fill = "Type of illusion")
+
+ggplot(data_best, aes(x = answer.keys, fill = as.factor(number_of_fixational_trials))) + geom_bar(stat = "count", position = position_fill())
+#ggplot(data_best, aes(x = answer.keys, fill = size)) + geom_bar(stat = "count", position = position_fill())
+```
+
+### Зависимость количества иллюзий от количества установочных проб
+
+```{r plot2, echo = FALSE}
+ggplot(data_left_right, aes(x = number_of_fixational_trials, fill = answer.keys)) + geom_bar(stat = "bin", position = position_fill())
+```
+
+### Зависимость количества контрастных иллюзий от размера разницы между стимулами в установочных пробах
+
+```{r plot3, echo = FALSE}
+ggplot(data_left, aes(x = size)) + geom_bar() +  ylab("Total amount of illusions") + xlab("Size of difference between the setting stimuli (in individual differential thresholds)") + ggtitle("Number of contrastive illusions and difference in stimuli's sizes")
+```
+
+### Зависимость количества контрастных иллюзий от количества установочных проб
+
+```{r plot4, echo = FALSE}
+ggplot(data_left, aes(x = number_of_fixational_trials)) + geom_bar() + ylab("Total amount of illusions") + xlab("Number of fixational trials") + ggtitle("Number of contrastive illusions and number of fixational trials")
+```
+
+### Зависимость количества ассимилятивных иллюзий от размера разницы между стимулами в установочных пробах
+
+```{r plot5, echo = FALSE}
+ggplot(data_right, aes(x = size)) + geom_bar() + ylab("Total amount of illusions") + xlab("Size of difference between the setting stimuli (in individual differential thresholds)") + ggtitle("Number of assimilative illusions and difference in stimuli's sizes")
+```
+
+### Зависимость количества ассимилятивных иллюзий от количества установочных проб
+
+```{r plot6, echo = FALSE}
+ggplot(data_right, aes(x = number_of_fixational_trials)) + geom_bar() + ylab("Total amount of illusions") + xlab("Number of fixational trials") + ggtitle("Number of assimilative illusions and number of fixational trials")
+```
+
+### Для малого количества фиксационных проб (1-4)
+
+```{r plot7, echo=FALSE}
+data_right_num_1 <- data_right[(number_of_fixational_trials <= 4)]
+data_right_num_2 <- data_right[(number_of_fixational_trials >= 5)]
+ggplot(data_right_num_1, aes(x = size)) + geom_bar()
+```
+
+### Для большого количества фиксационных проб (5-8)
+
+```{r plot8, echo=FALSE}
+ggplot(data_right_num_2, aes(x = size)) + geom_bar()
+```
+
+### Логистическая регрессия (для ассимилятивных: количество установочных проб ~ размер разницы)
+
+```{r regression_1, echo = FALSE}
+
+ggplot(data_right, aes(x = number_of_fixational_trials, y = size)) + geom_smooth(method = "glm", method.args = list(family = "gaussian"), aes(color = "gaussian"), se = TRUE)
+
+```
+
+### Логистическая регрессия (для контрастных: количество установочных проб ~ размер разницы)
+
+```{r regression_2, echo = FALSE}
+
+ggplot(data_left, aes(x = number_of_fixational_trials, y = size)) + geom_smooth(method = "glm", method.args = list(family = "gaussian"), aes(color = "gaussian"), se = TRUE)
+
+```
+
+### Логистическая регрессия (для обоих типов иллюзий: количество установочных проб ~ размер разницы)
+
+``` {r regression_3, echo = FALSE}
+
+ggplot(data_left_right, aes(x = number_of_fixational_trials, y = size, col = answer.keys)) + geom_smooth(method = "glm", method.args = list(family = "gaussian"), se = TRUE)
+
+```
+
+
+### Статистика для контрастных иллюзий
+
+``` {r statistics1, echo = FALSE}
+c1 <- data_left[,.N, by = size]
+c1 <- c("1" = 30, "2" = 54, "3" = 69)
+chisq.test(c1)
+
+c2 <- data_left[,.N, by = number_of_fixational_trials]
+cor.test(c2$N, c2$number_of_fixational_trials)
+``` 
+
+### Cтатистика для ассимилятивных иллюзий
+
+``` {r statistics2, echo = FALSE}
+a1 <- data_right[,.N, by = size]
+a1 <- c("1" = 41, "2" = 28, "3" = 34)
+chisq.test(a1)
+
+a2 <- data_right[,.N, by = number_of_fixational_trials]
+cor.test(a2$N, a2$number_of_fixational_trials)
+
+```
+
+### Heat map
+
+### New data
+
+``` {r new_data, echo = FALSE}
+data_best_2 <- data[,. (answer.keys, number_of_fixational_trials, size, trials_3.thisRepN, participant)]
+data_best_2 <- data_best_2[!(size=="NA")]
+data_best_2 <- data_best_2[(trials_3.thisRepN==0)]
+levels(data_best_2$answer.keys) <- c("", "No illusion", "Contrastive illusion", "Assimilative illusion")
+
+
+c1 <- aggregate(data$rating_up.response, by=list(Category=data$participant), FUN=mean, na.rm = TRUE) 
+c2 <- aggregate(data$rating_down.response, by=list(Category=data$participant), FUN=mean, na.rm = TRUE)
+c1$sum <- c1$x + c2$x
+c1$mean <- (c1$sum)/2
+c1 <- c1[rep(1:nrow(c1), each = 24),]
+data_best_2$size <- data_best$size * c1$mean
+
+data_right_2 <- data_best_2[(answer.keys == "Assimilative illusion")]
+data_left_2 <- data_best_2[(answer.keys == "Contrastive illusion")]
+data_left_right_2 <- data_best_2[(answer.keys == "Assimilative illusion"|answer.keys == "Contrastive illusion")]
+data_down_2 <- data_best_2[(answer.keys == "No illusion")]
+
+data_best_2$size_in_thresholds <- data_best$size
+data_best_2$answer <- data_best_2$answer.keys
+levels(data_best_2$answer.keys) <- c("NA", "0", "-1", "1")
+data_best_2$answer.keys <- as.numeric(data_best_2$answer.keys)
+write.csv(data_best_2, file = "C:/Projects/Coursework/Experiment/MyData.csv")
+```
+
+### GEOM POINT
+
+``` {r plot9, echo = FALSE}
+ggplot(data_left_right_2, aes(x = size, y = number_of_fixational_trials, col = answer.keys)) + geom_jitter()
+ggplot(data_left_2, aes(x = size)) + geom_histogram(binwidth = 0.1) + xlab("Absolute value of differece between setting stimuli (in cm)") + ylab("Total amount of illusions") + ggtitle("Number of contrastive illusions and absolute value of difference")
+
+# DENSITIES
+ggplot(data_best_2, aes(x = size, fill = answer.keys)) + geom_density(alpha=0.4) + xlab("Absolute value of differece between setting stimuli (in cm)") + ylab("Estimated density") + ggtitle("Estimated density of distributions") + labs(fill= "Type of illusion")
+
+# DISTRIBUTIONS
+ggplot(data_best_2, aes(x = size, fill = answer.keys)) + geom_histogram(binwidth = 0.1) + xlab("Absolute value of differece between setting stimuli (in cm)") + ylab("Total amount of illusions") + ggtitle("Number of illusions and absolute value of difference") + facet_wrap(~ answer.keys) + labs(fill= "Type of illusion")
+
+
+ggplot(data_left_right_2, aes(x = size, fill  = answer.keys)) + geom_histogram(alpha = 0.3, binwidth = 0.1, aes(y = ..density..), position = 'identity') + xlab("Absolute value of differece between setting stimuli (in cm)") + ylab("Total amount of illusions") + ggtitle("Number of assimilative illusions and absolute value of difference")
+
+
+ggplot(data_right_2, aes(x = size)) + geom_histogram(binwidth = 0.1) + xlab("Absolute value of differece between setting stimuli (in cm)") + ylab("Total amount of illusions") + ggtitle("Number of assimilative illusions and absolute value of difference")
+
+###ggplot(data_left_right_2, aes(x=size, fill = answer.keys)) + geom_histogram(aes(y=..count../sum(..count..)))
+
+ggplot(data = data_left_right_2,aes(x=size, fill = answer.keys)) + geom_density(alpha = 0.3) + geom_dotplot(dotsize = 0.5,aes(size=2, fill=answer.keys))
+#+ labs(fill="Type of illusion", linetype="Type of illusion")
+``` 
+
+### Модель со смешанными эффектами
+
+``` {r lrem1}
+model1 <- glmer(size ~ answer.keys + (1|participant), data = data_left_right_2)
+summary(model1)
+model0 <- glmer(size ~ 1 + (1|participant), data = data_left_right_2)
+summary(model0)
+anova(model1, model0)
+```
+
+### Модель для дифференциальных порогов
+
+``` {r lrem2}
+model2 <- glmer(size ~ answer.keys + (1|participant), data = data_best)
+summary(model2)
+model20 <- glmer(size ~ 1 + (1|participant), data = data_best)
+summary(model20)
+anova(model20, model2)
+
+model3 <- glmer(number_of_fixational_trials ~ answer.keys + (1|participant), data = data_best)
+summary(model3)
+model30 <- glmer(number_of_fixational_trials ~ 1 + (1|participant), data = data_best)
+anova(model3, model30)
+```
+
