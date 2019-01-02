@@ -140,33 +140,7 @@ ggplot(data_left_right, aes(x = number_of_fixational_trials, y = size, col = ans
 
 ```
 
-
-### Статистика для контрастных иллюзий
-
-``` {r statistics1, echo = FALSE}
-c1 <- data_left[,.N, by = size]
-c1 <- c("1" = 30, "2" = 54, "3" = 69)
-chisq.test(c1)
-
-c2 <- data_left[,.N, by = number_of_fixational_trials]
-cor.test(c2$N, c2$number_of_fixational_trials)
-``` 
-
-### Cтатистика для ассимилятивных иллюзий
-
-``` {r statistics2, echo = FALSE}
-a1 <- data_right[,.N, by = size]
-a1 <- c("1" = 41, "2" = 28, "3" = 34)
-chisq.test(a1)
-
-a2 <- data_right[,.N, by = number_of_fixational_trials]
-cor.test(a2$N, a2$number_of_fixational_trials)
-
-```
-
-### Heat map
-
-### New data (with participants IDs and absolute value of difference between stimuli)
+### New data (with absolute value of difference between stimuli)
 
 ``` {r new_data, echo = FALSE}
 data_best_2 <- data[,. (answer.keys, number_of_fixational_trials, size, trials_3.thisRepN, participant)]
@@ -380,6 +354,9 @@ data_for_stan <- data_left_right
 data_for_stan$answer.keys <- as.numeric(data_for_stan$answer.keys)
 data_for_stan$answer.keys <- data_for_stan$answer.keys - 3 # 1 - assimilative, 0 - contrastive
 data_for_stan$participant <- as.numeric(data_for_stan$participant)
+save(data_for_stan, file = "data_for_stan.RData")
+
+
 list_for_stan <- list(nY = nrow(data_for_stan), nS = max(data_for_stan$participant), Subj = data_for_stan$participant, size_diff = data_for_stan$size, num_of_trials = data_for_stan$number_of_fixational_trials, Y = data_for_stan$answer.keys)
 ```
 
