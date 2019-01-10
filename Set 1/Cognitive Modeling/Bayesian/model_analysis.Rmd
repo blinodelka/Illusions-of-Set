@@ -191,16 +191,13 @@ data {
 
 parameters {
 	real<lower = 0, upper = 1> c;
-	real<lower = 0> sigma; шум в принятии решения
 }
 
 model {
 	// априорные распределения
-	c ~ uniform(0, 1);
-	sigma ~ normal(0, 0.5);
-  
+	c ~ uniform(0, 1); // coupling probability
   for(i in 1: nY){
-    Y[i] ~ bernoulli(likelihoods[i] * (1 - ((1-c)/(1 - c + c * num_of_trials[i]))));} # второй множитель - прайор ненулевого класса из CRP
+    Y[i] ~ bernoulli((likelihoods[i] * (1 - ((1-c)/(1 - c + c * num_of_trials[i]))))/((likelihoods[i] * (1 - ((1-c)/(1 - c + c * num_of_trials[i])))) + 1 * (1-c)/(1 - c + c * num_of_trials[i])));} // второй множитель - прайор ненулевого класса из CRP, потом - нормализация вероятностей
 }
 '
 ```
@@ -244,8 +241,7 @@ fit_crp <- stan(model_code = model_crp, data = list_crp)
 
 
 ```{r}
-prob <- rstan :: extract(fit_set)$prob
-hist(exp(prob))
+print(fit_crp)
 ```
 
 ```{r}
