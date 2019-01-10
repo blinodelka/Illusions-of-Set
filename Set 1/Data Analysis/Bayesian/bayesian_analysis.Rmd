@@ -1,6 +1,8 @@
 ---
 title: "Bayesian Analysis"
-output: html_notebook
+output:
+  html_document:
+    df_print: paged
 ---
 
 ```{r}

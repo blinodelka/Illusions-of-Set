@@ -18,6 +18,42 @@ list_for_stan <- list(nY = nrow(data_for_stan), nS = max(data_for_stan$participa
 ```
 
 ```{r}
+model_1 <- '
+data {
+	int<lower=1> nY; // количество наблюдений (всего)
+	int<lower=1> nS; // количество испытуемых
+	int<lower=1,upper=nS> Subj[nY]; // вектор с номерами испытуемых для каждого из наблюдений
+	vector[nY] size_diff; // разница между стимулами
+	vector[nY] num_of_trials; // количество установочных проб
+	int<lower = 0, upper = 1> Y[nY]; // результат: какой тип иллюзии наблюдался. 1 - ассимилятивная
+}
+
+parameters {
+	real<lower = 0> initial_sd_mu;
+	real<lower = 0> initial_sd_sd;
+	real<lower = 0> initial_sd[nS];
+}
+
+model {
+  
+	// априорные распределения
+	initial_sd_mu ~ cauchy(0, 3);
+	initial_sd_sd ~ cauchy(0, 3);
+  
+	// "откуда" (из какого распределения по популяции) генерировались индивидуальные размеры эффекта
+	initial_sd ~ normal(initial_sd_mu, initial_sd_sd);
+
+	// генерация наблюдений с учетом общего смещения и индивидуальных эффектов (логистическая регрессия)
+	//for(i in 1:nY){
+    // Y[i] ~ bernoulli_logit(exp(normal_lpdf(0 | size_diff[i], initial_sd[Subj[i]]/num_of_trials[i])));
+	// }
+	for(i in 1: nY){
+		Y[i] ~ bernoulli_logit(exp(normal_lpdf(0 | size_diff[i], initial_sd[Subj[i]]/num_of_trials[i])));}
+}
+'
+```
+
+```{r}
 fit_1 <- stan("stan_model_1.stan", data = list_for_stan, iter = 16000, warmup = 10000)
 ```
 
@@ -52,6 +88,168 @@ fit_alt <- sampling(stan_model_alternative, list_for_stan, iter = 20000, warmup 
 alt_l <- bridge_sampler(fit_alt, silent = TRUE)
 print(alt_l)
 ```
+
+```{r}
+model_set <- '
+data {
+	int<lower=1> nY; // количество наблюдений (всего)
+	vector[nY] size_diff; // целевой предиктор, разница между стимулами
+}
+
+parameters {
+	real<lower = 0> mu;
+  real<lower = 0> sigma;
+}
+
+model {
+	// априорноё представление о категории: нет никакого знания
+	mu ~ uniform(-6,6);
+  sigma ~ uniform(0,10);
+  size_diff ~ normal(mu, sigma);
+}
+
+generated quantities {
+  real prob;
+  prob = normal_lpdf(0 | mu, sigma);
+}
+'
+```
+
+
+```{r}
+model_set_1_trial <- '
+data {
+	real size_diff; // целевой предиктор, разница между стимулами
+}
+
+parameters {
+	real<lower = 0> mu;
+  real<lower = 0> sigma;
+}
+
+model {
+	// априорноё представление о категории: нет никакого знания
+	mu ~ uniform(-6,6);
+  sigma ~ uniform(0,10);
+  size_diff ~ normal(mu, sigma);
+}
+
+generated quantities {
+  real prob;
+  prob = normal_lpdf(0 | mu, sigma);
+}
+'
+```
+
+```{r}
+# generate likelihoods for different conditions
+
+data <- matrix(nrow = 24, ncol = 4000)
+
+n <- 1
+
+for(j in 1:3){ # size of diff
+  y <- rnorm(1, j, 0.2) # size diff = j, n_trials = i, observer error = 0.2
+  list_set <- list(size_diff = y)
+  fit_set <- stan(model_code = model_set_1_trial, data = list_set, verbose = FALSE)
+  prob <- rstan :: extract(fit_set)$prob
+  data[n,] <- prob
+  n <- n + 1
+}
+
+for(i in 2:8){ # num of trials from 2 to 8
+  for(j in 1:3){ # size of diff
+    y <- rnorm(i, j, 0.2) # size diff = j, n_trials = i, observer error = 0.2
+    list_set <- list(size_diff = y, nY = length(y))
+    fit_set <- stan(model_code = model_set, data = list_set, verbose = FALSE)
+    prob <- rstan :: extract(fit_set)$prob
+    data[n,] <- prob
+    n <- n + 1
+  }
+}
+
+
+data <- exp(data)
+sum(data<0) # no zero likelihoods
+rowMeans(data)
+
+### нормализация - не нужна
+data_norm <- data/rowMeans(data)
+data_norm <- data_norm - 0.5
+rowMeans(data_norm)
+```
+
+
+```{r}
+model_crp <- '
+data {
+	int<lower=1> nY; // количество наблюдений (всего)
+	vector[nY] likelihoods; // правдоподобие классов, полученное из предыдущей модели
+	vector[nY] num_of_trials; // количество установочных проб
+	int<lower = 0, upper = 1> Y[nY]; // результат: какой тип иллюзии наблюдался. 1 - ассимилятивная
+}
+
+parameters {
+	real<lower = 0, upper = 1> c;
+	real<lower = 0> sigma; шум в принятии решения
+}
+
+model {
+	// априорные распределения
+	c ~ uniform(0, 1);
+	sigma ~ normal(0, 0.5);
+  
+  for(i in 1: nY){
+    Y[i] ~ bernoulli(likelihoods[i] * (1 - ((1-c)/(1 - c + c * num_of_trials[i]))));} # второй множитель - прайор ненулевого класса из CRP
+}
+'
+```
+
+Add likelihoods to the dataset
+
+```{r}
+likelihood_means <- rowMeans(data)
+data_for_stan$likelihood <- NA
+data_for_stan$likelihood[data_for_stan$size == 1 & data_for_stan$number_of_fixational_trials == 1] <- likelihood_means[1]
+data_for_stan$likelihood[data_for_stan$size == 2 & data_for_stan$number_of_fixational_trials == 1] <- likelihood_means[2]
+data_for_stan$likelihood[data_for_stan$size == 3 & data_for_stan$number_of_fixational_trials == 1] <- likelihood_means[3]
+data_for_stan$likelihood[data_for_stan$size == 1 & data_for_stan$number_of_fixational_trials == 2] <- likelihood_means[4]
+data_for_stan$likelihood[data_for_stan$size == 2 & data_for_stan$number_of_fixational_trials == 2] <- likelihood_means[5]
+data_for_stan$likelihood[data_for_stan$size == 3 & data_for_stan$number_of_fixational_trials == 2] <- likelihood_means[6]
+data_for_stan$likelihood[data_for_stan$size == 1 & data_for_stan$number_of_fixational_trials == 3] <- likelihood_means[7]
+data_for_stan$likelihood[data_for_stan$size == 2 & data_for_stan$number_of_fixational_trials == 3] <- likelihood_means[8]
+data_for_stan$likelihood[data_for_stan$size == 3 & data_for_stan$number_of_fixational_trials == 3] <- likelihood_means[9]
+data_for_stan$likelihood[data_for_stan$size == 1 & data_for_stan$number_of_fixational_trials == 4] <- likelihood_means[10]
+data_for_stan$likelihood[data_for_stan$size == 2 & data_for_stan$number_of_fixational_trials == 4] <- likelihood_means[11]
+data_for_stan$likelihood[data_for_stan$size == 3 & data_for_stan$number_of_fixational_trials == 4] <- likelihood_means[12]
+data_for_stan$likelihood[data_for_stan$size == 1 & data_for_stan$number_of_fixational_trials == 5] <- likelihood_means[13]
+data_for_stan$likelihood[data_for_stan$size == 2 & data_for_stan$number_of_fixational_trials == 5] <- likelihood_means[14]
+data_for_stan$likelihood[data_for_stan$size == 3 & data_for_stan$number_of_fixational_trials == 5] <- likelihood_means[15]
+data_for_stan$likelihood[data_for_stan$size == 1 & data_for_stan$number_of_fixational_trials == 6] <- likelihood_means[16]
+data_for_stan$likelihood[data_for_stan$size == 2 & data_for_stan$number_of_fixational_trials == 6] <- likelihood_means[17]
+data_for_stan$likelihood[data_for_stan$size == 3 & data_for_stan$number_of_fixational_trials == 6] <- likelihood_means[18]
+data_for_stan$likelihood[data_for_stan$size == 1 & data_for_stan$number_of_fixational_trials == 7] <- likelihood_means[19]
+data_for_stan$likelihood[data_for_stan$size == 2 & data_for_stan$number_of_fixational_trials == 7] <- likelihood_means[20]
+data_for_stan$likelihood[data_for_stan$size == 3 & data_for_stan$number_of_fixational_trials == 7] <- likelihood_means[21]
+data_for_stan$likelihood[data_for_stan$size == 1 & data_for_stan$number_of_fixational_trials == 8] <- likelihood_means[22]
+data_for_stan$likelihood[data_for_stan$size == 2 & data_for_stan$number_of_fixational_trials == 8] <- likelihood_means[23]
+data_for_stan$likelihood[data_for_stan$size == 3 & data_for_stan$number_of_fixational_trials == 8] <- likelihood_means[24]
+```
+
+```{r}
+list_crp <- list(nY = nrow(data_for_stan), likelihoods = data_for_stan$likelihood, num_of_trials = data_for_stan$number_of_fixational_trials, Y = data_for_stan$answer.keys)
+
+fit_crp <- stan(model_code = model_crp, data = list_crp)
+```
+
+
+```{r}
+prob <- rstan :: extract(fit_set)$prob
+hist(exp(prob))
+```
+
+```{r}
+
 ```
 
 

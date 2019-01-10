@@ -23,7 +23,7 @@ model {
 	// априорные распределения
 	intercept_mu ~ normal(0,10); 
 	intercept_sd ~ cauchy(0,3);
-	beta_1_mu ~ uniform(-5,5); // альтернативная гипотеза: эффект может быть любым между -5 и 5
+	beta_1_mu ~ uniform(-2,2); // альтернативная гипотеза: эффект может быть любым между -5 и 5
 	beta_1_sd ~ cauchy(0,3);
 	beta_2_mu ~ normal(0,1);
 	beta_2_sd ~ cauchy(0,3);
