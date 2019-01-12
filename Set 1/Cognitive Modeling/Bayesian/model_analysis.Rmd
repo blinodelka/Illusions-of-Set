@@ -103,8 +103,8 @@ parameters {
 
 model {
 	// априорноё представление о категории: нет никакого знания
-	mu ~ uniform(-6,6);
-  sigma ~ uniform(0,10);
+	mu ~ normal(0,6);
+  sigma ~ cauchy(0,5);
   size_diff ~ normal(mu, sigma);
 }
 
@@ -129,8 +129,8 @@ parameters {
 
 model {
 	// априорноё представление о категории: нет никакого знания
-	mu ~ uniform(-6,6);
-  sigma ~ uniform(0,10);
+	mu ~ normal(0,6);
+  sigma ~ cauchy(0,5);
   size_diff ~ normal(mu, sigma);
 }
 
@@ -145,15 +145,21 @@ generated quantities {
 # generate likelihoods for different conditions
 
 data <- matrix(nrow = 24, ncol = 4000)
+mus <- matrix(nrow = 24, ncol = 4000)
+sigmas <- matrix(nrow = 24, ncol = 4000)
 
 n <- 1
 
 for(j in 1:3){ # size of diff
-  y <- rnorm(1, j, 0.2) # size diff = j, n_trials = i, observer error = 0.2
+  y <- rnorm(1, j, 0.1) # size diff = j, n_trials = i, observer error = 0.2
   list_set <- list(size_diff = y)
   fit_set <- stan(model_code = model_set_1_trial, data = list_set, verbose = FALSE)
   prob <- rstan :: extract(fit_set)$prob
+  mu <- rstan :: extract(fit_set)$mu
+  sigma <- rstan :: extract(fit_set)$sigma
   data[n,] <- prob
+  mus[n,] <- mu
+  sigmas[n,] <- sigma
   n <- n + 1
 }
 
@@ -163,7 +169,11 @@ for(i in 2:8){ # num of trials from 2 to 8
     list_set <- list(size_diff = y, nY = length(y))
     fit_set <- stan(model_code = model_set, data = list_set, verbose = FALSE)
     prob <- rstan :: extract(fit_set)$prob
+    mu <- rstan :: extract(fit_set)$mu
+    sigma <- rstan :: extract(fit_set)$sigma
     data[n,] <- prob
+    mus[n,] <- mu
+    sigmas[n,] <- sigma
     n <- n + 1
   }
 }
@@ -206,7 +216,11 @@ Add likelihoods to the dataset
 
 ```{r}
 likelihood_means <- rowMeans(data)
+mu_means <- rep(c(1,2,3), 8)# apply(mus, 1, quantile, probs = 0.5, na.rm = TRUE)
+sigma_means <- rowMeans(sigmas)
+
 data_for_stan$likelihood <- NA
+data_for_stan$estimated_mu <- NA
 data_for_stan$likelihood[data_for_stan$size == 1 & data_for_stan$number_of_fixational_trials == 1] <- likelihood_means[1]
 data_for_stan$likelihood[data_for_stan$size == 2 & data_for_stan$number_of_fixational_trials == 1] <- likelihood_means[2]
 data_for_stan$likelihood[data_for_stan$size == 3 & data_for_stan$number_of_fixational_trials == 1] <- likelihood_means[3]
@@ -231,6 +245,31 @@ data_for_stan$likelihood[data_for_stan$size == 3 & data_for_stan$number_of_fixat
 data_for_stan$likelihood[data_for_stan$size == 1 & data_for_stan$number_of_fixational_trials == 8] <- likelihood_means[22]
 data_for_stan$likelihood[data_for_stan$size == 2 & data_for_stan$number_of_fixational_trials == 8] <- likelihood_means[23]
 data_for_stan$likelihood[data_for_stan$size == 3 & data_for_stan$number_of_fixational_trials == 8] <- likelihood_means[24]
+
+data_for_stan$estimated_mu[data_for_stan$size == 1 & data_for_stan$number_of_fixational_trials == 1] <- mu_means[1]
+data_for_stan$estimated_mu[data_for_stan$size == 2 & data_for_stan$number_of_fixational_trials == 1] <- mu_means[2]
+data_for_stan$estimated_mu[data_for_stan$size == 3 & data_for_stan$number_of_fixational_trials == 1] <- mu_means[3]
+data_for_stan$estimated_mu[data_for_stan$size == 1 & data_for_stan$number_of_fixational_trials == 2] <- mu_means[4]
+data_for_stan$estimated_mu[data_for_stan$size == 2 & data_for_stan$number_of_fixational_trials == 2] <- mu_means[5]
+data_for_stan$estimated_mu[data_for_stan$size == 3 & data_for_stan$number_of_fixational_trials == 2] <- mu_means[6]
+data_for_stan$estimated_mu[data_for_stan$size == 1 & data_for_stan$number_of_fixational_trials == 3] <- mu_means[7]
+data_for_stan$estimated_mu[data_for_stan$size == 2 & data_for_stan$number_of_fixational_trials == 3] <- mu_means[8]
+data_for_stan$estimated_mu[data_for_stan$size == 3 & data_for_stan$number_of_fixational_trials == 3] <- mu_means[9]
+data_for_stan$estimated_mu[data_for_stan$size == 1 & data_for_stan$number_of_fixational_trials == 4] <- mu_means[10]
+data_for_stan$estimated_mu[data_for_stan$size == 2 & data_for_stan$number_of_fixational_trials == 4] <- mu_means[11]
+data_for_stan$estimated_mu[data_for_stan$size == 3 & data_for_stan$number_of_fixational_trials == 4] <- mu_means[12]
+data_for_stan$estimated_mu[data_for_stan$size == 1 & data_for_stan$number_of_fixational_trials == 5] <- mu_means[13]
+data_for_stan$estimated_mu[data_for_stan$size == 2 & data_for_stan$number_of_fixational_trials == 5] <- mu_means[14]
+data_for_stan$estimated_mu[data_for_stan$size == 3 & data_for_stan$number_of_fixational_trials == 5] <- mu_means[15]
+data_for_stan$estimated_mu[data_for_stan$size == 1 & data_for_stan$number_of_fixational_trials == 6] <- mu_means[16]
+data_for_stan$estimated_mu[data_for_stan$size == 2 & data_for_stan$number_of_fixational_trials == 6] <- mu_means[17]
+data_for_stan$estimated_mu[data_for_stan$size == 3 & data_for_stan$number_of_fixational_trials == 6] <- mu_means[18]
+data_for_stan$estimated_mu[data_for_stan$size == 1 & data_for_stan$number_of_fixational_trials == 7] <- mu_means[19]
+data_for_stan$estimated_mu[data_for_stan$size == 2 & data_for_stan$number_of_fixational_trials == 7] <- mu_means[20]
+data_for_stan$estimated_mu[data_for_stan$size == 3 & data_for_stan$number_of_fixational_trials == 7] <- mu_means[21]
+data_for_stan$estimated_mu[data_for_stan$size == 1 & data_for_stan$number_of_fixational_trials == 8] <- mu_means[22]
+data_for_stan$estimated_mu[data_for_stan$size == 2 & data_for_stan$number_of_fixational_trials == 8] <- mu_means[23]
+data_for_stan$estimated_mu[data_for_stan$size == 3 & data_for_stan$number_of_fixational_trials == 8] <- mu_means[24]
 ```
 
 ```{r}
@@ -245,7 +284,301 @@ print(fit_crp)
 ```
 
 ```{r}
+model_full_crp <- '
+data {
+	int<lower=1> nY; // количество наблюдений (всего)
+	int<lower=1> num_of_trials[nY]; // количество установочных проб
+  vector[nY] size_diff; // разница между стимулами
+	int<lower = 0, upper = 1> Y[nY]; // результат: какой тип иллюзии наблюдался. 1 - ассимилятивная
+}
+
+transformed data {
+  vector[8] observations[nY]; // max num of trials 
+  for(i in 1:nY) {
+    for (j in 1:8) {
+      observations[i,j] = normal_rng(size_diff[i], 0.2); // observer error = 0.2
+    }
+  }
+}
+
+parameters {
+	real<lower = 0, upper = 1> c; // coupling probability
+  real<lower = 0, upper = 20> sigma; // prior sigma on the category 
+  vector[nY] mu; // mean of the adapted category
+  real<lower = 0> mu_diff; // difference between means
+  real<lower = 0> sigma_adaptive[nY];
+}
+
+transformed parameters {
+  vector[nY] mu_other;
+  vector[nY] likelihoods; 
+  vector[nY] likelihoods_other;
+  for(i in 1:nY){
+    mu_other[i] = mu[i] - mu_diff; // could be + but not relevant in this analysis
+    likelihoods[i] = exp(normal_lpdf(0 | mu[i], sigma_adaptive[i]));
+    likelihoods_other[i] = exp(normal_lpdf(0 | mu_other[i], sigma));
+  }
+}
+
+model {
+	// априорные распределения
+	c ~ uniform(0, 1); // coupling probability
+  sigma ~ cauchy(0, 5);
+  sigma_adaptive ~ cauchy(0,5);
+  mu ~ cauchy(0, 10);
+  mu_diff ~ gamma(7, 1);
+  
+  for(i in 1:nY) {
+    for(j in 1:num_of_trials[i]){ // take only num_of_trials amount of observations
+      observations[i,j] ~ normal(mu[i], sigma_adaptive[i]);}
+  }
+
+  for(i in 1:nY){
+    Y[i] ~ bernoulli((likelihoods[i] * (1 - ((1-c)/(1 - c + c * num_of_trials[i]))))/((likelihoods[i] * (1 - ((1-c)/(1 - c + c * num_of_trials[i])))) + likelihoods_other[i] * (1-c)/(1 - c + c * num_of_trials[i])));} // второй множитель - прайор ненулевого класса из CRP, потом - нормализация вероятностей
+}
+
+generated quantities {
+  vector[nY] p_other;
+  for(i in 1:nY) {
+    p_other[i] = (likelihoods_other[i] * (1-c)/(1 - c + c * num_of_trials[i]))/((likelihoods[i] * (1 - ((1-c)/(1 - c + c * num_of_trials[i])))) + likelihoods_other[i]* (1-c)/(1 - c + c * num_of_trials[i]));
+  }
+}
+'
+```
+
+```{r}
+list_crp <- list(nY = nrow(data_for_stan), size_diff = data_for_stan$size, num_of_trials = data_for_stan$number_of_fixational_trials, Y = data_for_stan$answer.keys)
+
+fit_full_crp <- stan(model_code = model_full_crp, data = list_crp, warmup = 3000, iter = 10000)
+```
+
+```{r}
+print(fit_full_crp)
+
+plot(fit_full_crp)
+
+prob <- rstan::extract(fit_full_crp)$p_other
 
 ```
+
+```{r}
+model_full_crp_2 <- '
+
+data {
+	int<lower=1> nY; // количество наблюдений (всего)
+	int<lower=1> num_of_trials[nY]; // количество установочных проб
+  vector[nY] size_diff; // разница между стимулами
+	int<lower = 0, upper = 1> Y[nY]; // результат: какой тип иллюзии наблюдался. 1 - ассимилятивная
+  vector[nY] likelihoods; // правдоподобие адаптационного класса, полученное из предыдущей модели
+  vector[nY] estimated_means; // правдоподобие классов, полученное из предыдущей модели
+}
+
+parameters {
+	real<lower = 0, upper = 1> c; // coupling probability
+  real<lower = 0> sigma; // prior sigma on the category 
+  real<lower = 0> mu_diff; // difference between means
+}
+
+transformed parameters {
+  vector[nY] mu_other;
+  for(i in 1:nY){
+    mu_other[i] = estimated_means[i] - mu_diff; // could be + but not relevant in this analysis
+  }
+}
+
+model {
+	// априорные распределения
+	c ~ normal(1, 1); // coupling probability
+  sigma ~ cauchy(0, 4);
+  mu_diff ~ gamma(10, 1);
+
+  for(i in 1:nY){
+    Y[i] ~ bernoulli((likelihoods[i] * (1 - ((1-c)/(1 - c + c * num_of_trials[i]))))/((likelihoods[i] * (1 - ((1-c)/(1 - c + c * num_of_trials[i])))) + exp(normal_lpdf(0 | mu_other[i], sigma)) * (1-c)/(1 - c + c * num_of_trials[i])));} // второй множитель - прайор ненулевого класса из CRP, потом - нормализация вероятностей
+}
+
+generated quantities {
+  vector[nY] p_other;
+  for(i in 1:nY) {
+    p_other[i] = (exp(normal_lpdf(0 | mu_other[i], sigma)) * (1-c)/(1 - c + c * num_of_trials[i]))/((likelihoods[i] * (1 - ((1-c)/(1 - c + c * num_of_trials[i])))) + exp(normal_lpdf(0 | mu_other[i], sigma)) * (1-c)/(1 - c + c * num_of_trials[i]));
+  }
+}
+
+'
+```
+
+```{r}
+list_full_crp_2 <- list(nY = nrow(data_for_stan), size_diff = data_for_stan$size, num_of_trials = data_for_stan$number_of_fixational_trials, Y = data_for_stan$answer.keys, likelihoods = data_for_stan$likelihood, estimated_means = data_for_stan$estimated_mu)
+
+fit_full_crp_2 <- stan(model_code = model_full_crp_2, data = list_full_crp_2, warmup = 2000, iter = 5000)
+```
+
+```{r}
+print(fit_full_crp_2, pars = c("mu_other", "p_other"), include = FALSE)
+```
+
+```{r}
+p_other <- rstan :: extract(fit_full_crp_2)$p_other
+p_other <- colMeans(p_other)
+sum(p_other > 0.5 & list_for_stan$Y == 0)
+```
+
+
+```{r}
+posterior_full_crp <- ggs(fit_full_crp_2)
+ggmcmc(D = posterior_full_crp, family = "mu_diff", file = NULL, plot = 'ggs_histogram')
+posterior_full_crp$value[posterior_full_crp$Parameter == "mu_other[1]"]
+```
+
+
+
+```{r}
+model_crp_no_other <- '
+
+data {
+	int<lower=1> nY; // количество наблюдений (всего)
+	int<lower=1> num_of_trials[nY]; // количество установочных проб
+  vector[nY] size_diff; // разница между стимулами
+	int<lower = 0, upper = 1> Y[nY]; // результат: какой тип иллюзии наблюдался. 1 - ассимилятивная
+  vector[nY] likelihoods; // правдоподобие адаптационного класса, полученное из предыдущей модели
+  vector[nY] estimated_means; // правдоподобие классов, полученное из предыдущей модели
+}
+
+parameters {
+	real<lower = 0, upper = 1> c; // coupling probability
+}
+
+model {
+	// априорные распределения
+	c ~ normal(1, 1); // coupling probability
+
+  for(i in 1:nY){
+    Y[i] ~ bernoulli((likelihoods[i] * (1 - ((1-c)/(1 - c + c * num_of_trials[i]))))/((likelihoods[i] * (1 - ((1-c)/(1 - c + c * num_of_trials[i])))) + (1-c)/(1 - c + c * num_of_trials[i])));} // второй множитель - прайор ненулевого класса из CRP, потом - нормализация вероятностей
+}
+
+generated quantities {
+  vector[nY] p_other;
+  for(i in 1:nY) {
+    p_other[i] = 1 - (likelihoods[i] * (1 - ((1-c)/(1 - c + c * num_of_trials[i]))))/((likelihoods[i] * (1 - ((1-c)/(1 - c + c * num_of_trials[i])))) + (1-c)/(1 - c + c * num_of_trials[i]));
+  }
+}
+
+'
+```
+
+```{r}
+fit_crp_no_other <- stan(model_code = model_crp_no_other, data = list_full_crp_2, warmup = 2000, iter = 5000)
+```
+
+```{r}
+print(fit_crp_no_other, pars = c("p_other"), include = FALSE)
+
+p_other_2 <- rstan :: extract(fit_crp_no_other)$p_other
+p_other_2 <- colMeans(p_other_2)
+sum(p_other_2 < 0.5 & list_for_stan$Y == 1) + sum(p_other_2 > 0.5 & list_for_stan$Y == 0)
+
+sum(p_other < 0.5 & list_for_stan$Y == 1) + sum(p_other > 0.5 & list_for_stan$Y == 0)
+```
+
+### alternative: logistic regression
+
+```{r}
+model_alt <- '
+data {
+	int<lower=1> nY; // количество наблюдений (всего)
+	vector[nY] size_diff; // целевой предиктор, разница между стимулами
+	vector[nY] num_of_trials; // количество установочных проб, не понадобится в этом анализе
+  int<lower = 0, upper = 1> Y[nY]; // результат: какой тип иллюзии наблюдался. 1 - ассимилятивная
+}
+
+parameters {
+  real intercept;
+  real beta_1;
+  real beta_2;
+}
+
+model {
+  
+	// априорные распределения
+  intercept ~ cauchy(0,3);
+  beta_1 ~ normal(0,1);
+  beta_2 ~ normal(0,1);
+  
+	for(i in 1: nY){
+	  Y[i] ~ bernoulli_logit(intercept + beta_1*size_diff[i] + beta_2*num_of_trials[i]);}
+}
+
+generated quantities {
+  vector[nY] prob_contr;
+  for (i in 1:nY) {
+    prob_contr[i] = 1 - (exp(intercept + beta_1*size_diff[i] + beta_2*num_of_trials[i])/(1 + exp(intercept + beta_1*size_diff[i] + beta_2*num_of_trials[i])));
+  }
+}
+'
+```
+
+```{r}
+list_for_alt <- list(nY = nrow(data_for_stan), size_diff = data_for_stan$size, num_of_trials = data_for_stan$number_of_fixational_trials, Y = data_for_stan$answer.keys)
+
+fit_alt <- stan(model_code = model_alt, data = list_for_alt)
+```
+
+Result: model with one parameter works better than the one with 3!
+
+```{r}
+print(fit_alt, pars = c("prob_contr"), include = FALSE)
+
+p_other_3 <- rstan :: extract(fit_alt)$prob_contr
+p_other_3 <- colMeans(p_other_3)
+sum(p_other_3 < 0.5 & list_for_stan$Y == 1) + sum(p_other_3 > 0.5 & list_for_stan$Y == 0)
+```
+
+Logistic regression prioritizes contrastive illusion (match = 130), while match for assimilative illusion = 25
+
+```{r}
+data_with_predictions <- data_for_stan
+
+data_with_predictions$blog_regression <- p_other_3
+data_with_predictions$crp_full <- p_other
+data_with_predictions$crp_no_other <- p_other_2
+
+
+# true histograms for assimilative illusion
+hist(data_with_predictions$size[data_with_predictions$answer.keys == 1])
+
+# assimilative illusion and different model predictions
+hist(data_with_predictions$size[data_with_predictions$crp_full < 0.5])
+hist(data_with_predictions$size[data_with_predictions$crp_no_other < 0.5])
+hist(data_with_predictions$size[data_with_predictions$blog_regression < 0.5])
+
+
+# true histograms for assimilative illusion
+hist(data_with_predictions$number_of_fixational_trials[data_with_predictions$answer.keys == 1])
+
+# assimilative illusion and different model predictions
+hist(data_with_predictions$number_of_fixational_trials[data_with_predictions$crp_full < 0.5])
+hist(data_with_predictions$number_of_fixational_trials[data_with_predictions$crp_no_other < 0.5])
+hist(data_with_predictions$number_of_fixational_trials[data_with_predictions$blog_regression < 0.5])
+
+
+# true histograms for contrastive illusion
+hist(data_with_predictions$size[data_with_predictions$answer.keys == 0])
+
+# contrastive illusion and different model predictions
+hist(data_with_predictions$size[data_with_predictions$crp_full > 0.5])
+hist(data_with_predictions$size[data_with_predictions$crp_no_other > 0.5])
+hist(data_with_predictions$size[data_with_predictions$blog_regression > 0.5])
+
+
+# true histograms for contrastive illusion
+hist(data_with_predictions$number_of_fixational_trials[data_with_predictions$answer.keys == 0])
+
+# contrastive illusion and different model predictions
+hist(data_with_predictions$number_of_fixational_trials[data_with_predictions$crp_full > 0.5])
+hist(data_with_predictions$number_of_fixational_trials[data_with_predictions$crp_no_other > 0.5])
+hist(data_with_predictions$number_of_fixational_trials[data_with_predictions$blog_regression > 0.5])
+
+
+```
+
 
 
