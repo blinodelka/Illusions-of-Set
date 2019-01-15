@@ -12,7 +12,7 @@ parameters {
 	real<lower = 0> intercept_sd;
 	real beta_1_mu; 
 	real<lower = 0> beta_1_sd;
-	real beta_2_mu;
+	real<upper = 0> beta_2_mu;
 	real<lower = 0> beta_2_sd; 
 	vector[nS] intercept;
 	vector[nS] beta_1;
@@ -25,7 +25,7 @@ model {
 	intercept_sd ~ cauchy(0,3);
 	beta_1_mu ~ normal(0,1);
 	beta_1_sd ~ cauchy(0,3);
-	beta_2_mu ~ uniform(-2,2); // альтернативная гипотеза: эффект может быть любым между -5 и 5
+	beta_2_mu ~ cauchy(0, 15); // альтернативная гипотеза
 	beta_2_sd ~ cauchy(0,3);
 
 	// "откуда" (из какого распределения по популяции) генерировались индивидуальные размеры 		эффекта

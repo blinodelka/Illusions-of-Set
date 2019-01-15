@@ -10,7 +10,7 @@ data {
 parameters {
 	real intercept_mu; 
 	real<lower = 0> intercept_sd;
-	real beta_1_mu; 
+	real<upper = 0> beta_1_mu; // альтернативная гипотеза: негативный эффект
 	real<lower = 0> beta_1_sd;
 	real beta_2_mu;
 	real<lower = 0> beta_2_sd; 
@@ -23,7 +23,7 @@ model {
 	// априорные распределения
 	intercept_mu ~ normal(0,10); 
 	intercept_sd ~ cauchy(0,3);
-	beta_1_mu ~ uniform(-2,2); // альтернативная гипотеза: эффект может быть любым между -5 и 5
+	beta_1_mu ~ cauchy(0,15); // альтернативная гипотеза: распластанное распределение Коши, обрезанное на нуле (только негативный конец)
 	beta_1_sd ~ cauchy(0,3);
 	beta_2_mu ~ normal(0,1);
 	beta_2_sd ~ cauchy(0,3);

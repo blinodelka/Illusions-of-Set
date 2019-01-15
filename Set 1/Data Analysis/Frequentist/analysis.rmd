@@ -9,11 +9,8 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-# Перцептивная установка как категориальное восприятие
-## Дубова Марина
-in
-
-### Загрузка данных:
+# Frequentist data analysis
+## Marina Dubova
 
 ```{r load_libraries, echo=FALSE}
 library(psych)
@@ -28,9 +25,11 @@ library(ggmcmc)
 library(bayesplot)
 ```
 
+Data loading
+
 ```{r download_data}
 
-setwd("/home/marina/Documents/Projects/Illusions_of_set/Set 1/Experiment/data")
+setwd("/home/marina/Documents/Projects/Illusions_of_set/Set 1/data")
 names <- c("IKA_Set_2017_05_22_1634.csv","NAT_Set_2017_05_05_1426.csv", "AOM_Set_2017_05_01_2019.csv", "BRO_Set_2017_05_05_1411.csv", "LDS_Set_2017_05_05_1327.csv", "DFX_Set_2017_04_15_1952.csv", "ASS_Set_2017_04_28_1416.csv", "ENE_Set_2017_04_28_1356.csv", "karina_Set_2017_04_28_1319.csv", "M.N_Set_2017_04_28_1457.csv", "OMK_Set_2017_04_15_2003.csv", "POL_Set_2017_04_15_1917.csv", "SAA_Set_2017_04_15_1800.csv", "SEV_Set_2017_04_28_1342.csv", "Simon_Set_2017_04_15_1935.csv", "Mil_Set_2017_04_29_1731.csv", "AAF_Set_2017_04_29_1410.csv", "GSA_Set_2017_05_17_1713.csv", "KLE_Set_2017_05_17_1645.csv", "AKS_Set_2017_05_17_1623.csv", "YGY_Set_2017_05_17_1609.csv", "ASV_Set_2017_05_17_1556.csv", "MB_Set_2017_05_17_1412.csv", "EZV_Set_2017_05_17_1327.csv", "ARM_Set_2017_05_16_2215.csv", "RBD_Set_2017_05_16_1316.csv")
 data <- data.table()
 for (i in 1:length(names)) {
@@ -39,8 +38,11 @@ for (i in 1:length(names)) {
 }
 ```
 
+Making the data analyzable
 
-### Обрезка данных
+1. Only test trials
+2. Only relevant columns of PsychoPy output
+3. Different subsets for Assimilative, Contrastive, and No illusion
 
 ```{r data_table, output=FALSE}
 data_best <- data[,. (answer.keys, number_of_fixational_trials, size, trials_3.thisRepN, participant)]
@@ -56,13 +58,13 @@ data_down <- data_best[(answer.keys == "down")]
 levels(data_best$answer.keys) <- c("", "No illusion", "Contrastive illusion", "Assimilative illusion")
 ```
 
-### Количество иллюзий
+### Number of illusions
 
-``` {r plot0, echo = FALSE}
+```{r plot0, echo = FALSE}
 ggplot(data_best, aes(x = answer.keys)) + geom_bar() + ylab("Total amount of illusions") + xlab("") + ggtitle("Number of illusions")
 ```
 
-### Зависимость количества иллюзий от размера разницы между стимулами в установочных пробах
+### Different types of illusion and the size of difference between adaptive stimuli
 
 ```{r plot1, echo = FALSE}
 ggplot(data_left_right, aes(x = size, fill = answer.keys)) + geom_bar()
@@ -72,37 +74,37 @@ ggplot(data_best, aes(x = answer.keys, fill = as.factor(number_of_fixational_tri
 #ggplot(data_best, aes(x = answer.keys, fill = size)) + geom_bar(stat = "count", position = position_fill())
 ```
 
-### Зависимость количества иллюзий от количества установочных проб
+### Different types of illusion and the size of difference and number of adaptation trials
 
 ```{r plot2, echo = FALSE}
 ggplot(data_left_right, aes(x = number_of_fixational_trials, fill = answer.keys)) + geom_bar(stat = "bin", position = position_fill())
 ```
 
-### Зависимость количества контрастных иллюзий от размера разницы между стимулами в установочных пробах
+### Contrastive illusion and the size of difference between adaptive stimuli
 
 ```{r plot3, echo = FALSE}
 ggplot(data_left, aes(x = size)) + geom_bar() +  ylab("Total amount of illusions") + xlab("Size of difference between the setting stimuli (in individual differential thresholds)") + ggtitle("Number of contrastive illusions and difference in stimuli's sizes")
 ```
 
-### Зависимость количества контрастных иллюзий от количества установочных проб
+### Contrastive illusion and the number of adaptation trials
 
 ```{r plot4, echo = FALSE}
 ggplot(data_left, aes(x = number_of_fixational_trials)) + geom_bar() + ylab("Total amount of illusions") + xlab("Number of fixational trials") + ggtitle("Number of contrastive illusions and number of fixational trials")
 ```
 
-### Зависимость количества ассимилятивных иллюзий от размера разницы между стимулами в установочных пробах
+### Assimilative illusion and the size of difference between adaptive stimuli
 
 ```{r plot5, echo = FALSE}
 ggplot(data_right, aes(x = size)) + geom_bar() + ylab("Total amount of illusions") + xlab("Size of difference between the setting stimuli (in individual differential thresholds)") + ggtitle("Number of assimilative illusions and difference in stimuli's sizes")
 ```
 
-### Зависимость количества ассимилятивных иллюзий от количества установочных проб
+### Assimilative illusion and the number of adaptation trials
 
 ```{r plot6, echo = FALSE}
 ggplot(data_right, aes(x = number_of_fixational_trials)) + geom_bar() + ylab("Total amount of illusions") + xlab("Number of fixational trials") + ggtitle("Number of assimilative illusions and number of fixational trials")
 ```
 
-### Для малого количества фиксационных проб (1-4)
+### Plots for 1-4 adaptation trials
 
 ```{r plot7, echo=FALSE}
 data_right_num_1 <- data_right[(number_of_fixational_trials <= 4)]
@@ -110,11 +112,13 @@ data_right_num_2 <- data_right[(number_of_fixational_trials >= 5)]
 ggplot(data_right_num_1, aes(x = size)) + geom_bar()
 ```
 
-### Для большого количества фиксационных проб (5-8)
+### Plots for 5-8 adaptation trials
 
 ```{r plot8, echo=FALSE}
 ggplot(data_right_num_2, aes(x = size)) + geom_bar()
 ```
+
+## Are the predictors correlated?
 
 ### Логистическая регрессия (для ассимилятивных: количество установочных проб ~ размер разницы)
 
@@ -140,9 +144,9 @@ ggplot(data_left_right, aes(x = number_of_fixational_trials, y = size, col = ans
 
 ```
 
-### New data (with absolute value of difference between stimuli)
+### Data with absolute value of difference between stimuli
 
-``` {r new_data, echo = FALSE}
+```{r new_data, echo = FALSE}
 data_best_2 <- data[,. (answer.keys, number_of_fixational_trials, size, trials_3.thisRepN, participant)]
 data_best_2 <- data_best_2[!(size=="NA")]
 data_best_2 <- data_best_2[(trials_3.thisRepN==0)]
@@ -192,350 +196,26 @@ ggplot(data = data_left_right_2,aes(x=size, fill = answer.keys)) + geom_density(
 #+ labs(fill="Type of illusion", linetype="Type of illusion")
 ``` 
 
-### Модель со смешанными эффектами
-
-``` {r lrem1}
-model1 <- glmer(size ~ answer.keys + (1|participant), data = data_left_right_2)
-summary(model1)
-model0 <- glmer(size ~ 1 + (1|participant), data = data_left_right_2)
-summary(model0)
-anova(model1, model0)
-```
+## Mixed logistic regression
 
 ### Модель для дифференциальных порогов
 
 ``` {r lrem2}
-model2 <- glmer(size ~ answer.keys + (1|participant), data = data_best)
-summary(model2)
-model20 <- glmer(size ~ 1 + (1|participant), data = data_best)
-summary(model20)
-anova(model20, model2)
 
-model3 <- glmer(number_of_fixational_trials ~ answer.keys + (1|participant), data = data_best)
-summary(model3)
-model30 <- glmer(number_of_fixational_trials ~ 1 + (1|participant), data = data_best)
-anova(model3, model30)
+model1 <- glmer(answer.keys ~ size + number_of_fixational_trials + (1|participant) + (size|participant), data = data_best, family = binomial) # doesn't converge with individual effects of num_of_trials
+summary(model)
+model10 <- glmer(size ~ 1 + (1|participant), data = data_best)
+summary(model10)
+anova(model10, model1)
 ```
 
-### Bayesian Analysis
+### Модель со смешанными эффектами для абсолютной разницы
 
-```{r}
-model_1 <-
-'
-data {
-	int<lower=1> nY; # количество наблюдений (всего)
-	int<lower=1> nS; # количество испытуемых
-	int<lower=1,upper=nS> Subj[nY]; # вектор с номерами испытуемых
-	vector[nY] size_diff; 
-	vector[nY] num_of_trials; 
-  int<lower = 0, upper = 1> Y[nY]; 
-}
-
-parameters {
-	real intercept_mu; # среднее смещение по всем испытуемым
-	real<lower=0> parameters_sd; # стандартное отклонение (вариация) смещения среди испытуемых
-	vector[nS] intercept; # переменная, чтобы сохранять смещение для каждого из испытуемых
-  real beta_1_mu;
-  vector[nS] beta_1;
-  real beta_2_mu;
-  vector[nS] beta_2;
-  real beta_3_mu;
-  vector[nS] beta_3;
-}
-
-model {
-	# априорные распределения
-	intercept_mu ~ normal(0,10);
-  parameters_sd ~ cauchy(0,3);
-	beta_1_mu ~ normal(0,1);
-	beta_2_mu ~ normal(0,1);
-	beta_3_mu ~ normal(0,1);
-
-	# определить, "откуда" (из какого распределения по популяции) генерировались индивидуальные смещения 
-	intercept ~ normal(intercept_mu,parameters_sd);
-  beta_1 ~ normal(beta_1_mu, parameters_sd);
-  beta_2 ~ normal(beta_2_mu, parameters_sd);
-  beta_3 ~ normal(beta_3_mu, parameters_sd);
-
-	# генерация наблюдений с учетом индивидуального смещения и условия
-	for(i in 1:nY){
-    Y[i] ~ bernoulli_logit(intercept[Subj[i]] + beta_1[Subj[i]]*size_diff[i] + beta_2[Subj[i]]*num_of_trials[i] + beta_3[Subj[i]]*size_diff[i]*num_of_trials[i]);
-	}
-}
-'
+``` {r lrem1}
+model2 <- glmer(answer.keys ~ size + number_of_fixational_trials + (1|participant) + (size|participant), data = data_left_right_2, family = binomial)
+summary(model1)
+model20 <- glmer(answer.keys ~ 1 + (1|participant), data = data_left_right_2, family = binomial)
+summary(model0)
+anova(model2, model20)
 ```
 
-## only intercept varies
-
-```{r}
-model_2 <-
-'
-data {
-	int<lower=1> nY; # количество наблюдений (всего)
-	int<lower=1> nS; # количество испытуемых
-	int<lower=1,upper=nS> Subj[nY]; # вектор с номерами испытуемых
-	vector[nY] size_diff; 
-	vector[nY] num_of_trials; 
-  int<lower = 0, upper = 1> Y[nY]; 
-}
-
-parameters {
-	real intercept_mu; # среднее смещение по всем испытуемым
-	real<lower=0> intercept_sd; # стандартное отклонение (вариация) смещения среди испытуемых
-	vector[nS] intercept; # переменная, чтобы сохранять смещение для каждого из испытуемых
-  real beta_1;
-  real beta_2;
-  real beta_3;
-}
-
-model {
-	# априорные распределения
-	intercept_mu ~ normal(0,10);
-  intercept_sd ~ cauchy(0,3);
-	beta_1 ~ normal(0,1);
-	beta_2 ~ normal(0,1);
-	beta_3 ~ normal(0,1);
-
-	# определить, "откуда" (из какого распределения по популяции) генерировались индивидуальные смещения 
-	intercept ~ normal(intercept_mu,intercept_sd);
-
-	# генерация наблюдений с учетом индивидуального смещения и условия
-	for(i in 1:nY){
-    Y[i] ~ bernoulli_logit(intercept[Subj[i]] + beta_1*size_diff[i] + beta_2*num_of_trials[i] + beta_3*size_diff[i]*num_of_trials[i]);
-	}
-}
-'
-```
-
-## slope 1 and intercept vary
-
-```{r}
-model_3 <-
-'
-data {
-	int<lower=1> nY; # количество наблюдений (всего)
-	int<lower=1> nS; # количество испытуемых
-	int<lower=1,upper=nS> Subj[nY]; # вектор с номерами испытуемых
-	vector[nY] size_diff; 
-	vector[nY] num_of_trials; 
-  int<lower = 0, upper = 1> Y[nY]; 
-}
-
-parameters {
-	real intercept_mu; # среднее смещение по всем испытуемым
-	real<lower=0> intercept_sd; # стандартное отклонение (вариация) смещения среди испытуемых
-	vector[nS] intercept; # переменная, чтобы сохранять смещение для каждого из испытуемых
-  real beta_1_mu;
-  real<lower = 0> beta_1_sd;
-  vector[nS] beta_1;
-}
-
-model {
-	# априорные распределения
-	intercept_mu ~ normal(0,10);
-  intercept_sd ~ cauchy(0,3);
-	beta_1_mu ~ normal(0,1);
-  beta_1_sd ~ cauchy(0,3);
-
-	# определить, "откуда" (из какого распределения по популяции) генерировались индивидуальные смещения 
-	intercept ~ normal(intercept_mu,intercept_sd);
-  beta_1 ~ normal(beta_1_mu, beta_1_sd);
-
-	# генерация наблюдений с учетом индивидуального смещения и условия
-	for(i in 1:nY){
-    Y[i] ~ bernoulli_logit(intercept[Subj[i]] + beta_1[Subj[i]]*size_diff[i]);
-	}
-}
-'
-```
-
-```{r}
-data_for_stan <- data_left_right
-data_for_stan$answer.keys <- as.numeric(data_for_stan$answer.keys)
-data_for_stan$answer.keys <- data_for_stan$answer.keys - 3 # 1 - assimilative, 0 - contrastive
-data_for_stan$participant <- as.numeric(data_for_stan$participant)
-save(data_for_stan, file = "data_for_stan.RData")
-
-
-list_for_stan <- list(nY = nrow(data_for_stan), nS = max(data_for_stan$participant), Subj = data_for_stan$participant, size_diff = data_for_stan$size, num_of_trials = data_for_stan$number_of_fixational_trials, Y = data_for_stan$answer.keys)
-```
-
-```{r stan_fit, eval=TRUE, echo=TRUE, message=TRUE, warning=TRUE}
-fit_1 <- stan(model_code = model_3, data = list_for_stan, iter = 6000, warmup = 2000)
-```
-
-```{r}
-print(fit_1)
-```
-
-```{r}
-posterior_1 <- as.array(fit_1)
-mcmc_areas(posterior_1, regex_pars = c("beta_1"), prob = 0.8, prob_outer = 0.95, point_est = "mean")
-mcmc_areas(posterior_1, regex_pars = c("intercept"), prob = 0.8, prob_outer = 0.95, point_est = "mean")
-```
-
-```{r}
-posterior_1b <- ggs(fit_1)
-ggmcmc(D = posterior_1b, file = NULL, plot = 'ggs_traceplot') 
-ggmcmc(D = posterior_1b, file = NULL, plot = 'ggs_compare_partial') 
-ggmcmc(D = posterior_1b, file = NULL, plot = 'ggs_autocorrelation') 
-```
-
-## only slope 1 varies
-
-```{r}
-model_4 <-
-'
-data {
-	int<lower=1> nY; # количество наблюдений (всего)
-	int<lower=1> nS; # количество испытуемых
-	int<lower=1,upper=nS> Subj[nY]; # вектор с номерами испытуемых
-	vector[nY] size_diff; 
-	vector[nY] num_of_trials; 
-  int<lower = 0, upper = 1> Y[nY]; 
-}
-
-parameters {
-	real intercept; # среднее смещение по всем испытуемым
-  real beta_1_mu;
-  real<lower = 0> beta_1_sd;
-  vector[nS] beta_1;
-}
-
-model {
-	# априорные распределения
-	intercept ~ normal(0,10);
-	beta_1_mu ~ normal(0,1);
-  beta_1_sd ~ cauchy(0,3);
-
-	# определить, "откуда" (из какого распределения по популяции) генерировались индивидуальные смещения 
-  beta_1 ~ normal(beta_1_mu, beta_1_sd);
-
-	# генерация наблюдений с учетом индивидуального смещения и условия
-	for(i in 1:nY){
-    Y[i] ~ bernoulli_logit(intercept + beta_1[Subj[i]]*size_diff[i]);
-	}
-}
-'
-```
-
-```{r stan_fit, eval=TRUE, echo=TRUE, message=TRUE, warning=TRUE}
-fit_2 <- stan(model_code = model_4, data = list_for_stan, iter = 6000, warmup = 2000)
-```
-
-```{r}
-print(fit_2)
-```
-
-```{r}
-posterior_2 <- as.array(fit_2)
-mcmc_areas(posterior_2, regex_pars = c("beta_1"), prob = 0.8, prob_outer = 0.95, point_est = "mean")
-```
-
-```{r}
-library(bridgesampling)
-```
-
-
-```{r}
-H0 <- '
-data {
-	int<lower=1> nY; # количество наблюдений (всего)
-	int<lower=1> nS; # количество испытуемых
-	int<lower=1,upper=nS> Subj[nY]; # вектор с номерами испытуемых
-	vector[nY] size_diff; 
-	vector[nY] num_of_trials; 
-  int<lower = 0, upper = 1> Y[nY]; 
-}
-
-parameters {
-	real intercept; # среднее смещение по всем испытуемым
-  real beta_1_mu;
-  real<lower = 0> beta_1_sd;
-  vector[nS] beta_1;
-}
-
-model {
-	# априорные распределения
-	intercept ~ normal(0,10);
-	beta_1_mu ~ uniform(0,4);
-  beta_1_sd ~ cauchy(0,3);
-
-	# определить, "откуда" (из какого распределения по популяции) генерировались индивидуальные смещения 
-  beta_1 ~ normal(beta_1_mu, beta_1_sd);
-
-	# генерация наблюдений с учетом индивидуального смещения и условия
-	for(i in 1:nY){
-    Y[i] ~ bernoulli_logit(intercept + beta_1[Subj[i]]*size_diff[i]);
-	}
-}
-'
-
-H1 <- '
-data {
-	int<lower=1> nY; # количество наблюдений (всего)
-	int<lower=1> nS; # количество испытуемых
-	int<lower=1,upper=nS> Subj[nY]; # вектор с номерами испытуемых
-	vector[nY] size_diff; 
-	vector[nY] num_of_trials; 
-  int<lower = 0, upper = 1> Y[nY]; 
-}
-
-parameters {
-	real intercept; # среднее смещение по всем испытуемым
-  real beta_1_mu;
-  real<lower = 0> beta_1_sd;
-  vector[nS] beta_1;
-}
-
-model {
-	# априорные распределения
-	intercept ~ normal(0,10);
-	beta_1_mu ~ uniform(-4,0);
-  beta_1_sd ~ cauchy(0,3);
-
-	# определить, "откуда" (из какого распределения по популяции) генерировались индивидуальные смещения 
-  beta_1 ~ normal(beta_1_mu, beta_1_sd);
-
-	# генерация наблюдений с учетом индивидуального смещения и условия
-	for(i in 1:nY){
-    Y[i] ~ bernoulli_logit(intercept + beta_1[Subj[i]]*size_diff[i]);
-	}
-}
-'
-```
-
-```{r}
-# компилируем модели, соответствующие двум гипотезам
-stanmodelH0 <- stan_model(model_code = H0, model_name = 'H0') 
-stanmodelH1 <- stan_model(model_code = H1, model_name = 'H1')
-
-# сэмплируем "предсказания" каждой из гипотез (моделей), нужно сгенерировать очень много 
-fit_H0 <- sampling(stanmodelH0, list_for_stan, iter = 20000, warmup = 1000)
-fit_H1 <- sampling(stanmodelH1, list_for_stan, iter = 20000, warmup = 1000)
-```
-
-```{r}
-print(fit_H0)
-print(fit_H1)
-```
-
-
-```{r}
-# считаем логарифм правдоподобия имеющихся данных для каждой из гипотез (моделей)
-H0_res <- bridge_sampler(fit_H0, silent = TRUE)
-H1_res <- bridge_sampler(fit_H1, silent = TRUE)
-print(H0_res)
-print(H1_res)
-```
-
-```{r}
-error_measures(H0_res)$percentage
-error_measures(H1_res)$percentage
-```
-
-```{r}
-# считаем Байес-фактор (в пользу альтернативной гипотезы)
-BF10 <- bf(H1_res, H0_res)
-print(BF10)
-```

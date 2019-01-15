@@ -5,6 +5,9 @@ output:
     df_print: paged
 ---
 
+# Bayesian data analysis
+## Marina Dubova
+
 ```{r}
 library(rstan)
 library(ggmcmc)
@@ -17,29 +20,33 @@ load("data_for_stan.RData")
 list_for_stan <- list(nY = nrow(data_for_stan), nS = max(data_for_stan$participant), Subj = data_for_stan$participant, size_diff = data_for_stan$size, num_of_trials = data_for_stan$number_of_fixational_trials, Y = data_for_stan$answer.keys)
 ```
 
-## Проверка гипотезы о связи типа иллюзии и разницы между стимулами (больше разница - больше вероятность контрастной иллюзии)
+## Hierarchical Bayesian logistic regression
+Two predictors: size of difference between adaptive stimuli and number of adaptation trials
+
+### Parameter estimation
 
 ```{r}
-fit_1 <- stan("bayes_model_1.stan", data = list_for_stan, iter = 6000, warmup = 2000)
+fit_1 <- stan("bayes_model_1.stan", data = list_for_stan, iter = 10000, warmup = 3000)
 ```
 
 ```{r}
 print(fit_1)
 ```
 
-Вероятность ассимилятивной иллюзии и размер разницы между адаптационными стимулами связаны негативно
+The population and individual effects of the size of difference on the probability of assimilative illusion versus the contrastive illusion
 
 ```{r}
 posterior_1 <- as.array(fit_1)
 mcmc_areas(posterior_1, regex_pars = c("beta_1"), prob = 0.8, prob_outer = 0.95, point_est = "mean")
 ```
 
-Вероятность ассимилятивной иллюзии и количество адаптационных проб связаны негативно
+The population and individual effects of the number of adaptational trials on the probability of assimilative illusion versus the contrastive illusion
 
 ```{r}
 mcmc_areas(posterior_1, regex_pars = c("beta_2"), prob = 0.8, prob_outer = 0.95, point_est = "mean")
 ```
 
+Diagnostics of fit
 
 ```{r}
 posterior_1b <- ggs(fit_1)
@@ -48,7 +55,13 @@ ggmcmc(D = posterior_1b, file = NULL, plot = 'ggs_compare_partial')
 ggmcmc(D = posterior_1b, file = NULL, plot = 'ggs_autocorrelation') 
 ```
 
-### Проверка гипотезы о связи типа иллюзии и разницы между стимулами (больше кол-во проб - больше вероятность контрастной иллюзии)
+## Проверка гипотезы о связи типа иллюзии и разницы между стимулами (больше кол-во проб - больше вероятность контрастной иллюзии)
+
+## Testing the hypothesis that the size of difference between adaptive stimuli positively correlates with the probability of contrastive illusion
+
+Zero hypothesis: hierarchical Bayesian logistic regression with zero mean population effect of the size of difference between two circles
+
+Alternative hypothesis: population effect is negative (very broad cauchy distribution, truncated at 0)
 
 ```{r}
 # компилируем модели, соответствующие двум гипотезам
@@ -65,7 +78,7 @@ print(fit_H0)
 print(fit_H1)
 ```
 
-## Диагностика
+Diagnostics 
 
 ```{r}
 posterior_H0 <- ggs(fit_H0)
@@ -84,7 +97,7 @@ ggmcmc(D = posterior_H0, file = NULL, family = 'beta_mu', plot = 'ggs_autocorrel
 ggmcmc(D = posterior_H1, file = NULL, family = 'beta_mu', plot = 'ggs_autocorrelation')
 ```
 
-## Байес-фактор
+Bayes factor estimation
 
 ```{r}
 # считаем логарифм правдоподобия имеющихся данных для каждой из гипотез (моделей)
@@ -100,6 +113,7 @@ error_measures(H0_res)$percentage
 error_measures(H1_res)$percentage
 ```
 
+Assume that both hypotheses are equally probable (have the same prior probability)
 Предполагаем, что обе гипотезы одинаково вероятны (имеют одинаковую априорную вероятность)
 
 ```{r}
@@ -112,8 +126,14 @@ BF01 <- bf(H0_res, H1_res)
 print(BF01)
 ```
 
-
 ## Проверка гипотезы о связи типа иллюзии и количеством установочных проб (больше кол-во проб - больше вероятность контрастной иллюзии)
+
+## Testing the hypothesis that the number of adaptation trials positively correlates with the probability of contrastive illusion (and negatively - with the assimilative illusion)
+
+Zero hypothesis: hierarchical Bayesian logistic regression with zero mean population effect of the number of adaptation trials
+
+Alternative hypothesis: population effect is negative (very broad cauchy distribution, truncated at 0)
+
 
 ```{r}
 # компилируем модели, соответствующие двум гипотезам
@@ -130,7 +150,7 @@ print(fit_H0_2)
 print(fit_H1_2)
 ```
 
-## Диагностика
+Diagnostics
 
 ```{r}
 posterior_H0_2 <- ggs(fit_H0_2)
@@ -149,7 +169,7 @@ ggmcmc(D = posterior_H0_2, file = NULL, family = 'beta_mu', plot = 'ggs_autocorr
 ggmcmc(D = posterior_H1_2, file = NULL, family = 'beta_mu', plot = 'ggs_autocorrelation')
 ```
 
-## Байес-фактор
+Bayes factor estimation
 
 ```{r}
 # считаем логарифм правдоподобия имеющихся данных для каждой из гипотез (моделей)
