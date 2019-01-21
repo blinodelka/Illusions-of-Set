@@ -1,0 +1,66 @@
+---
+title: "Frequentist Analysis"
+output: html_notebook
+---
+
+# Frequentist data analysis: experiment 2
+## Marina Dubova
+
+```{r}
+library(lme4)
+library(mlmRev)
+library(lmerTest)
+library(data.table)
+```
+
+Only test trials with illusions
+
+```{r}
+data_2_all <- data.table(read.csv("data_2_all.csv"))
+data_2_naive <- data.table(read.csv("data_2_naive.csv"))
+data_2_non_naive <- data.table(read.csv("data_2_non_naive.csv"))
+
+data_2_all[,. (answer.keys, n, size, trials_3.thisRepN, participant)]
+data_2_naive[,. (answer.keys, n, size, trials_3.thisRepN, participant)]
+data_2_non_naive[,. (answer.keys, n, size, trials_3.thisRepN, participant)]
+
+data_2_all <- data_2_all[!(size=="NA")]
+data_2_naive <- data_2_naive[!(size=="NA")]
+data_2_non_naive <- data_2_non_naive[!(size=="NA")]
+
+data_2_all <- data_2_all[(answer.keys == "right"|answer.keys == "left")]
+data_2_naive <- data_2_naive[(answer.keys == "right"|answer.keys == "left")]
+data_2_non_naive <- data_2_non_naive[(answer.keys == "right"|answer.keys == "left")]
+```
+
+Mixed logistic regression
+
+```{r}
+model1 <- glmer(answer.keys ~ size + n + (1|participant), data = data_2_all, family = binomial, control=glmerControl(optimizer="bobyqa",optCtrl=list(maxfun=2e5))) 
+summary(model1)
+model10 <- glmer(answer.keys ~ 1 + (1|participant), family = binomial, data = data_2_all)
+summary(model10)
+anova(model10, model1)
+```
+
+Mixed effects logistic regression only for naive participants
+
+```{r}
+model_naive <- glmer(answer.keys ~ size + n + (1|participant) + (size|participant), data = data_2_naive, family = binomial, control=glmerControl(optimizer="bobyqa",optCtrl=list(maxfun=2e5))) # doesn't converge with individual effects of num_of_trials
+summary(model_naive)
+model_naive_0 <- glmer(answer.keys ~ 1 + (1|participant), data = data_2_naive, family = binomial)
+summary(model_naive_0)
+anova(model_naive, model_naive_0)
+```
+
+Mixed effects logistic regression only for non-naive participants
+
+```{r}
+model_non_naive <- glmer(answer.keys ~ size + n + (1|participant) + (size|participant), data = data_2_non_naive, family = binomial, control=glmerControl(optimizer="bobyqa",optCtrl=list(maxfun=2e5))) # doesn't converge with individual effects of num_of_trials
+summary(model_non_naive)
+model_non_naive_0 <- glmer(answer.keys ~ 1 + (1|participant), data = data_2_non_naive, family = binomial)
+summary(model_non_naive_0)
+anova(model_non_naive, model_non_naive_0)
+```
+
+

@@ -1,0 +1,626 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+```{r}
+library(rstan)
+library(ggmcmc)
+library(bayesplot)
+library(bridgesampling)
+library(data.table)
+library(caret)
+library(ROCR)
+```
+
+```{r}
+data_2_all <- data.table(read.csv("data_2_all.csv"))
+data_2_naive <- data.table(read.csv("data_2_naive.csv"))
+data_2_non_naive <- data.table(read.csv("data_2_non_naive.csv"))
+
+data_2_all[,. (answer.keys, n, size, trials_3.thisRepN, participant)]
+data_2_naive[,. (answer.keys, n, size, trials_3.thisRepN, participant)]
+data_2_non_naive[,. (answer.keys, n, size, trials_3.thisRepN, participant)]
+
+data_2_all <- data_2_all[!(size=="NA")]
+data_2_naive <- data_2_naive[!(size=="NA")]
+data_2_non_naive <- data_2_non_naive[!(size=="NA")]
+
+data_2_all <- data_2_all[(answer.keys == "right"|answer.keys == "left")]
+data_2_naive <- data_2_naive[(answer.keys == "right"|answer.keys == "left")]
+data_2_non_naive <- data_2_non_naive[(answer.keys == "right"|answer.keys == "left")]
+
+# target variable 1 or 0
+data_2_all$answer.keys <- as.numeric(data_2_all$answer.keys == "right")
+data_2_naive$answer.keys <- as.numeric(data_2_naive$answer.keys == "right")
+data_2_non_naive$answer.keys <- as.numeric(data_2_non_naive$answer.keys == "right")
+
+# participants: numeric
+data_2_all$participant <- as.numeric(data_2_all$participant)
+data_2_naive$participant <- as.numeric(data_2_naive$participant)
+data_2_non_naive$participant <- as.numeric(data_2_non_naive$participant)
+
+data_for_stan_all <- data_2_all
+colnames(data_for_stan_all) <- c("X", "answer.keys", "number_of_fixational_trials", "size", "trials_3.thisRepN", "participant")
+
+list_for_stan_all <- list(nY = nrow(data_2_all), nS = max(data_2_all$participant), Subj = data_2_all$participant, size_diff = data_2_all$size, num_of_trials = data_2_all$n, Y = data_2_all$answer.keys)
+
+list_for_stan_naive <- list(nY = nrow(data_2_naive), nS = max(data_2_naive$participant), Subj = data_2_naive$participant, size_diff = data_2_naive$size, num_of_trials = data_2_naive$n, Y = data_2_naive$answer.keys)
+
+list_for_stan_non_naive <- list(nY = nrow(data_2_non_naive), nS = max(data_2_non_naive$participant), Subj = data_2_non_naive$participant, size_diff = data_2_non_naive$size, num_of_trials = data_2_non_naive$n, Y = data_2_non_naive$answer.keys)
+```
+
+# Estimate typical category on the adaptation phase
+
+```{r}
+model_set <- '
+data {
+	int<lower=1> nY; // количество наблюдений (всего)
+	vector[nY] size_diff; // целевой предиктор, разница между стимулами
+}
+
+parameters {
+	real<lower = 0> mu;
+  real<lower = 0> sigma;
+}
+
+model {
+	// априорноё представление о категории: нет никакого знания
+	mu ~ normal(0,6);
+  sigma ~ cauchy(0,5);
+  size_diff ~ normal(mu, sigma);
+}
+
+generated quantities {
+  real prob;
+  prob = normal_lpdf(0 | mu, sigma);
+}
+'
+```
+
+
+```{r}
+model_set_1_trial <- '
+data {
+	real size_diff; // целевой предиктор, разница между стимулами
+}
+
+parameters {
+	real<lower = 0> mu;
+  real<lower = 0> sigma;
+}
+
+model {
+	// априорноё представление о категории: нет никакого знания
+	mu ~ normal(0,6);
+  sigma ~ cauchy(0,5);
+  size_diff ~ normal(mu, sigma);
+}
+
+generated quantities {
+  real prob;
+  prob = normal_lpdf(0 | mu, sigma);
+}
+'
+```
+
+```{r}
+# generate likelihoods for different conditions
+
+data <- matrix(nrow = 30, ncol = 4000)
+mus <- matrix(nrow = 30, ncol = 4000)
+sigmas <- matrix(nrow = 30, ncol = 4000)
+
+n <- 1
+
+for(j in 1:5){ # size of diff
+  y <- rnorm(1, j, 0.1) # size diff = j, n_trials = i, observer error = 0.2
+  list_set <- list(size_diff = y)
+  fit_set <- stan(model_code = model_set_1_trial, data = list_set, verbose = FALSE)
+  prob <- rstan :: extract(fit_set)$prob
+  mu <- rstan :: extract(fit_set)$mu
+  sigma <- rstan :: extract(fit_set)$sigma
+  data[n,] <- prob
+  mus[n,] <- mu
+  sigmas[n,] <- sigma
+  n <- n + 1
+}
+
+for(i in 2:6){ # num of trials from 2 to 6
+  for(j in 1:5){ # size of diff
+    y <- rnorm(i, j, 0.2) # size diff = j, n_trials = i, observer error = 0.2
+    list_set <- list(size_diff = y, nY = length(y))
+    fit_set <- stan(model_code = model_set, data = list_set, verbose = FALSE)
+    prob <- rstan :: extract(fit_set)$prob
+    mu <- rstan :: extract(fit_set)$mu
+    sigma <- rstan :: extract(fit_set)$sigma
+    data[n,] <- prob
+    mus[n,] <- mu
+    sigmas[n,] <- sigma
+    n <- n + 1
+  }
+}
+
+
+data <- exp(data)
+sum(data<0) # no zero likelihoods
+rowMeans(data)
+
+### нормализация - не нужна
+data_norm <- data/rowMeans(data)
+data_norm <- data_norm - 0.5
+rowMeans(data_norm)
+```
+
+
+Add likelihoods to the dataset
+
+```{r}
+likelihood_means <- rowMeans(data)
+mu_means <- rep(c(1,2,3,4,5), 6)# apply(mus, 1, quantile, probs = 0.5, na.rm = TRUE)
+sigma_means <- rowMeans(sigmas)
+
+data_for_stan_all$likelihood <- NA
+data_for_stan_all$estimated_mu <- NA
+data_for_stan_all$likelihood[data_for_stan_all$size == 1 & data_for_stan_all$number_of_fixational_trials == 1] <- likelihood_means[1]
+data_for_stan_all$likelihood[data_for_stan_all$size == 2 & data_for_stan_all$number_of_fixational_trials == 1] <- likelihood_means[2]
+data_for_stan_all$likelihood[data_for_stan_all$size == 3 & data_for_stan_all$number_of_fixational_trials == 1] <- likelihood_means[3]
+data_for_stan_all$likelihood[data_for_stan_all$size == 4 & data_for_stan_all$number_of_fixational_trials == 1] <- likelihood_means[4]
+data_for_stan_all$likelihood[data_for_stan_all$size == 5 & data_for_stan_all$number_of_fixational_trials == 1] <- likelihood_means[5]
+data_for_stan_all$likelihood[data_for_stan_all$size == 1 & data_for_stan_all$number_of_fixational_trials == 2] <- likelihood_means[6]
+data_for_stan_all$likelihood[data_for_stan_all$size == 2 & data_for_stan_all$number_of_fixational_trials == 2] <- likelihood_means[7]
+data_for_stan_all$likelihood[data_for_stan_all$size == 3 & data_for_stan_all$number_of_fixational_trials == 2] <- likelihood_means[8]
+data_for_stan_all$likelihood[data_for_stan_all$size == 4 & data_for_stan_all$number_of_fixational_trials == 2] <- likelihood_means[9]
+data_for_stan_all$likelihood[data_for_stan_all$size == 5 & data_for_stan_all$number_of_fixational_trials == 2] <- likelihood_means[10]
+data_for_stan_all$likelihood[data_for_stan_all$size == 1 & data_for_stan_all$number_of_fixational_trials == 3] <- likelihood_means[11]
+data_for_stan_all$likelihood[data_for_stan_all$size == 2 & data_for_stan_all$number_of_fixational_trials == 3] <- likelihood_means[12]
+data_for_stan_all$likelihood[data_for_stan_all$size == 3 & data_for_stan_all$number_of_fixational_trials == 3] <- likelihood_means[13]
+data_for_stan_all$likelihood[data_for_stan_all$size == 4 & data_for_stan_all$number_of_fixational_trials == 3] <- likelihood_means[14]
+data_for_stan_all$likelihood[data_for_stan_all$size == 5 & data_for_stan_all$number_of_fixational_trials == 3] <- likelihood_means[15]
+data_for_stan_all$likelihood[data_for_stan_all$size == 1 & data_for_stan_all$number_of_fixational_trials == 4] <- likelihood_means[16]
+data_for_stan_all$likelihood[data_for_stan_all$size == 2 & data_for_stan_all$number_of_fixational_trials == 4] <- likelihood_means[17]
+data_for_stan_all$likelihood[data_for_stan_all$size == 3 & data_for_stan_all$number_of_fixational_trials == 4] <- likelihood_means[18]
+data_for_stan_all$likelihood[data_for_stan_all$size == 4 & data_for_stan_all$number_of_fixational_trials == 4] <- likelihood_means[19]
+data_for_stan_all$likelihood[data_for_stan_all$size == 5 & data_for_stan_all$number_of_fixational_trials == 4] <- likelihood_means[20]
+data_for_stan_all$likelihood[data_for_stan_all$size == 1 & data_for_stan_all$number_of_fixational_trials == 5] <- likelihood_means[21]
+data_for_stan_all$likelihood[data_for_stan_all$size == 2 & data_for_stan_all$number_of_fixational_trials == 5] <- likelihood_means[22]
+data_for_stan_all$likelihood[data_for_stan_all$size == 3 & data_for_stan_all$number_of_fixational_trials == 5] <- likelihood_means[23]
+data_for_stan_all$likelihood[data_for_stan_all$size == 4 & data_for_stan_all$number_of_fixational_trials == 5] <- likelihood_means[24]
+data_for_stan_all$likelihood[data_for_stan_all$size == 5 & data_for_stan_all$number_of_fixational_trials == 5] <- likelihood_means[25]
+data_for_stan_all$likelihood[data_for_stan_all$size == 1 & data_for_stan_all$number_of_fixational_trials == 6] <- likelihood_means[26]
+data_for_stan_all$likelihood[data_for_stan_all$size == 2 & data_for_stan_all$number_of_fixational_trials == 6] <- likelihood_means[27]
+data_for_stan_all$likelihood[data_for_stan_all$size == 3 & data_for_stan_all$number_of_fixational_trials == 6] <- likelihood_means[28]
+data_for_stan_all$likelihood[data_for_stan_all$size == 4 & data_for_stan_all$number_of_fixational_trials == 6] <- likelihood_means[29]
+data_for_stan_all$likelihood[data_for_stan_all$size == 5 & data_for_stan_all$number_of_fixational_trials == 6] <- likelihood_means[30]
+
+
+data_for_stan_all$estimated_mu[data_for_stan_all$size == 1 & data_for_stan_all$number_of_fixational_trials == 1] <- mu_means[1]
+data_for_stan_all$estimated_mu[data_for_stan_all$size == 2 & data_for_stan_all$number_of_fixational_trials == 1] <- mu_means[2]
+data_for_stan_all$estimated_mu[data_for_stan_all$size == 3 & data_for_stan_all$number_of_fixational_trials == 1] <- mu_means[3]
+data_for_stan_all$estimated_mu[data_for_stan_all$size == 4 & data_for_stan_all$number_of_fixational_trials == 1] <- mu_means[4]
+data_for_stan_all$estimated_mu[data_for_stan_all$size == 5 & data_for_stan_all$number_of_fixational_trials == 1] <- mu_means[5]
+data_for_stan_all$estimated_mu[data_for_stan_all$size == 1 & data_for_stan_all$number_of_fixational_trials == 2] <- mu_means[6]
+data_for_stan_all$estimated_mu[data_for_stan_all$size == 2 & data_for_stan_all$number_of_fixational_trials == 2] <- mu_means[7]
+data_for_stan_all$estimated_mu[data_for_stan_all$size == 3 & data_for_stan_all$number_of_fixational_trials == 2] <- mu_means[8]
+data_for_stan_all$estimated_mu[data_for_stan_all$size == 4 & data_for_stan_all$number_of_fixational_trials == 2] <- mu_means[9]
+data_for_stan_all$estimated_mu[data_for_stan_all$size == 5 & data_for_stan_all$number_of_fixational_trials == 2] <- mu_means[10]
+data_for_stan_all$estimated_mu[data_for_stan_all$size == 1 & data_for_stan_all$number_of_fixational_trials == 3] <- mu_means[11]
+data_for_stan_all$estimated_mu[data_for_stan_all$size == 2 & data_for_stan_all$number_of_fixational_trials == 3] <- mu_means[12]
+data_for_stan_all$estimated_mu[data_for_stan_all$size == 3 & data_for_stan_all$number_of_fixational_trials == 3] <- mu_means[13]
+data_for_stan_all$estimated_mu[data_for_stan_all$size == 4 & data_for_stan_all$number_of_fixational_trials == 3] <- mu_means[14]
+data_for_stan_all$estimated_mu[data_for_stan_all$size == 5 & data_for_stan_all$number_of_fixational_trials == 3] <- mu_means[15]
+data_for_stan_all$estimated_mu[data_for_stan_all$size == 1 & data_for_stan_all$number_of_fixational_trials == 4] <- mu_means[16]
+data_for_stan_all$estimated_mu[data_for_stan_all$size == 2 & data_for_stan_all$number_of_fixational_trials == 4] <- mu_means[17]
+data_for_stan_all$estimated_mu[data_for_stan_all$size == 3 & data_for_stan_all$number_of_fixational_trials == 4] <- mu_means[18]
+data_for_stan_all$estimated_mu[data_for_stan_all$size == 4 & data_for_stan_all$number_of_fixational_trials == 4] <- mu_means[19]
+data_for_stan_all$estimated_mu[data_for_stan_all$size == 5 & data_for_stan_all$number_of_fixational_trials == 4] <- mu_means[20]
+data_for_stan_all$estimated_mu[data_for_stan_all$size == 1 & data_for_stan_all$number_of_fixational_trials == 5] <- mu_means[21]
+data_for_stan_all$estimated_mu[data_for_stan_all$size == 2 & data_for_stan_all$number_of_fixational_trials == 5] <- mu_means[22]
+data_for_stan_all$estimated_mu[data_for_stan_all$size == 3 & data_for_stan_all$number_of_fixational_trials == 5] <- mu_means[23]
+data_for_stan_all$estimated_mu[data_for_stan_all$size == 4 & data_for_stan_all$number_of_fixational_trials == 5] <- mu_means[24]
+data_for_stan_all$estimated_mu[data_for_stan_all$size == 5 & data_for_stan_all$number_of_fixational_trials == 5] <- mu_means[25]
+data_for_stan_all$estimated_mu[data_for_stan_all$size == 1 & data_for_stan_all$number_of_fixational_trials == 6] <- mu_means[26]
+data_for_stan_all$estimated_mu[data_for_stan_all$size == 2 & data_for_stan_all$number_of_fixational_trials == 6] <- mu_means[27]
+data_for_stan_all$estimated_mu[data_for_stan_all$size == 3 & data_for_stan_all$number_of_fixational_trials == 6] <- mu_means[28]
+data_for_stan_all$estimated_mu[data_for_stan_all$size == 4 & data_for_stan_all$number_of_fixational_trials == 6] <- mu_means[29]
+data_for_stan_all$estimated_mu[data_for_stan_all$size == 5 & data_for_stan_all$number_of_fixational_trials == 6] <- mu_means[30]
+```
+
+# Final full model
+
+```{r}
+model_full_crp_2 <- '
+
+data {
+	int<lower=1> nY; // количество наблюдений (всего)
+	int<lower=1> num_of_trials[nY]; // количество установочных проб
+  vector[nY] size_diff; // разница между стимулами
+	int<lower = 0, upper = 1> Y[nY]; // результат: какой тип иллюзии наблюдался. 1 - ассимилятивная
+  vector[nY] likelihoods; // правдоподобие адаптационного класса, полученное из предыдущей модели
+  vector[nY] estimated_means; // правдоподобие классов, полученное из предыдущей модели
+}
+
+parameters {
+	real<lower = 0, upper = 1> c; // coupling probability
+  real<lower = 0> sigma; // prior sigma on the category 
+  real<lower = 0> mu_diff; // difference between means
+}
+
+transformed parameters {
+  vector[nY] mu_other;
+  for(i in 1:nY){
+    mu_other[i] = estimated_means[i] - mu_diff; // could be + but not relevant in this analysis
+  }
+}
+
+model {
+	// априорные распределения
+	c ~ normal(1, 2); // coupling probability
+  sigma ~ cauchy(0, 7);
+  mu_diff ~ gamma(10, 1);
+
+  for(i in 1:nY){
+    Y[i] ~ bernoulli((likelihoods[i] * (1 - ((1-c)/(1 - c + c * num_of_trials[i]))))/((likelihoods[i] * (1 - ((1-c)/(1 - c + c * num_of_trials[i])))) + exp(normal_lpdf(0 | mu_other[i], sigma)) * (1-c)/(1 - c + c * num_of_trials[i])));} // второй множитель - прайор ненулевого класса из CRP, потом - нормализация вероятностей
+}
+
+generated quantities {
+  vector[nY] p_other;
+  for(i in 1:nY) {
+    p_other[i] = (exp(normal_lpdf(0 | mu_other[i], sigma)) * (1-c)/(1 - c + c * num_of_trials[i]))/((likelihoods[i] * (1 - ((1-c)/(1 - c + c * num_of_trials[i])))) + exp(normal_lpdf(0 | mu_other[i], sigma)) * (1-c)/(1 - c + c * num_of_trials[i]));
+  }
+}
+
+'
+```
+
+```{r}
+
+```
+
+```{r}
+print(fit_full_crp_2, pars = c("p_other"), include = FALSE)
+```
+
+
+```{r}
+p_other <- rstan :: extract(fit_full_crp_2)$p_other
+p_other <- colMeans(p_other)
+sum(p_other < 0.5 & list_for_stan_all$Y == 1) + sum(p_other > 0.5 & list_for_stan_all$Y == 0)
+```
+
+
+```{r}
+posterior_full_crp <- ggs(fit_full_crp_2)
+ggmcmc(D = posterior_full_crp, family = "mu_diff", file = NULL, plot = 'ggs_histogram')
+posterior_full_crp$value[posterior_full_crp$Parameter == "mu_other[1]"]
+```
+
+
+### alternative: logistic regression with 3 parameters
+
+```{r}
+model_alt <- '
+data {
+	int<lower=1> nY; // количество наблюдений (всего)
+	vector[nY] size_diff; // целевой предиктор, разница между стимулами
+	vector[nY] num_of_trials; // количество установочных проб, не понадобится в этом анализе
+  int<lower = 0, upper = 1> Y[nY]; // результат: какой тип иллюзии наблюдался. 1 - ассимилятивная
+}
+
+parameters {
+  real intercept;
+  real beta_1;
+  real beta_2;
+}
+
+model {
+  
+	// априорные распределения
+  intercept ~ cauchy(0,3);
+  beta_1 ~ normal(0,1);
+  beta_2 ~ normal(0,1);
+  
+	for(i in 1: nY){
+	  Y[i] ~ bernoulli_logit(intercept + beta_1*size_diff[i] + beta_2*num_of_trials[i]);}
+}
+
+generated quantities {
+  vector[nY] prob_contr;
+  for (i in 1:nY) {
+    prob_contr[i] = 1 - (exp(intercept + beta_1*size_diff[i] + beta_2*num_of_trials[i])/(1 + exp(intercept + beta_1*size_diff[i] + beta_2*num_of_trials[i])));
+  }
+}
+'
+```
+
+```{r}
+list_for_alt <- list(nY = nrow(data_for_stan_all), size_diff = data_for_stan_all$size, num_of_trials = data_for_stan_all$number_of_fixational_trials, Y = data_for_stan_all$answer.keys)
+
+fit_alt <- stan(model_code = model_alt, data = list_for_alt)
+```
+
+```{r}
+print(fit_alt, pars = c("prob_contr"), include = FALSE)
+
+p_other_3 <- rstan :: extract(fit_alt)$prob_contr
+p_other_3 <- colMeans(p_other_3)
+sum(p_other_3 < 0.5 & list_for_stan_all$Y == 1) + sum(p_other_3 > 0.5 & list_for_stan_all$Y == 0)
+```
+
+Logistic regression prioritizes contrastive illusion (match = 130), while match for assimilative illusion = 25
+
+```{r}
+data_with_predictions <- data_for_stan_all
+
+data_with_predictions$blog_regression <- p_other_3
+data_with_predictions$crp_full <- p_other
+data_with_predictions$crp_no_other <- p_other_2
+
+
+# true histograms for assimilative illusion
+hist(data_with_predictions$size[data_with_predictions$answer.keys == 1])
+
+# assimilative illusion and different model predictions
+hist(data_with_predictions$size[data_with_predictions$crp_full < 0.5])
+hist(data_with_predictions$size[data_with_predictions$crp_no_other < 0.5])
+hist(data_with_predictions$size[data_with_predictions$blog_regression < 0.5])
+
+
+# true histograms for assimilative illusion
+hist(data_with_predictions$number_of_fixational_trials[data_with_predictions$answer.keys == 1])
+
+# assimilative illusion and different model predictions
+hist(data_with_predictions$number_of_fixational_trials[data_with_predictions$crp_full < 0.5])
+hist(data_with_predictions$number_of_fixational_trials[data_with_predictions$crp_no_other < 0.5])
+hist(data_with_predictions$number_of_fixational_trials[data_with_predictions$blog_regression < 0.5])
+
+
+# true histograms for contrastive illusion
+hist(data_with_predictions$size[data_with_predictions$answer.keys == 0])
+
+# contrastive illusion and different model predictions
+hist(data_with_predictions$size[data_with_predictions$crp_full > 0.5])
+hist(data_with_predictions$size[data_with_predictions$crp_no_other > 0.5])
+hist(data_with_predictions$size[data_with_predictions$blog_regression > 0.5])
+
+
+# true histograms for contrastive illusion
+hist(data_with_predictions$number_of_fixational_trials[data_with_predictions$answer.keys == 0])
+
+# contrastive illusion and different model predictions
+hist(data_with_predictions$number_of_fixational_trials[data_with_predictions$crp_full > 0.5])
+hist(data_with_predictions$number_of_fixational_trials[data_with_predictions$crp_no_other > 0.5])
+hist(data_with_predictions$number_of_fixational_trials[data_with_predictions$blog_regression > 0.5])
+```
+
+
+ROC AUC
+
+```{r}
+true_categories <- 1 - data_for_stan_all$answer.keys
+
+pred <- prediction(data_with_predictions$crp_full, true_categories)
+
+# Recall-Precision curve             
+RP.perf <- performance(pred, "prec", "rec")
+
+plot(RP.perf)
+
+# ROC curve
+ROC.perf <- performance(pred, "tpr", "fpr")
+plot(ROC.perf)
+
+# ROC area under the curve
+auc.tmp <- performance(pred,"auc");
+auc <- as.numeric(auc.tmp@y.values)
+
+
+pred_lr <- prediction(data_with_predictions$blog_regression, true_categories)
+
+# Recall-Precision curve             
+RP.perf_lr <- performance(pred_lr, "prec", "rec")
+
+plot(RP.perf_lr)
+
+# ROC curve
+ROC.perf_lr <- performance(pred_lr, "tpr", "fpr")
+plot(ROC.perf_lr)
+
+# ROC area under the curve
+auc.tmp_lr <- performance(pred_lr,"auc");
+auc_lr <- as.numeric(auc.tmp_lr@y.values)
+```
+
+Accuracies
+
+```{r}
+# Bayesian logistic regression
+sum(data_with_predictions$blog_regression < 0.5 & list_for_stan_all$Y == 1)/sum(list_for_stan_all$Y == 1)
+sum(data_with_predictions$blog_regression > 0.5 & list_for_stan_all$Y == 0)/sum(list_for_stan_all$Y == 0)
+(sum(data_with_predictions$blog_regression < 0.5 & list_for_stan_all$Y == 1) + sum(data_with_predictions$blog_regression > 0.5 & list_for_stan_all$Y == 0))/length(list_for_stan_all$Y)
+
+# Model
+sum(data_with_predictions$crp_full < 0.5 & list_for_stan_all$Y == 1)/sum(list_for_stan_all$Y == 1)
+sum(data_with_predictions$crp_full > 0.5 & list_for_stan_all$Y == 0)/sum(list_for_stan_all$Y == 0)
+(sum(data_with_predictions$crp_full < 0.5 & list_for_stan_all$Y == 1) + sum(data_with_predictions$crp_full > 0.5 & list_for_stan_all$Y == 0))/length(list_for_stan_all$Y)
+```
+
+```{r}
+confusionMatrix(as.factor(as.numeric(data_with_predictions$blog_regression>0.5)), as.factor(true_categories))
+
+confusionMatrix(as.factor(as.numeric(data_with_predictions$blog_regression>0.5)), as.factor(true_categories), positive = "1")
+
+
+confusionMatrix(as.factor(as.numeric(data_with_predictions$crp_full>0.5)), as.factor(true_categories))
+
+confusionMatrix(as.factor(as.numeric(data_with_predictions$crp_full>0.5)), as.factor(true_categories), positive = "1")
+```
+
+Models able to make predictions for new data
+
+
+```{r}
+model_alt <- '
+data {
+	int<lower=1> nY; // количество наблюдений (всего)
+	vector[nY] size_diff; // целевой предиктор, разница между стимулами
+	vector[nY] num_of_trials; // количество установочных проб, не понадобится в этом анализе
+  int<lower = 0, upper = 1> Y[nY]; // результат: какой тип иллюзии наблюдался. 1 - ассимилятивная
+  int<lower = 1> n_test;
+  vector[n_test] size_test;
+  vector[n_test] num_trials_test;
+}
+
+parameters {
+  real intercept;
+  real beta_1;
+  real beta_2;
+}
+
+model {
+  
+	// априорные распределения
+  intercept ~ cauchy(0,3);
+  beta_1 ~ normal(0,1);
+  beta_2 ~ normal(0,1);
+  
+	for(i in 1: nY){
+	  Y[i] ~ bernoulli_logit(intercept + beta_1*size_diff[i] + beta_2*num_of_trials[i]);}
+}
+
+generated quantities {
+  vector[n_test] pred;
+  for (i in 1:n_test) {
+    pred[i] = bernoulli_logit_rng(intercept + beta_1*size_test[i] + beta_2*num_trials_test[i]);
+  }
+}
+'
+
+
+model_full_crp_2 <- '
+
+data {
+	int<lower=1> nY; // количество наблюдений (всего)
+	int<lower=1> num_of_trials[nY]; // количество установочных проб
+  vector[nY] size_diff; // разница между стимулами
+	int<lower = 0, upper = 1> Y[nY]; // результат: какой тип иллюзии наблюдался. 1 - ассимилятивная
+  vector[nY] likelihoods; // правдоподобие адаптационного класса, полученное из предыдущей модели
+  vector[nY] estimated_means; // правдоподобие классов, полученное из предыдущей модели
+  int<lower = 1> n_test;
+  vector[n_test] likelihoods_test;
+  vector[n_test] num_trials_test;
+}
+
+parameters {
+	real<lower = 0, upper = 1> c; // coupling probability
+  real<lower = 0> sigma; // prior sigma on the category 
+  real<lower = 0> mu_diff; // difference between means
+}
+
+transformed parameters {
+  vector[nY] mu_other;
+  for(i in 1:nY){
+    mu_other[i] = estimated_means[i] - mu_diff; // could be + but not relevant in this analysis
+  }
+}
+
+model {
+	// априорные распределения
+	c ~ normal(1, 2); // coupling probability
+  sigma ~ cauchy(0, 7);
+  mu_diff ~ gamma(10, 1);
+
+  for(i in 1:nY){
+    Y[i] ~ bernoulli((likelihoods[i] * (1 - ((1-c)/(1 - c + c * num_of_trials[i]))))/((likelihoods[i] * (1 - ((1-c)/(1 - c + c * num_of_trials[i])))) + exp(normal_lpdf(0 | mu_other[i], sigma)) * (1-c)/(1 - c + c * num_of_trials[i])));} // второй множитель - прайор ненулевого класса из CRP, потом - нормализация вероятностей
+}
+
+generated quantities {
+  vector[n_test] pred;
+  for(i in 1:n_test) {
+    pred[i] = bernoulli_rng((likelihoods_test[i] * (1 - ((1-c)/(1 - c + c * num_trials_test[i]))))/((likelihoods_test[i] * (1 - ((1-c)/(1 - c + c * num_trials_test[i])))) + exp(normal_lpdf(0 | mu_other[i], sigma)) * (1-c)/(1 - c + c * num_trials_test[i])));}
+}
+
+'
+```
+
+
+
+
+## Cross-validation
+
+```{r}
+# LOOP
+
+fits <- c()
+
+accuracies_lr = c()
+aucs_lr = c()
+accuracies_m = c()
+aucs_m = c()
+
+accuracies_lr_train = c()
+aucs_lr_train = c()
+accuracies_m_train = c()
+aucs_m_train = c()
+
+n <- 1
+
+for (k in 1:40) {
+  
+  # LOG REGRESSION
+  data_for_regression = data_for_stan_all
+  # undersampling
+  indexes_contr = which(data_for_stan_all$answer.keys==0)
+  indexes_assim = which(data_for_stan_all$answer.keys==1)
+  sample_contr = sample(indexes_contr, sum(data_for_stan_all$answer.keys==1))
+  my_indexes = c(indexes_assim, sample_contr)
+  data_for_regression = data_for_regression[my_indexes]
+  
+  # train test data 
+  indexes_assim = which(data_for_regression$answer.keys==1)
+  indexes_contr = which(data_for_regression$answer.keys==0)
+  indexes_assim_train = sample(indexes_assim, 82)
+  indexes_contr_train = sample(indexes_contr, 82)
+  my_indexes_train = c(indexes_assim_train, indexes_contr_train)
+  
+  data_for_regression_train = data_for_regression[my_indexes_train]
+  data_for_regression_test = data_for_regression[-my_indexes_train]
+  
+  #list_for_alt <- list(nY = nrow(data_for_regression_train), size_diff = data_for_regression_train$size, num_of_trials = data_for_regression_train$number_of_fixational_trials, Y = data_for_regression_train$answer.keys, n_test = nrow(data_for_regression_test), size_test = data_for_regression_test$size, num_trials_test = data_for_regression_test$number_of_fixational_trials)
+
+  #fit_alt <- stan(model_code = model_alt, data = list_for_alt)
+  
+  
+  # test accuracy
+  #ext_fit_alt <- rstan :: extract(fit_alt)
+  #acc_lr <- mean(apply(ext_fit_alt$pred, 2, median) == data_for_regression_test$answer.keys)
+  #accuracies_lr = c(accuracies_lr, acc_lr)
+  
+  # simple logistic regression
+  lm <- glm(answer.keys ~ size + number_of_fixational_trials, data = data_for_regression_train, family = "binomial")
+  
+  pred_lm <- predict(lm, newdata = data_for_regression_test, type = "response")
+  acc_lr <- (sum(pred_lm > 0.5 & data_for_regression_test$answer.keys == 1) + sum(pred_lm < 0.5 & data_for_regression_test$answer.keys == 0))/nrow(data_for_regression_test)
+  accuracies_lr = c(accuracies_lr, acc_lr)
+  
+  
+  list_full_crp_2 <- list(nY = nrow(data_for_regression_train), size_diff = data_for_regression_train$size, num_of_trials = data_for_regression_train$number_of_fixational_trials, Y = data_for_regression_train$answer.keys, likelihoods = data_for_regression_train$likelihood, estimated_means = data_for_regression_train$estimated_mu, n_test = nrow(data_for_regression_test), likelihoods_test = data_for_regression_test$likelihood, num_trials_test = data_for_regression_test$number_of_fixational_trials)
+
+  fit_full_crp_2 <- stan(model_code = model_full_crp_2, data = list_full_crp_2, warmup = 3000, iter = 10000)
+  fits <- c(fits, fit_full_crp_2)
+  
+  # test accuracy
+  ext_fit_m <- rstan :: extract(fit_full_crp_2)
+  acc_m <- mean(apply(ext_fit_m$pred, 2, median) == data_for_regression_test$answer.keys)
+  accuracies_m = c(accuracies_m, acc_m)
+  print(n)
+  n <- n+1
+}
+
+
+cat("Mean accuracy of lr:", mean(accuracies_lr))
+cat("Mean accuracy of model:", mean(accuracies_m))
+
+
+```
+

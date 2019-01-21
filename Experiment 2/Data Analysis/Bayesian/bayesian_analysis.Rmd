@@ -1,0 +1,604 @@
+---
+title: "Bayesian Analysis"
+output:
+  html_document:
+    df_print: paged
+---
+
+# Bayesian data analysis: experiment 2
+## Marina Dubova
+
+```{r}
+library(rstan)
+library(ggmcmc)
+library(bayesplot)
+library(bridgesampling)
+library(data.table)
+```
+
+Only trials with illusions
+
+```{r}
+data_2_all <- data.table(read.csv("data_2_all.csv"))
+data_2_naive <- data.table(read.csv("data_2_naive.csv"))
+data_2_non_naive <- data.table(read.csv("data_2_non_naive.csv"))
+
+data_2_all[,. (answer.keys, n, size, trials_3.thisRepN, participant)]
+data_2_naive[,. (answer.keys, n, size, trials_3.thisRepN, participant)]
+data_2_non_naive[,. (answer.keys, n, size, trials_3.thisRepN, participant)]
+
+data_2_all <- data_2_all[!(size=="NA")]
+data_2_naive <- data_2_naive[!(size=="NA")]
+data_2_non_naive <- data_2_non_naive[!(size=="NA")]
+
+data_2_all <- data_2_all[(answer.keys == "right"|answer.keys == "left")]
+data_2_naive <- data_2_naive[(answer.keys == "right"|answer.keys == "left")]
+data_2_non_naive <- data_2_non_naive[(answer.keys == "right"|answer.keys == "left")]
+
+# target variable 1 or 0
+data_2_all$answer.keys <- as.numeric(data_2_all$answer.keys == "right")
+data_2_naive$answer.keys <- as.numeric(data_2_naive$answer.keys == "right")
+data_2_non_naive$answer.keys <- as.numeric(data_2_non_naive$answer.keys == "right")
+
+# participants: numeric
+data_2_all$participant <- as.numeric(data_2_all$participant)
+data_2_naive$participant <- as.numeric(data_2_naive$participant)
+data_2_non_naive$participant <- as.numeric(data_2_non_naive$participant)
+```
+
+
+```{r}
+list_for_stan_all <- list(nY = nrow(data_2_all), nS = max(data_2_all$participant), Subj = data_2_all$participant, size_diff = data_2_all$size, num_of_trials = data_2_all$n, Y = data_2_all$answer.keys)
+
+list_for_stan_naive <- list(nY = nrow(data_2_naive), nS = max(data_2_naive$participant), Subj = data_2_naive$participant, size_diff = data_2_naive$size, num_of_trials = data_2_naive$n, Y = data_2_naive$answer.keys)
+
+list_for_stan_non_naive <- list(nY = nrow(data_2_non_naive), nS = max(data_2_non_naive$participant), Subj = data_2_non_naive$participant, size_diff = data_2_non_naive$size, num_of_trials = data_2_non_naive$n, Y = data_2_non_naive$answer.keys)
+```
+
+# All the participants
+
+## Hierarchical Bayesian logistic regression
+Two predictors: size of difference between adaptive stimuli and number of adaptation trials
+
+### Parameter estimation
+
+```{r}
+fit_1 <- stan("bayes_model_1.stan", data = list_for_stan_all, iter = 10000, warmup = 5000)
+```
+
+```{r}
+print(fit_1)
+```
+
+The population and individual effects of the size of difference on the probability of assimilative illusion versus the contrastive illusion
+
+```{r}
+posterior_1 <- as.array(fit_1)
+mcmc_areas(posterior_1, regex_pars = c("beta_1"), prob = 0.8, prob_outer = 0.95, point_est = "mean")
+```
+
+The population and individual effects of the number of adaptational trials on the probability of assimilative illusion versus the contrastive illusion
+
+```{r}
+mcmc_areas(posterior_1, regex_pars = c("beta_2"), prob = 0.8, prob_outer = 0.95, point_est = "mean")
+```
+
+Diagnostics of fit
+
+```{r}
+posterior_1b <- ggs(fit_1)
+ggmcmc(D = posterior_1b, file = NULL, plot = 'ggs_traceplot') 
+ggmcmc(D = posterior_1b, file = NULL, plot = 'ggs_compare_partial') 
+ggmcmc(D = posterior_1b, file = NULL, plot = 'ggs_autocorrelation') 
+```
+
+## Проверка гипотезы о связи типа иллюзии и разницы между стимулами (больше кол-во проб - больше вероятность контрастной иллюзии)
+
+## Testing the hypothesis that the size of difference between adaptive stimuli positively correlates with the probability of contrastive illusion
+
+Zero hypothesis: hierarchical Bayesian logistic regression with zero mean population effect of the size of difference between two circles
+
+Alternative hypothesis: population effect is negative (very broad cauchy distribution, truncated at 0)
+
+```{r}
+# компилируем модели, соответствующие двум гипотезам
+stanmodelH0 <- stan_model('H0_1.stan', model_name = 'H0') 
+stanmodelH1 <- stan_model('H1_1.stan', model_name = 'H1')
+
+# сэмплируем "предсказания" каждой из гипотез (моделей), нужно сгенерировать очень много 
+fit_H0 <- sampling(stanmodelH0, list_for_stan_all, iter = 20000, warmup = 1000)
+fit_H1 <- sampling(stanmodelH1, list_for_stan_all, iter = 20000, warmup = 1000)
+```
+
+```{r}
+print(fit_H0)
+print(fit_H1)
+```
+
+Diagnostics 
+
+```{r}
+posterior_H0 <- ggs(fit_H0)
+posterior_H1 <- ggs(fit_H1)
+
+ggmcmc(D = posterior_H0, file = NULL, family = 'beta_mu', plot = 'ggs_histogram')
+ggmcmc(D = posterior_H1, file = NULL, family = 'beta_mu', plot = 'ggs_histogram')
+
+ggmcmc(D = posterior_H0, file = NULL, family = 'beta_mu', plot = 'ggs_compare_partial')
+ggmcmc(D = posterior_H1, file = NULL, family = 'beta_mu', plot = 'ggs_compare_partial')
+
+ggmcmc(D = posterior_H0, file = NULL, family = 'beta_mu', plot = 'ggs_traceplot')
+ggmcmc(D = posterior_H1, file = NULL, family = 'beta_mu', plot = 'ggs_traceplot')
+
+ggmcmc(D = posterior_H0, file = NULL, family = 'beta_mu', plot = 'ggs_autocorrelation')
+ggmcmc(D = posterior_H1, file = NULL, family = 'beta_mu', plot = 'ggs_autocorrelation')
+```
+
+Bayes factor estimation
+
+```{r}
+# считаем логарифм правдоподобия имеющихся данных для каждой из гипотез (моделей)
+H0_res <- bridge_sampler(fit_H0, silent = TRUE)
+H1_res <- bridge_sampler(fit_H1, silent = TRUE)
+print(H0_res)
+print(H1_res)
+```
+
+```{r}
+# смотрим на оценку возможной ошибки подсчета правдоподобия
+error_measures(H0_res)$percentage
+error_measures(H1_res)$percentage
+```
+
+Assume that both hypotheses are equally probable (have the same prior probability)
+Предполагаем, что обе гипотезы одинаково вероятны (имеют одинаковую априорную вероятность)
+
+```{r}
+# считаем Байес-фактор (в пользу альтернативной гипотезы)
+BF10 <- bf(H1_res, H0_res)
+print(BF10)
+
+# считаем Байес-фактор (в пользу нулевой гипотезы)
+BF01 <- bf(H0_res, H1_res)
+print(BF01)
+```
+
+## Проверка гипотезы о связи типа иллюзии и количеством установочных проб (больше кол-во проб - больше вероятность контрастной иллюзии)
+
+## Testing the hypothesis that the number of adaptation trials positively correlates with the probability of contrastive illusion (and negatively - with the assimilative illusion)
+
+Zero hypothesis: hierarchical Bayesian logistic regression with zero mean population effect of the number of adaptation trials
+
+Alternative hypothesis: population effect is negative (very broad cauchy distribution, truncated at 0)
+
+
+```{r}
+# компилируем модели, соответствующие двум гипотезам
+stanmodelH0_2 <- stan_model('H0_2.stan', model_name = 'H0') 
+stanmodelH1_2 <- stan_model('H1_2.stan', model_name = 'H1')
+
+# сэмплируем "предсказания" каждой из гипотез (моделей), нужно сгенерировать очень много 
+fit_H0_2 <- sampling(stanmodelH0_2, list_for_stan_all, iter = 30000, warmup = 4000)
+fit_H1_2 <- sampling(stanmodelH1_2, list_for_stan_all, iter = 30000, warmup = 4000)
+```
+
+```{r}
+print(fit_H0_2)
+print(fit_H1_2)
+```
+
+Diagnostics
+
+```{r}
+posterior_H0_2 <- ggs(fit_H0_2)
+posterior_H1_2 <- ggs(fit_H1_2)
+
+ggmcmc(D = posterior_H0_2, file = NULL, family = 'beta_mu', plot = 'ggs_histogram')
+ggmcmc(D = posterior_H1_2, file = NULL, family = 'beta_mu', plot = 'ggs_histogram')
+
+ggmcmc(D = posterior_H0_2, file = NULL, family = 'beta_mu', plot = 'ggs_compare_partial')
+ggmcmc(D = posterior_H1_2, file = NULL, family = 'beta_mu', plot = 'ggs_compare_partial')
+
+ggmcmc(D = posterior_H0_2, file = NULL, family = 'beta_mu', plot = 'ggs_traceplot')
+ggmcmc(D = posterior_H1_2, file = NULL, family = 'beta_mu', plot = 'ggs_traceplot')
+
+ggmcmc(D = posterior_H0_2, file = NULL, family = 'beta_mu', plot = 'ggs_autocorrelation')
+ggmcmc(D = posterior_H1_2, file = NULL, family = 'beta_mu', plot = 'ggs_autocorrelation')
+```
+
+Bayes factor estimation
+
+```{r}
+# считаем логарифм правдоподобия имеющихся данных для каждой из гипотез (моделей)
+H0_res_2 <- bridge_sampler(fit_H0_2, silent = TRUE)
+H1_res_2 <- bridge_sampler(fit_H1_2, silent = TRUE)
+print(H0_res_2)
+print(H1_res_2)
+```
+
+
+```{r}
+# смотрим на оценку возможной ошибки подсчета правдоподобия
+error_measures(H0_res_2)$percentage
+error_measures(H1_res_2)$percentage
+```
+
+Предполагаем, что обе гипотезы одинаково вероятны (имеют одинаковую априорную вероятность)
+
+```{r}
+# считаем Байес-фактор (в пользу альтернативной гипотезы)
+BF10_2 <- bf(H1_res_2, H0_res_2)
+print(BF10_2)
+
+# считаем Байес-фактор (в пользу нулевой гипотезы)
+BF01_2 <- bf(H0_res_2, H1_res_2)
+print(BF01_2)
+```
+
+
+
+# Only naive participants
+
+## Hierarchical Bayesian logistic regression
+Two predictors: size of difference between adaptive stimuli and number of adaptation trials
+
+### Parameter estimation
+
+```{r}
+fit_1 <- stan("bayes_model_1.stan", data = list_for_stan_naive, iter = 10000, warmup = 5000)
+```
+
+```{r}
+print(fit_1)
+```
+
+The population and individual effects of the size of difference on the probability of assimilative illusion versus the contrastive illusion
+
+```{r}
+posterior_1 <- as.array(fit_1)
+mcmc_areas(posterior_1, regex_pars = c("beta_1"), prob = 0.8, prob_outer = 0.95, point_est = "mean")
+```
+
+The population and individual effects of the number of adaptational trials on the probability of assimilative illusion versus the contrastive illusion
+
+```{r}
+mcmc_areas(posterior_1, regex_pars = c("beta_2"), prob = 0.8, prob_outer = 0.95, point_est = "mean")
+```
+
+Diagnostics of fit
+
+```{r}
+posterior_1b <- ggs(fit_1)
+ggmcmc(D = posterior_1b, file = NULL, plot = 'ggs_traceplot') 
+ggmcmc(D = posterior_1b, file = NULL, plot = 'ggs_compare_partial') 
+ggmcmc(D = posterior_1b, file = NULL, plot = 'ggs_autocorrelation') 
+```
+
+## Проверка гипотезы о связи типа иллюзии и разницы между стимулами (больше кол-во проб - больше вероятность контрастной иллюзии)
+
+## Testing the hypothesis that the size of difference between adaptive stimuli positively correlates with the probability of contrastive illusion
+
+Zero hypothesis: hierarchical Bayesian logistic regression with zero mean population effect of the size of difference between two circles
+
+Alternative hypothesis: population effect is negative (very broad cauchy distribution, truncated at 0)
+
+```{r}
+# компилируем модели, соответствующие двум гипотезам
+stanmodelH0 <- stan_model('H0_1.stan', model_name = 'H0') 
+stanmodelH1 <- stan_model('H1_1.stan', model_name = 'H1')
+
+# сэмплируем "предсказания" каждой из гипотез (моделей), нужно сгенерировать очень много 
+fit_H0 <- sampling(stanmodelH0, list_for_stan_naive, iter = 20000, warmup = 1000)
+fit_H1 <- sampling(stanmodelH1, list_for_stan_naive, iter = 20000, warmup = 1000)
+```
+
+
+```{r}
+print(fit_H0)
+print(fit_H1)
+```
+
+Diagnostics 
+
+```{r}
+posterior_H0 <- ggs(fit_H0)
+posterior_H1 <- ggs(fit_H1)
+
+ggmcmc(D = posterior_H0, file = NULL, family = 'beta_mu', plot = 'ggs_histogram')
+ggmcmc(D = posterior_H1, file = NULL, family = 'beta_mu', plot = 'ggs_histogram')
+
+ggmcmc(D = posterior_H0, file = NULL, family = 'beta_mu', plot = 'ggs_compare_partial')
+ggmcmc(D = posterior_H1, file = NULL, family = 'beta_mu', plot = 'ggs_compare_partial')
+
+ggmcmc(D = posterior_H0, file = NULL, family = 'beta_mu', plot = 'ggs_traceplot')
+ggmcmc(D = posterior_H1, file = NULL, family = 'beta_mu', plot = 'ggs_traceplot')
+
+ggmcmc(D = posterior_H0, file = NULL, family = 'beta_mu', plot = 'ggs_autocorrelation')
+ggmcmc(D = posterior_H1, file = NULL, family = 'beta_mu', plot = 'ggs_autocorrelation')
+```
+
+Bayes factor estimation
+
+```{r}
+# считаем логарифм правдоподобия имеющихся данных для каждой из гипотез (моделей)
+H0_res <- bridge_sampler(fit_H0, silent = TRUE)
+H1_res <- bridge_sampler(fit_H1, silent = TRUE)
+print(H0_res)
+print(H1_res)
+```
+
+```{r}
+# смотрим на оценку возможной ошибки подсчета правдоподобия
+error_measures(H0_res)$percentage
+error_measures(H1_res)$percentage
+```
+
+Assume that both hypotheses are equally probable (have the same prior probability)
+Предполагаем, что обе гипотезы одинаково вероятны (имеют одинаковую априорную вероятность)
+
+```{r}
+# считаем Байес-фактор (в пользу альтернативной гипотезы)
+BF10 <- bf(H1_res, H0_res)
+print(BF10)
+
+# считаем Байес-фактор (в пользу нулевой гипотезы)
+BF01 <- bf(H0_res, H1_res)
+print(BF01)
+```
+
+## Проверка гипотезы о связи типа иллюзии и количеством установочных проб (больше кол-во проб - больше вероятность контрастной иллюзии)
+
+## Testing the hypothesis that the number of adaptation trials positively correlates with the probability of contrastive illusion (and negatively - with the assimilative illusion)
+
+Zero hypothesis: hierarchical Bayesian logistic regression with zero mean population effect of the number of adaptation trials
+
+Alternative hypothesis: population effect is negative (very broad cauchy distribution, truncated at 0)
+
+
+```{r}
+# компилируем модели, соответствующие двум гипотезам
+stanmodelH0_2 <- stan_model('H0_2.stan', model_name = 'H0') 
+stanmodelH1_2 <- stan_model('H1_2.stan', model_name = 'H1')
+
+# сэмплируем "предсказания" каждой из гипотез (моделей), нужно сгенерировать очень много 
+fit_H0_2 <- sampling(stanmodelH0_2, list_for_stan_naive, iter = 30000, warmup = 4000)
+fit_H1_2 <- sampling(stanmodelH1_2, list_for_stan_naive, iter = 30000, warmup = 4000)
+```
+
+```{r}
+print(fit_H0_2)
+print(fit_H1_2)
+```
+
+Diagnostics
+
+```{r}
+posterior_H0_2 <- ggs(fit_H0_2)
+posterior_H1_2 <- ggs(fit_H1_2)
+
+ggmcmc(D = posterior_H0_2, file = NULL, family = 'beta_mu', plot = 'ggs_histogram')
+ggmcmc(D = posterior_H1_2, file = NULL, family = 'beta_mu', plot = 'ggs_histogram')
+
+ggmcmc(D = posterior_H0_2, file = NULL, family = 'beta_mu', plot = 'ggs_compare_partial')
+ggmcmc(D = posterior_H1_2, file = NULL, family = 'beta_mu', plot = 'ggs_compare_partial')
+
+ggmcmc(D = posterior_H0_2, file = NULL, family = 'beta_mu', plot = 'ggs_traceplot')
+ggmcmc(D = posterior_H1_2, file = NULL, family = 'beta_mu', plot = 'ggs_traceplot')
+
+ggmcmc(D = posterior_H0_2, file = NULL, family = 'beta_mu', plot = 'ggs_autocorrelation')
+ggmcmc(D = posterior_H1_2, file = NULL, family = 'beta_mu', plot = 'ggs_autocorrelation')
+```
+
+Bayes factor estimation
+
+```{r}
+# считаем логарифм правдоподобия имеющихся данных для каждой из гипотез (моделей)
+H0_res_2 <- bridge_sampler(fit_H0_2, silent = TRUE)
+H1_res_2 <- bridge_sampler(fit_H1_2, silent = TRUE)
+print(H0_res_2)
+print(H1_res_2)
+```
+
+
+```{r}
+# смотрим на оценку возможной ошибки подсчета правдоподобия
+error_measures(H0_res_2)$percentage
+error_measures(H1_res_2)$percentage
+```
+
+Предполагаем, что обе гипотезы одинаково вероятны (имеют одинаковую априорную вероятность)
+
+```{r}
+# считаем Байес-фактор (в пользу альтернативной гипотезы)
+BF10_2 <- bf(H1_res_2, H0_res_2)
+print(BF10_2)
+
+# считаем Байес-фактор (в пользу нулевой гипотезы)
+BF01_2 <- bf(H0_res_2, H1_res_2)
+print(BF01_2)
+```
+
+
+
+
+
+# Only non naive participants
+
+## Hierarchical Bayesian logistic regression
+Two predictors: size of difference between adaptive stimuli and number of adaptation trials
+
+### Parameter estimation
+
+```{r}
+fit_1 <- stan("bayes_model_1.stan", data = list_for_stan_non_naive, iter = 10000, warmup = 5000)
+```
+
+```{r}
+print(fit_1)
+```
+
+The population and individual effects of the size of difference on the probability of assimilative illusion versus the contrastive illusion
+
+```{r}
+posterior_1 <- as.array(fit_1)
+mcmc_areas(posterior_1, regex_pars = c("beta_1"), prob = 0.8, prob_outer = 0.95, point_est = "mean")
+```
+
+The population and individual effects of the number of adaptational trials on the probability of assimilative illusion versus the contrastive illusion
+
+```{r}
+mcmc_areas(posterior_1, regex_pars = c("beta_2"), prob = 0.8, prob_outer = 0.95, point_est = "mean")
+```
+
+Diagnostics of fit
+
+```{r}
+posterior_1b <- ggs(fit_1)
+ggmcmc(D = posterior_1b, file = NULL, plot = 'ggs_traceplot') 
+ggmcmc(D = posterior_1b, file = NULL, plot = 'ggs_compare_partial') 
+ggmcmc(D = posterior_1b, file = NULL, plot = 'ggs_autocorrelation') 
+```
+
+## Проверка гипотезы о связи типа иллюзии и разницы между стимулами (больше кол-во проб - больше вероятность контрастной иллюзии)
+
+## Testing the hypothesis that the size of difference between adaptive stimuli positively correlates with the probability of contrastive illusion
+
+Zero hypothesis: hierarchical Bayesian logistic regression with zero mean population effect of the size of difference between two circles
+
+Alternative hypothesis: population effect is negative (very broad cauchy distribution, truncated at 0)
+
+```{r}
+# компилируем модели, соответствующие двум гипотезам
+stanmodelH0 <- stan_model('H0_1.stan', model_name = 'H0') 
+stanmodelH1 <- stan_model('H1_1.stan', model_name = 'H1')
+
+# сэмплируем "предсказания" каждой из гипотез (моделей), нужно сгенерировать очень много 
+fit_H0 <- sampling(stanmodelH0, list_for_stan_non_naive, iter = 20000, warmup = 1000)
+fit_H1 <- sampling(stanmodelH1, list_for_stan_non_naive, iter = 20000, warmup = 1000)
+```
+
+
+```{r}
+print(fit_H0)
+print(fit_H1)
+```
+
+Diagnostics 
+
+```{r}
+posterior_H0 <- ggs(fit_H0)
+posterior_H1 <- ggs(fit_H1)
+
+ggmcmc(D = posterior_H0, file = NULL, family = 'beta_mu', plot = 'ggs_histogram')
+ggmcmc(D = posterior_H1, file = NULL, family = 'beta_mu', plot = 'ggs_histogram')
+
+ggmcmc(D = posterior_H0, file = NULL, family = 'beta_mu', plot = 'ggs_compare_partial')
+ggmcmc(D = posterior_H1, file = NULL, family = 'beta_mu', plot = 'ggs_compare_partial')
+
+ggmcmc(D = posterior_H0, file = NULL, family = 'beta_mu', plot = 'ggs_traceplot')
+ggmcmc(D = posterior_H1, file = NULL, family = 'beta_mu', plot = 'ggs_traceplot')
+
+ggmcmc(D = posterior_H0, file = NULL, family = 'beta_mu', plot = 'ggs_autocorrelation')
+ggmcmc(D = posterior_H1, file = NULL, family = 'beta_mu', plot = 'ggs_autocorrelation')
+```
+
+Bayes factor estimation
+
+```{r}
+# считаем логарифм правдоподобия имеющихся данных для каждой из гипотез (моделей)
+H0_res <- bridge_sampler(fit_H0, silent = TRUE)
+H1_res <- bridge_sampler(fit_H1, silent = TRUE)
+print(H0_res)
+print(H1_res)
+```
+
+```{r}
+# смотрим на оценку возможной ошибки подсчета правдоподобия
+error_measures(H0_res)$percentage
+error_measures(H1_res)$percentage
+```
+
+Assume that both hypotheses are equally probable (have the same prior probability)
+Предполагаем, что обе гипотезы одинаково вероятны (имеют одинаковую априорную вероятность)
+
+```{r}
+# считаем Байес-фактор (в пользу альтернативной гипотезы)
+BF10 <- bf(H1_res, H0_res)
+print(BF10)
+
+# считаем Байес-фактор (в пользу нулевой гипотезы)
+BF01 <- bf(H0_res, H1_res)
+print(BF01)
+```
+
+## Проверка гипотезы о связи типа иллюзии и количеством установочных проб (больше кол-во проб - больше вероятность контрастной иллюзии)
+
+## Testing the hypothesis that the number of adaptation trials positively correlates with the probability of contrastive illusion (and negatively - with the assimilative illusion)
+
+Zero hypothesis: hierarchical Bayesian logistic regression with zero mean population effect of the number of adaptation trials
+
+Alternative hypothesis: population effect is negative (very broad cauchy distribution, truncated at 0)
+
+
+```{r}
+# компилируем модели, соответствующие двум гипотезам
+stanmodelH0_2 <- stan_model('H0_2.stan', model_name = 'H0') 
+stanmodelH1_2 <- stan_model('H1_2.stan', model_name = 'H1')
+
+# сэмплируем "предсказания" каждой из гипотез (моделей), нужно сгенерировать очень много 
+fit_H0_2 <- sampling(stanmodelH0_2, list_for_stan_non_naive, iter = 30000, warmup = 4000)
+fit_H1_2 <- sampling(stanmodelH1_2, list_for_stan_non_naive, iter = 30000, warmup = 4000)
+```
+
+```{r}
+print(fit_H0_2)
+print(fit_H1_2)
+```
+
+Diagnostics
+
+```{r}
+posterior_H0_2 <- ggs(fit_H0_2)
+posterior_H1_2 <- ggs(fit_H1_2)
+
+ggmcmc(D = posterior_H0_2, file = NULL, family = 'beta_mu', plot = 'ggs_histogram')
+ggmcmc(D = posterior_H1_2, file = NULL, family = 'beta_mu', plot = 'ggs_histogram')
+
+ggmcmc(D = posterior_H0_2, file = NULL, family = 'beta_mu', plot = 'ggs_compare_partial')
+ggmcmc(D = posterior_H1_2, file = NULL, family = 'beta_mu', plot = 'ggs_compare_partial')
+
+ggmcmc(D = posterior_H0_2, file = NULL, family = 'beta_mu', plot = 'ggs_traceplot')
+ggmcmc(D = posterior_H1_2, file = NULL, family = 'beta_mu', plot = 'ggs_traceplot')
+
+ggmcmc(D = posterior_H0_2, file = NULL, family = 'beta_mu', plot = 'ggs_autocorrelation')
+ggmcmc(D = posterior_H1_2, file = NULL, family = 'beta_mu', plot = 'ggs_autocorrelation')
+```
+
+Bayes factor estimation
+
+```{r}
+# считаем логарифм правдоподобия имеющихся данных для каждой из гипотез (моделей)
+H0_res_2 <- bridge_sampler(fit_H0_2, silent = TRUE)
+H1_res_2 <- bridge_sampler(fit_H1_2, silent = TRUE)
+print(H0_res_2)
+print(H1_res_2)
+```
+
+
+```{r}
+# смотрим на оценку возможной ошибки подсчета правдоподобия
+error_measures(H0_res_2)$percentage
+error_measures(H1_res_2)$percentage
+```
+
+Предполагаем, что обе гипотезы одинаково вероятны (имеют одинаковую априорную вероятность)
+
+```{r}
+# считаем Байес-фактор (в пользу альтернативной гипотезы)
+BF10_2 <- bf(H1_res_2, H0_res_2)
+print(BF10_2)
+
+# считаем Байес-фактор (в пользу нулевой гипотезы)
+BF01_2 <- bf(H0_res_2, H1_res_2)
+print(BF01_2)
+```

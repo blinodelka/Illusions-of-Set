@@ -29,7 +29,7 @@ Data loading
 
 ```{r download_data}
 
-setwd("/home/marina/Documents/Projects/Illusions_of_set/Set 1/data")
+setwd("/home/marina/Documents/Projects/Illusions_of_set/Experiment 1/data")
 names <- c("IKA_Set_2017_05_22_1634.csv","NAT_Set_2017_05_05_1426.csv", "AOM_Set_2017_05_01_2019.csv", "BRO_Set_2017_05_05_1411.csv", "LDS_Set_2017_05_05_1327.csv", "DFX_Set_2017_04_15_1952.csv", "ASS_Set_2017_04_28_1416.csv", "ENE_Set_2017_04_28_1356.csv", "karina_Set_2017_04_28_1319.csv", "M.N_Set_2017_04_28_1457.csv", "OMK_Set_2017_04_15_2003.csv", "POL_Set_2017_04_15_1917.csv", "SAA_Set_2017_04_15_1800.csv", "SEV_Set_2017_04_28_1342.csv", "Simon_Set_2017_04_15_1935.csv", "Mil_Set_2017_04_29_1731.csv", "AAF_Set_2017_04_29_1410.csv", "GSA_Set_2017_05_17_1713.csv", "KLE_Set_2017_05_17_1645.csv", "AKS_Set_2017_05_17_1623.csv", "YGY_Set_2017_05_17_1609.csv", "ASV_Set_2017_05_17_1556.csv", "MB_Set_2017_05_17_1412.csv", "EZV_Set_2017_05_17_1327.csv", "ARM_Set_2017_05_16_2215.csv", "RBD_Set_2017_05_16_1316.csv")
 data <- data.table()
 for (i in 1:length(names)) {
@@ -202,9 +202,9 @@ ggplot(data = data_left_right_2,aes(x=size, fill = answer.keys)) + geom_density(
 
 ``` {r lrem2}
 
-model1 <- glmer(answer.keys ~ size + number_of_fixational_trials + (1|participant) + (size|participant), data = data_best, family = binomial) # doesn't converge with individual effects of num_of_trials
-summary(model)
-model10 <- glmer(size ~ 1 + (1|participant), data = data_best)
+model1 <- glmer(answer.keys ~ size + number_of_fixational_trials + (1|participant), data = data_best, family = binomial) # doesn't converge with individual effects of num_of_trials
+summary(model1)
+model10 <- glmer(answer.keys ~ 1 + (1|participant), family = binomial, data = data_best)
 summary(model10)
 anova(model10, model1)
 ```
