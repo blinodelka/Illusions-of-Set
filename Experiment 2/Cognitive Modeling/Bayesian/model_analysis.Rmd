@@ -149,7 +149,6 @@ rowMeans(data)
 ### нормализация - не нужна
 data_norm <- data/rowMeans(data)
 data_norm <- data_norm - 0.5
-rowMeans(data_norm)
 ```
 
 
@@ -273,9 +272,6 @@ generated quantities {
 '
 ```
 
-```{r}
-
-```
 
 ```{r}
 print(fit_full_crp_2, pars = c("p_other"), include = FALSE)
@@ -500,6 +496,8 @@ generated quantities {
 model_full_crp_2 <- '
 
 data {
+  int<lower=0> a;
+  int<lower=0> b;
 	int<lower=1> nY; // количество наблюдений (всего)
 	int<lower=1> num_of_trials[nY]; // количество установочных проб
   vector[nY] size_diff; // разница между стимулами
@@ -509,6 +507,7 @@ data {
   int<lower = 1> n_test;
   vector[n_test] likelihoods_test;
   vector[n_test] num_trials_test;
+  vector[n_test] estimated_means_test;
 }
 
 parameters {
@@ -519,8 +518,12 @@ parameters {
 
 transformed parameters {
   vector[nY] mu_other;
+  vector[n_test] mu_other_test;
   for(i in 1:nY){
     mu_other[i] = estimated_means[i] - mu_diff; // could be + but not relevant in this analysis
+  }
+  for(i in 1:n_test){
+    mu_other_test[i] = estimated_means_test[i] - mu_diff; // could be + but not relevant in this analysis
   }
 }
 
@@ -528,7 +531,7 @@ model {
 	// априорные распределения
 	c ~ normal(1, 2); // coupling probability
   sigma ~ cauchy(0, 7);
-  mu_diff ~ gamma(10, 1);
+  mu_diff ~ gamma(a, b);
 
   for(i in 1:nY){
     Y[i] ~ bernoulli((likelihoods[i] * (1 - ((1-c)/(1 - c + c * num_of_trials[i]))))/((likelihoods[i] * (1 - ((1-c)/(1 - c + c * num_of_trials[i])))) + exp(normal_lpdf(0 | mu_other[i], sigma)) * (1-c)/(1 - c + c * num_of_trials[i])));} // второй множитель - прайор ненулевого класса из CRP, потом - нормализация вероятностей
@@ -537,7 +540,7 @@ model {
 generated quantities {
   vector[n_test] pred;
   for(i in 1:n_test) {
-    pred[i] = bernoulli_rng((likelihoods_test[i] * (1 - ((1-c)/(1 - c + c * num_trials_test[i]))))/((likelihoods_test[i] * (1 - ((1-c)/(1 - c + c * num_trials_test[i])))) + exp(normal_lpdf(0 | mu_other[i], sigma)) * (1-c)/(1 - c + c * num_trials_test[i])));}
+    pred[i] = bernoulli_rng((likelihoods_test[i] * (1 - ((1-c)/(1 - c + c * num_trials_test[i]))))/((likelihoods_test[i] * (1 - ((1-c)/(1 - c + c * num_trials_test[i])))) + exp(normal_lpdf(0 | mu_other_test[i], sigma)) * (1-c)/(1 - c + c * num_trials_test[i])));}
 }
 
 '
@@ -551,68 +554,88 @@ generated quantities {
 ```{r}
 # LOOP
 
-fits <- c()
+#fits <- c()
 
 accuracies_lr = c()
-aucs_lr = c()
 accuracies_m = c()
-aucs_m = c()
+lr_ass = c()
+m_ass = c()
+lr_con = c()
+m_con = c()
 
-accuracies_lr_train = c()
-aucs_lr_train = c()
-accuracies_m_train = c()
-aucs_m_train = c()
+conf_lr = c()
+conf_m = c()
 
 n <- 1
 
-for (k in 1:40) {
+a <- 10
+b <- 1
+
+for (k in 1:1) {
   
   # LOG REGRESSION
   data_for_regression = data_for_stan_all
   # undersampling
-  indexes_contr = which(data_for_stan_all$answer.keys==0)
-  indexes_assim = which(data_for_stan_all$answer.keys==1)
-  sample_contr = sample(indexes_contr, sum(data_for_stan_all$answer.keys==1))
-  my_indexes = c(indexes_assim, sample_contr)
-  data_for_regression = data_for_regression[my_indexes]
+  #indexes_contr = which(data_for_stan_all$answer.keys==0)
+  #indexes_assim = which(data_for_stan_all$answer.keys==1)
+  #sample_contr = sample(indexes_contr, sum(data_for_stan_all$answer.keys==1))
+  #my_indexes = c(indexes_assim, sample_contr)
+  #data_for_regression = data_for_regression[my_indexes]
   
   # train test data 
   indexes_assim = which(data_for_regression$answer.keys==1)
   indexes_contr = which(data_for_regression$answer.keys==0)
-  indexes_assim_train = sample(indexes_assim, 82)
-  indexes_contr_train = sample(indexes_contr, 82)
+  indexes_assim_train = sample(indexes_assim, round(length(indexes_assim) * 0.5))
+  indexes_contr_train = sample(indexes_contr, round(length(indexes_contr) * 0.5))
   my_indexes_train = c(indexes_assim_train, indexes_contr_train)
   
   data_for_regression_train = data_for_regression[my_indexes_train]
   data_for_regression_test = data_for_regression[-my_indexes_train]
   
-  #list_for_alt <- list(nY = nrow(data_for_regression_train), size_diff = data_for_regression_train$size, num_of_trials = data_for_regression_train$number_of_fixational_trials, Y = data_for_regression_train$answer.keys, n_test = nrow(data_for_regression_test), size_test = data_for_regression_test$size, num_trials_test = data_for_regression_test$number_of_fixational_trials)
+  list_for_alt <- list(nY = nrow(data_for_regression_train), size_diff = data_for_regression_train$size, num_of_trials = data_for_regression_train$number_of_fixational_trials, Y = data_for_regression_train$answer.keys, n_test = nrow(data_for_regression_test), size_test = data_for_regression_test$size, num_trials_test = data_for_regression_test$number_of_fixational_trials)
 
-  #fit_alt <- stan(model_code = model_alt, data = list_for_alt)
+  fit_alt <- stan(model_code = model_alt, data = list_for_alt)
   
   
   # test accuracy
-  #ext_fit_alt <- rstan :: extract(fit_alt)
-  #acc_lr <- mean(apply(ext_fit_alt$pred, 2, median) == data_for_regression_test$answer.keys)
-  #accuracies_lr = c(accuracies_lr, acc_lr)
-  
-  # simple logistic regression
-  lm <- glm(answer.keys ~ size + number_of_fixational_trials, data = data_for_regression_train, family = "binomial")
-  
-  pred_lm <- predict(lm, newdata = data_for_regression_test, type = "response")
-  acc_lr <- (sum(pred_lm > 0.5 & data_for_regression_test$answer.keys == 1) + sum(pred_lm < 0.5 & data_for_regression_test$answer.keys == 0))/nrow(data_for_regression_test)
+  ext_fit_alt <- rstan :: extract(fit_alt)
+  acc_lr <- mean(apply(ext_fit_alt$pred, 2, median) == data_for_regression_test$answer.keys)
   accuracies_lr = c(accuracies_lr, acc_lr)
   
+  a_lr <- sum(apply(ext_fit_alt$pred, 2, median) == 1 & data_for_regression_test$answer.keys == 1)/sum(data_for_regression_test$answer.keys == 1)
+  c_lr <- sum(apply(ext_fit_alt$pred, 2, median) == 0 & data_for_regression_test$answer.keys == 0)/sum(data_for_regression_test$answer.keys == 0)
+  lr_ass <- c(lr_ass, a_lr)
+  lr_con <- c(lr_con, c_lr)
   
-  list_full_crp_2 <- list(nY = nrow(data_for_regression_train), size_diff = data_for_regression_train$size, num_of_trials = data_for_regression_train$number_of_fixational_trials, Y = data_for_regression_train$answer.keys, likelihoods = data_for_regression_train$likelihood, estimated_means = data_for_regression_train$estimated_mu, n_test = nrow(data_for_regression_test), likelihoods_test = data_for_regression_test$likelihood, num_trials_test = data_for_regression_test$number_of_fixational_trials)
+  conf_lr <- c(conf_lr, confusionMatrix(as.factor(apply(ext_fit_alt$pred, 2, median)), as.factor(data_for_regression_test$answer.keys)))
+  
+  # simple logistic regression
+  #lm <- glm(answer.keys ~ size + number_of_fixational_trials, data = data_for_regression_train, family = "binomial")
+  
+  #pred_lm <- predict(lm, newdata = data_for_regression_test, type = "response")
+  #acc_lr <- (sum(pred_lm > 0.5 & data_for_regression_test$answer.keys == 1) + sum(pred_lm < 0.5 & data_for_regression_test$answer.keys == 0))/nrow(data_for_regression_test)
+  #accuracies_lr = c(accuracies_lr, acc_lr)
+  #a_lr <- sum(pred_lm > 0.5 & data_for_regression_test$answer.keys == 1)/sum(data_for_regression_test$answer.keys == 1)
+  #c_lr <- sum(pred_lm < 0.5 & data_for_regression_test$answer.keys == 0)/sum(data_for_regression_test$answer.keys == 0)
+  #lr_ass <- c(lr_ass, a_lr)
+  #lr_con <- c(lr_con, c_lr)
+  
+  list_full_crp_2 <- list(a = a, b = b, nY = nrow(data_for_regression_train), size_diff = data_for_regression_train$size, num_of_trials = data_for_regression_train$number_of_fixational_trials, Y = data_for_regression_train$answer.keys, likelihoods = data_for_regression_train$likelihood, estimated_means = data_for_regression_train$estimated_mu, n_test = nrow(data_for_regression_test), likelihoods_test = data_for_regression_test$likelihood, num_trials_test = data_for_regression_test$number_of_fixational_trials, estimated_means_test = data_for_regression_test$estimated_mu)
 
   fit_full_crp_2 <- stan(model_code = model_full_crp_2, data = list_full_crp_2, warmup = 3000, iter = 10000)
-  fits <- c(fits, fit_full_crp_2)
+  #fits <- c(fits, fit_full_crp_2)
   
   # test accuracy
   ext_fit_m <- rstan :: extract(fit_full_crp_2)
   acc_m <- mean(apply(ext_fit_m$pred, 2, median) == data_for_regression_test$answer.keys)
   accuracies_m = c(accuracies_m, acc_m)
+  a_m <- sum(apply(ext_fit_m$pred, 2, median) == 1 & data_for_regression_test$answer.keys == 1)/sum(data_for_regression_test$answer.keys == 1)
+  c_m <- sum(apply(ext_fit_m$pred, 2, median) == 0 & data_for_regression_test$answer.keys == 0)/sum(data_for_regression_test$answer.keys == 0)
+  m_ass <- c(m_ass, a_m)
+  m_con <- c(m_con, c_m)
+  
+  conf_m <- c(conf_m, confusionMatrix(as.factor(apply(ext_fit_m$pred, 2, median)), as.factor(data_for_regression_test$answer.keys)))
+  
   print(n)
   n <- n+1
 }
