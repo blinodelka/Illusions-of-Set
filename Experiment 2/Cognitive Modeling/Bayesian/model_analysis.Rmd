@@ -563,15 +563,16 @@ m_ass = c()
 lr_con = c()
 m_con = c()
 
-conf_lr = c()
-conf_m = c()
+pred_lr = list()
+pred_m = list()
+test_sets = list()
 
 n <- 1
 
 a <- 10
 b <- 1
 
-for (k in 1:1) {
+for (k in 1:50) {
   
   # LOG REGRESSION
   data_for_regression = data_for_stan_all
@@ -581,7 +582,7 @@ for (k in 1:1) {
   #sample_contr = sample(indexes_contr, sum(data_for_stan_all$answer.keys==1))
   #my_indexes = c(indexes_assim, sample_contr)
   #data_for_regression = data_for_regression[my_indexes]
-  
+  index = as.character(n)
   # train test data 
   indexes_assim = which(data_for_regression$answer.keys==1)
   indexes_contr = which(data_for_regression$answer.keys==0)
@@ -591,6 +592,7 @@ for (k in 1:1) {
   
   data_for_regression_train = data_for_regression[my_indexes_train]
   data_for_regression_test = data_for_regression[-my_indexes_train]
+  test_sets <- list(test_sets, index = data_for_regression_test)
   
   list_for_alt <- list(nY = nrow(data_for_regression_train), size_diff = data_for_regression_train$size, num_of_trials = data_for_regression_train$number_of_fixational_trials, Y = data_for_regression_train$answer.keys, n_test = nrow(data_for_regression_test), size_test = data_for_regression_test$size, num_trials_test = data_for_regression_test$number_of_fixational_trials)
 
@@ -606,8 +608,9 @@ for (k in 1:1) {
   c_lr <- sum(apply(ext_fit_alt$pred, 2, median) == 0 & data_for_regression_test$answer.keys == 0)/sum(data_for_regression_test$answer.keys == 0)
   lr_ass <- c(lr_ass, a_lr)
   lr_con <- c(lr_con, c_lr)
+  pred_lr <- list(pred_lr, index = apply(ext_fit_alt$pred, 2, median))
   
-  conf_lr <- c(conf_lr, confusionMatrix(as.factor(apply(ext_fit_alt$pred, 2, median)), as.factor(data_for_regression_test$answer.keys)))
+  #conf_lr <- c(conf_lr, confusionMatrix(as.factor(round(apply(ext_fit_alt$pred, 2, median))), as.factor(data_for_regression_test$answer.keys)))
   
   # simple logistic regression
   #lm <- glm(answer.keys ~ size + number_of_fixational_trials, data = data_for_regression_train, family = "binomial")
@@ -634,7 +637,8 @@ for (k in 1:1) {
   m_ass <- c(m_ass, a_m)
   m_con <- c(m_con, c_m)
   
-  conf_m <- c(conf_m, confusionMatrix(as.factor(apply(ext_fit_m$pred, 2, median)), as.factor(data_for_regression_test$answer.keys)))
+  pred_m <- list(pred_m, index = apply(ext_fit_m$pred, 2, median))
+  #conf_m <- c(conf_m, confusionMatrix(as.factor(apply(ext_fit_m$pred, 2, median)), as.factor(data_for_regression_test$answer.keys)))
   
   print(n)
   n <- n+1
@@ -643,7 +647,82 @@ for (k in 1:1) {
 
 cat("Mean accuracy of lr:", mean(accuracies_lr))
 cat("Mean accuracy of model:", mean(accuracies_m))
-
-
 ```
 
+```{r}
+flattenlist <- function(x){  
+  morelists <- sapply(x, function(xprime) class(xprime)[1]=="list")
+  out <- c(x[!morelists], unlist(x[morelists], recursive=FALSE))
+  if(sum(morelists)){ 
+    Recall(out)
+  }else{
+    return(out)
+  }
+}
+
+pred_lr <- flattenlist(pred_lr)
+pred_m <- flattenlist(pred_m)
+test_sets <- flattenlist(test_sets)
+```
+
+
+```{r}
+lr_r_con <- c()
+lr_p_con <- c()
+lr_r_ass <- c()
+lr_p_ass <- c()
+for(i in 1:50){
+# recall for contrastive
+  lr_r_con <- c(lr_r_con, as.numeric(confusionMatrix(as.factor(round(pred_lr[i]$index)), as.factor(test_sets[i]$index$answer.keys), positive = '0')$byClass[1]))
+# precision for contrastive
+  lr_p_con <- c(lr_p_con, as.numeric(confusionMatrix(as.factor(round(pred_lr[i]$index)), as.factor(test_sets[i]$index$answer.keys), positive = '0')$byClass[3]))
+
+# recall for assimilative
+  lr_r_ass <- c(lr_r_ass, as.numeric(confusionMatrix(as.factor(round(pred_lr[i]$index)), as.factor(test_sets[i]$index$answer.keys), positive = '1')$byClass[1]))
+# precision for assimiative
+  lr_p_ass <- c(lr_p_ass, as.numeric(confusionMatrix(as.factor(round(pred_lr[i]$index)), as.factor(test_sets[i]$index$answer.keys), positive = '1')$byClass[3]))
+}
+
+lr_p_ass[is.na(lr_p_ass)] <- 0
+
+
+mean(lr_r_con)
+mean(lr_p_con)
+mean(lr_r_ass)
+mean(lr_p_ass)
+
+sd(lr_r_con)
+sd(lr_p_con)
+sd(lr_r_ass)
+sd(lr_p_ass)
+```
+
+
+```{r}
+m_r_con <- c()
+m_p_con <- c()
+m_r_ass <- c()
+m_p_ass <- c()
+for(i in 1:50){
+# recall for contrastive
+  m_r_con <- c(m_r_con, as.numeric(confusionMatrix(as.factor(pred_m[i]$index), as.factor(test_sets[i]$index$answer.keys), positive = '0')$byClass[1]))
+# precision for contrastive
+  m_p_con <- c(m_p_con, as.numeric(confusionMatrix(as.factor(pred_m[i]$index), as.factor(test_sets[i]$index$answer.keys), positive = '0')$byClass[3]))
+
+# recall for assimilative
+  m_r_ass <- c(m_r_ass, as.numeric(confusionMatrix(as.factor(pred_m[i]$index), as.factor(test_sets[i]$index$answer.keys), positive = '1')$byClass[1]))
+# precision for assimiative
+  m_p_ass <- c(m_p_ass, as.numeric(confusionMatrix(as.factor(pred_m[i]$index), as.factor(test_sets[i]$index$answer.keys), positive = '1')$byClass[3]))
+}
+
+
+mean(m_r_con)
+mean(m_p_con)
+mean(m_r_ass)
+mean(m_p_ass)
+
+sd(m_r_con)
+sd(m_p_con)
+sd(m_r_ass)
+sd(m_p_ass)
+```
