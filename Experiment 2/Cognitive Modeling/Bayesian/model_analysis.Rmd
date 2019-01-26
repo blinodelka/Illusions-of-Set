@@ -272,6 +272,12 @@ generated quantities {
 '
 ```
 
+```{r}
+list_full_crp_2 <- list(nY = nrow(data_for_stan_all), size_diff = data_for_stan_all$size, num_of_trials = data_for_stan_all$number_of_fixational_trials, Y = data_for_stan_all$answer.keys, likelihoods = data_for_stan_all$likelihood, estimated_means = data_for_stan_all$estimated_mu)
+
+fit_full_crp_2 <- stan(model_code = model_full_crp_2, data = list_full_crp_2, warmup = 2000, iter = 5000)
+```
+
 
 ```{r}
 print(fit_full_crp_2, pars = c("p_other"), include = FALSE)
@@ -388,6 +394,43 @@ hist(data_with_predictions$number_of_fixational_trials[data_with_predictions$crp
 hist(data_with_predictions$number_of_fixational_trials[data_with_predictions$crp_no_other > 0.5])
 hist(data_with_predictions$number_of_fixational_trials[data_with_predictions$blog_regression > 0.5])
 ```
+
+
+
+```{r}
+ggplot(data_with_predictions[data_with_predictions$answer.keys == 1], aes(x=size)) + geom_histogram(binwidth = 1, fill = "grey", color = "black") + xlab("difference between adaptors (in cm)") + ylab("observations")
+
+ggplot(data_with_predictions[data_with_predictions$crp_full < 0.5], aes(x=size)) + geom_histogram(binwidth = 1, fill = "grey", color = "black") + xlab("difference between adaptors (in cm)") + ylab("predictions") + xlim(0.5, 5.5)
+
+ggplot(data_with_predictions[data_with_predictions$blog_regression < 0.5], aes(x=size)) + geom_histogram(binwidth = 1, fill = "grey", color = "black") + xlab("difference between adaptors (in cm)") + ylab("predictions") + xlim(0.5,5.5)
+```
+
+
+```{r}
+ggplot(data_with_predictions[data_with_predictions$answer.keys == 0], aes(x=size)) + geom_histogram(binwidth = 1, fill = "grey", color = "black") + xlab("difference between adaptors (in cm)") + ylab("observations")
+
+ggplot(data_with_predictions[data_with_predictions$crp_full > 0.5], aes(x=size)) + geom_histogram(binwidth = 1, fill = "grey", color = "black") + xlab("difference between adaptors (in cm)") + ylab("predictions") + xlim(0.5,5.5)
+
+ggplot(data_with_predictions[data_with_predictions$blog_regression > 0.5], aes(x=size)) + geom_histogram(binwidth = 1, fill = "grey", color = "black") + xlab("difference between adaptors (in cm)") + ylab("predictions") + xlim(0.5,5.5)
+```
+
+```{r}
+ggplot(data_with_predictions[data_with_predictions$answer.keys == 0], aes(x=number_of_fixational_trials)) + geom_histogram(binwidth = 1, fill = "grey", color = "black") + xlab("difference between adaptors (in individual differential thresholds)") + ylab("observations")
+
+ggplot(data_with_predictions[data_with_predictions$crp_full > 0.5], aes(x=number_of_fixational_trials)) + geom_histogram(binwidth = 1, fill = "grey", color = "black") + xlab("difference between adaptors (in individual differential thresholds)") + ylab("predictions") + xlim(0.5, 6.5)
+
+ggplot(data_with_predictions[data_with_predictions$blog_regression > 0.5], aes(x=number_of_fixational_trials)) + geom_histogram(binwidth = 1, fill = "grey", color = "black") + xlab("difference between adaptors (in individual differential thresholds)") + ylab("predictions") + xlim(0.5,6.5)
+```
+
+```{r}
+ggplot(data_with_predictions[data_with_predictions$answer.keys == 1], aes(x=number_of_fixational_trials)) + geom_histogram(binwidth = 1, fill = "grey", color = "black") + xlab("difference between adaptors (in individual differential thresholds)") + ylab("observations")
+
+ggplot(data_with_predictions[data_with_predictions$crp_full < 0.5], aes(x=number_of_fixational_trials)) + geom_histogram(binwidth = 1, fill = "grey", color = "black") + xlab("difference between adaptors (in individual differential thresholds)") + ylab("predictions") + xlim(0.5, 6.5)
+
+ggplot(data_with_predictions[data_with_predictions$blog_regression < 0.5], aes(x=number_of_fixational_trials)) + geom_histogram(binwidth = 1, fill = "grey", color = "black") + xlab("difference between adaptors (in individual differential thresholds)") + ylab("predictions") + xlim(0.5,6.5)
+```
+
+
 
 
 ROC AUC
