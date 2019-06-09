@@ -45,33 +45,33 @@ Making the data analyzable
 3. Different subsets for Assimilative, Contrastive, and No illusion
 
 ```{r data_table, output=FALSE}
-data_best <- data[,. (answer.keys, number_of_fixational_trials, size, trials_3.thisRepN, participant)]
-#data_best$size <- as.factor(data_best$size)
-#data_best$number_of_fixational_trials <- as.factor(data_best$number_of_fixational_trials)
-data_best <- data_best[!(size=="NA")]
-data_best <- data_best[(trials_3.thisRepN==0)]
+data_clear <- data[,. (answer.keys, number_of_fixational_trials, size, trials_3.thisRepN, participant)]
+#data_clear$size <- as.factor(data_clear$size)
+#data_clear$number_of_fixational_trials <- as.factor(data_clear$number_of_fixational_trials)
+data_clear <- data_clear[!(size=="NA")]
+data_clear <- data_clear[(trials_3.thisRepN==0)]
 
-data_right <- data_best[(answer.keys == "right")]
-data_left <- data_best[(answer.keys == "left")]
-data_left_right <- data_best[(answer.keys == "right"|answer.keys == "left")]
-data_down <- data_best[(answer.keys == "down")]
-levels(data_best$answer.keys) <- c("", "No illusion", "Contrastive illusion", "Assimilative illusion")
+data_right <- data_clear[(answer.keys == "right")]
+data_left <- data_clear[(answer.keys == "left")]
+data_left_right <- data_clear[(answer.keys == "right"|answer.keys == "left")]
+data_down <- data_clear[(answer.keys == "down")]
+levels(data_clear$answer.keys) <- c("", "No illusion", "Contrastive illusion", "Assimilative illusion")
 ```
 
 ### Number of illusions
 
 ```{r plot0, echo = FALSE}
-ggplot(data_best, aes(x = answer.keys)) + geom_bar() + ylab("Total amount of illusions") + xlab("") + ggtitle("Number of illusions")
+ggplot(data_clear, aes(x = answer.keys)) + geom_bar() + ylab("Total amount of illusions") + xlab("") + ggtitle("Number of illusions")
 ```
 
 ### Different types of illusion and the size of difference between adaptive stimuli
 
 ```{r plot1, echo = FALSE}
 ggplot(data_left_right, aes(x = size, fill = answer.keys)) + geom_bar()
-ggplot(data_best, aes(x = size, fill = answer.keys)) + geom_bar(stat = "count", position = position_fill()) + ylab("Fraction of the type of illusions") + xlab("Size of difference between the setting stimuli (in individual differential thresholds)") + ggtitle("Fraction of illusions for different sizes of difference") + labs(fill = "Type of illusion")
+ggplot(data_clear, aes(x = size, fill = answer.keys)) + geom_bar(stat = "count", position = position_fill()) + ylab("Fraction of the type of illusions") + xlab("Size of difference between the setting stimuli (in individual differential thresholds)") + ggtitle("Fraction of illusions for different sizes of difference") + labs(fill = "Type of illusion")
 
-ggplot(data_best, aes(x = answer.keys, fill = as.factor(number_of_fixational_trials))) + geom_bar(stat = "count", position = position_fill())
-#ggplot(data_best, aes(x = answer.keys, fill = size)) + geom_bar(stat = "count", position = position_fill())
+ggplot(data_clear, aes(x = answer.keys, fill = as.factor(number_of_fixational_trials))) + geom_bar(stat = "count", position = position_fill())
+#ggplot(data_clear, aes(x = answer.keys, fill = size)) + geom_bar(stat = "count", position = position_fill())
 ```
 
 ### Different types of illusion and the size of difference and number of adaptation trials
@@ -138,7 +138,7 @@ ggplot(data_left, aes(x = number_of_fixational_trials, y = size)) + geom_smooth(
 
 ### Логистическая регрессия (для обоих типов иллюзий: количество установочных проб ~ размер разницы)
 
-``` {r regression_3, echo = FALSE}
+```{r regression_3, echo = FALSE}
 
 ggplot(data_left_right, aes(x = number_of_fixational_trials, y = size, col = answer.keys)) + geom_smooth(method = "glm", method.args = list(family = "gaussian"), se = TRUE)
 
@@ -147,10 +147,10 @@ ggplot(data_left_right, aes(x = number_of_fixational_trials, y = size, col = ans
 ### Data with absolute value of difference between stimuli
 
 ```{r new_data, echo = FALSE}
-data_best_2 <- data[,. (answer.keys, number_of_fixational_trials, size, trials_3.thisRepN, participant)]
-data_best_2 <- data_best_2[!(size=="NA")]
-data_best_2 <- data_best_2[(trials_3.thisRepN==0)]
-levels(data_best_2$answer.keys) <- c("", "No illusion", "Contrastive illusion", "Assimilative illusion")
+data_clear_2 <- data[,. (answer.keys, number_of_fixational_trials, size, trials_3.thisRepN, participant)]
+data_clear_2 <- data_clear_2[!(size=="NA")]
+data_clear_2 <- data_clear_2[(trials_3.thisRepN==0)]
+levels(data_clear_2$answer.keys) <- c("", "No illusion", "Contrastive illusion", "Assimilative illusion")
 
 
 c1 <- aggregate(data$rating_up.response, by=list(Category=data$participant), FUN=mean, na.rm = TRUE) 
@@ -158,18 +158,18 @@ c2 <- aggregate(data$rating_down.response, by=list(Category=data$participant), F
 c1$sum <- c1$x + c2$x
 c1$mean <- (c1$sum)/2
 c1 <- c1[rep(1:nrow(c1), each = 24),]
-data_best_2$size <- data_best$size * c1$mean
+data_clear_2$size <- data_clear$size * c1$mean
 
-data_right_2 <- data_best_2[(answer.keys == "Assimilative illusion")]
-data_left_2 <- data_best_2[(answer.keys == "Contrastive illusion")]
-data_left_right_2 <- data_best_2[(answer.keys == "Assimilative illusion"|answer.keys == "Contrastive illusion")]
-data_down_2 <- data_best_2[(answer.keys == "No illusion")]
+data_right_2 <- data_clear_2[(answer.keys == "Assimilative illusion")]
+data_left_2 <- data_clear_2[(answer.keys == "Contrastive illusion")]
+data_left_right_2 <- data_clear_2[(answer.keys == "Assimilative illusion"|answer.keys == "Contrastive illusion")]
+data_down_2 <- data_clear_2[(answer.keys == "No illusion")]
 
-data_best_2$size_in_thresholds <- data_best$size
-data_best_2$answer <- data_best_2$answer.keys
-levels(data_best_2$answer.keys) <- c("NA", "0", "-1", "1")
-data_best_2$answer.keys <- as.numeric(data_best_2$answer.keys)
-write.csv(data_best_2, file = "home/marina/Documents/Projects/Illusions_of_set/Set 1/Experiment/data/MyData.csv")
+data_clear_2$size_in_thresholds <- data_clear$size
+data_clear_2$answer <- data_clear_2$answer.keys
+levels(data_clear_2$answer.keys) <- c("NA", "0", "-1", "1")
+data_clear_2$answer.keys <- as.numeric(data_clear_2$answer.keys)
+write.csv(data_clear_2, file = "home/marina/Documents/Projects/Illusions_of_set/Set 1/Experiment/data/MyData.csv")
 ```
 
 ### GEOM POINT
@@ -179,10 +179,10 @@ ggplot(data_left_right_2, aes(x = size, y = number_of_fixational_trials, col = a
 ggplot(data_left_2, aes(x = size)) + geom_histogram(binwidth = 0.1) + xlab("Absolute value of differece between setting stimuli (in cm)") + ylab("Total amount of illusions") + ggtitle("Number of contrastive illusions and absolute value of difference")
 
 # DENSITIES
-ggplot(data_best_2, aes(x = size, fill = answer.keys)) + geom_density(alpha=0.4) + xlab("Absolute value of differece between setting stimuli (in cm)") + ylab("Estimated density") + ggtitle("Estimated density of distributions") + labs(fill= "Type of illusion")
+ggplot(data_clear_2, aes(x = size, fill = answer.keys)) + geom_density(alpha=0.4) + xlab("Absolute value of differece between setting stimuli (in cm)") + ylab("Estimated density") + ggtitle("Estimated density of distributions") + labs(fill= "Type of illusion")
 
 # DISTRIBUTIONS
-ggplot(data_best_2, aes(x = size, fill = answer.keys)) + geom_histogram(binwidth = 0.1) + xlab("Absolute value of differece between setting stimuli (in cm)") + ylab("Total amount of illusions") + ggtitle("Number of illusions and absolute value of difference") + facet_wrap(~ answer.keys) + labs(fill= "Type of illusion")
+ggplot(data_clear_2, aes(x = size, fill = answer.keys)) + geom_histogram(binwidth = 0.1) + xlab("Absolute value of differece between setting stimuli (in cm)") + ylab("Total amount of illusions") + ggtitle("Number of illusions and absolute value of difference") + facet_wrap(~ answer.keys) + labs(fill= "Type of illusion")
 
 
 ggplot(data_left_right_2, aes(x = size, fill  = answer.keys)) + geom_histogram(alpha = 0.3, binwidth = 0.1, aes(y = ..density..), position = 'identity') + xlab("Absolute value of differece between setting stimuli (in cm)") + ylab("Total amount of illusions") + ggtitle("Number of assimilative illusions and absolute value of difference")
@@ -200,11 +200,11 @@ ggplot(data = data_left_right_2,aes(x=size, fill = answer.keys)) + geom_density(
 
 ### Модель для дифференциальных порогов
 
-``` {r lrem2}
+```{r lrem2}
 
-model1 <- glmer(answer.keys ~ size + number_of_fixational_trials + (1|participant), data = data_best, family = binomial) # doesn't converge with individual effects of num_of_trials
+model1 <- glmer(answer.keys ~ size + number_of_fixational_trials + (1|participant), data = data_clear, family = binomial) # doesn't converge with individual effects of num_of_trials
 summary(model1)
-model10 <- glmer(answer.keys ~ 1 + (1|participant), family = binomial, data = data_best)
+model10 <- glmer(answer.keys ~ 1 + (1|participant), family = binomial, data = data_clear)
 summary(model10)
 anova(model10, model1)
 ```
